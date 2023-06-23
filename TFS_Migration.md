@@ -8,7 +8,11 @@ To enable this, you will create custom queries that filter based on 'KAT tags' d
 
 After [TFS Queries](#tfs-queries-to-emulate-tm-workflow) are set up, you will use a work flow that is managed based on `Created By`, `Assigned To` and `State` fields.
 
-See [Requestor Workflows](#requestor-workflows) and [Worker Workflows](#worker-workflows) for more details.
+See one of the following for more details:
+
+1. [Requestor Workflows](#requestor-workflows)
+1. [Worker Workflows](#worker-workflows)
+1. [TFS Queries To Emulate TM Workflow](#tfs-queries-to-emulate-tm-workflow)
 
 ## Task Workflow
 
