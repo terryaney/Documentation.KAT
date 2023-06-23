@@ -1,22 +1,4 @@
-## Task State According to Flow
-
-### Tasks To Do
-Active/Proposed
-Assigned To Me
-
-### Tasks To Publish To QA (DEVs - TM Pending Notifications)
-Resolved
-Assigned To Me
-
-### Tasks To Review
-Resolved
-Assigned To Me
-Created By Me
-
-### Tasks To Publish (DEVs)
-Resolved
-Assigned To Me
-NOT Created By Me
+# Task Workflow
 
 ## Creating Task
 1. If creating a Spec Sheet request task, would be *nice* to copy the ID of the spec task before starting task, then when creating tasks, create a link of type 'Parent' and paste the spec sheet task ID in.  Makes it easier for me to retreive but not necessary.
@@ -63,3 +45,23 @@ NOT Created By Me
 ## After Publishing to Production
 1. Assign to owner (to notify them)
 1. Change State to Closed
+
+# Task State According to Flow
+
+## Tasks To Do
+1. Active/Proposed
+1. Assigned To Me
+
+## Tasks To Publish To QA (DEVs - TM Pending Notifications)
+1. Resolved
+1. Assigned To Me
+
+## Tasks To Review
+1. Resolved
+1. Assigned To Me
+1. Created By Me
+
+## Tasks To Publish (DEVs)
+1. Resolved
+1. Assigned To Me
+1. NOT Created By Me
