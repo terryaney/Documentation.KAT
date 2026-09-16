@@ -225,6 +225,19 @@ For Admin sites, they need to additionally have the following `PostBuildEvent`:
 </PropertyGroup>
 ```
 
+For Windows Services or other Evolution projects where you want to stamp the git hash, instead of the `ensure.assemblyinfo` pre-build event, you should simply use this target:
+
+```xml
+<Target Name="StampCommitHash" BeforeTargets="CoreCompile">
+  <Exec Command="git rev-parse --short HEAD" ConsoleToMSBuild="true"
+        StandardOutputImportance="low" ContinueOnError="true">
+    <Output TaskParameter="ConsoleOutput" PropertyName="CommitHash" />
+  </Exec>
+  <WriteLinesToFile File="Properties\AssemblyInfo.generated.cs" Overwrite="true"
+                    Lines="using System.Reflection%3B;[assembly: AssemblyInformationalVersion( &quot;$(CommitHash)&quot; )]" />
+</Target>
+```
+
 3\. Remove the items:
 
 ```xml
