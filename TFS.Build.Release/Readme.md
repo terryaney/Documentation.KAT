@@ -211,17 +211,17 @@ Open the `*.csproj` file in VS Code or text editor and make the following change
 
 ```xml
 <PropertyGroup>
-	<PreBuildEvent>lprun.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:ensure.assemblyinfo "ProjectFile:$(ProjectDir)$(ProjectName).csproj"</PreBuildEvent>
+	<PreBuildEvent>lprun9.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:ensure.assemblyinfo "ProjectFile:$(ProjectDir)$(ProjectName).csproj"</PreBuildEvent>
 	<PostBuildEvent/>
 </PropertyGroup>
 ```
 
-For Admin sites that have schedule jobs that run, they need to additionally have the following `PostBuildEvent`:
+For Admin sites, they need to additionally have the following `PostBuildEvent`:
 
 ```xml
 <PropertyGroup>
-	<PreBuildEvent>lprun.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:ensure.assemblyinfo "ProjectFile:$(ProjectDir)$(ProjectName).csproj"</PreBuildEvent>
-	<PostBuildEvent>lprun.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:post.build ConfigurationName:$(ConfigurationName) "ProjectFile:$(ProjectDir)$(ProjectName).csproj" "BuildFolder:$(TargetDir)\"</PostBuildEvent>
+	<PreBuildEvent>lprun9.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:ensure.assemblyinfo "ProjectFile:$(ProjectDir)$(ProjectName).csproj"</PreBuildEvent>
+	<PostBuildEvent>lprun9.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:post.build ConfigurationName:$(ConfigurationName) "ProjectFile:$(ProjectDir)$(ProjectName).csproj" "BuildFolder:$(TargetDir)\"</PostBuildEvent>
 </PropertyGroup>
 ```
 
@@ -282,7 +282,7 @@ Clone existing Evolution Admin and/or ESS build/release pipelines and update the
 Create the following external tool to enable triggering a site/api publish:
 
 1. Title: `&KAT Publish`
-1. Command: `lprun.exe`
+1. Command: `lprun9.exe`
 1. Arguments: `"C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" "ProjectFile:$(ProjectDir)$(ProjectFileName)" "GitType:synced" "Command:queue.cicd" "Tool:Visual Studio"`
 1. Initial Directory: `$(ProjectDir)`
 1. Use Output Window: `Checked`
