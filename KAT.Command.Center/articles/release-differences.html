@@ -1,0 +1,387 @@
+<header class="cc-help-article-header">
+	<div class="cc-help-eyebrow">Command Center · comparison</div>
+	<h1>Release Differences</h1>
+	<p class="cc-help-lede">Compare the repositories and commits represented by two releases, then follow repository,
+		commit, and work-item links for more detail.</p>
+</header>
+
+<span class="cc-help-anchor-alias" id="reading-comparison" aria-hidden="true"></span>
+<h2 id="sample-release-differences">Interactive Release Differences Sample</h2>
+
+<div class="tfs-release cc-help-demo cc-reduce-3">
+	<details class="detail-card release-diff" open="">
+		<summary>
+			<span class="card-chevron">▸</span>
+			<span class="card-title">Release Differences</span>
+			<div class="card-header-right">
+				<label id="diffPendingToggleHelp" class="pending-toggle"><input type="checkbox"><span>Show pending</span></label>
+				<span class="cc-refreshed">refreshed 23:47:55 · 4.79s · 30 calls</span>
+				<button class="cc-button cc-button--icon cc-button--sm cc-refresh" type="button" title="Refresh Release Pipeline and Differences">↻</button>
+				<div class="cc-chip cc-chip--pill card-badge">72 commits · 4 repos</div>
+			</div>
+		</summary>
+		<div class="card-body">
+			<div class="pending-block" id="diffPendingBlockHelp">
+				<div class="origin-group release">
+					<div class="origin-chip">Release 15 <span class="suffix">— 4 commits</span></div>
+					<div class="repo-header" style="--repo-color:#7ee787">ess.camelot.nexgen Commits <span class="rh-count">· 2</span></div>
+					<div class="commit" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0001</a></div>
+						<div class="when">8/20/2026 4:08 PM</div>
+						<div class="who">Casey Demo</div>
+						<div class="comment-wrap">
+							<div class="comment">TFS <a class="wi-link" href="#" onclick="return false;">#900105</a></div>
+						</div>
+					</div>
+					<div class="commit" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0002</a></div>
+						<div class="when">8/20/2026 10:13 AM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Estimate calculation supports token validation replacement, fixes <a class="wi-link" href="#" onclick="return false;">#900101</a></div>
+						</div>
+					</div>
+					<div class="repo-header" style="--repo-color:#79c0ff">core.camelot Commits <span class="rh-count">· 2</span></div>
+					<div class="commit" style="color:#79c0ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0003</a></div>
+						<div class="when">8/20/2026 3:55 PM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Configuration startup tweaks</div>
+						</div>
+					</div>
+					<div class="commit" style="color:#79c0ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0004</a></div>
+						<div class="when">8/20/2026 3:53 PM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Rename response processor to validator</div>
+						</div>
+					</div>
+				</div>
+				<div class="origin-group release">
+					<div class="origin-chip">Release 14 <span class="suffix">— 10 commits</span></div>
+					<div class="repo-header" style="--repo-color:#7ee787">ess.camelot.nexgen Commits <span class="rh-count">· 8</span></div>
+					<div class="commit" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0005</a></div>
+						<div class="when">8/18/2026 9:01 PM</div>
+						<div class="who">Casey Demo</div>
+						<div class="comment-wrap">
+							<div class="comment">TFS <a class="wi-link" href="#" onclick="return false;">#900106</a> plus sample follow-up</div>
+						</div>
+					</div>
+					<div class="commit" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0006</a></div>
+						<div class="when">8/18/2026 2:18 PM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">API exception handler signature fix</div>
+						</div>
+					</div>
+					<div class="commit" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"></div>
+						<div class="when"></div>
+						<div class="who">... 5 commits</div>
+					</div>
+					<div class="commit" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0007</a></div>
+						<div class="when">8/17/2026 7:32 PM</div>
+						<div class="who">Taylor Owner</div>
+						<div class="comment-wrap">
+							<div class="comment">Assistant update #5</div>
+						</div>
+					</div>
+					<div class="repo-header" style="--repo-color:#79c0ff">core.camelot Commits <span class="rh-count">· 2</span></div>
+					<div class="commit" style="color:#79c0ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0008</a></div>
+						<div class="when">8/18/2026 11:09 AM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Code formatting</div>
+						</div>
+					</div>
+					<div class="commit" style="color:#79c0ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0009</a></div>
+						<div class="when">8/18/2026 10:46 AM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Typo in comments</div>
+						</div>
+					</div>
+				</div>
+				<div class="origin-group from">
+					<div class="origin-chip">Release 13 DEV <span class="suffix">— 72 commits</span></div>
+					<div class="repo-header" style="--repo-color:#7ee787">ess.camelot.nexgen Commits <span class="rh-count">· 48</span></div>
+					<div class="commit" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0010</a></div>
+						<div class="when">8/17/2026 6:27 PM</div>
+						<div class="who">Taylor Owner</div>
+						<div class="comment-wrap">
+							<div class="comment">Assistant update #4</div>
+						</div>
+					</div>
+					<div class="commit has-popup" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0011</a></div>
+						<div class="when">8/17/2026 5:26 PM</div>
+						<div class="who">Jordan Example</div>
+						<div class="comment-wrap">
+							<div class="comment">Sample templates - add key values and resource strings, fixes <a class="wi-link" href="#" onclick="return false;">#900107</a>…</div>
+							<button type="button" class="cc-button cc-button--icon cc-button--sm comment-btn" title="View full comment"><span class="doc-icon doc-icon--details" aria-hidden="true"></span></button>
+						</div>
+					</div>
+					<div class="commit" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"></div>
+						<div class="when"></div>
+						<div class="who">... 45 commits</div>
+					</div>
+					<div class="commit" style="color:#7ee787">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0012</a></div>
+						<div class="when">7/31/2026 2:49 PM</div>
+						<div class="who">Casey Demo</div>
+						<div class="comment-wrap">
+							<div class="comment">SAMPLE, update header to be consistent with footer</div>
+						</div>
+					</div>
+					<div class="repo-header" style="--repo-color:#79c0ff">core.camelot Commits <span class="rh-count">· 15</span></div>
+					<div class="commit" style="color:#79c0ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0013</a></div>
+						<div class="when">8/17/2026 1:58 PM</div>
+						<div class="who">Taylor Owner</div>
+						<div class="comment-wrap">
+							<div class="comment">Updated chat service schema</div>
+						</div>
+					</div>
+					<div class="commit" style="color:#79c0ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0014</a></div>
+						<div class="when">8/15/2026 4:31 PM</div>
+						<div class="who">Taylor Owner</div>
+						<div class="comment-wrap">
+							<div class="comment">Assistant framework support in chat service</div>
+						</div>
+					</div>
+					<div class="commit" style="color:#79c0ff">
+						<div class="node"></div>
+						<div class="hash"></div>
+						<div class="when"></div>
+						<div class="who">... 12 commits</div>
+					</div>
+					<div class="commit" style="color:#79c0ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0015</a></div>
+						<div class="when">8/2/2026 4:14 PM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Organized DB Schema plans</div>
+						</div>
+					</div>
+					<div class="repo-header" style="--repo-color:#d2a8ff">core.camelot.abstractions Commits <span class="rh-count">· 7</span></div>
+					<div class="commit" style="color:#d2a8ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0016</a></div>
+						<div class="when">8/14/2026 10:52 PM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Document download/listing support, fixes <a class="wi-link" href="#" onclick="return false;">#900108</a></div>
+						</div>
+					</div>
+					<div class="commit" style="color:#d2a8ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0017</a></div>
+						<div class="when">8/11/2026 9:33 AM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Client log name for web service proxy</div>
+						</div>
+					</div>
+					<div class="commit" style="color:#d2a8ff">
+						<div class="node"></div>
+						<div class="hash"></div>
+						<div class="when"></div>
+						<div class="who">... 4 commits</div>
+					</div>
+					<div class="commit" style="color:#d2a8ff">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0018</a></div>
+						<div class="when">8/4/2026 4:18 PM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">DataStore sortby hardening</div>
+						</div>
+					</div>
+					<div class="repo-header" style="--repo-color:#ffa657">rcl.camelot.katapp Commits <span class="rh-count">· 2</span></div>
+					<div class="commit has-popup" style="color:#ffa657">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0019</a></div>
+						<div class="when">8/11/2026 12:16 PM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Pass options through so authentication default applies</div>
+							<button type="button" class="cc-button cc-button--icon cc-button--sm comment-btn" title="View full comment"><span class="doc-icon doc-icon--details" aria-hidden="true"></span></button>
+						</div>
+					</div>
+					<div class="commit" style="color:#ffa657">
+						<div class="node"></div>
+						<div class="hash"><a href="#" onclick="return false;">abc0020</a></div>
+						<div class="when">8/3/2026 11:21 AM</div>
+						<div class="who">Alex Sample</div>
+						<div class="comment-wrap">
+							<div class="comment">Modal titles support aria-labelledby, fixes <a class="wi-link" href="#" onclick="return false;">#900109</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="base-block" id="diffBaseBlockHelp">
+				<div class="repo-header" style="--repo-color:#7ee787">ess.camelot.nexgen Commits <span class="rh-count">· 48</span></div>
+				<div class="commit" style="color:#7ee787">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0010</a></div>
+					<div class="when">8/17/2026 6:27 PM</div>
+					<div class="who">Taylor Owner</div>
+					<div class="comment-wrap">
+						<div class="comment">Assistant update #4</div>
+					</div>
+				</div>
+				<div class="commit has-popup" style="color:#7ee787">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0011</a></div>
+					<div class="when">8/17/2026 5:26 PM</div>
+					<div class="who">Jordan Example</div>
+					<div class="comment-wrap">
+						<div class="comment">Sample templates - add key values and resource strings, fixes <a class="wi-link" href="#" onclick="return false;">#900107</a>…</div>
+						<button type="button" class="cc-button cc-button--icon cc-button--sm comment-btn" title="View full comment"><span class="doc-icon doc-icon--details" aria-hidden="true"></span></button>
+					</div>
+				</div>
+				<div class="commit" style="color:#7ee787">
+					<div class="node"></div>
+					<div class="hash"></div>
+					<div class="when"></div>
+					<div class="who">... 45 commits</div>
+				</div>
+				<div class="commit" style="color:#7ee787">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0012</a></div>
+					<div class="when">7/31/2026 2:49 PM</div>
+					<div class="who">Casey Demo</div>
+					<div class="comment-wrap">
+						<div class="comment">SAMPLE, update header to be consistent with footer</div>
+					</div>
+				</div>
+				<div class="repo-header" style="--repo-color:#79c0ff">core.camelot Commits <span class="rh-count">· 15</span></div>
+				<div class="commit" style="color:#79c0ff">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0013</a></div>
+					<div class="when">8/17/2026 1:58 PM</div>
+					<div class="who">Taylor Owner</div>
+					<div class="comment-wrap">
+						<div class="comment">Updated chat service schema</div>
+					</div>
+				</div>
+				<div class="commit" style="color:#79c0ff">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0014</a></div>
+					<div class="when">8/15/2026 4:31 PM</div>
+					<div class="who">Taylor Owner</div>
+					<div class="comment-wrap">
+						<div class="comment">Assistant framework support in chat service</div>
+					</div>
+				</div>
+				<div class="commit" style="color:#79c0ff">
+					<div class="node"></div>
+					<div class="hash"></div>
+					<div class="when"></div>
+					<div class="who">... 12 commits</div>
+				</div>
+				<div class="commit" style="color:#79c0ff">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0015</a></div>
+					<div class="when">8/2/2026 4:14 PM</div>
+					<div class="who">Alex Sample</div>
+					<div class="comment-wrap">
+						<div class="comment">Organized DB Schema plans</div>
+					</div>
+				</div>
+				<div class="repo-header" style="--repo-color:#d2a8ff">core.camelot.abstractions Commits <span class="rh-count">· 7</span></div>
+				<div class="commit" style="color:#d2a8ff">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0016</a></div>
+					<div class="when">8/14/2026 10:52 PM</div>
+					<div class="who">Alex Sample</div>
+					<div class="comment-wrap">
+						<div class="comment">Document download/listing support, fixes <a class="wi-link" href="#" onclick="return false;">#900108</a></div>
+					</div>
+				</div>
+				<div class="commit" style="color:#d2a8ff">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0017</a></div>
+					<div class="when">8/11/2026 9:33 AM</div>
+					<div class="who">Alex Sample</div>
+					<div class="comment-wrap">
+						<div class="comment">Client log name for web service proxy</div>
+					</div>
+				</div>
+				<div class="commit" style="color:#d2a8ff">
+					<div class="node"></div>
+					<div class="hash"></div>
+					<div class="when"></div>
+					<div class="who">... 4 commits</div>
+				</div>
+				<div class="commit" style="color:#d2a8ff">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0018</a></div>
+					<div class="when">8/4/2026 4:18 PM</div>
+					<div class="who">Alex Sample</div>
+					<div class="comment-wrap">
+						<div class="comment">DataStore sortby hardening</div>
+					</div>
+				</div>
+				<div class="repo-header" style="--repo-color:#ffa657">rcl.camelot.katapp Commits <span class="rh-count">· 2</span></div>
+				<div class="commit has-popup" style="color:#ffa657">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0019</a></div>
+					<div class="when">8/11/2026 12:16 PM</div>
+					<div class="who">Alex Sample</div>
+					<div class="comment-wrap">
+						<div class="comment">Pass options through so authentication default applies</div>
+						<button type="button" class="cc-button cc-button--icon cc-button--sm comment-btn" title="View full comment"><span class="doc-icon doc-icon--details" aria-hidden="true"></span></button>
+					</div>
+				</div>
+				<div class="commit" style="color:#ffa657">
+					<div class="node"></div>
+					<div class="hash"><a href="#" onclick="return false;">abc0020</a></div>
+					<div class="when">8/3/2026 11:21 AM</div>
+					<div class="who">Alex Sample</div>
+					<div class="comment-wrap">
+						<div class="comment">Modal titles support aria-labelledby, fixes <a class="wi-link" href="#" onclick="return false;">#900109</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</details>
+</div>
+
+<p><strong>Notable Features</strong></p>
+<ol class="cc-help-workflow compact">
+	<li>See what is being released in latest PROD deployment.  See commits across <b>all repositories required to build the site or API</b> to be included in the current release (not just commits isolated to the site or API)</li>
+	<li>Obeys the same <b>From</b> and <b>To</b> release resolution rules as the Release Pipeline.  See <a href="#/release-pipeline/from-to-detection">From and To Detection</a> if you need to enter a specific range for historical audits.</li>
+	<li><b>Show Pending</b> option to see additional release candidates newer than current <b>From</b> release and even commits that haven't been published yet.  Try it out in the interactive sample above.</li>
+	<li>View any commit on TFS via the commit hash link.</li>
+	<li>View associated TFS work items via the <code>#work-item</code> reference in commit comments.</li>
+	<li>View complete commit comment via details button link when comment has been truncated.</li>
+</ol>

@@ -1,0 +1,338 @@
+<header class="cc-help-article-header">
+	<div class="cc-help-eyebrow">Command Center · Nirvana Performance</div>
+	<h1>Site Scope</h1>
+	<p class="cc-help-lede">Every monitored company on one screen: the last six synthetic runs, how slow they were
+		against expectation, how many warnings and failures have piled up over the last hour, four hours, day and two
+		days, and who is on call when one of them is red.</p>
+</header>
+
+<h2 id="what-it-shows">What it shows</h2>
+<p>Site Scope reads the Nirvana Performance page - the same page you would otherwise open in a browser and scan by
+	eye. Nothing here is a second opinion: the numbers, the colours and the on-call assignment are all that page's,
+	reformatted so the sites that need attention come first instead of appearing in whatever order the report happens
+	to list them.</p>
+<div class="cc-help-callout">
+	<strong>It is a scrape, not an API.</strong>
+	<p>That page has no service behind it, so Command Center signs in as you and reads the rendered HTML. It works, and
+		it is checked against a real capture of the page - but a redesign upstream can break it without warning. If Site
+		Scope ever reports something the page itself does not, believe the page.</p>
+</div>
+
+<h2 id="signing-in">Signing in</h2>
+<p>Site Scope needs your network credentials, and asks for them separately from TFS and DataLocker because it is a
+	separate system. Open the credentials dialog from the toolbar (<span
+		style="font-family:'Segoe MDL2 Assets';">&#xE77B;</span>) and fill in the Site Scope section.</p>
+<ul>
+	<li>Your <strong>username</strong> is remembered between runs so a later prompt starts from what last worked.</li>
+	<li>Your <strong>password</strong> is held in memory for the life of the app and is never written to disk, unless
+		you tick <strong>Remember me</strong> at the bottom of the dialog. That saves it encrypted with Windows for
+		your account only - it cannot be read on another machine or by another user - and signs you in
+		automatically on the next launch.</li>
+	<li>Sign-in happens once and is renewed automatically when the session expires. You are not asked again mid-session.</li>
+	<li>Decline the prompt and Site Scope simply stays empty - it never re-asks on its own, including on its timer.</li>
+</ul>
+<div class="cc-help-callout">
+	<strong>Site Scope is behind the VPN.</strong>
+	<p>If the card reports that Site Scope did not respond, check the VPN before checking the credentials. A rejected
+		password and an unreachable host say different things and the card tells you which one it was.</p>
+</div>
+
+<h2 id="kpi-tile">The KPI tile</h2>
+<p>One cell per site, worst first, so the question "is anything wrong right now" is answered without reading a single
+	number. Underneath it, the counts, and the two lists that matter in the last hour: what is slowest, and what is
+	erroring.</p>
+<div class="tfs-release cc-help-demo cc-reduce-4">
+	<div class="stat-row ragged" style="grid-template-columns: minmax(0, 480px);">
+<div class="stat">
+  <div class="stat-actions">
+    <a class="cc-button cc-button--icon cc-button--sm cc-conduent" href="#" title="Visit Site Scope" aria-label="Visit Site Scope"><svg class="cc-icon cc-icon--brand" viewBox="0 0 1556 1538" aria-hidden="true"><path d="m453.3 523.6v752.1l-452.7 262.2v-752.9zm649.2 375.7l452.7 262.2-650 376.4-451.9-262.2zm0-522.8v522.8l-650-375.6v-523.6z"/></svg></a>
+    <a class="cc-button cc-button--icon cc-button--sm details-nav" title="View Site Scope Details" onclick="scrollToCard('siteScopeCard')"><span class="doc-icon doc-icon--details" aria-hidden="true"></span></a>
+    <button class="cc-button cc-button--icon cc-button--sm cc-refresh" type="button" title="Refresh Site Scope">&#x21BB;</button>
+  </div>
+  <div class="label">Site Scope</div>
+  <div class="sm-heat"><div class="sm-heat-cell is-f" title="QA_SAMPLE_LWC &#183; Failure"></div><div class="sm-heat-cell is-s" title="SAMPLE_LW &#183; Success&#10;On-call: Sample, Engineer, 555-010-0100"></div><div class="sm-heat-cell is-s" title="EXAMPLE_CLIENT &#183; Success"></div></div>
+  <div class="sm-count-inline"><span class="c is-ok"><span class="v">2</span><span class="k">OK</span></span><span class="c is-fail"><span class="v">1</span><span class="k">Fail</span></span></div>
+  <div class="sm-toplists">
+    <div class="sm-toplist"><h4><svg class='sm-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg>Slowest Last Hour</h4><div class="commit-kpi-list"><div class="row"><span class="name"><a class="sm-kpi-site" data-sm-search="SAMPLE_LW" title="Show SAMPLE_LW in the site list">SAMPLE_LW</a></span><span class="dots"></span><span class="n">11.95s</span></div><div class="row"><span class="name"><a class="sm-kpi-site" data-sm-search="EXAMPLE_CLIENT" title="Show EXAMPLE_CLIENT in the site list">EXAMPLE_CLIENT</a></span><span class="dots"></span><span class="n">10.30s</span></div><div class="row"><span class="name"><a class="sm-kpi-site" data-sm-search="QA_SAMPLE_LWC" title="Show QA_SAMPLE_LWC in the site list">QA_SAMPLE_LWC</a></span><span class="dots"></span><span class="n is-fail">0.27s</span></div></div></div>
+    <div class="sm-toplist"><h4><svg class='sm-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg>Errors Last Hour</h4><div class="commit-kpi-list"><div class="row"><span class="name"><a class="sm-kpi-site" data-sm-search="QA_SAMPLE_LWC" title="Show QA_SAMPLE_LWC in the site list">QA_SAMPLE_LWC</a></span><span class="dots"></span><span class="n is-fail">4</span></div></div></div>
+  </div>
+</div>
+	</div>
+</div>
+<p>Hover any cell in the strip for the site name and its state, plus who is on call for it if anyone is. Counts read
+	left to right as OK, Warn, Fail - a tone with nothing in it is left off rather than shown as a zero. Site names in
+	the two lists are links: clicking one opens the card below with the grid already filtered to that site, and the
+	scope reset to <strong>All</strong> so the site being pointed at cannot be filtered back out. The <span class="doc-icon doc-icon--details" aria-hidden="true"></span> button jumps to the card below; <span
+		class="cc-help-chip">↻</span> refreshes Site Scope and nothing else; the Conduent mark to their left opens the
+	source page itself in your browser.</p>
+
+<h2 id="reading-the-grid">Reading the grid</h2>
+<p>One row per site. Sites the page reported nothing for are left out - an idle site is not an operational state, and a
+	blank row reads like a broken one.</p>
+<p>The badge in the card header counts those rows and breaks them down by state - worst first, and a state with nothing
+	in it is left off rather than shown as a zero. The <span class="cc-help-muted">Conduent mark</span> beside the title
+	opens the source page itself in your browser.</p>
+<div class="tfs-release cc-help-demo cc-reduce-4">
+<details class="detail-card" open="">
+  <summary>
+    <span class="card-chevron">▸</span>
+    <span class="card-title">Site Scope</span>
+    <button class="cc-help-link" type="button" title="Open Site Scope Help" aria-label="Open Site Scope Help">?</button>
+    <a class="cc-button cc-button--icon cc-button--sm sm-visit" href="#" title="Visit Site Scope" aria-label="Visit Site Scope"><svg class="cc-icon cc-icon--brand" viewBox="0 0 1556 1538" aria-hidden="true"><path d="m453.3 523.6v752.1l-452.7 262.2v-752.9zm649.2 375.7l452.7 262.2-650 376.4-451.9-262.2zm0-522.8v522.8l-650-375.6v-523.6z"/></svg></a>
+    <div class="card-header-right">
+      <span class="cc-refreshed">refreshed 23:48:04 &#183; 0.86s &#183; 4 calls</span>
+      <button class="cc-button cc-button--icon cc-button--sm cc-refresh" type="button" title="Refresh Site Scope">&#x21BB;</button>
+      <div class="cc-chip cc-chip--pill card-badge sm-badge" title="3 sites &#183; 1 failing, 1 warning, 1 healthy">
+        <span>3 sites</span><span class="sm-badge-c">1<span class="sm-dot is-f"></span></span><span class="sm-badge-c">1<span class="sm-dot is-w"></span></span><span class="sm-badge-c">1<span class="sm-dot is-s"></span></span>
+      </div>
+    </div>
+  </summary>
+  <div class="card-body">
+    <div class="sm-filters">
+      <input class="cc-input sm-filter-search" type="text" placeholder="Filter by name…" />
+      <select class="cc-input sm-filter-scope">
+        <option value="all">All</option>
+        <option value="issues">Sites With Issues</option>
+        <option value="prod">PROD Sites</option>
+        <option value="qa">QA Sites</option>
+      </select>
+    </div>
+    <div class="sm-scroll">
+      <div class="sm-tbl">
+        <!-- Column indices: 1 dot · 2 Site · 3 spacer · 4 History · 5 Average · 6-9 alert windows. -->
+        <div class="sm-hrow">
+          <span class="h-box"></span>
+          <span class="h-r1 h-alerts">Alerts</span>
+          <span class="h-r2" style="grid-column:2"><span class="h-lbl" data-sm-sort="site">Site<span class="arrow"></span></span></span>
+          <span class="h-r2" style="grid-column:4"><span class="h-lbl" data-sm-sort="history">History<span class="arrow"></span></span></span>
+          <span class="h-r2 h-num" style="grid-column:5"><span class="h-lbl" data-sm-sort="avg">Average<span class="arrow"></span></span></span>
+          <span class="h-r2 h-mid" style="grid-column:6"><span class="h-lbl" data-sm-sort="a0">1 Hour<span class="arrow"></span></span></span>
+          <span class="h-r2 h-mid" style="grid-column:7"><span class="h-lbl" data-sm-sort="a1">4 Hours<span class="arrow"></span></span></span>
+          <span class="h-r2 h-mid" style="grid-column:8"><span class="h-lbl" data-sm-sort="a2">24 Hours<span class="arrow"></span></span></span>
+          <span class="h-r2 h-mid" style="grid-column:9"><span class="h-lbl" data-sm-sort="a3">48 Hours<span class="arrow"></span></span></span>
+        </div>
+        <div><div class="sm-row" data-sm-site="QA_SAMPLE_LWC" data-sm-qa="1" data-sm-state="0" data-sm-history="010002" data-sm-avg="20.9" data-sm-a0="4000001" data-sm-a1="19000002" data-sm-a2="89000006" data-sm-a3="95000008">
+  <span><span class="sm-dot is-f" title="Failure"></span></span>
+  <span class="sm-site">
+    <span class="sm-co" title="QA_SAMPLE_LWC &#183; QA-A">QA_SAMPLE_LWC</span>
+    <button class="cc-button cc-button--icon cc-button--sm sm-rowbtn" type="button" title="All details for QA_SAMPLE_LWC"><svg class='sm-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 11v5.2'/><circle cx='12' cy='7.9' r='1.15' fill='currentColor' stroke='none'/></svg></button>
+    
+  </span>
+  <span></span>
+  <span><span class="sm-spark"><span class="sm-cell is-f" title="0.27s &#183; 2 pages &#183; Failure"></span><span class="sm-cell is-w" title="51.71s &#183; 68 pages &#183; Warning"></span><span class="sm-cell is-f" title="0.26s &#183; 2 pages &#183; Failure"></span><span class="sm-cell is-f" title="0.23s &#183; 2 pages &#183; Failure"></span><span class="sm-cell is-f" title="17.61s &#183; 8 pages &#183; Failure"></span><span class="sm-cell is-s" title="33.88s &#183; 68 pages &#183; Success"></span></span></span>
+  <span class="sm-num sm-avg-cell sm-avg" title="Expected 30.00s
+Average 20.90s">20.90s</span>
+  <span class="sm-cell-alerts" title="1 Hour Alerts&#10;Slowness &#183; 1 warning, 0 alerts&#10;Failures &#183; 4 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico warn' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">1</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v bad">4</span></span>
+</span></span><span class="sm-cell-alerts" title="4 Hour Alerts&#10;Slowness &#183; 2 warnings, 0 alerts&#10;Failures &#183; 19 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico warn' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">2</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v bad">19</span></span>
+</span></span><span class="sm-cell-alerts" title="24 Hour Alerts&#10;Slowness &#183; 6 warnings, 0 alerts&#10;Failures &#183; 89 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico warn' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">6</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v bad">89</span></span>
+</span></span><span class="sm-cell-alerts" title="48 Hour Alerts&#10;Slowness &#183; 8 warnings, 0 alerts&#10;Failures &#183; 95 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico warn' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">8</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v bad">95</span></span>
+</span></span>
+</div><div class="sm-row" data-sm-site="SAMPLE_LW" data-sm-qa="0" data-sm-state="2" data-sm-history="222222" data-sm-avg="17.22" data-sm-a0="0" data-sm-a1="4" data-sm-a2="1004016" data-sm-a3="1019030">
+  <span><span class="sm-dot is-s" title="Success"></span></span>
+  <span class="sm-site">
+    <span class="sm-co" title="SAMPLE_LW &#183; PROD-A">SAMPLE_LW</span>
+    
+    <button class="cc-button cc-button--icon cc-button--sm sm-rowbtn" type="button" title="All details for SAMPLE_LW"><svg class='sm-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 11v5.2'/><circle cx='12' cy='7.9' r='1.15' fill='currentColor' stroke='none'/></svg></button>
+    <button class="cc-button cc-button--icon cc-button--sm sm-rowbtn" type="button" title="On-call: Sample, Engineer"><svg class='sm-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M8.1 3.6 10.3 8 8.5 9.9a12.3 12.3 0 0 0 5.6 5.6L16 13.7l4.4 2.2v3.2a1.5 1.5 0 0 1-1.7 1.5C10.7 20 4 13.3 3.2 5.3A1.5 1.5 0 0 1 4.7 3.6z'/></svg></button>
+  </span>
+  <span></span>
+  <span><span class="sm-spark"><span class="sm-cell is-s" title="11.95s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="12.12s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="13.74s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="13.66s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="12.07s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="14.03s &#183; 39 pages &#183; Success"></span></span></span>
+  <span class="sm-num sm-avg-cell sm-avg is-warn" title="Expected 15.00s
+Average 17.22s">17.22s</span>
+  <span class="sm-cell-alerts" title="1 Hour Alerts&#10;Slowness &#183; 0 warnings, 0 alerts&#10;Failures &#183; 0 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico ' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v">0</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico ' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v">0</span></span>
+</span></span><span class="sm-cell-alerts" title="4 Hour Alerts&#10;Slowness &#183; 4 warnings, 0 alerts&#10;Failures &#183; 0 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico warn' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">4</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico ' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v">0</span></span>
+</span></span><span class="sm-cell-alerts" title="24 Hour Alerts&#10;Slowness &#183; 16 warnings, 4 alerts&#10;Failures &#183; 1 failure"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">16</span><span class="v bad">4</span></span>
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v bad">1</span></span>
+</span></span><span class="sm-cell-alerts" title="48 Hour Alerts&#10;Slowness &#183; 30 warnings, 19 alerts&#10;Failures &#183; 1 failure"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">30</span><span class="v bad">19</span></span>
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v bad">1</span></span>
+</span></span>
+</div><div class="sm-row" data-sm-site="EXAMPLE_CLIENT" data-sm-qa="0" data-sm-state="2" data-sm-history="222221" data-sm-avg="13.1" data-sm-a0="1" data-sm-a1="3" data-sm-a2="11" data-sm-a3="1001018">
+  <span><span class="sm-dot is-s" title="Success"></span></span>
+  <span class="sm-site">
+    <span class="sm-co" title="EXAMPLE_CLIENT &#183; PROD-B">EXAMPLE_CLIENT</span>
+    
+    <button class="cc-button cc-button--icon cc-button--sm sm-rowbtn" type="button" title="All details for EXAMPLE_CLIENT"><svg class='sm-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 11v5.2'/><circle cx='12' cy='7.9' r='1.15' fill='currentColor' stroke='none'/></svg></button>
+    
+  </span>
+  <span></span>
+  <span><span class="sm-spark"><span class="sm-cell is-s" title="10.30s &#183; 143 pages &#183; Success"></span><span class="sm-cell is-s" title="10.08s &#183; 143 pages &#183; Success"></span><span class="sm-cell is-s" title="10.33s &#183; 143 pages &#183; Success"></span><span class="sm-cell is-s" title="11.51s &#183; 143 pages &#183; Success"></span><span class="sm-cell is-s" title="10.03s &#183; 143 pages &#183; Success"></span><span class="sm-cell is-w" title="41.69s &#183; 143 pages &#183; Warning"></span></span></span>
+  <span class="sm-num sm-avg-cell sm-avg" title="Expected 15.00s
+Average 13.10s">13.10s</span>
+  <span class="sm-cell-alerts" title="1 Hour Alerts&#10;Slowness &#183; 1 warning, 0 alerts&#10;Failures &#183; 0 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico warn' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">1</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico ' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v">0</span></span>
+</span></span><span class="sm-cell-alerts" title="4 Hour Alerts&#10;Slowness &#183; 3 warnings, 0 alerts&#10;Failures &#183; 0 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico warn' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">3</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico ' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v">0</span></span>
+</span></span><span class="sm-cell-alerts" title="24 Hour Alerts&#10;Slowness &#183; 11 warnings, 0 alerts&#10;Failures &#183; 0 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico warn' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">11</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico ' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v">0</span></span>
+</span></span><span class="sm-cell-alerts" title="48 Hour Alerts&#10;Slowness &#183; 18 warnings, 1 alert&#10;Failures &#183; 1 failure"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">18</span><span class="v bad">1</span></span>
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v bad">1</span></span>
+</span></span>
+</div></div>
+      </div>
+    </div>
+  </div>
+</details>
+</div>
+
+<h3 id="history">History</h3>
+<p>Six cells, newest on the left, one per monitored run. The colour is the run's own, taken from the page:</p>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row"><span class="cc-help-legend-demo"><span class="sm-spark"><span
+					class="sm-cell is-s"></span></span></span><span class="cc-help-legend-copy">The run completed inside
+			expectation.</span></div>
+	<div class="cc-help-legend-row"><span class="cc-help-legend-demo"><span class="sm-spark"><span
+					class="sm-cell is-w"></span></span></span><span class="cc-help-legend-copy">The run completed but was
+			slow.</span></div>
+	<div class="cc-help-legend-row"><span class="cc-help-legend-demo"><span class="sm-spark"><span
+					class="sm-cell is-f"></span></span></span><span class="cc-help-legend-copy">The run failed.</span></div>
+</div>
+<p>Hover a cell for its duration, the number of pages it walked and its state. The duration alone is not the story: a
+	failure often returns <em>faster</em> than a healthy run because it stopped early, which is why the colour and not
+	the number decides the row's state.</p>
+
+<h3 id="average">Average</h3>
+<p>The site's average round trip, hovering to show the expected round trip alongside it. Over expectation is what the
+	page counts as slow.</p>
+
+<h3 id="alert-windows">1 / 4 / 24 / 48 hours</h3>
+<p>Each window carries two groups: slowness on the left (warnings, then alerts) and failures on the right. They are
+	cumulative counts over that window, so 48 hours is always at least 24, which is always at least 4. Hover anywhere
+	in a window's column for a three-line tooltip - the window, then slowness, then failures.</p>
+
+<p>Every count reserves room for three digits whether it needs them or not, so the icons line up in one vertical run
+	down the table and the ones digits line up in another. A count past 999 is shown as <strong>999</strong> with a red
+	outline around it - hover the cell to read the real totals.</p>
+
+<h2 id="filtering">Filtering</h2>
+<p>Two controls sit above the grid, at its right edge. The box narrows to sites whose name contains what you type. The
+	drop-down beside it narrows by kind:</p>
+<ul>
+	<li><strong>Sites With Issues</strong> - only sites with something in the <strong>1 Hour</strong> column: a slow
+		warning, a slow alert or a failure. The last hour, because that is the window that answers "is this happening
+		now".</li>
+	<li><strong>PROD Sites</strong> / <strong>QA Sites</strong> - QA sites are the ones whose name starts with
+		<code>QA_</code>.</li>
+</ul>
+<p>The two combine, and the header badge recounts itself against whatever is left, so it never disagrees with the rows
+	underneath it. Like your sort, your filter survives a refresh.</p>
+
+<h2 id="sorting">Sorting</h2>
+<p>Click any header to sort by it; click it again to reverse. Each column starts in the direction you would actually
+	want it - state and history start worst-first, counts start highest-first, site starts A-Z.</p>
+<p>Your sort survives a refresh. Site Scope repolls on its own every few minutes, and a poll that silently threw away
+	how you had arranged the grid would be worse than not polling at all.</p>
+
+<h2 id="details">Details and on-call</h2>
+<p>Two buttons per row. The <span class="cc-help-chip">i</span> opens everything the page reported for that site. The
+	phone icon opens the on-call engineer's full contact card - group, shift and all - and appears only on rows that
+	have one.</p>
+<p>The title bar repeats the site's dot and spells the state out: <strong>OK</strong>, <strong>Warning</strong> or
+	<strong>Failure</strong>. Below it:</p>
+<ul>
+	<li><strong>On-call</strong> - who to reach, on two lines. The address copies when you click it; the envelope beside
+		it opens your mail client. The second line is their phone and the hours they cover.</li>
+	<li><strong>Storyboard</strong> - opens the site's runbook in your browser.</li>
+	<li><strong>Maintenance window</strong> and <strong>Queue</strong> - the window the site is expected to be down in,
+		and the queue that owns it.</li>
+	<li><strong>Response time</strong> - the expected round trip and the measured average together. The average is
+		coloured by the same rule the grid's Average column uses, so a site cannot read amber in the table and plain
+		here.</li>
+	<li><strong>Last states</strong> - the last success and the last failure, each behind the square its colour would
+		have in the History strip.</li>
+</ul>
+<p>The strip along the bottom is the site's own row from the grid, rebuilt: the same six-run history and the same four
+	alert windows, with the counts reading exactly as they do upstairs.</p>
+<div class="tfs-release cc-help-demo cc-reduce-4">
+	<div class="cc-modal-panel cc-modal--lg modal-detail sm-detail">
+<div class="detail-header">
+  <span class="detail-heading"><span class="detail-title"><span class="detail-title-text"><span class="sm-dot is-s"></span>SAMPLE_LW &#183; OK</span></span></span>
+  <div class="header-actions">
+    <button class="cc-button cc-button--icon cc-button--sm" type="button" data-sm-close aria-label="Close"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+  </div>
+</div>
+  <div class="cc-modal-scroll">
+    <div class="detail-fields">
+      <div class="detail-field"><div class="field-label">On-call</div><div class="field-value"><div class="sm-oncall">
+  <span>Sample, Engineer &#183; <span class="copyable" data-copy="engineer.sample@example.com" onclick="wiCopy(this.dataset.copy,this)">engineer.sample@example.com<span class="copy-toast">Copied</span></span>
+<a class="cc-button cc-button--icon cc-button--sm" href="mailto:engineer.sample@example.com" target="_blank" title="Email engineer.sample@example.com"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11v8h-11z"/><path d="M2.5 4.5l5.5 4 5.5-4"/></svg></a></span>
+  <span>555-010-0100 &#183; 1:00 AM - 1:00 AM</span>
+</div></div></div>
+      <div class="detail-field"><div class="field-label">Storyboard</div><div class="field-value"><a href="#" aria-disabled="true" title="Illustration only - the real card links to the site's runbook">View on OneDrive &#8599;</a></div></div>
+      <div class="detail-field sm-col1"><div class="field-label">Maintenance window</div><div class="field-value">Sun 00:00-06:15</div></div>
+      <div class="detail-field sm-col2"><div class="field-label">Queue</div><div class="field-value">Example Web Services Queue</div></div>
+      <div class="detail-field sm-col1"><div class="field-label">Response time</div><div class="field-value">15.00s Expected / <span class="sm-avg is-warn">17.22s</span> Avg</div></div>
+      <div class="detail-field sm-col2"><div class="field-label">Last states</div><div class="field-value"><span class="sm-laststate"><span class="sm-cell is-s"></span>09/05/26 23:44</span><span class="sm-laststate"><span class="sm-cell is-f"></span>09/05/26 15:38</span></div></div>
+      <div class="detail-field tags"><div class="field-value">
+<div class="sm-tbl sm-mini">
+  <div class="sm-hrow">
+    <span class="h-box"></span>
+    <span class="h-r1 h-alerts">Alerts</span>
+    <span class="h-r2" style="grid-column:2">History</span>
+    <span class="h-r2 h-mid" style="grid-column:6">1 Hour</span><span class="h-r2 h-mid" style="grid-column:7">4 Hours</span><span class="h-r2 h-mid" style="grid-column:8">24 Hours</span><span class="h-r2 h-mid" style="grid-column:9">48 Hours</span>
+  </div>
+  <div class="sm-row">
+    <span></span>
+    <span><span class="sm-spark"><span class="sm-cell is-s" title="11.95s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="12.12s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="13.74s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="13.66s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="12.07s &#183; 39 pages &#183; Success"></span><span class="sm-cell is-s" title="14.03s &#183; 39 pages &#183; Success"></span></span></span>
+    <span></span><span></span><span></span>
+    <span class="sm-cell-alerts" title="1 Hour Alerts
+Slowness &#183; 0 warnings, 0 alerts
+Failures &#183; 0 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico ' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v">0</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico ' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v">0</span></span>
+</span></span><span class="sm-cell-alerts" title="4 Hour Alerts
+Slowness &#183; 4 warnings, 0 alerts
+Failures &#183; 0 failures"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico warn' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">4</span><span class="v">0</span></span>
+  <span class="grp"><svg class='sm-ico ' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v">0</span></span>
+</span></span><span class="sm-cell-alerts" title="24 Hour Alerts
+Slowness &#183; 16 warnings, 4 alerts
+Failures &#183; 1 failure"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">16</span><span class="v bad">4</span></span>
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v bad">1</span></span>
+</span></span><span class="sm-cell-alerts" title="48 Hour Alerts
+Slowness &#183; 30 warnings, 19 alerts
+Failures &#183; 1 failure"><span class="sm-alerts">
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M12 7.2V12l3.4 2'/></svg><span class="v warn">30</span><span class="v bad">19</span></span>
+  <span class="grp"><svg class='sm-ico bad' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><circle cx='12' cy='12' r='8.6'/><path d='M9.2 9.2 14.8 14.8M14.8 9.2 9.2 14.8'/></svg><span class="v bad">1</span></span>
+</span></span>
+  </div>
+</div>
+</div></div>
+    </div>
+  </div>
+
+	</div>
+</div>
+
+<h2 id="refreshing">When it refreshes</h2>
+<p>Site Scope is the only section that refreshes on a schedule of its own. It updates:</p>
+<ul>
+	<li>with every dashboard refresh, alongside every other section;</li>
+	<li>on its own five-minute timer, matching the source page's own cadence;</li>
+	<li>whenever you press <span class="cc-help-chip">↻</span> on the tile or the card.</li>
+</ul>
+<p><span class="cc-help-muted">refreshed &hellip;</span> in the card header is when Command Center last read the page.
+	The page carries a stamp of its own, but reading it appears to be what makes it update - ours and its are always the
+	same moment - so only one of the two is shown.</p>
+<p>Site Scope is not scoped to the selected site. The source page reports every company at once, so switching sites in
+	the toolbar changes nothing here.</p>
+
+

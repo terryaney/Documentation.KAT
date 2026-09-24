@@ -1,0 +1,426 @@
+<header class="cc-help-article-header">
+	<div class="cc-help-eyebrow">Command Center · release management</div>
+	<h1>Release Pipeline</h1>
+	<p class="cc-help-lede">Use this card to understand each release environment, approve pending gates, redeploy canceled stages, queue a build, and remove stale releases through a reviewed cleanup plan.</p>
+</header>
+
+<span class="cc-help-anchor-alias" id="reading-status" aria-hidden="true"></span>
+<h2 id="notation">How to read pipeline</h2>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Table context</div>
+		<div class="cc-help-legend-copy">Each release is a row. Named environments appear together in the <strong>Environments</strong> column; cleanup state and ad-hoc delete are separate columns showing actions when applicable.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Build rows</div>
+		<div class="cc-help-legend-copy">Above the newest release, tinted and edged in their own colour, sit any builds newer than it that are <strong>still running</strong> or that <strong>failed</strong>. Successful builds are not listed - once one becomes a release it appears as a release row instead. Only builds of the pipeline's release branch count, so a failed feature-branch build never shows here. Queueing a build adds its row immediately. These rows carry no actions: use the build number to open the build in TFS.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Build chips</div>
+		<div class="cc-help-legend-copy">A build uses the <strong>same chips as a release environment</strong> - same icons, same colours - and sits in the <strong>lowest environment's column</strong>, because a build comes before any stage can deploy. So a running build wears the same blue spinner as a running deployment directly beneath it. Hover for the build's state and who queued it.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Hover details</div>
+		<div class="cc-help-legend-copy">Hover an environment chip to see its state, who triggered, approved, or rejected it and when.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<div class="cc-help-legend-copy"><b>Environment Chip Notation</b></div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">ENV Heat Map</div>
+		<div class="cc-help-legend-demo">
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<div class="cc-chip cc-chip--pill env-heat env-heat--dev env-chip success">DEV</div>
+				<div class="cc-chip cc-chip--pill env-heat env-heat--qa env-chip success">QA</div>
+				<div class="cc-chip cc-chip--pill env-heat env-heat--uat env-chip success">UAT</div>
+				<div class="cc-chip cc-chip--pill env-heat env-heat--prod env-chip success">PROD</div>
+			</span>
+			<span class="cc-help-legend-copy">Environments progress from neutral, warm, and hot indicating criticality of environment.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Not Started</div>
+		<div class="cc-help-legend-demo">
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<div class="cc-chip cc-chip--pill cc-chip--neutral env-chip empty" title="Not Started"></div>
+			</span>
+			<span class="cc-help-legend-copy">Release environment has not started yet.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">In-Flight</div>
+		<div class="cc-help-legend-demo">
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<div class="cc-chip cc-chip--pill cc-chip--info env-chip inprogress"><svg class="cc-icon cc-icon--spin" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 5.5V2.75l-1 1A5.5 5.5 0 1 0 13.25 9"></path><path d="M9.75 5.5h2.75"></path></svg></div>
+			</span>
+			<span class="cc-help-legend-copy">Release environment is currently in progress.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Queued<br/>(builds only)</div>
+		<div class="cc-help-legend-demo">
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<div class="cc-chip cc-chip--pill cc-chip--neutral env-chip build-chip queued"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 4.75V8l2.25 1.5"></path></svg></div>
+			</span>
+			<span class="cc-help-legend-copy">A build is waiting for a build agent. The clock is deliberately not the person icon - nobody needs to approve anything, it is queued behind other work. Release environments have no equivalent state: one that has not started yet shows the blank pill above.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Canceled</div>
+		<div class="cc-help-legend-demo">
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<div class="cc-chip cc-chip--pill cc-chip--neutral env-chip canceled redeployable"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="M4 4l8 8"></path></svg></div>
+			</span>
+			<span class="cc-help-legend-copy">Release environment is canceled.  Click to redeploy.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Release Failed /<br/>Canceled Inflight</div>
+		<div class="cc-help-legend-demo">
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<div class="cc-chip cc-chip--pill cc-chip--danger env-chip failed redeployable"><svg class='cc-icon' viewBox='0 0 16 16' aria-hidden='true'><path d='M4.5 4.5l7 7'/><path d='M11.5 4.5l-7 7'/></svg></div>
+			</span>
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<div class="cc-chip cc-chip--pill cc-chip--danger env-chip canceled-inflight redeployable"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="M4 4l8 8"></path></svg></div>
+			</span>
+			<span class="cc-help-legend-copy">Release failed or was canceled in-flight, hover for details or click to redeploy.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<div class="cc-help-legend-copy"><b>Following conventions discuss chip <em>icon</em> across all environments; color is not applicable</b></div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Succeeded</div>
+		<div class="cc-help-legend-demo">
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<div class="cc-chip cc-chip--pill env-heat env-heat--dev env-chip success"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></div>
+			</span>
+			<span class="cc-help-legend-copy">Release successfully deployed when chip shows <span class="tfs-release cc-help-demo"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></span>.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Pending Approval</div>
+		<div class="cc-help-legend-demo">
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<div class="cc-chip cc-chip--pill env-heat env-heat--dev env-chip"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5" r="2.5"></circle><path d="M3.5 13c.5-3 2-4.5 4.5-4.5s4 1.5 4.5 4.5"></path></svg></div>
+			</span>
+			<span class="cc-help-legend-copy">Release environment is pending approval when chip shows <span class="tfs-release cc-help-demo"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5" r="2.5"></circle><path d="M3.5 13c.5-3 2-4.5 4.5-4.5s4 1.5 4.5 4.5"></path></svg></span>.  Click to approve/deploy.</span>
+		</div>
+	</div>
+</div>
+
+<h2 id="calcengine-sample">Sample Pipeline</h2>
+<p>The ↻ button in this card's header re-fetches the Release Pipeline card, Release Differences and the Release Pipeline KPI tile together, because all three come from one fetch. <code>Ctrl+Shift+R</code> does the same from anywhere in the app.</p>
+
+<div class="tfs-release cc-help-demo cc-reduce-3">
+	<details class="detail-card" open="">
+		<summary>
+			<span class="card-chevron">▸</span>
+			<span class="card-title">Release Pipeline</span>
+			<div class="card-header-right">
+				<span class="cc-refreshed">refreshed 11:17:12 · 2.24s · 23 calls</span>
+				<button class="cc-button cc-button--icon cc-button--sm cc-refresh" type="button" title="Refresh Release Pipeline and Differences">↻</button>
+				<div class="cc-chip cc-chip--pill card-badge">R13 → R10 · 3 active releases</div>
+			</div>
+		</summary>
+		<div class="release-cards">
+			<div class="release-card">
+				<div class="rc-label">From <span class="cc-chip cc-chip--pill env-heat env-heat--qa env-tag">QA</span></div>
+				<div class="rc-value"><a href="#" title="View Release 13 in TFS" onclick="return false;">Release 13</a></div>
+				<div class="rc-meta">
+					<div><span class="rk">Requested By:</span><span class="rv">DEMO, CASEY</span></div>
+					<div><span class="rk">Published On:</span><span class="rv">8/11/2026 4:39 PM</span></div>
+					<div><span class="rk">Build:</span><span class="rv"><a class="build-link" href="#" onclick="return false;">10253</a></span></div>
+				</div>
+			</div>
+			<div class="release-card">
+				<div class="rc-label">To <span class="cc-chip cc-chip--pill env-heat env-heat--prod env-tag">PROD</span></div>
+				<div class="rc-value"><a href="#" title="View Release 10 in TFS" onclick="return false;">Release 10</a></div>
+				<div class="rc-meta">
+					<div><span class="rk">Requested By:</span><span class="rv">Sample, Alex</span></div>
+					<div><span class="rk">Published On:</span><span class="rv">8/11/2026 4:02 AM</span></div>
+					<div><span class="rk">Build:</span><span class="rv"><a class="build-link" href="#" onclick="return false;">10100</a></span></div>
+				</div>
+			</div>
+			<div class="release-card">
+				<div class="rc-label">Pipeline Actions</div>
+				<div class="rc-actions">
+					<button class="cc-button cc-button--warning queue-build-btn" type="button">Queue Build</button>
+					<button class="cc-button cc-button--danger cleanup-confirm-btn" type="button">Run Cleanup (2)</button>
+				</div>
+			</div>
+		</div>
+		<div class="cleanup-table-wrap">
+			<table class="cc-table cleanup-table">
+				<thead>
+					<tr>
+						<th>Release</th>
+						<th>Environments</th>
+						<th class="cleanup-status-th">Cleanup Status</th>
+						<th class="cleanup-action-th">Ad Hoc Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="cleanup-row build-row inprogress">
+						<td class="cleanup-release-cell">
+							<div class="cleanup-relnum"><a href="#" title="View build 10255 in TFS" onclick="return false;">Build 10255</a></div>
+							<div class="cleanup-note">Queued by Sample, Alex on 8/21/2026 8:04 AM</div>
+						</td>
+						<td><div class="env-chips"><div class="env-chip-wrap"><div class="env-name">DEV</div><div class="cc-chip cc-chip--pill cc-chip--info env-chip build-chip inprogress" title="Build in progress: Queued by Sample, Alex on 8/21/2026 8:04 AM"><svg class="cc-icon cc-icon--spin" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 5.5V2.75l-1 1A5.5 5.5 0 1 0 13.25 9"></path><path d="M9.75 5.5h2.75"></path></svg></div></div></div></td>
+						<td class="cleanup-status-cell"></td>
+						<td class="cleanup-action-cell"></td>
+					</tr>
+					<tr class="cleanup-row build-row failed">
+						<td class="cleanup-release-cell">
+							<div class="cleanup-relnum"><a href="#" title="View build 10254 in TFS" onclick="return false;">Build 10254</a></div>
+							<div class="cleanup-note">Queued by DEMO, CASEY on 8/20/2026 4:51 PM</div>
+						</td>
+						<td><div class="env-chips"><div class="env-chip-wrap"><div class="env-name">DEV</div><div class="cc-chip cc-chip--pill cc-chip--danger env-chip build-chip failed" title="Build failed: Queued by DEMO, CASEY on 8/20/2026 4:51 PM"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 4.5l7 7"></path><path d="M11.5 4.5l-7 7"></path></svg></div></div></div></td>
+						<td class="cleanup-status-cell"></td>
+						<td class="cleanup-action-cell"></td>
+					</tr>
+					<tr class="cleanup-row">
+						<td class="cleanup-release-cell">
+							<div class="cleanup-relnum"><a href="#" title="View Release 15 in TFS" onclick="return false;">Release 15</a></div>
+							<div class="cleanup-note">Triggered by Sample, Alex on 8/20/2026 11:17 AM</div>
+						</td>
+						<td>
+							<div class="env-chips">
+								<div class="env-chip-wrap">
+									<div class="env-name">DEV</div>
+									<div class="cc-chip cc-chip--pill cc-chip--info env-chip inprogress" title="In Progress: Triggered by Sample, Alex on 8/20/2026 11:17 AM"><svg class="cc-icon cc-icon--spin" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 5.5V2.75l-1 1A5.5 5.5 0 1 0 13.25 9"></path><path d="M9.75 5.5h2.75"></path></svg></div>
+								</div>
+								<div class="env-chip-wrap"><div class="env-name">QA</div><div class="cc-chip cc-chip--pill cc-chip--neutral env-chip empty" title="Not Started"></div></div>
+								<div class="env-chip-wrap"><div class="env-name">PROD</div><div class="cc-chip cc-chip--pill cc-chip--neutral env-chip empty" title="Not Started"></div></div>
+							</div>
+						</td>
+						<td class="cleanup-status-cell"></td>
+						<td class="cleanup-action-cell"></td>
+					</tr>
+					<tr class="cleanup-row">
+						<td class="cleanup-release-cell">
+							<div class="cleanup-relnum"><a href="#" title="View Release 14 in TFS" onclick="return false;">Release 14</a></div>
+							<div class="cleanup-note">Triggered by DEMO, CASEY on 8/18/2026 9:26 PM</div>
+						</td>
+						<td>
+							<div class="env-chips">
+								<div class="env-chip-wrap">
+									<div class="env-name">DEV</div>
+									<div class="cc-chip cc-chip--pill env-heat env-heat--dev env-chip success" title="Succeeded: Triggered by DEMO, CASEY on 8/18/2026 9:26 PM"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></div>
+								</div>
+								<div class="env-chip-wrap">
+									<div class="env-name">QA</div>
+									<div class="cc-chip cc-chip--pill env-heat env-heat--qa env-chip success" title="Succeeded: Approved by DEMO, CASEY on 8/18/2026 9:26 PM"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></div>
+								</div>
+								<div class="env-chip-wrap">
+									<div class="env-name">PROD</div>
+									<div class="cc-chip cc-chip--pill env-heat env-heat--prod env-chip pending approvable" title="Pending Approval: Triggered by DEMO, CASEY on 8/18/2026 9:27 PM (click to OVERRIDE - approves on behalf of Owner, Taylor)"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5" r="2.5"></circle><path d="M3.5 13c.5-3 2-4.5 4.5-4.5s4 1.5 4.5 4.5"></path></svg></div>
+								</div>
+							</div>
+						</td>
+						<td class="cleanup-status-cell"><span class="action-chip action-cancel">CANCEL <span class="blocked-icon" title="Cannot be deleted yet: QA, PROD have not been reached by any newer release. Once a newer release starts or finishes those stages, this becomes eligible for delete."><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l6 11H2z"></path><path d="M8 6v3M8 11.5h.01"></path></svg></span></span></td>
+						<td class="cleanup-action-cell"></td>
+					</tr>
+					<tr class="cleanup-row">
+						<td class="cleanup-release-cell">
+							<div class="cleanup-relnum"><a href="#" title="View Release 13 in TFS" onclick="return false;">Release 13</a></div>
+							<div class="cleanup-note">Triggered by DEMO, CASEY on 8/11/2026 4:14 PM</div>
+						</td>
+						<td>
+							<div class="env-chips">
+								<div class="env-chip-wrap">
+									<div class="env-name">DEV</div>
+									<div class="cc-chip cc-chip--pill env-heat env-heat--dev env-chip success" title="Succeeded: Triggered by DEMO, CASEY on 8/11/2026 4:14 PM"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></div>
+								</div>
+								<div class="env-chip-wrap">
+									<div class="env-name">QA</div>
+									<div class="cc-chip cc-chip--pill env-heat env-heat--qa env-chip success" title="Succeeded: Approved by DEMO, CASEY on 8/11/2026 4:38 PM"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></div>
+								</div>
+								<div class="env-chip-wrap">
+									<div class="env-name">PROD</div>
+									<div class="cc-chip cc-chip--pill cc-chip--danger env-chip canceled-inflight redeployable" title="Canceled mid-deployment (click to redeploy)"><svg class="cc-icon" viewBox="0 0 16 16"aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="M4 4l8 8"></path></svg></div>
+								</div>
+							</div>
+						</td>
+						<td class="cleanup-status-cell"><span class="action-chip action-delete">DELETE</span></td>
+						<td class="cleanup-action-cell"><button class="cc-button cc-button--danger cc-button--sm adhoc-delete-btn" type="button">Delete</button>
+						</td>
+					</tr>
+					<tr class="cleanup-row">
+						<td class="cleanup-release-cell">
+							<div class="cleanup-relnum"><a href="#" title="View Release 10 in TFS" onclick="return false;">Release 10</a></div>
+							<div class="cleanup-note">Triggered by DEMO, CASEY on 8/6/2026 10:08 AM</div>
+						</td>
+						<td>
+							<div class="env-chips">
+								<div class="env-chip-wrap">
+									<div class="env-name">DEV</div>
+									<div class="cc-chip cc-chip--pill env-heat env-heat--dev env-chip success" title="Succeeded: Triggered by DEMO, CASEY on 8/6/2026 10:08 AM"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></div>
+								</div>
+								<div class="env-chip-wrap">
+									<div class="env-name">QA</div>
+									<div class="cc-chip cc-chip--pill env-heat env-heat--qa env-chip success" title="Succeeded: Approved by DEMO, CASEY on 8/6/2026 10:16 AM"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></div>
+								</div>
+								<div class="env-chip-wrap">
+									<div class="env-name">PROD</div>
+									<div class="cc-chip cc-chip--pill env-heat env-heat--prod env-chip success" title="Succeeded: Approved by Approver, Jamie on 8/11/2026 4:01 AM"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></div>
+								</div>
+							</div>
+						</td>
+						<td class="cleanup-status-cell"></td>
+						<td class="cleanup-action-cell"><button class="cc-button cc-button--danger cc-button--sm adhoc-delete-btn" type="button">Delete</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</details>
+</div>
+
+<p><strong>Notable Features</strong></p>
+<ol class="cc-help-workflow compact">
+	<li>View and manage all active releases for a Site or Api</li>
+	<li>Queue new builds; on success, triggers a new release generation</li>
+	<li>Hover over environment chips to see their state, who triggered, approved, or rejected it and when each environment state occurred</li>
+	<li>Stale release cleanup; automatically removes outdated releases to keep the pipeline clean</li>
+	<li>Delete completed and covered (a newer release deployment deployed to all the same environments) releases manually</li>
+</ol>
+
+<h2 id="from-to-detection">From and To Detection</h2>
+<div class="cc-help-callout">
+	<span><em>From and To</em> are automatically detected based on the following rules.</span>
+	<ol class="cc-help-workflow compact">
+		<li>Sort all active releases <b>newest-first</b>: <code>[15, 14, 13, 10]</code></li>
+		<li>Resolve <b>To</b> - scan from index 0 for the first release where every PROD environment succeeded</li>
+		<li>If <b>To</b> resolved at <code>index > 0</code>, <b>From</b> is <code>index - 1</code> (the next newer release)</li>
+		<li>
+			If <b>To</b> resolved at <code>index = 0</code> (the newest release is itself already PROD-complete), there's nothing newer to be <b>From</b>. <b>Slide-back check</b> is applied:<br/>
+			- <b>From</b> is index 0<br/>
+			- <b>To</b> is <code>ProdIndexFrom(1)</code> - scan from index 1 for the next PROD-complete release (note that any releases that are not complete - failed, cancelled, etc. - are <b>skipped</b> until next PROD is found)
+		</li>
+	</ol>
+	<p>Given above sample, <code>Release 10</code> is the last, most recent release that every environment is complete.  <code>Release 13</code> would be the first available release after even though it has a canceled PROD environment it is still eligible to redeploy.</p>
+	<p>Enter explicit release numbers in the Application Bar filter row when you need a specific comparison. <b>An invalid number makes the Release Pipeline and Release Differences unavailable until corrected.</b></p>
+</div>
+
+<div class="cc-help-callout warning"><strong>Comparison Unavailable</strong>The following cases can result in a grey <b>Nothing to compare</b> or amber <b>Unavailable</b> state: no PROD-complete release yet (brand new pipeline) or only a single PROD-complete release with nothing to compare against.</div>
+
+<h2 id="cleanup">Run Cleanup</h2>
+
+<h3>Cleanup Status Notation</h3>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">
+			<span class="tfs-release cc-help-demo cc-reduce-3"><span class="action-chip action-cancel">CANCEL <span class="blocked-icon"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l6 11H2z"></path><path d="M8 6v3M8 11.5h.01"></path></svg></span></span></span>
+		</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-legend-copy">Release can be canceled but not deleted during cleanup; usually due to fact that no newer releases have deployed to the same environments.  Click icon for more details.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">
+			<span class="tfs-release cc-help-demo cc-reduce-3"><span class="action-chip action-delete">CANCEL + DELETE</span></span>
+		</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-legend-copy">All deployed environments for release have been covered by a newer release, but there are still active environments that need to be canceled before deletion.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">
+			<span class="tfs-release cc-help-demo cc-reduce-3">
+				<span class="action-chip action-delete">DELETE</span>
+			</span>
+		</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-legend-copy">Release has no environments to cancel and all deployed environments have been covered by a newer release.</span>
+		</div>
+	</div>
+</div>
+
+<h3>Determining Cleanup Eligibility</h3>
+<p>The following eligibility rules apply for cleanup in order:</p>
+<ol class="cc-help-workflow">
+	<li>Newest release (Anchor) is never touched.</li>
+	<li>Releases where every environment was successfully deployed are never touched (can use Ad Hoc Delete).</li>
+	<li>Releases covered by any newer release are marked as <span class="tfs-release cc-help-demo cc-reduce-3"><span class="action-chip action-delete">CANCEL + DELETE</span></span>.  Covered means all a newer release has <b>exactly matching environment(s)</b> deployed or is <b>fully complete</b> (meant to handle renames like <code>PROD</code> -> <code>PROD Group 1</code>/<code>PROD Group 2</code>).</li>
+	<li>Releases where a newer release exists, but the release is not covered are marked as <span class="tfs-release cc-help-demo cc-reduce-3"><span class="action-chip action-cancel">CANCEL <span class="blocked-icon"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l6 11H2z"></path><path d="M8 6v3M8 11.5h.01"></path></svg></span></span></span>.  Active environments are canceled with the assumption that a newer release will eventually be the production release candidate; the release is not deleted since it is only assumption and not fact.  Canceled environments can always be redeployed.</li>
+		<li>Two further rules limit what <em>you</em> may do, as opposed to what the pipeline allows. A stage waiting on an approval you are not an approver for is never cancelled - cancelling it ends the release's run at that gate, which is the approver's decision. And a release cannot be deleted, by cleanup or by Ad Hoc Delete, if it published to any environment you have no approval authority over. Authority comes from the release definition's approver roster for that environment, plus the definition owner's override; environments whose gate is automated (typically <code>DEV</code>) are exempt, as are environments this release never reached. Where a release carries an environment the definition no longer has - an old <code>PROD</code> against today's <code>PROD Group 1</code> - there is no roster to read, and only the person who actually approved that stage qualifies.</li>
+	</ol>
+
+
+<h3>Planned API Calls Confirmation</h3>
+
+<div class="cc-help-callout danger"><strong>Irreversible</strong>Cleanup can cancel environments and delete releases. Review every planned API call before continuing.</div>
+
+<ol class="cc-help-workflow">
+	<li>Click <strong>Run Cleanup</strong> in Pipeline Actions.</li>
+	<li>Inspect the complete planned API call list.</li>
+	<li>Confirm only when the plan is correct.</li>
+</ol>
+
+<div class="tfs-release cc-help-demo cc-reduce-3">
+	<div class="cc-modal-panel modal-card" style="max-width: 790px;">
+		<div class="modal-title">Confirm Cleanup</div>
+		<div class="modal-body"><span>This will run <b>3</b> API calls against TFS - cancelling environments and/or deleting releases. This cannot be undone.</span></div>
+		<hr class="modal-divider">
+		<div class="modal-section-title">Planned API Calls</div>
+		<div class="call-list">
+			<div class="call-row">
+				<div class="call-row-main">
+					<span class="cc-chip cc-chip--pill call-status status-pending">PENDING</span>
+					<span class="callmethod PATCH">PATCH</span>
+					<span class="call-label">Release 14 PROD</span>
+					<span class="call-note">{"status":"canceled","comment":"Cancelled by cleanup script"}</span>
+				</div>
+			</div>
+			<div class="call-row">
+				<div class="call-row-main">
+					<span class="cc-chip cc-chip--pill call-status status-pending">PENDING</span>
+					<span class="callmethod DELETE">DELETE</span>
+					<span class="call-label">Release 14</span>
+				</div>
+			</div>
+			<div class="call-row">
+				<div class="call-row-main">
+					<span class="cc-chip cc-chip--pill call-status status-pending">PENDING</span>
+					<span class="callmethod DELETE">DELETE</span>
+					<span class="call-label">Release 13</span>
+				</div>
+			</div>
+		</div>
+		<hr class="modal-divider">
+		<div class="modal-actions">
+			<button id="cleanupModalCancel" class="cc-button" type="button">Cancel</button>
+			<button id="cleanupModalConfirm" class="cc-button cc-button--danger" type="button">Run Cleanup</button>
+		</div>
+	</div>	
+</div>
+
+<h2 id="blocked-failed">Blocked, failed, and retry cleanup states</h2>
+<p>All <code>PATCH</code> (cancel) calls run concurrently first. Only if every cancel succeeds does it proceed to the <code>DELETE</code> calls.</p>
+<table class="cc-help-table">
+	<tr>
+		<th>Rendering</th>
+		<th>Meaning</th>
+		<th>Next move</th>
+	</tr>
+	<tr>
+		<td><span class="cc-help-chip cc-help-muted">BLOCKED</span></td>
+		<td>The cleanup planner found a reason not to act.</td>
+		<td>Click the chip to see why. Typically a newer release has not yet deployed to matching environments; once it does, the block clears on the next refresh.</td>
+	</tr>
+	<tr>
+		<td><span class="cc-help-chip cc-help-green">DONE</span></td>
+		<td>The cancel or delete call succeeded.</td>
+		<td>No action needed.</td>
+	</tr>
+	<tr>
+		<td><span class="cc-help-chip cc-help-red">FAILED</span></td>
+		<td>A cancel or delete call returned an error.</td>
+		<td>Click the chip to see the error detail. Resolve the issue in TFS, then re-run cleanup.</td>
+	</tr>
+	<tr>
+		<td><span class="cc-help-chip cc-help-muted">SKIPPED</span></td>
+		<td>A cancel call failed, so dependent delete calls were not attempted.</td>
+		<td>Resolve the failed cancel first (click its chip for detail), then re-run cleanup.</td>
+	</tr>
+</table>

@@ -1,0 +1,10 @@
+[
+	{ "id": "start-here", "title": "Start Here", "group": "Orientation", "icon": "home" },
+	{ "id": "reading-dashboard", "title": "Reading the Dashboard", "group": "Orientation", "icon": "dashboard" },
+	{ "id": "work-items", "title": "Work Items", "group": "Command Center", "icon": "workitems" },
+	{ "id": "release-pipeline", "title": "Release Pipeline", "group": "Command Center", "icon": "release" },
+	{ "id": "release-differences", "title": "Release Differences", "group": "Command Center", "icon": "diff" },
+	{ "id": "calcengine-pipeline", "title": "CalcEngine Pipeline", "group": "Command Center", "icon": "calcengine" },
+	{ "id": "site-metrics", "title": "Site Metrics", "group": "Command Center", "icon": "metrics" },
+	{ "id": "site-scope", "title": "Site Scope", "group": "Command Center", "icon": "sitescope" }
+]

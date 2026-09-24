@@ -1,0 +1,228 @@
+<header class="cc-help-article-header">
+	<div class="cc-help-eyebrow">Orientation · visual reference</div>
+	<h1>Read the dashboard without guessing.</h1>
+	<p class="cc-help-lede">KPI tiles answer "what needs attention?" Detail cards answer "why?" and expose the relevant controls.  The combination of these are you KAT Command Center!</p>
+</header>
+
+<h2 id="dashboard-tour">Command Center at a glance</h2>
+<p>Select a numbered area to learn how it helps you read the dashboard and make informed decisions.</p>
+
+<div class="cc-help-tour" data-help-tour>
+	<div class="cc-help-tour-stage">
+		<img src="media/CommandCenter.jpg" alt="KAT Command Center dashboard with the application bar, Work Items controls, four KPI tiles in a two-by-two grid, and collapsed detail cards." loading="lazy">
+		<!-- Regions and pins are percentages of the screenshot, measured off CommandCenter.jpg
+			 itself (1681x1681) rather than eyeballed. A --br pin sits exactly on its region's
+			 bottom-right corner - r = 100 - (x + w), b = 100 - (y + h) - and a plain pin sits
+			 inside the top-left corner with the same small inset every other one uses. Re-measure
+			 all of them together whenever the screenshot is replaced; a half-updated set puts
+			 numbers on the wrong tiles. -->
+		<div class="cc-help-tour-region" data-help-tour-region="application" style="--x:0.30%;--y:1.78%;--w:99.40%;--h:4.70%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="work-items" style="--x:2.26%;--y:12.43%;--w:94.59%;--h:5.77%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="release-kpi" style="--x:2.26%;--y:19.45%;--w:46.58%;--h:20.94%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="calcengine-kpi" style="--x:50.27%;--y:19.45%;--w:46.58%;--h:20.94%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="sitescope-kpi" style="--x:2.26%;--y:41.34%;--w:46.58%;--h:21.77%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="metrics-kpi" style="--x:50.27%;--y:41.34%;--w:46.58%;--h:21.77%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="detail-cards" style="--x:2.26%;--y:64.66%;--w:94.59%;--h:28.85%"></div>
+		<button class="cc-help-tour-pin" type="button" data-help-tour-target="application" aria-label="Show Application Bar explanation" aria-pressed="false" style="--x:0.62%;--y:2.21%">1</button>
+		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="work-items" aria-label="Show Work Items Bar explanation" style="--r:3.15%;--b:81.80%">2</button>
+		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="release-kpi" aria-label="Show Release Pipeline KPI explanation" style="--r:51.16%;--b:59.61%">3</button>
+		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="calcengine-kpi" aria-label="Show CalcEngine Pipeline KPI explanation" style="--r:3.15%;--b:59.61%">4</button>
+		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="sitescope-kpi" aria-label="Show Site Scope KPI explanation" style="--r:51.16%;--b:36.89%">5</button>
+		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="metrics-kpi" aria-label="Show Site Metrics KPI explanation" style="--r:3.15%;--b:36.89%">6</button>
+		<button class="cc-help-tour-pin" type="button" data-help-tour-target="detail-cards" aria-label="Show Detail Cards explanation" style="--x:2.58%;--y:65.09%">7</button>
+	</div>
+
+	<div class="cc-help-tour-cards">
+		<button class="cc-help-tour-card" type="button" data-help-tour-target="application" aria-pressed="false">
+			<span class="cc-help-tour-number">01</span>
+			<span><strong>Application Bar</strong><small>Choose the site, release/CalcEngine filters, change theme, or sign in.</small></span>
+			<span class="cc-help-tour-detail">
+				<span>The filter icon shows or hides From Release, To Release, and CalcEngine Filter. Leave <em>To/From</em> blank for automatic release resolution.</span><br/><br/>
+				<b>To</b>: Last <b>Complete</b> Release<br/>
+				<b>From</b>: First <b>Available</b> Release after <em>To</em><br/><br/>
+				<span>Enter explicit release numbers when you need a specific comparison. An invalid number makes the Release Pipeline and Release Differences unavailable until corrected.</span>
+			</span>
+			<span class="cc-help-tour-detail">The profile button signs in to KAT DataStore. A successful sign-in refreshes only CalcEngine because no other section depends on that session.</span>
+			<span class="cc-help-tour-detail">An amber dot beside a site name means that site's newest release has <b>not</b> finished publishing to every environment. Type <code>*</code> in the site search to see only those sites — see <em>Sites with a release in flight</em> below.</span>
+		</button>
+		<button class="cc-help-tour-card" type="button" data-help-tour-target="work-items">
+			<span class="cc-help-tour-number">02</span>
+			<span><strong>Work Items Bar</strong><small>Look up tasks by ID, add or edit saved queries, and view saved query results.</small></span>
+			<span class="cc-help-tour-detail">Query chips toggle the visibility of saved query results and show total count plus ⊗ Critical, ⚠ High, ‼ Priority 1, ! Priority 2, and ⟳ Old indicators. A <span class="ind over-threshold">red</span> or <span class="ind over-threshold-orange">orange</span> indicator means its configured threshold has been reached or exceeded.</span>
+		</button>
+		<button class="cc-help-tour-card" type="button" data-help-tour-target="release-kpi">
+			<span class="cc-help-tour-number">03</span>
+			<span><strong>Release Pipeline KPI</strong><small>Summarizes the current release targeted for PROD deployment.  Highlights additional candidates, cleanup actions, and commit counts across repositories.</small></span>
+			<span class="cc-help-tour-detail">The two chips read <b>from &rarr; to</b>: the environment and number of the release being compared, then the one it is compared against. Hover either for who requested it, when it published, and the build it was cut from. Candidates are <b>newer</b> releases after the <em>from</em> release; cleanup actions cancel and/or delete stale releases, and are called out in red. Commit counts cover <em>all</em> repositories needed to build the site that will be included in the release.</span>
+			<span class="cc-help-tour-detail">The circular navigation glyph on a KPI tile jumps to its matching card.</span>
+		</button>
+		<button class="cc-help-tour-card" type="button" data-help-tour-target="calcengine-kpi">
+			<span class="cc-help-tour-number">04</span>
+			<span><strong>CalcEngine Pipeline KPI</strong><small>Summarizes the CalcEngines associated with the selected site.</small></span>
+			<span class="cc-help-tour-detail">Total CalcEngines associated with the site, then one chip per environment reading <b>ENV: count</b> - how many CalcEngines have their newest deployed version sitting there. The chips always add up to the total, and each one opens the card below filtered to that environment. <em>Checkouts</em> list users and checkout counts and call out how many <code>_PROD</code> CalcEngines <b>block</b> QA-to-UAT promotion.</span>
+			<span class="cc-help-tour-detail">The circular navigation glyph on a KPI tile jumps to its matching card.</span>
+		</button>
+		<button class="cc-help-tour-card" type="button" data-help-tour-target="sitescope-kpi">
+			<span class="cc-help-tour-number">05</span>
+			<span><strong>Site Scope KPI</strong><small>One cell per monitored site, worst first, so "is anything wrong right now" is answered without reading a number.</small></span>
+			<span class="cc-help-tour-detail">Hover any cell for the site, its state, and who is on call for it. Below the strip: the OK / Warn / Fail counts - a tone with nothing in it is left off rather than shown as a zero - then the slowest and the erroring sites of the last hour. Those site names are links: clicking one opens the card below filtered to that site, with the scope reset to <b>All</b>.</span>
+			<span class="cc-help-tour-detail">The circular navigation glyph on a KPI tile jumps to its matching card.</span>
+		</button>
+		<button class="cc-help-tour-card" type="button" data-help-tour-target="metrics-kpi">
+			<span class="cc-help-tour-number">06</span>
+			<span><strong>Site Metrics KPI</strong><small>Highlights logins, page requests, calculation requests, and errors.</small></span>
+			<span class="cc-help-tour-detail">The tile and its card are titled after the site you are on - <b>sample.nexgen.ess Metrics</b> in this screenshot - because these are the only numbers on the dashboard that describe the running site rather than its pipelines.</span>
+			<span class="cc-help-tour-detail">Site Metrics currently uses representative mock values while the real metrics source is being completed.</span>
+			<span class="cc-help-tour-detail">The circular navigation glyph on a KPI tile jumps to its matching card.</span>
+		</button>
+		<button class="cc-help-tour-card" type="button" data-help-tour-target="detail-cards">
+			<span class="cc-help-tour-number">07</span>
+			<span><strong>Detail Cards</strong><small>Each area of the command center has its own detail card. Expand a card for evidence, management actions, and deeper analysis.</small></span>
+			<span class="cc-help-tour-detail">Release Pipeline, Release Differences, CalcEngine Pipeline, Site Scope, <em>{Site}</em> Metrics, and Diagnostics each carry a header badge summarizing the most relevant information; release, commit, CalcEngine, and site counts.  Each area can be independently refreshed without affecting non-related areas.</span>
+		</button>
+	</div>
+</div>
+
+<h2 id="site-dots">Sites with a release in flight</h2>
+<p>The site picker answers one question about every site at once, without you having to select them one at a time: <b>has its newest release finished publishing to every environment?</b> If it has not, the site carries an amber dot - on its row in the dropdown, and on the closed picker when it is the site you are looking at.</p>
+
+<!-- Drawn rather than screenshotted: the dropdown is a WPF control that never appears in the
+	 dashboard screenshot this article is built around, the dot is 9px (invisible at the scale
+	 that image is shown at), and a drawing stays in step with the theme instead of baking one
+	 in. Colours come from the same help tokens the rest of the page uses. -->
+<svg viewBox="0 0 780 282" role="img" width="100%" style="max-width:780px;margin:18px 0;display:block" aria-label="The site picker with an amber dot on the closed box, and the dropdown open with the search box reading asterisk s a m p l e. Two sites match and both carry an amber dot. Below, two sites excluded by that search: one that matches the text but has nothing outstanding, and one that has something outstanding but does not match the text.">
+	<g font-family="var(--font-body)" font-size="15">
+		<!-- the closed picker, with the dot for whichever site is currently selected -->
+		<rect x="1" y="1" width="420" height="38" rx="5" fill="var(--help-panel2)" stroke="var(--help-border)"/>
+		<text x="16" y="25" fill="var(--help-text)">Evolution ESS SAMPLE</text>
+		<circle cx="378" cy="20" r="5" fill="var(--help-amber)"/>
+		<path d="M396 16 L404 24 L412 16 Z" fill="var(--help-dim)"/>
+		<text x="446" y="25" fill="var(--help-dim)" font-size="13">the site you are on carries its dot here too</text>
+
+		<!-- the open dropdown: search box on top, matching sites below it -->
+		<rect x="1" y="52" width="420" height="118" rx="5" fill="var(--help-panel)" stroke="var(--help-border)"/>
+		<line x1="1" y1="92" x2="421" y2="92" stroke="var(--help-border)"/>
+		<text x="16" y="77" fill="var(--help-text)" font-family="var(--font-mono, monospace)">*sample</text>
+		<text x="446" y="77" fill="var(--help-amber)" font-size="13">outstanding AND matches "sample"</text>
+
+		<rect x="2" y="93" width="418" height="38" fill="var(--help-panel2)"/>
+		<text x="16" y="117" fill="var(--help-text)">Evolution ESS SAMPLE</text>
+		<circle cx="378" cy="112" r="5" fill="var(--help-amber)"/>
+
+		<text x="16" y="155" fill="var(--help-text)">Evolution Admin SAMPLE</text>
+		<circle cx="378" cy="150" r="5" fill="var(--help-amber)"/>
+
+		<!-- deliberately OUTSIDE the panel: these two are what that search left out -->
+		<text x="16" y="204" fill="var(--help-dim)" font-size="13">left out by "*sample":</text>
+
+		<text x="16" y="234" fill="var(--help-dim)" text-decoration="line-through">Evolution ESS SAMPLEQA</text>
+		<text x="446" y="234" fill="var(--help-dim)" font-size="13">matches the text, nothing outstanding</text>
+
+		<text x="16" y="266" fill="var(--help-dim)" text-decoration="line-through">Evolution Admin Example Client</text>
+		<circle cx="378" cy="261" r="5" fill="var(--help-amber)" opacity="0.45"/>
+		<text x="446" y="266" fill="var(--help-dim)" font-size="13">outstanding, but does not match the text</text>
+	</g>
+</svg>
+
+<div class="cc-help-callout">
+	<p><b>Typing <code>*</code></b> filters the list to sites carrying a dot. Anything you type after it still has to match as usual, so <code>*sample</code> means <em>outstanding <b>and</b> matches "sample"</em> - not either one on its own. The <code>*</code> only does this at the front of what you type; it is a mode switch, not a wildcard.</p>
+</div>
+
+<p>The dots are filled in by a background sweep that runs shortly after the app starts and again every 20 minutes - about two and a half seconds and one call per site. It never blocks anything you are doing: sites light up as their answers arrive, and refreshing a site updates its own dot immediately from data that refresh already fetched. A site the sweep cannot reach keeps whatever dot it had rather than going dark, because a failed call is not evidence that a release finished. With no TFS token configured, no dots appear at all and <code>*</code> matches nothing.</p>
+
+<p>While a sweep is running, the small dot in the top-right of the header - beside <span class="cc-help-chip cc-help-muted">LAST REFRESH … · N CALLS</span> - turns grey and pulses. It sits solid green the rest of the time; hover it for when the last sweep ran and what it cost. The sweep also records a single <span class="cc-help-chip cc-help-muted">site release sweep</span> row on the Diagnostics card, with its total time and call count. Its individual calls are deliberately kept off that card: dozens of release reads would bury the handful a refresh makes.</p>
+
+<p>Some sites never get a dot in either direction. Those are catalog entries with no release definition in TFS at all - the same sites whose Release Pipeline card reports the definition as missing when you select them.</p>
+
+<h2 id="shortcuts">Keyboard shortcuts</h2>
+<p>The three refreshes you reach for most often also have a key. Each one does exactly what that section's <span class="cc-help-chip cc-help-muted">↻</span> button does - re-fetch that section and leave every other card alone - and each works wherever the keyboard happens to be, in the toolbar or in the page.</p>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Shift+W</code></div>
+		<div class="cc-help-legend-copy">Re-runs every saved <strong>Work Items</strong> query: the chips and the results of whichever queries are open.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Shift+R</code></div>
+		<div class="cc-help-legend-copy">Refreshes the <strong>Release Pipeline</strong> - which means its KPI tile, the Release Pipeline card and Release Differences together, because all three come from one fetch.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Shift+C</code></div>
+		<div class="cc-help-legend-copy">Refreshes the <strong>CalcEngine Pipeline</strong>. On a site with no CalcEngine filter there is no card to refresh, so the key does nothing at all.</div>
+	</div>
+</div>
+<p>A shortcut is ignored while a dialog is open, so a keystroke cannot re-render the rows or the work item you are part-way through acting on, and it is refused with the usual amber message while a cleanup or CalcEngine operation is running.</p>
+<p>The toolbar's whole-site <strong>Refresh</strong> has no shortcut on purpose: it is the expensive one, and the one worth pressing deliberately.</p>
+<p>Work Items has a second set of keys of its own - single letters, no modifier - for moving down the rows of an open query and acting on the one you land on: <code>j</code>, <code>k</code>, <code>o</code>, <code>c</code>, <code>r</code>, <code>t</code>, <code>Space</code> and <code>Esc</code>. Unlike the three above they only mean anything while a query is open, and they are listed under
+	<a href="#/work-items/keyboard">Keyboard navigation</a>.</p>
+
+<h2 id="notation">Shared notation</h2>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Healthy / ready</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-chip cc-help-green">SUCCEEDED</span>
+			<span class="cc-help-legend-copy">Completed, available, or ready.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Information</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-chip cc-help-blue">28 COMMITS</span>
+			<span class="cc-help-legend-copy">Neutral detail or navigation context.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Needs attention</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-chip cc-help-amber">PENDING</span>
+			<span class="cc-help-legend-copy">Review, wait, or intervene.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Failed / stopped</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-chip cc-help-red">FAILED</span>
+			<span class="cc-help-legend-copy">The operation failed or a stage was rejected.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Release in flight</div>
+		<div class="cc-help-legend-demo">
+			<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" style="flex:none"><circle cx="6" cy="6" r="5" fill="var(--help-amber)"/></svg>
+			<span class="cc-help-legend-copy">On a site in the picker: its newest release has not finished publishing to every environment. Type <code>*</code> in the site search to list only these.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Refreshing</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-busy cc-help-busy-sample"><span>Release 206<br>82 commits · 4 repos</span></span>
+			<span class="cc-help-legend-copy">The section is re-fetching. What it showed before stays on screen, dimmed, so you can keep reading while it works.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Unavailable</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-badge cc-help-amber">UNAVAILABLE</span>
+			<span class="cc-help-legend-copy">The section could not produce trusted content. Use its retry control.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Refresh Metadata</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-chip cc-help-muted">refreshed 09:22:20 · 0.42s · 3 calls</span>
+			<span class="cc-help-legend-copy">When the section last refreshed, how long that took, and how many calls it made.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">External links</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-legend-copy">Build, release, repository, commit, query, and work-item links open in your default browser. They do not replace the Command Center view.</span>
+		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Warnings and errors</div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-legend-copy">Amber footer messages report a condition that did not prevent the dashboard from rendering. Red footer messages report a harder failure. Read the message before retrying; changing filters or signing in may be the required fix.</span>
+		</div>
+	</div>
+</div>
