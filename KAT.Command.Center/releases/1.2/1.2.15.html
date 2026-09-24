@@ -1,0 +1,40 @@
+<section data-kind="story">
+	<h3>Work Items refresh in place</h3>
+	<p>Turning a <a href="#/work-items/query-results">query chip</a> on or off now re-runs its query straight away. The grid paints immediately from what Command Center already knows, then settles once TFS answers, so you are never staring at an empty table.</p>
+	<p>Rows that drop out fade away and new rows fade in with a brief highlight, so you can see exactly what changed. A row is not clickable while it is animating. Chip counts stay current too, even for queries that are not on screen.</p>
+	<figure>
+		<video src="media/releases/1.2.15/work-items-refresh.mp4" muted controls playsinline preload="metadata" width="1628" height="602"></video>
+		<figcaption>A work item arrives, moves to another query, and then leaves after an external delete while the query chips keep up.</figcaption>
+	</figure>
+	<p>Reopening a <a href="#/work-items/work-item-detail">work item</a> is instant: it shows what you last saw, then checks with the server. Anything that changed since is summarized in a banner at the top of the detail, which you can dismiss and which clears itself after a few seconds.</p>
+</section>
+
+<section data-kind="story">
+	<h3>CalcEngine history flags probable patches</h3>
+	<p><a href="#/calcengine-pipeline/history">CalcEngine History</a> now marks a version that exists only in the upper CalcEngine with a &#9888; <strong>Probable patch</strong> flag, explained by a legend under the table. It replaces the old &#9733; "was live" marker, which was easy to misread.</p>
+	<figure>
+		<img src="media/releases/1.2.15/calcengine-probable-patch.webp" alt="CalcEngine History with probable patch warnings and the explanatory legend" width="1567" height="737">
+		<figcaption>Probable patch warnings appear beside versions that exist only in the upper CalcEngine.</figcaption>
+	</figure>
+	<p>Loading the history takes at most three requests, and if one of them fails the modal says so instead of showing an empty history.</p>
+</section>
+
+<section data-kind="story">
+	<h3>Help opens where you need it</h3>
+	<p>KAT Command Center now opens its <a href="#/start-here">Help</a> and <a href="#/releases">release notes</a> in your default browser, so the dashboard stays where it is while you read. The toolbar Help button starts at the overview, and the contextual <strong>?</strong> buttons open the article and section for the card or dialog you are using.</p>
+	<p>The documentation site includes a searchable dashboard tour, Work Items, Release Pipeline, Release Differences, CalcEngine Pipeline, Site Scope, settings and authorization guides. It also has a What's New view that opens after an update and highlights the releases you have not seen yet.</p>
+</section>
+
+<section data-kind="improvements">
+	<ul>
+		<li>A new <strong>Assigned By</strong> column shows who handed each work item to its current owner: the previous owner, or the creator when it was never reassigned.</li>
+		<li>The Work Items quick filter now matches the title, description, tags, assignee, Assigned By and comments. The footer reads "Showing N of M work items" while a filter is applied.</li>
+		<li>While descriptions and comments are still loading, a note under the filter says so, so a filter that has not matched yet is not mistaken for no match.</li>
+	</ul>
+</section>
+
+<section data-kind="fixes">
+	<ul>
+		<li>A CalcEngine History request that fails is now reported as an error. Previously it looked like a CalcEngine with no history.</li>
+	</ul>
+</section>

@@ -21,6 +21,12 @@
 			"date": "2026-09-21",
 			"theme": "Work item links open in your browser",
 			"sha256": "51043DAC5D87EEACF58B786188E3D6A6EAD3C9C125FD51374A8019D9C9F9A0C1"
+		},
+		{
+			"version": "1.2.15",
+			"date": "2026-09-24",
+			"theme": "Help that opens where you need it, Work Items that keep up with you, and CalcEngine history you can trust",
+			"sha256": "BF99A30DD8394BBC9DDF11392D0E04D2C495682234A7C7B5B82812014789E579"
 		}
 	]
 }

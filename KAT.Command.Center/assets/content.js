@@ -186,7 +186,7 @@ window.KCC_DOCS = {
 				"version-1",
 				"whats-new"
 			],
-			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes</div>\n<h1>Release Notes</h1>\n<p class=\"cc-help-lede\">What changed in each version of KAT Command Center. Each version line has one page, and its updates read oldest to newest.</p>\n</header>\n<h2 id=\"latest\">Latest update</h2>\n<a class=\"kd-release-latest\" href=\"#/releases/1.2/1.2.14\"><strong>1.2.14</strong><time datetime=\"2026-09-21\">September 21, 2026</time><span>Work item links open in your browser</span></a>\n<h2 id=\"all-versions\">All versions</h2>\n<h3 id=\"version-1\">Version 1</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/1.2\">Version 1.2</a> <span>2 updates, latest 1.2.14 on September 21, 2026</span></li>\n</ul>\n<h2 id=\"whats-new\">What's New after an update</h2>\n<p>After Command Center updates itself, it opens <a href=\"#/whats-new\">What's New</a> with the version you were running before. Every update you have not seen is highlighted, even when it spans more than one version line, and you can dismiss the notice once you have read it.</p>",
+			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes</div>\n<h1>Release Notes</h1>\n<p class=\"cc-help-lede\">What changed in each version of KAT Command Center. Each version line has one page, and its updates read oldest to newest.</p>\n</header>\n<h2 id=\"latest\">Latest update</h2>\n<a class=\"kd-release-latest\" href=\"#/releases/1.2/1.2.15\"><strong>1.2.15</strong><time datetime=\"2026-09-24\">September 24, 2026</time><span>Help that opens where you need it, Work Items that keep up with you, and CalcEngine history you can trust</span></a>\n<h2 id=\"all-versions\">All versions</h2>\n<h3 id=\"version-1\">Version 1</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/1.2\">Version 1.2</a> <span>3 updates, latest 1.2.15 on September 24, 2026</span></li>\n</ul>\n<h2 id=\"whats-new\">What's New after an update</h2>\n<p>After Command Center updates itself, it opens <a href=\"#/whats-new\">What's New</a> with the version you were running before. Every update you have not seen is highlighted, even when it spans more than one version line, and you can dismiss the notice once you have read it.</p>",
 			"navTitle": "Overview"
 		},
 		"releases/1.2": {
@@ -199,9 +199,15 @@ window.KCC_DOCS = {
 				"1.2.13",
 				"1.2.13-improvements",
 				"1.2.14",
-				"1.2.14-fixes"
+				"1.2.14-fixes",
+				"1.2.15",
+				"1.2.15-work-items-refresh-in-place",
+				"1.2.15-calcengine-history-flags-probable-patches",
+				"1.2.15-help-opens-where-you-need-it",
+				"1.2.15-improvements",
+				"1.2.15-fixes"
 			],
-			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes &middot; Version 1</div>\n<h1>Version 1.2</h1>\n<p class=\"cc-help-lede\">2 updates, from 1.2.13 (September 21, 2026) to 1.2.14 (September 21, 2026). Updates read oldest to newest.</p>\n<p class=\"kd-release-jump\"><a href=\"#/releases/1.2/1.2.14\">Jump to the latest update, 1.2.14</a></p>\n</header>\n<div class=\"cc-help-callout kd-release-intro\">\n<p>Release notes are published from 1.2.13 onward. Earlier 1.2 updates, summarized: Command Center learned to update itself; Return Tasks gained an All checkbox; the Work Items modal became fully keyboard driven; work item detail tabs and the quick filter arrived; the Update button got louder when an update is waiting; tasks can be closed from the dashboard; and the comment, CalcEngine History and Site Scope dialogs received a round of fixes, including the comment modal&#39;s input order and default assignee.</p>\n</div>\n<section class=\"kd-patch\" data-version=\"1.2.13\">\n<header class=\"kd-patch-header\">\n<h2 id=\"1.2.13\">1.2.13</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-21\">September 21, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Cleanup calls you can trace</p>\n<div class=\"kd-patch-part kd-patch-improvements\">\n<h3 id=\"1.2.13-improvements\">Improvements</h3>\n<ul>\n\t\t<li>Each cancel and delete that <a href=\"#/release-pipeline/cleanup\">Run Cleanup</a> sends now appears as its own row in the Diagnostics card, labelled with the release it acted on (for example <code>Release 12: DELETE</code>), so a slow or failed cleanup call can be traced to the exact release instead of one generic row.</li>\n\t</ul>\n</div>\n</section>\n<section class=\"kd-patch\" data-version=\"1.2.14\">\n<header class=\"kd-patch-header\">\n<h2 id=\"1.2.14\">1.2.14</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-21\">September 21, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Work item links open in your browser</p>\n<div class=\"kd-patch-part kd-patch-fixes\">\n<h3 id=\"1.2.14-fixes\">Fixes</h3>\n<ul>\n\t\t<li>Links inside a work item's description and discussion now open in your default browser. Previously, clicking one replaced the dashboard with the linked page.</li>\n\t</ul>\n</div>\n</section>",
+			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes &middot; Version 1</div>\n<h1>Version 1.2</h1>\n<p class=\"cc-help-lede\">3 updates, from 1.2.13 (September 21, 2026) to 1.2.15 (September 24, 2026). Updates read oldest to newest.</p>\n<p class=\"kd-release-jump\"><a href=\"#/releases/1.2/1.2.15\">Jump to the latest update, 1.2.15</a></p>\n</header>\n<div class=\"cc-help-callout kd-release-intro\">\n<p>Release notes are published from 1.2.13 onward. Earlier 1.2 updates, summarized: Command Center learned to update itself; Return Tasks gained an All checkbox; the Work Items modal became fully keyboard driven; work item detail tabs and the quick filter arrived; the Update button got louder when an update is waiting; tasks can be closed from the dashboard; and the comment, CalcEngine History and Site Scope dialogs received a round of fixes, including the comment modal&#39;s input order and default assignee.</p>\n</div>\n<section class=\"kd-patch\" data-version=\"1.2.13\">\n<header class=\"kd-patch-header\">\n<h2 id=\"1.2.13\">1.2.13</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-21\">September 21, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Cleanup calls you can trace</p>\n<div class=\"kd-patch-part kd-patch-improvements\">\n<h3 id=\"1.2.13-improvements\">Improvements</h3>\n<ul>\n\t\t<li>Each cancel and delete that <a href=\"#/release-pipeline/cleanup\">Run Cleanup</a> sends now appears as its own row in the Diagnostics card, labelled with the release it acted on (for example <code>Release 12: DELETE</code>), so a slow or failed cleanup call can be traced to the exact release instead of one generic row.</li>\n\t</ul>\n</div>\n</section>\n<section class=\"kd-patch\" data-version=\"1.2.14\">\n<header class=\"kd-patch-header\">\n<h2 id=\"1.2.14\">1.2.14</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-21\">September 21, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Work item links open in your browser</p>\n<div class=\"kd-patch-part kd-patch-fixes\">\n<h3 id=\"1.2.14-fixes\">Fixes</h3>\n<ul>\n\t\t<li>Links inside a work item's description and discussion now open in your default browser. Previously, clicking one replaced the dashboard with the linked page.</li>\n\t</ul>\n</div>\n</section>\n<section class=\"kd-patch\" data-version=\"1.2.15\">\n<header class=\"kd-patch-header\">\n<h2 id=\"1.2.15\">1.2.15</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-24\">September 24, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Help that opens where you need it, Work Items that keep up with you, and CalcEngine history you can trust</p>\n<div class=\"kd-patch-part kd-patch-story\">\n<h3 id=\"1.2.15-work-items-refresh-in-place\">Work Items refresh in place</h3>\n<p>Turning a <a href=\"#/work-items/query-results\">query chip</a> on or off now re-runs its query straight away. The grid paints immediately from what Command Center already knows, then settles once TFS answers, so you are never staring at an empty table.</p>\n\t<p>Rows that drop out fade away and new rows fade in with a brief highlight, so you can see exactly what changed. A row is not clickable while it is animating. Chip counts stay current too, even for queries that are not on screen.</p>\n\t<figure>\n\t\t<video src=\"media/releases/1.2.15/work-items-refresh.mp4\" muted controls playsinline preload=\"metadata\" width=\"1628\" height=\"602\"></video>\n\t\t<figcaption>A work item arrives, moves to another query, and then leaves after an external delete while the query chips keep up.</figcaption>\n\t</figure>\n\t<p>Reopening a <a href=\"#/work-items/work-item-detail\">work item</a> is instant: it shows what you last saw, then checks with the server. Anything that changed since is summarized in a banner at the top of the detail, which you can dismiss and which clears itself after a few seconds.</p>\n</div>\n<div class=\"kd-patch-part kd-patch-story\">\n<h3 id=\"1.2.15-calcengine-history-flags-probable-patches\">CalcEngine history flags probable patches</h3>\n<p><a href=\"#/calcengine-pipeline/history\">CalcEngine History</a> now marks a version that exists only in the upper CalcEngine with a &#9888; <strong>Probable patch</strong> flag, explained by a legend under the table. It replaces the old &#9733; \"was live\" marker, which was easy to misread.</p>\n\t<figure>\n\t\t<img src=\"media/releases/1.2.15/calcengine-probable-patch.webp\" alt=\"CalcEngine History with probable patch warnings and the explanatory legend\" width=\"1567\" height=\"737\">\n\t\t<figcaption>Probable patch warnings appear beside versions that exist only in the upper CalcEngine.</figcaption>\n\t</figure>\n\t<p>Loading the history takes at most three requests, and if one of them fails the modal says so instead of showing an empty history.</p>\n</div>\n<div class=\"kd-patch-part kd-patch-story\">\n<h3 id=\"1.2.15-help-opens-where-you-need-it\">Help opens where you need it</h3>\n<p>KAT Command Center now opens its <a href=\"#/start-here\">Help</a> and <a href=\"#/releases\">release notes</a> in your default browser, so the dashboard stays where it is while you read. The toolbar Help button starts at the overview, and the contextual <strong>?</strong> buttons open the article and section for the card or dialog you are using.</p>\n\t<p>The documentation site includes a searchable dashboard tour, Work Items, Release Pipeline, Release Differences, CalcEngine Pipeline, Site Scope, settings and authorization guides. It also has a What's New view that opens after an update and highlights the releases you have not seen yet.</p>\n</div>\n<div class=\"kd-patch-part kd-patch-improvements\">\n<h3 id=\"1.2.15-improvements\">Improvements</h3>\n<ul>\n\t\t<li>A new <strong>Assigned By</strong> column shows who handed each work item to its current owner: the previous owner, or the creator when it was never reassigned.</li>\n\t\t<li>The Work Items quick filter now matches the title, description, tags, assignee, Assigned By and comments. The footer reads \"Showing N of M work items\" while a filter is applied.</li>\n\t\t<li>While descriptions and comments are still loading, a note under the filter says so, so a filter that has not matched yet is not mistaken for no match.</li>\n\t</ul>\n</div>\n<div class=\"kd-patch-part kd-patch-fixes\">\n<h3 id=\"1.2.15-fixes\">Fixes</h3>\n<ul>\n\t\t<li>A CalcEngine History request that fails is now reported as an error. Previously it looked like a CalcEngine with no history.</li>\n\t</ul>\n</div>\n</section>",
 			"navTitle": "1.2",
 			"children": [
 				{
@@ -211,6 +217,10 @@ window.KCC_DOCS = {
 				{
 					"anchor": "1.2.14",
 					"title": "1.2.14"
+				},
+				{
+					"anchor": "1.2.15",
+					"title": "1.2.15"
 				}
 			]
 		}
@@ -230,6 +240,14 @@ window.KCC_DOCS = {
 			"major": "1",
 			"date": "2026-09-21",
 			"theme": "Work item links open in your browser",
+			"page": "releases/1.2"
+		},
+		{
+			"version": "1.2.15",
+			"minor": "1.2",
+			"major": "1",
+			"date": "2026-09-24",
+			"theme": "Help that opens where you need it, Work Items that keep up with you, and CalcEngine history you can trust",
 			"page": "releases/1.2"
 		}
 	],
@@ -600,7 +618,7 @@ window.KCC_DOCS = {
 			"anchor": "latest",
 			"title": "Release Notes",
 			"heading": "Latest update",
-			"text": "1.2.14September 21, 2026Work item links open in your browser"
+			"text": "1.2.15September 24, 2026Help that opens where you need it, Work Items that keep up with you, and CalcEngine history you can trust"
 		},
 		{
 			"section": "releases",
@@ -616,7 +634,7 @@ window.KCC_DOCS = {
 			"anchor": "version-1",
 			"title": "Release Notes",
 			"heading": "Version 1",
-			"text": "Version 1.2 2 updates, latest 1.2.14 on September 21, 2026"
+			"text": "Version 1.2 3 updates, latest 1.2.15 on September 24, 2026"
 		},
 		{
 			"section": "releases",
@@ -632,7 +650,7 @@ window.KCC_DOCS = {
 			"anchor": "",
 			"title": "Version 1.2",
 			"heading": "Version 1.2",
-			"text": "Release Notes · Version 1 Version 1.2 2 updates, from 1.2.13 (September 21, 2026) to 1.2.14 (September 21, 2026). Updates read oldest to newest. Jump to the latest update, 1.2.14 Release notes are published from 1.2.13 onward. Earlier 1.2 updates, summarized: Command Center learned to update itself; Return Tasks gained an All checkbox; the Work Items modal became fully keyboard driven; work item detail tabs and the quick filter arrived; the Update button got louder when an update is waiting; tasks can be closed from the dashboard; and the comment, CalcEngine History and Site Scope dialogs received a round of fixes, including the comment modal's input order and default assignee."
+			"text": "Release Notes · Version 1 Version 1.2 3 updates, from 1.2.13 (September 21, 2026) to 1.2.15 (September 24, 2026). Updates read oldest to newest. Jump to the latest update, 1.2.15 Release notes are published from 1.2.13 onward. Earlier 1.2 updates, summarized: Command Center learned to update itself; Return Tasks gained an All checkbox; the Work Items modal became fully keyboard driven; work item detail tabs and the quick filter arrived; the Update button got louder when an update is waiting; tasks can be closed from the dashboard; and the comment, CalcEngine History and Site Scope dialogs received a round of fixes, including the comment modal's input order and default assignee."
 		},
 		{
 			"section": "releases",
@@ -665,6 +683,54 @@ window.KCC_DOCS = {
 			"title": "Version 1.2",
 			"heading": "Fixes",
 			"text": "Links inside a work item's description and discussion now open in your default browser. Previously, clicking one replaced the dashboard with the linked page."
+		},
+		{
+			"section": "releases",
+			"page": "releases/1.2",
+			"anchor": "1.2.15",
+			"title": "Version 1.2",
+			"heading": "1.2.15",
+			"text": "September 24, 2026 Help that opens where you need it, Work Items that keep up with you, and CalcEngine history you can trust"
+		},
+		{
+			"section": "releases",
+			"page": "releases/1.2",
+			"anchor": "1.2.15-work-items-refresh-in-place",
+			"title": "Version 1.2",
+			"heading": "Work Items refresh in place",
+			"text": "Turning a query chip on or off now re-runs its query straight away. The grid paints immediately from what Command Center already knows, then settles once TFS answers, so you are never staring at an empty table. Rows that drop out fade away and new rows fade in with a brief highlight, so you can see exactly what changed. A row is not clickable while it is animating. Chip counts stay current too, even for queries that are not on screen. A work item arrives, moves to another query, and then leaves after an external delete while the query chips keep up. Reopening a work item is instant: it shows what you last saw, then checks with the server. Anything that changed since is summarized in a banner at the top of the detail, which you can dismiss and which clears itself after a few seconds."
+		},
+		{
+			"section": "releases",
+			"page": "releases/1.2",
+			"anchor": "1.2.15-calcengine-history-flags-probable-patches",
+			"title": "Version 1.2",
+			"heading": "CalcEngine history flags probable patches",
+			"text": "CalcEngine History now marks a version that exists only in the upper CalcEngine with a ⚠ Probable patch flag, explained by a legend under the table. It replaces the old ★ \"was live\" marker, which was easy to misread. Probable patch warnings appear beside versions that exist only in the upper CalcEngine. Loading the history takes at most three requests, and if one of them fails the modal says so instead of showing an empty history."
+		},
+		{
+			"section": "releases",
+			"page": "releases/1.2",
+			"anchor": "1.2.15-help-opens-where-you-need-it",
+			"title": "Version 1.2",
+			"heading": "Help opens where you need it",
+			"text": "KAT Command Center now opens its Help and release notes in your default browser, so the dashboard stays where it is while you read. The toolbar Help button starts at the overview, and the contextual ? buttons open the article and section for the card or dialog you are using. The documentation site includes a searchable dashboard tour, Work Items, Release Pipeline, Release Differences, CalcEngine Pipeline, Site Scope, settings and authorization guides. It also has a What's New view that opens after an update and highlights the releases you have not seen yet."
+		},
+		{
+			"section": "releases",
+			"page": "releases/1.2",
+			"anchor": "1.2.15-improvements",
+			"title": "Version 1.2",
+			"heading": "Improvements",
+			"text": "A new Assigned By column shows who handed each work item to its current owner: the previous owner, or the creator when it was never reassigned. The Work Items quick filter now matches the title, description, tags, assignee, Assigned By and comments. The footer reads \"Showing N of M work items\" while a filter is applied. While descriptions and comments are still loading, a note under the filter says so, so a filter that has not matched yet is not mistaken for no match."
+		},
+		{
+			"section": "releases",
+			"page": "releases/1.2",
+			"anchor": "1.2.15-fixes",
+			"title": "Version 1.2",
+			"heading": "Fixes",
+			"text": "A CalcEngine History request that fails is now reported as an error. Previously it looked like a CalcEngine with no history."
 		}
 	]
 };
