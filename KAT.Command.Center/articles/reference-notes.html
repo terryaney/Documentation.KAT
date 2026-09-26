@@ -1,0 +1,17 @@
+<header class="cc-help-article-header">
+	<div class="cc-help-eyebrow">Advanced · detailed behavior</div>
+	<h1>Reference Notes</h1>
+	<p class="cc-help-lede">Detailed implementation-facing notes that are useful when a workflow behaves unexpectedly, but are not needed for normal use.</p>
+</header>
+
+<h2 id="work-item-state-transitions">Work item state transitions</h2>
+<p>State accepts Active, Closed, Proposed, and Resolved. Blank or unchanged State creates no State update. In a Close Task dialog this fails validation, even with a comment entered.</p>
+<ul>
+	<li><strong>Bug:</strong> Proposed to Active or Closed; Active to Proposed or Resolved; Resolved to Active or Closed; Closed to Active.</li>
+	<li><strong>Task:</strong> Proposed to Active or Closed; Active to Proposed, Resolved, or Closed; Resolved to Active or Closed; Closed to Active or Proposed.</li>
+	<li><strong>Feature:</strong> Proposed to Active, Closed, or Resolved; Active to Proposed, Resolved, or Closed; Resolved to Active or Closed; Closed to Active.</li>
+	<li><strong>Requirement:</strong> Proposed to Active, Closed, or Resolved; Active to Proposed, Resolved, or Closed; Resolved to Active or Closed; Closed to Active.</li>
+</ul>
+<p>Feature and Requirement's Proposed to Resolved transition passed validation but is not advertised in TFS metadata. Other transitions follow the type metadata; individual item rules may still reject a change. No intermediate saves are attempted after arbitrary errors.</p>
+<p>Choosing Closed for an Active Bug automatically saves <strong>Resolved, then Closed</strong>, in any comment-modal variant. Comment, reassignment, and Triage go only in the final save. These are two revisions, not an atomic update. If closing fails, the modal stays open with your inputs retained and the last confirmed State updates to Resolved. Retry skips that already-completed transition. A timeout may mean the final save landed without confirmation; check TFS before retrying if the outcome is uncertain. State changes guard against a changed State or type on the server and are not automatically retried.</p>
+<p>Closing a Proposed item sets its Reason to <strong>Rejected</strong>. TFS chooses the Reason; the dialog does not override it. For a Task, Active to Closed means <em>Complete and Does Not Require Review/Test</em>; Resolved to Closed means <em>Review/Test Passed</em>.</p>

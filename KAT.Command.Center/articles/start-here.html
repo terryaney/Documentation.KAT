@@ -1,20 +1,18 @@
-<!-- Public documentation copy. Semantic markup only: styles live in assets/docs.css and behaviour in
-     assets/docs.js, because the shell inserts fragments via innerHTML and fragment scripts never run.
-     Keep every id stable - the app's contextual "?" buttons deep-link to them. Content must satisfy
-     docs-policy.json at the repository root. -->
 <header class="cc-help-article-header cc-help-start-header">
 	<div class="cc-help-eyebrow">Orientation · 3 minute read</div>
 	<h1>Start with the signal, then choose the action.</h1>
 	<div class="cc-help-start-intro">
 		<img class="cc-help-start-app" src="media/app-icon.png" alt="KAT Command Center">
-		<p class="cc-help-lede">KAT Command Center aggregates all information for a given site bringing release health, CalcEngine state, work-item pressure, and operational actions into one view. Actions that change TFS or KAT DataStore state use explicit confirmation dialogs or are clearly labeled as a submit action.</p>
+		<p class="cc-help-lede">KAT Command Center brings together information about Tasks, Builds, Releases, CalcEngines, Site Metrics, and more, helping KAT team members stay on top of everything required to keep our sites and APIs running and healthy.</p>
 	</div>
 </header>
+
 <div class="cc-help-quick-grid">
 	<div class="cc-help-quick-step">
 		<div class="cc-help-step-number">Step 01</div>
 		<h3>Select a site</h3>
 		<p>Choose the site whose release and CalcEngine state you need to inspect.</p>
+		<p>Note: Work Items and Site Scope are independent of the selected site.</p>
 	</div>
 	<div class="cc-help-quick-step">
 		<div class="cc-help-step-number">Step 02</div>
@@ -28,172 +26,31 @@
 	</div>
 </div>
 
-<h2 id="authorization">Setting Up KAT Access</h2>
-<p>KAT Command Center requires three forms of authorization. The first is your KAT Management site user credentials, the second is your Conduent network account, and the third is a TFS Personal Access Token (PAT).  The PAT will be written and stored in a local file; the two passwords are never written unless you ask for them to be - see Remember me below.</p>
-
-<h3>Setting Up the PAT</h3>
-<p>The PAT enables the Release and Work Items management application features.  Follow the steps below to set up your PAT for KAT Command Center.</p>
-<ol class="cc-help-workflow">
-	<li>Visit <a href="https://tfs.acsgs.com/tfs/PDSI/_details/security/tokens" target="_blank" rel="noopener">TFS Personal Access Tokens (PAT)</a>.</li>
-	<li>In the Personal access tokens page, click the 'Add' button to create a new token.</li>
-	<li>Use <code>KAT PAT</code> as the name, select <code>1 year</code> for expiration, and leave the default <code>All scopes</code> selected for authorized scopes.</li>
-	<li>Click 'Create Token' to generate your token.</li>
-	<li>Copy the generated token value. Click the 'Profile' icon in KAT Command Center and paste the value in the PAT field.  Click 'OK' to save.</li>
-</ol>
-
-<div class="cc-help-callout"><strong>File Hand Edits</strong>You can also edit Tfs.Secrets.json by hand. The app reads it once at startup, so a hand edit takes effect after you restart or immediately if you reopen the Profile dialog, which reads the file fresh each time it opens.</div>
-
-<h3>Providing KAT Management Credentials</h3>
-<p>The KAT Management Site credentials enable CalcEngine Pipeline and Site Metrics functionality. To ensure proper operation, follow the steps below.</p>
-<ol class="cc-help-workflow">
-	<li> Click the 'Profile' icon in KAT Command Center.</li>
-	<li>Enter your KAT Management site user credentials in the appropriate fields.</li>
-	<li>Click 'OK' to save and complete the sign-in process.</li>
-</ol>
-
-<h3>Remember me</h3>
-<p>By default the KAT Management and Conduent passwords live in memory only, so the dialog asks for them every launch. Tick <strong>Remember me</strong> at the bottom of the dialog and both are saved instead, and the app signs in with them silently on the next launch - you only see the dialog if one of them is rejected.</p>
-<p>They are encrypted with Windows for your account, on this machine. Copied elsewhere, or read by another Windows user, the saved values are useless. What that does <em>not</em> protect against is anything already running as you, which is why it is off unless you turn it on.</p>
-<p>Untick the box and both saved passwords are deleted immediately. A password that stops working is also dropped on its own, so a change on your side heals itself - you are asked once, and remembered again from there.</p>
-
 <h2 id="common-tasks">Common Tasks</h2>
 <div class="cc-help-legend">
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Work Pressure</div>
-		<div class="cc-help-legend-copy">Stay on top of work-item pressure with <strong>Work Item queries</strong> you configure.  You monitor task severity, priority, age, tags, and item details.  Set up a query that answers the questions you care about most or that help answer what you have been working on.</div>
+		<div class="cc-help-legend-copy">Stay on top of your tasks with <strong>Work Item queries</strong> you configure.  You monitor task severity, priority, age, tags, and item details.  Set up a query that answers the questions you care about most.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Release Management</div>
-		<div class="cc-help-legend-copy">Using the <strong>Release Pipeline</strong> and <strong>Release Differences</strong>, inspect environment deployments, verify code changes within each release, trigger deployment actions, and perform maintenance cleanup tasks.</div>
+		<div class="cc-help-legend-copy">Using the <strong>Release Pipeline</strong> and <strong>Release Differences</strong>, inspect environment deployments, verify code changes within each release, trigger deployment actions, and perform stale release cleanup tasks.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">CalcEngines at a Glance</div>
+		<div class="cc-help-legend-label">CalcEngines<br/>at a Glance</div>
 		<div class="cc-help-legend-copy">The <strong>CalcEngine Pipeline</strong> provides an overview of a site's CalcEngine manifest; monitor CalcEngine environment deployments, review differences between versions, approve/promote changes as needed, or download CalcEngines for in-depth inspection.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Finding Your Way</div>
+		<div class="cc-help-legend-copy">Every <strong>?</strong> button on the dashboard opens that section's specific help to guide you. Use the search box to find a topic, the browser's <strong>Back</strong> button to return to where you were, and switch back to the app window when you are done.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Having Problems?</div>
 		<div class="cc-help-legend-copy">Work with the KAT team and the Diagnostics card when problems arise and a simple retry does not resolve the issue.</div>
 	</div>
-	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Finding Your Way</div>
-		<div class="cc-help-legend-copy">Every <strong>?</strong> button on the dashboard opens this site at the section that explains it. Use the search box to find a topic, the browser's <strong>Back</strong> button to return to where you were, and switch back to the app window when you are done.</div>
-	</div>
 </div>
 
-<h2 id="settings">Settings</h2>
-<p>The pencil in the app header opens Settings. It deliberately shows only the settings a person
-	chooses — everything else in the settings file is state the app writes for itself, and editing
-	those by hand only invites the app to overwrite you. The link at the bottom of the dialog opens
-	the raw file in a text editor — VS Code when it is installed, Notepad otherwise — for anything
-	not covered here.</p>
-<div class="tfs-release cc-help-demo cc-reduce-4">
-	<div class="cc-modal-panel cc-modal--lg modal-comment">
-		<h3>KAT Command Center Settings</h3>
-		<div class="cc-modal-scroll">
-			<div class="cc-settings-group">Release Pipeline Polling</div>
-			<div class="field-row field-row--2">
-				<div class="cc-field">
-					<label class="cc-label">Active Build/Release (seconds)</label>
-					<input type="text" inputmode="numeric" class="cc-input" placeholder="(default)" value="15" onkeydown="event.preventDefault()">
-				</div>
-				<div class="cc-field">
-					<label class="cc-label">Polling Timeout (minutes)</label>
-					<input type="text" inputmode="numeric" class="cc-input" placeholder="(default)" onkeydown="event.preventDefault()">
-				</div>
-			</div>
-			<div class="cc-settings-group">Comment Settings</div>
-			<div class="cc-field">
-				<label class="cc-label">Default Comment Text</label>
-				<input type="text" class="cc-input" placeholder="(blank)" onkeydown="event.preventDefault()">
-			</div>
-			<div class="cc-field">
-				<label class="cc-label">Default Triage Comment</label>
-				<input type="text" class="cc-input" placeholder="(blank)" value="Moved to DEV" onkeydown="event.preventDefault()">
-			</div>
-			<div class="cc-field">
-				<label class="cc-label">Default Return Task Comment</label>
-				<input type="text" class="cc-input" placeholder="(blank)" value="In QA" onkeydown="event.preventDefault()">
-			</div>
-			<div class="cc-field">
-				<label class="cc-label">Default Close Task Comment</label>
-				<input type="text" class="cc-input" placeholder="(blank)" onkeydown="event.preventDefault()">
-			</div>
-			<div class="cc-field">
-				<label class="cc-check"><input type="checkbox" checked onclick="event.preventDefault()"><span>Submit on <code>Ctrl+Enter</code></span></label>
-			</div>
-			<div class="cc-settings-group">Work Item Queries</div>
-			<div class="cc-field">
-				<div class="cc-settings-queries">
-					<div class="cc-settings-query">
-						<span class="cc-settings-query-name">My Open Tasks</span>
-						<button class="cc-button cc-button--sm cc-button--danger" role="button">Remove</button>
-					</div>
-					<div class="cc-settings-query">
-						<span class="cc-settings-query-name">KAT Nexgen SAMPLE</span>
-						<button class="cc-button cc-button--sm cc-button--danger" role="button">Remove</button>
-					</div>
-					<div class="cc-settings-query is-removed">
-						<span class="cc-settings-query-name">Team Bugs</span>
-						<button class="cc-button cc-button--sm" role="button">Undo</button>
-					</div>
-				</div>
-			</div>
-			<div class="cc-settings-group">Automatic Updates</div>
-			<div class="cc-field">
-				<label class="cc-label">Release Folder</label>
-				<input type="text" class="cc-input" placeholder="C:\Users\you\OneDrive - Conduent\BTR Public" onkeydown="event.preventDefault()">
-			</div>
-			<div class="field-row field-row--2">
-				<div class="cc-field">
-					<label class="cc-label">Check Every (hours)</label>
-					<input type="text" inputmode="numeric" class="cc-input" placeholder="(default of 8)" onkeydown="event.preventDefault()">
-				</div>
-				<div class="cc-field">
-					<label class="cc-label">Installed Version</label>
-					<div class="cc-settings-update-line">
-						<span>1.4.0</span>
-						<button type="button" class="cc-button cc-button--link" role="button">Check for updates now</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modal-actions cc-settings-actions">
-			<button class="cc-button cc-button--link" role="button">Open settings file in text editor</button>
-			<span class="cc-settings-actions-spacer"></span>
-			<button class="cc-button" role="button">Cancel</button>
-			<button class="cc-button cc-button--success" role="button">OK</button>
-		</div>
-	</div>
+<div class="cc-help-callout">
+	<strong>Set up your access</strong>
+	Open <a href="#/settings/setup-access">Setting Up Access</a> for the KAT DataStore and Conduent sign-ins, TFS Personal Access Token setup, and password-saving options.
 </div>
-<table class="cc-help-table">
-	<thead>
-		<tr><th>Setting</th><th>What it does</th></tr>
-	</thead>
-	<tbody>
-		<tr><td>Active Build/Release (seconds)</td><td>How often a queued build or release is re-checked while you watch it.</td></tr>
-		<tr><td>Polling Timeout (minutes)</td><td>How long that watch runs before giving up.</td></tr>
-		<tr><td>Default Comment Text</td><td>Prefills the comment box for <em>Add Comment</em>.</td></tr>
-		<tr><td>Default Triage Comment</td><td>Prefills the comment box for <em>Triage</em>.</td></tr>
-		<tr><td>Default Return Task Comment</td><td>Prefills the comment box for <em>Return Task</em>, single and batch.</td></tr>
-		<tr><td>Default Close Task Comment</td><td>Prefills the comment box for <em>Close Task</em>. A comment does not replace its required State change.</td></tr>
-		<tr><td>Submit on Ctrl+Enter</td><td>Lets <code>Ctrl+Enter</code> press <em>OK</em> from anywhere in a comment modal, including the batch Return Task modal. Off unless you turn it on.</td></tr>
-		<tr><td>Work Item Queries</td><td>The saved queries on the Work Items card. Removal only, and the removal is staged — the row stays struck through until you press <em>OK</em>, so <em>Cancel</em> puts it back.</td></tr>
-		<tr><td>Release Folder</td><td>The shared folder the app watches for a newer build of itself. Blank uses the OneDrive folder shown as the placeholder.</td></tr>
-		<tr><td>Check Every (hours)</td><td>How often that folder is checked; blank uses 8 hours. It is also checked once at startup, and whenever you press <em>Check for updates now</em>.</td></tr>
-	</tbody>
-</table>
-<p><strong>Notable Features</strong></p>
-<ol class="cc-help-workflow compact">
-	<li>All four comment defaults start blank — this app does not guess the sentence you want on a
-		work item. Set them once and every matching modal opens with it. See
-		<a href="#/work-items/comment-reassign">Comment or reassign</a>
-		for which default reaches which modal.</li>
-	<li>Both poll values may be left blank to use the app's built-in defaults.</li>
-	<li>Queries can only be removed here, not added or edited — adding one goes through <em>Add Query</em>,
-		which validates it. Removals are struck through and applied only when you press <em>OK</em>, so
-		<em>Cancel</em> genuinely cancels them.</li>
-	<li>Saved settings reach the open dashboard immediately; no refresh is needed.</li>
-	<li>When a newer build is waiting, an <em>Update</em> button appears in the toolbar beside the theme
-		toggle - white, with a green dot after the word that pulses a few times as it appears.
-		Pressing it replaces the app and restarts it, so finish what you are doing first.</li>
-</ol>

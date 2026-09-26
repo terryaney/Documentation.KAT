@@ -20,16 +20,17 @@
 
 <h2 id="signing-in">Signing in</h2>
 <p>Site Scope needs your network credentials, and asks for them separately from TFS and DataLocker because it is a
-	separate system. Open the credentials dialog from the toolbar (<span
-		style="font-family:'Segoe MDL2 Assets';">&#xE77B;</span>) and fill in the Site Scope section.</p>
+	separate system. Open Settings from the profile button in the app bar (<span
+		style="font-family:'Segoe MDL2 Assets';">&#xE77B;</span>) and fill in the Conduent section of the Profile page.</p>
 <ul>
 	<li>Your <strong>username</strong> is remembered between runs so a later prompt starts from what last worked.</li>
 	<li>Your <strong>password</strong> is held in memory for the life of the app and is never written to disk, unless
-		you tick <strong>Remember me</strong> at the bottom of the dialog. That saves it encrypted with Windows for
+		you tick <strong>Remember my passwords</strong> on the same page. That saves it encrypted with Windows for
 		your account only - it cannot be read on another machine or by another user - and signs you in
 		automatically on the next launch.</li>
-	<li>Sign-in happens once and is renewed automatically when the session expires. You are not asked again mid-session.</li>
-	<li>Decline the prompt and Site Scope simply stays empty - it never re-asks on its own, including on its timer.</li>
+	<li>Sign-in happens once and is renewed automatically when the session expires. You are never asked mid-session.</li>
+	<li>With no credentials, or ones that are rejected, the card says <em>Needs credentials</em> and stays that way -
+		its timer does not retry them - until you save working ones on Profile.</li>
 </ul>
 <div class="cc-help-callout">
 	<strong>Site Scope is behind the VPN.</strong>
@@ -333,6 +334,6 @@ Failures &#183; 1 failure"><span class="sm-alerts">
 	The page carries a stamp of its own, but reading it appears to be what makes it update - ours and its are always the
 	same moment - so only one of the two is shown.</p>
 <p>Site Scope is not scoped to the selected site. The source page reports every company at once, so switching sites in
-	the toolbar changes nothing here.</p>
+	the app bar changes nothing here.</p>
 
 

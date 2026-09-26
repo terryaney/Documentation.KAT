@@ -10,21 +10,19 @@
 <div class="tfs-release cc-help-demo cc-reduce-2">
 	<div class="wi-bar">
 		<div class="wi-bar-row1">
-			<div class="wi-bar-label">Work Items</div>
-			<input type="text" class="cc-input wi-task-input cc-help-highlight" placeholder="lookup task" autocomplete="off" onkeydown="event.preventDefault()" />
+			<div class="wi-bar-title">
+				<div class="wi-bar-label">Work Items</div>
+				<button class="cc-help-link" type="button" title="Open Work Items Help" aria-label="Open Work Items Help">?</button>
+			</div>
 			<div class="wi-bar-primary-actions">
+				<input type="text" class="cc-input wi-task-input cc-help-highlight" placeholder="Task ID Search" autocomplete="off" onkeydown="event.preventDefault()" />
 				<button class="cc-button cc-button--icon wi-task-lookup-btn" type="button" title="Look up task">
 					<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
 						<circle cx="6.5" cy="6.5" r="4.5"></circle>
 						<path d="M10 10l3.5 3.5"></path>
 					</svg>
 				</button>
-				<button class="cc-button cc-button--icon cc-button--accent wi-add-btn" type="button" title="Add Query">
-					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-						<path d="M8 2.5v11M2.5 8h11"></path>
-					</svg>
-				</button>
-				<button class="cc-button cc-button--icon cc-button--accent wi-help-btn" type="button" title="Open Work Items Help" aria-label="Open Work Items Help">?</button>
+				<button class="cc-button wi-create-btn" type="button" title="Create a new work item">Create New<span class="wi-create-chev">▼</span></button>
 			</div>
 			<div class="wi-bar-row1-right">
 				<button class="cc-button cc-button--icon cc-button--sm cc-refresh" type="button" title="Refresh all work item queries">↻</button>
@@ -34,109 +32,183 @@
 	</div>
 </div>
 <ol class="cc-help-workflow">
-	<li>Enter a positive numeric ID in <strong>lookup task</strong>.</li>
+	<li>Enter a positive numeric ID in <strong>Task ID Search</strong>.</li>
 	<li>Press Enter or click the magnifying glass.</li>
 	<li>Review description, fields, history, attachments, and actions in the <a href="#/work-items/work-item-detail">Work Item Detail</a> viewer.</li>
 </ol>
 
 <h2 id="create-queries">Creating Queries Views</h2>
-<p>Follow the steps below to link TFS queries to KAT Command Center.</p>
+	<p>Follow the steps below to link TFS queries to KAT Command Center. Queries are added, edited and removed on the <strong>Work Items</strong> page of <a href="#/settings">Settings</a>.</p>
 
-<div class="tfs-release cc-help-demo cc-reduce-2">
-	<div class="wi-bar">
-		<div class="wi-bar-row1">
-			<div class="wi-bar-label">Work Items</div>
-			<input type="text" class="cc-input wi-task-input" placeholder="lookup task" autocomplete="off" onkeydown="event.preventDefault()" />
-			<div class="wi-bar-primary-actions">
-				<button class="cc-button cc-button--icon wi-task-lookup-btn" type="button" title="Look up task">
-					<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-						<circle cx="6.5" cy="6.5" r="4.5"></circle>
-						<path d="M10 10l3.5 3.5"></path>
-					</svg>
-				</button>
-				<button class="cc-button cc-button--icon cc-button--accent wi-add-btn cc-help-highlight" type="button" title="Add Query">
-					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-						<path d="M8 2.5v11M2.5 8h11"></path>
-					</svg>
-				</button>
-				<button class="cc-button cc-button--icon cc-button--accent wi-help-btn" type="button" title="Open Work Items Help" aria-label="Open Work Items Help">?</button>
+<div class="tfs-release cc-help-demo cc-reduce-4">
+	<div class="cc-modal-panel ccs-panel" style="width: 100%; height: 400px;">
+		<aside class="ccs-rail">
+			<div class="ccs-brand">
+				<img src="media/app-icon.png" alt="">
+				<div class="ccs-brand-text">
+					<span class="ccs-brand-name">KAT Command Center</span>
+					<span class="ccs-version">Version 1.4.0</span>
+				</div>
 			</div>
-			<div class="wi-bar-row1-right">
-				<button class="cc-button cc-button--icon cc-button--sm cc-refresh" type="button" title="Refresh all work item queries">↻</button>
+			<nav class="ccs-nav" aria-label="Settings pages">
+				<button type="button" class="cc-button ccs-nav-item">
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="5.5" r="2.75"/><path d="M2.75 14c.6-2.9 2.6-4.25 5.25-4.25S12.65 11.1 13.25 14"/></svg>
+					<span>Profile</span>
+				</button>
+				<button type="button" class="cc-button ccs-nav-item">
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.75" y="2.25" width="12.5" height="8.5" rx="1.5"/><path d="M5 13.75h6M8 10.75v3"/></svg>
+					<span>Display</span>
+				</button>
+				<button type="button" class="cc-button ccs-nav-item" aria-current="page">
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.25" y="2.25" width="11.5" height="11.5" rx="2"/><path d="M5 6h6M5 8.5h6M5 11h3.5"/></svg>
+					<span>Work Items</span>
+				</button>
+				<button type="button" class="cc-button ccs-nav-item">
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 10 10 6M7 4.5l1.25-1.25a2.65 2.65 0 0 1 3.75 3.75L10.75 8.25M9 11.5l-1.25 1.25a2.65 2.65 0 0 1-3.75-3.75L5.25 7.75"/></svg>
+					<span>Connections</span>
+				</button>
+			</nav>
+			<div class="ccs-rail-foot">
+				<button type="button" class="cc-button cc-button--link">Check for updates</button>
+				<button type="button" class="cc-button cc-button--link">Open settings file</button>
 			</div>
-		</div>
-		<div class="wi-expanded"></div>
+		</aside>
+		<section class="ccs-main">
+			<header class="ccs-head">
+				<h2>Work Items</h2>
+				<button type="button" class="cc-button cc-button--icon ccs-close" aria-label="Close without saving">
+					<svg width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12"/></svg>
+				</button>
+			</header>
+			<div class="ccs-stage" style="overflow: visible;">
+			<div class="ccs-body" style="overflow: visible; padding-top: 4px;">
+				<div class="ccs-section">
+					<div class="ccs-section-head ccs-section-head--action">
+						<div>
+							<h3>Queries</h3>
+							<p class="ccs-section-desc">The saved queries on the Work Items card. Adds, edits and removals happen when you save.</p>
+						</div>
+						<button type="button" class="cc-button cc-button--sm ccs-add cc-help-highlight">
+							<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 1.5v9M1.5 6h9"/></svg>Add
+						</button>
+					</div>
+					<div class="ccs-field">
+						<div class="ccs-list">
+							<div class="ccs-list-row"><span class="ccs-list-name"><span class="ccs-list-label">My To Do's</span></span><span class="ccs-list-actions"><button type="button" class="cc-button cc-button--sm">Edit</button><button type="button" class="cc-button cc-button--sm cc-button--danger">Remove</button></span></div>
+							<div class="ccs-list-row is-modified"><span class="ccs-list-name"><span class="ccs-list-label">Recent Tasks</span><span class="ccs-dirty" role="img" aria-label="Changed, not saved yet" title="Changed. Applied when you save."></span></span><span class="ccs-list-actions"><button type="button" class="cc-button cc-button--sm" title="Undo these edits">Undo</button><button type="button" class="cc-button cc-button--sm">Edit</button><button type="button" class="cc-button cc-button--sm cc-button--danger">Remove</button></span></div>
+							<div class="ccs-list-row is-removed"><span class="ccs-list-name"><span class="ccs-list-label">Spec Sheets</span></span><span class="ccs-list-actions"><button type="button" class="cc-button cc-button--sm">Undo</button></span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="ccs-foot">
+				<div class="ccs-foot-msg"></div>
+				<div class="ccs-foot-actions">
+					<button type="button" class="cc-button">Cancel</button>
+					<button type="button" class="cc-button cc-button--success">Save</button>
+				</div>
+			</div>
+		</section>
 	</div>
 </div>
 <ol class="cc-help-workflow">
 	<li>Visit <a href="https://tfs.acsgs.com/tfs/PDSI/HRS2/KAT%20Team/_workitems" target="_blank" rel="noopener">TFS Work Items</a>.</li>
 	<li>Create a new query or select existing query under 'My Queries' (or select existing under 'KAT Queries')</li>
 	<li>After selecting a query, the address will be something like <code>.../_workitems?id=00000000-0000-0000-0000-000000000001&_a=query</code>.	Copy the query ID (i.e. <code>00000000-0000-0000-0000-000000000001</code>).</li>
-	<li>In KAT Command Center, click the add query button (shown above).</li>
-	<li>Fill in the configuration shown below and save it</li>
+	<li>In KAT Command Center, open Settings with the profile button in the app bar, choose <strong>Work Items</strong>, and click <strong>Add</strong> above the <strong>Queries</strong> list (shown above).</li>
+	<li>Fill in the configuration shown below, then press the footer's <em>Save</em> to put the query in the list.</li>
+	<li>Press <em>Save</em> again to save Settings. The new chip appears on the Work Items bar without a refresh.</li>
 </ol>
 
-<div id="add-query-help" class="cc-help-config-grid">
-	<div class="tfs-release cc-help-demo cc-reduce-3">
-		<div class="cc-modal-panel modal-add">
-			<h3>Add Query</h3>
-			<div class="cc-field">
-				<label class="cc-label">Query ID</label>
-				<input class="cc-input" type="text" placeholder="Query ID From Url" onkeydown="event.preventDefault()">
-			</div>
-			<div class="cc-field">
-				<label class="cc-label">Name</label>
-				<input class="cc-input" type="text" placeholder="Chip display name" onkeydown="event.preventDefault()">
-			</div>
-			<div class="field-row field-row--2">
-				<div class="cc-field">
-					<label class="cc-label">Severity Threshold</label>
-					<input class="cc-input" type="text" inputmode="numeric" placeholder="count" onkeydown="event.preventDefault()">
-				</div>
-				<div class="cc-field">
-					<label class="cc-label">Priority Threshold</label>
-					<input class="cc-input" type="text" inputmode="numeric" placeholder="count" onkeydown="event.preventDefault()">
+<div id="add-query-help" class="tfs-release cc-help-demo cc-reduce-4">
+	<div class="cc-modal-panel ccs-panel" style="width: 100%; height: 560px;">
+		<aside class="ccs-rail">
+			<div class="ccs-brand">
+				<img src="media/app-icon.png" alt="">
+				<div class="ccs-brand-text">
+					<span class="ccs-brand-name">KAT Command Center</span>
+					<span class="ccs-version">Version 1.4.0</span>
 				</div>
 			</div>
-			<div class="field-row field-row--2">
-				<div class="cc-field">
-					<label class="cc-label">Old Threshold</label>
-					<input class="cc-input" type="text" inputmode="numeric" placeholder="days" onkeydown="event.preventDefault()">
-				</div>
-				<div class="cc-field">
-					<label class="cc-label">Active Within</label>
-					<input class="cc-input" type="text" inputmode="numeric" placeholder="days" onkeydown="event.preventDefault()">
+			<nav class="ccs-nav" aria-label="Settings pages">
+				<button type="button" class="cc-button ccs-nav-item">
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="5.5" r="2.75"/><path d="M2.75 14c.6-2.9 2.6-4.25 5.25-4.25S12.65 11.1 13.25 14"/></svg>
+					<span>Profile</span>
+				</button>
+				<button type="button" class="cc-button ccs-nav-item">
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.75" y="2.25" width="12.5" height="8.5" rx="1.5"/><path d="M5 13.75h6M8 10.75v3"/></svg>
+					<span>Display</span>
+				</button>
+				<button type="button" class="cc-button ccs-nav-item" aria-current="page">
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.25" y="2.25" width="11.5" height="11.5" rx="2"/><path d="M5 6h6M5 8.5h6M5 11h3.5"/></svg>
+					<span>Work Items</span>
+				</button>
+				<button type="button" class="cc-button ccs-nav-item">
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 10 10 6M7 4.5l1.25-1.25a2.65 2.65 0 0 1 3.75 3.75L10.75 8.25M9 11.5l-1.25 1.25a2.65 2.65 0 0 1-3.75-3.75L5.25 7.75"/></svg>
+					<span>Connections</span>
+				</button>
+			</nav>
+			<div class="ccs-rail-foot">
+				<button type="button" class="cc-button cc-button--link">Check for updates</button>
+				<button type="button" class="cc-button cc-button--link">Open settings file</button>
+			</div>
+		</aside>
+		<section class="ccs-main">
+			<header class="ccs-head">
+				<h2><span class="ccs-crumb">Work Items</span><svg class="ccs-crumb-sep" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3.5 4.5 4.5L6 12.5"/></svg><span class="ccs-crumb-here">Edit Query</span><button type="button" class="cc-help-link" title="Query configuration help" aria-label="Query configuration help">?</button></h2>
+				<button type="button" class="cc-button cc-button--icon ccs-close" aria-label="Close without saving">
+					<svg width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12"/></svg>
+				</button>
+			</header>
+			<div class="ccs-stage">
+				<div class="ccs-pane">
+					<div class="ccs-pane-body">
+						<div class="ccs-section">
+							<div class="ccs-field">
+								<label>Query ID</label>
+								<input type="text" class="cc-input ccs-mono" value="00000000-0000-0000-0000-000000000001" onkeydown="event.preventDefault()">
+							</div>
+							<div class="ccs-field">
+								<label>Name</label>
+								<input type="text" class="cc-input" value="My To Do's" onkeydown="event.preventDefault()">
+							</div>
+						</div>
+						<div class="ccs-section">
+							<h3>Indicators</h3>
+							<p class="ccs-section-desc">What the chip counts and colors. Leave any of these blank to turn it off.</p>
+							<div class="ccs-grid">
+								<div class="ccs-field"><label>Severity threshold</label><input type="text" inputmode="numeric" class="cc-input" placeholder="count" onkeydown="event.preventDefault()"></div>
+								<div class="ccs-field"><label>Priority threshold</label><input type="text" inputmode="numeric" class="cc-input" value="3" placeholder="count" onkeydown="event.preventDefault()"></div>
+							</div>
+							<div class="ccs-grid">
+								<div class="ccs-field"><label>Old threshold</label><input type="text" inputmode="numeric" class="cc-input" value="30" placeholder="days" onkeydown="event.preventDefault()"></div>
+								<div class="ccs-field"><label>Active within</label><input type="text" inputmode="numeric" class="cc-input" placeholder="days" onkeydown="event.preventDefault()"></div>
+							</div>
+							<div class="ccs-field">
+								<label class="cc-check"><input type="checkbox" checked onclick="event.preventDefault()" tabindex="-1"><span>Show tag counts</span></label>
+							</div>
+							<div class="ccs-field">
+								<label class="cc-check"><input type="checkbox" checked onclick="event.preventDefault()" tabindex="-1"><span>Hide chip when no work items present</span></label>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<label class="cc-check"><input type="checkbox" onclick="event.preventDefault()" tabindex="-1">Show Tag Counts</label>
-			<div class="modal-actions">
-				<button class="cc-button" type="button">Cancel</button>
-				<button class="cc-button cc-button--success" type="button">Save</button>
+			<div class="ccs-foot">
+				<div class="ccs-foot-msg"></div>
+				<div class="ccs-foot-actions">
+					<span class="ccs-foot-scope">Query Edits</span>
+					<button type="button" class="cc-button">Cancel</button>
+					<button type="button" class="cc-button cc-button--success">Save</button>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="cc-help-config-notes">
-		<div class="cc-help-config-note"><strong>Query ID and Name</strong><div>Use the saved TFS query ID from its URL and choose the label shown on the chip.</div></div>
-		<div class="cc-help-config-note"><strong>Severity Threshold</strong><div>When combined total of Critical and High counts are greater than threshhold, indicators are colored as <span class="over-threshold">⊗ Critical Count</span> and <span class="over-threshold-orange">⚠ High Count</span>. Clear to hide severity indicators.</div></div>
-		<div class="cc-help-config-note"><strong>Priority Threshold</strong><div>When combined Priority 1 and 2 counts are greater than threshhold, indicators are colored as <span class="over-threshold">‼ Priority 1 Count</span> and <span class="over-threshold-orange">! Priority 2 Count</span>. Clear to hide priority indicators.</div></div>
-		<div class="cc-help-config-note"><strong>Old Threshold</strong><div>Counts items unchanged for more than this many days and displays as <span class="over-threshold-orange">⟳ Old Count</span>. Clear to hide.</div></div>
-		<div class="cc-help-config-note"><strong>Active Within</strong><div>When greater than <code>0</code>, filters query results to items <em>you</em> revised within that many days. Clear to show all.</div><div>A TFS query can only ask about an item's <em>latest</em> revision (<code>Changed Date</code>, <code>Changed By = @Me</code>), so it can't answer "did I touch this in the last N days" - an item you worked yesterday drops out the moment someone else edits it, and an item you never touched shows up because you happened to be the last one in. Active Within instead reads each item's full revision history and keeps the item if <em>any</em> revision in the window is yours.</div><div>That accuracy costs one extra API call per item in the query. Every query makes that call eventually - it is the same read that fills in comments for the filter - but for the others it happens in the background <em>after</em> the grid is on screen, while this setting has to wait for it before the grid can be drawn at all. Answers are cached per item and reused until the item's changed date moves, which makes repeat refreshes nearly free, but the first run on a large query is noticeably slower - leave it clear unless the query is one you filter down this way. The chip's severity, priority, old, and tag counts are all computed <em>after</em> this filter, so they describe your active items rather than the whole query.</div></div>
-		<div class="cc-help-config-note"><strong>Show Tag Counts</strong><div>Shows <code>KAT-</code> prefixed tag totals above the grid and lets those tags filter rows (useful to turn off when the majority of result rows have unique tags).</div></div>
+		</section>
 	</div>
 </div>
-
-<div class="cc-help-callout">
-	<strong>Editing Query Configuration</strong>
-	<div style="padding: 10px 14px; margin-top: 10px; display: flex; align-items: center; gap: 10px; background: #171c27; border: 1px solid #232838; border-radius: 6px;">
-		<span style="font-family: 'Segoe MDL2 Assets'; font-size: 20px; color: #7c8394;" title="Switch theme">&#xE706;</span>
-		<span style="font-family: 'Segoe UI'; font-size: 18px; font-weight: 800; color: #7c8394;" title="Open Help">?</span>
-		<span class="cc-help-highlight" style="font-family: 'Segoe MDL2 Assets'; font-size: 20px; color: #7c8394; padding: 4px 8px; border-radius: 4px;" title="Edit configuration in VS Code">&#xE70F;</span>
-		<span style="font-family: 'Segoe MDL2 Assets'; font-size: 20px; color: #7c8394;" title="Sign in to KAT DataStore">&#xE77B;</span>
-	</div>
-
-	The pencil in the top toolbar, just before the sign-in icon, opens the settings file in VS Code for direct editing; for normal add/edit work, use the pencil inside the query results to access the dialog above.
-</div>
-
+<p>While the pane is open, the footer's <em>Cancel</em> and <em>Save</em> act on this one query - the <em>Query Edits</em> label above them says so.</p>
+<p>To change a query later, press <em>Edit</em> on its row. No query edits, additions, or deletions are saved until you press <em>Save</em>, and <em>Cancel</em> discards all of it.</p>
+<p><a href="#/settings/all-settings">See Settings</a> for all available settings.</p>
 
 <h2 id="query-results">View Query Results</h2>
 <p>Toggle a query chip to view, filter, and sort query results.</p>
@@ -144,21 +216,19 @@
 <div class="tfs-release cc-help-demo cc-reduce-3">
 	<div class="wi-bar">
 		<div class="wi-bar-row1">
-			<div class="wi-bar-label">Work Items</div>
-			<input type="text" class="cc-input wi-task-input" placeholder="lookup task" autocomplete="off" onkeydown="event.preventDefault()" />
+			<div class="wi-bar-title">
+				<div class="wi-bar-label">Work Items</div>
+				<button class="cc-help-link" type="button" title="Open Work Items Help" aria-label="Open Work Items Help">?</button>
+			</div>
 			<div class="wi-bar-primary-actions">
+				<input type="text" class="cc-input wi-task-input" placeholder="Task ID Search" autocomplete="off" onkeydown="event.preventDefault()" />
 				<button class="cc-button cc-button--icon wi-task-lookup-btn" type="button" title="Look up task">
 					<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
 						<circle cx="6.5" cy="6.5" r="4.5"></circle>
 						<path d="M10 10l3.5 3.5"></path>
 					</svg>
 				</button>
-				<button class="cc-button cc-button--icon cc-button--accent wi-add-btn" type="button" title="Add Query">
-					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-						<path d="M8 2.5v11M2.5 8h11"></path>
-					</svg>
-				</button>
-				<button class="cc-button cc-button--icon cc-button--accent wi-help-btn" type="button" title="Open Work Items Help" aria-label="Open Work Items Help">?</button>
+				<button class="cc-button wi-create-btn" type="button" title="Create a new work item">Create New<span class="wi-create-chev">▼</span></button>
 			</div>
 			<div class="wi-bar-row1-right">
 				<span class="cc-refreshed">refreshed 18:59:08 · 2.43s · 39 calls</span>
@@ -174,30 +244,20 @@
 		</div>
 		<div class="wi-expanded visible">
 			<div class="actions-toolbar">
-				<button class="cc-button cc-button--icon cc-button--round action-btn" title="Edit">✎</button>
-				<button class="cc-button cc-button--icon cc-button--round action-btn delete" title="Remove">
-					<svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true">
-						<path d="M3.5 4.5h9"></path>
-						<path d="M6 2.5h4l.5 2h-5z"></path>
-						<path d="M5 4.5l.5 9h5l.5-9"></path>
-						<path d="M7 7v4M9 7v4"></path>
-					</svg>
-				</button>
-				<div class="remove-confirm">Remove? <button class="cc-button cc-button--danger cc-button--sm confirm-yes">Yes</button> <button class="cc-button cc-button--sm confirm-no">Cancel</button></div>
-				<input type="text" class="cc-input wi-filter-search" placeholder="Filter work items…" onkeydown="event.preventDefault()">
+				<input type="text" class="cc-input wi-filter-search" placeholder="Filter My To Do&#39;s items…" onkeydown="event.preventDefault()">
 				<div class="tag-summary">
 					<span class="cc-chip cc-chip--interactive tag-chip">KAT Management <span class="tag-count">1</span></span>
 					<span class="cc-chip cc-chip--interactive tag-chip">KAT Nexgen Core <span class="tag-count">1</span></span>
 					<span class="cc-chip cc-chip--interactive tag-chip">KAT Nexgen SAMPLE <span class="tag-count">1</span></span>
 				</div>
-				<button class="cc-button cc-button--icon cc-button--round action-btn triage" title="Return triaged tasks to assigners">
+				<button class="cc-button cc-button--icon cc-button--round action-btn triage" title="Return Triaged tasks">
 					<svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M6 3.5L2.5 7 6 10.5"></path>
 						<path d="M2.5 7h6.5a4 4 0 0 1 4 4v1.5"></path>
 					</svg>
 				</button>
 				<a class="cc-button cc-button--icon cc-button--round action-btn tfs-link" title="View Query In TFS" href="#" target="_blank" onclick="return false;"><span class="doc-icon doc-icon--tfs" aria-hidden="true"></span></a>
-				<button class="cc-button cc-button--icon cc-button--round refresh-btn" title="Refresh">↻</button>
+				<button class="cc-button cc-button--icon cc-button--round refresh-btn" title="Refresh this query (Ctrl+Shift+Q)">↻</button>
 			</div>
 			<div class="wi-table-wrap">
 				<table class="cc-table wi-table">
@@ -295,64 +355,22 @@
 </div>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>Query results pane has action bar for refresh, view in TFS, return triaged tasks to assigners, edit configuration, and delete</li>
+	<li>Query results pane has action bar for refresh, view in TFS, and Return Triaged tasks. The query itself is edited or removed in Settings - see <a href="#/work-items/add-query-help">Creating Queries Views</a></li>
 	<li>The reply icon acts on many rows at once - see <em>Return Tasks</em> below</li>
-	<li>Refresh every query at once with the ↻ button on the bar, or <code>Ctrl+Shift+W</code> from anywhere in the app</li>
+	<li>Refresh every query at once with the ↻ button on the bar, or just the open query with the ↻ at the end of its action bar. Both have shortcuts, listed under <a href="#/keyboard-shortcuts/app-refresh">Keyboard Shortcuts</a></li>
+	<li>A query set to <strong>Hide chip when no work items present</strong> has no chip while it is empty. If every query is empty, the row of chips goes too</li>
 	<li>Clickable tag count chips to filter list; each row shows its own tags as one chip beside the title</li>
 	<li><strong>Assigned By</strong> names whoever handed the item over - the owner before the current one, or the person who created it if it was never reassigned. It is the column that answers "who is waiting on me for this".</li>
 	<li>Quick filter box at the left of the action bar - a case-insensitive <em>contains</em> match across the title, description, tags, assignee, assigned by, and comments. It stacks with the tag chips rather than replacing them, so you can narrow by tag and then by words. A count under the last row says how many of the query's items are showing. It survives a refresh and clears when you switch queries.</li>
 	<li>Descriptions and comments are not in the original query - they are fetched in the background once the grid is on screen. While that is still running, typing in the filter shows a note saying which fields are not being searched yet. It goes away on its own as the data lands.</li>
 	<li><strong>Toggling to a chip re-runs that query.</strong> The grid paints instantly from what was already fetched, then corrects itself a moment later, so what you open is what the query says right now.</li>
 	<li>When a query changes <em>while you are looking at it</em> - you refreshed, or the rolling background re-check found something - the grid animates rather than jumping: a row that has left fades out, and a new row fades in and then flashes its border. <strong>Rows being animated cannot be clicked</strong> - wait for the animation to finish. Chip counts update either way, so a query you are <em>not</em> looking at still tells you something happened.</li>
-	<li>Opening a work item you have opened before is instant. The first open has to fetch the formatted description and full discussion, which the grid does not carry.</li>
-	<li>Either way the modal reconciles against the server after it opens. If something you were already looking at has since changed, the new value replaces it and a note appears in the header banner - dismiss it with the X or leave it, it clears itself after three seconds. Nothing is announced on a first open, because there was nothing on screen to be wrong.</li>
+	<li>Context menu for direct actions on specific work item</li>
 	<li>'Click to copy' work item IDs to easily share/commit</li>
 	<li>Sort data by clicking column headings</li>
 	<li>Clickable title to open work item detail</li>
-	<li>Context menu for direct actions on specific work item</li>
-	<li>Keyboard navigation over the rows - see <em>Keyboard navigation</em> below</li>
+	<li>Keyboard navigation over the rows - see <a href="#/keyboard-shortcuts/work-items-grid">Keyboard Shortcuts</a></li>
 </ol>
-
-<h2 id="keyboard">Keyboard navigation</h2>
-<p>With a query open, the grid can be driven from the keyboard without reaching for the mouse. The keys match GitHub's, so they should already be in your fingers. They also work when focus has landed on the window's own toolbar rather than the page - after clicking <strong>Refresh</strong>, for instance - so you don't have to click back into the grid first. The exception is when you are typing in a box or a drop-down, where a letter means what it always means.</p>
-<table class="cc-help-table">
-	<thead>
-		<tr><th>Key</th><th>Does</th></tr>
-	</thead>
-	<tbody>
-		<tr><td><code>j</code></td><td>Move down one row, wrapping from the last row back to the first. With nothing selected yet, selects the first row.</td></tr>
-		<tr><td><code>k</code></td><td>Move up one row, wrapping from the first row round to the last. With nothing selected yet, selects the last row.</td></tr>
-		<tr><td><code>o</code></td><td>Open the selected row's work item detail - the same thing clicking its title does. Does nothing when no row is selected.</td></tr>
-		<tr><td><code>c</code></td><td>Open <strong>Add Comment</strong> against the selected row.</td></tr>
-		<tr><td><code>r</code></td><td>Open <strong>Return Task</strong> against the selected row.</td></tr>
-		<tr><td><code>t</code></td><td>Open <strong>Triage</strong> against the selected row.</td></tr>
-		<tr><td><code>x</code></td><td>Open <strong>Close Task</strong> with State set to Closed. Available on every work-item type, including from the row's right-click menu.</td></tr>
-		<tr><td><code>Space</code></td><td>Tick or untick the selected row's checkbox while a batch flow is open - see <em>Return Tasks</em> below. Stays the browser's page-scroll key at every other time.</td></tr>
-		<tr><td><code>Esc</code></td><td>Clear the selection. Only when no modal is open; while one is, Escape closes that instead.</td></tr>
-	</tbody>
-</table>
-<p>The selected row is marked with a violet bar down its left edge - the first row of the grid under <em>View Query Results</em> shows it. The first keypress scrolls the query results into view if they had been scrolled past, and the grid keeps the selected row on screen as you move.</p>
-<p>Only rows you can actually see are visited, so the tag chips and the quick filter box narrow what <code>j</code> and <code>k</code> walk through. Sorting keeps your selection on the row you picked - it just moves with it. Switching or refreshing a query clears the selection, as does narrowing the rows.</p>
-<p><code>o</code>, <code>c</code>, <code>r</code>, <code>t</code> and <code>x</code> are shown in the row's right-click menu, so the menu is also where you find them.</p>
-<p><code>c</code>, <code>r</code> and <code>t</code> keep working with a work item open: from the
-	<a href="#/work-items/work-item-detail">Work Item Detail</a>
-	window they act on the item you are reading, which is the same thing its three header buttons do. They stop there — once a comment modal is up, the letters are just letters again.</p>
-<p><code>x</code> also opens <strong>Close Task</strong> for the item in the detail window. Like the other action keys, it works when focus is on the WPF toolbar and is ignored while typing or while another modal is open.</p>
-<p>That window adds three letters of its own, for the header buttons that only read:</p>
-<table class="cc-help-table">
-	<thead>
-		<tr><th>Key</th><th>Does</th></tr>
-	</thead>
-	<tbody>
-		<tr><td><code>i</code></td><td>Copy the work item <strong>ID</strong> - the same thing clicking <code>#1234</code> in the header does.</td></tr>
-		<tr><td><code>v</code></td><td><strong>View in TFS</strong> - opens the item in your browser.</td></tr>
-		<tr><td><code>s</code></td><td><strong>Share</strong> - copies a link to the item.</td></tr>
-	</tbody>
-</table>
-<p>Each one presses the button itself, so the <em>Copied</em> confirmation appears on the button you would have clicked. They follow the same rule as <code>c</code>, <code>r</code> and <code>t</code>: not while you are typing in a field, and not once a comment modal has opened over the top. All six also work when focus is still on the window's own toolbar — opening an item with <code>o</code> leaves it there, so you never have to click into the item first.</p>
-<p>The keys are ignored while you are typing in a field and while any modal is open, so they never fire in the middle of a comment.</p>
-<p>Inside a comment modal there is one key of its own: <code>Ctrl+Enter</code> presses <strong>OK</strong>, from any field, including in the batch Return Task modal. It does nothing until you turn on <em>Submit on Ctrl+Enter</em> in
-	<a href="#/start-here/settings">Settings</a> — off by default, because a comment box is somewhere you type freely and a chord that submits from inside one should be something you asked for.</p>
 
 <h2 id="work-item-detail">Work Item Detail</h2>
 <p>Work Item detail displays all item categorization details, description, comment history and access to download attachments. If an item has a client KAT tag but is not itself tagged <strong>KAT Spec Sheet</strong>, matching spec sheet attachments are shown in a separate row.</p>
@@ -452,12 +470,11 @@ return x + y;</code></pre></div>
 </div>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
+	<li>'Click to copy' ID to easily share or use in commit comment</li>
+	<li>'Click to copy' Title to easily use in messages/emails</li>
 	<li>Header action bar provides access to view on TFS, direct link sharing via 'Click to copy', and the three comment variants - <em>Triage</em>, <em>Return Task</em>, and a plain <em>Add Comment</em>.</li>
-	<li>'Click to copy' ID to easily share/commit</li>
 	<li>Attachment chips enable file download</li>
-	<li>Clickable title to open work item detail</li>
-	<li>Context menu for direct actions on specific work item</li>
-	<li>Header actions from the keyboard: <code>i</code> copies the ID, <code>v</code> views in TFS, <code>s</code> copies the share link, and <code>c</code>, <code>r</code>, <code>t</code> open the three comment variants - see <em>Keyboard navigation</em> above</li>
+	<li>Header actions from the keyboard: <code>i</code> copies the ID, <code>v</code> views in TFS, <code>s</code> copies the share link, and <code>c</code>, <code>r</code>, <code>t</code> open the three comment variants - see <a href="#/keyboard-shortcuts/work-item-detail">Keyboard Shortcuts</a></li>
 	<li>Tabs appear only for the panels that have something in them, and the first one with content is the one you land on. An item with no description and no discussion opens straight on <em>Links</em>; one with no links has no tab strip at all. Adding a comment to an item that had no <em>Details</em> tab brings it back and switches to it.</li>
 </ol>
 
@@ -467,7 +484,7 @@ return x + y;</code></pre></div>
 	State even when you enter a comment. Selecting the current assignee is not a reassignment.</p>
 <p>The field order is full-width Reassign To, then Comment, then State and Triage side by side.
 	The same modal has four variants; Close Task is available from the row's right-click menu
-	or <code>x</code>, and the other three also have detail-header buttons:</p>
+	or <a href="#/keyboard-shortcuts/work-items-grid"><code>x</code></a>, and the other three also have detail-header buttons:</p>
 <table class="cc-help-table">
 	<thead>
 		<tr><th>Opened as</th><th>State</th><th>Triage</th><th>Reassign To</th><th>Comment</th></tr>
@@ -480,15 +497,13 @@ return x + y;</code></pre></div>
 	</tbody>
 </table>
 <p>The four comment defaults are yours to set in
-	<a href="#/start-here/settings">Settings</a> - the pencil in
+	<a href="#/settings">Settings</a>, on its Work Items page - the profile button in
 	the app header. They are blank until you set them. State and Triage are written only when you change them from
 	what the item already has, so a prefill that matches costs no revision, and a blank one never
 	clears a value. An unrecognized current State falls back to leave unchanged. <em>Previous owner</em> means whoever owned the item before its current owner -
 	the person who handed it over - falling back to its creator when it has never changed hands, and
 	suggesting nobody when that would be you.</p>
-<p><code>Ctrl+Enter</code> presses <strong>OK</strong> from any field in this modal once
-	<em>Submit on Ctrl+Enter</em> is turned on in
-	<a href="#/start-here/settings">Settings</a>.</p>
+	<p><a href="#/keyboard-shortcuts/comment-modals"><code>Ctrl+Enter</code></a> presses <strong>OK</strong> from any field in this modal once <em>Submit comment dialogs with Ctrl+Enter</em> is turned on in <a href="#/settings">Settings</a>.</p>
 <div class="tfs-release cc-help-demo cc-reduce-4">
 	<div class="cc-modal-panel cc-modal--lg modal-comment">
 		<h3>Return Task</h3>
@@ -543,39 +558,14 @@ return x + y;</code></pre></div>
 	<li>Raw HTML is not permitted and encoded as literal text.</li>
 </ol>
 
-<div class="cc-callout cc-callout--info">
-<h3 id="state-transitions">Supported State Transitions</h3>
-<ul>
-	<li><strong>Bug:</strong> Proposed to Active or Closed; Active to Proposed or Resolved; Resolved to Active or Closed; Closed to Active.</li>
-	<li><strong>Task:</strong> Proposed to Active or Closed; Active to Proposed, Resolved, or Closed; Resolved to Active or Closed; Closed to Active or Proposed.</li>
-	<li><strong>Feature:</strong> Proposed to Active, Closed, or Resolved; Active to Proposed, Resolved, or Closed; Resolved to Active or Closed; Closed to Active.</li>
-	<li><strong>Requirement:</strong> Proposed to Active, Closed, or Resolved; Active to Proposed, Resolved, or Closed; Resolved to Active or Closed; Closed to Active.</li>
-</ul>
-<p>Feature and Requirement's Proposed to Resolved transition passed validation but is not advertised
-	in TFS metadata. Other transitions follow the type metadata; individual item rules may still
-	reject a change. No intermediate saves are attempted after arbitrary errors.</p>
-<p>Choosing Closed for an Active Bug automatically saves <strong>Resolved, then Closed</strong>,
-	in any comment-modal variant. Comment, reassignment, and Triage go only in the final save.
-	These are two revisions, not an atomic update. If closing fails, the modal stays open with
-	your inputs retained and the last confirmed State updates to Resolved. Retry skips that
-	already-completed transition. A timeout may mean the final save landed without confirmation;
-	check TFS before retrying if the outcome is uncertain. State changes guard against a changed
-	State or type on the server and are not automatically retried.</p>
-<p>Closing a Proposed item sets its Reason to <strong>Rejected</strong>. TFS chooses the Reason;
-	the dialog does not override it. For a Task, Active to Closed means
-	<em>Complete and Does Not Require Review/Test</em>; Resolved to Closed means <em>Review/Test Passed</em>.</p>
-</div>
-<p>State accepts Active, Closed, Proposed, and Resolved. Blank or unchanged State creates no
-	State update. In a Close Task dialog this fails validation, even with a comment entered.
-	<code>Alt+S</code> focuses State, alongside <code>Alt+C</code> for Comment,
-	<code>Alt+A</code> for Reassign To, <code>Alt+T</code> for Triage, and <code>Alt+O</code> for OK.</p>
+<div class="cc-help-callout"><strong>Reference note</strong>Detailed state transition rules live in <a href="#/reference-notes/work-item-state-transitions">Reference Notes</a>.</div>
 <p>Comment Markdown supports <code>**bold**</code>, <code>_italics_</code>, <code>__underline__</code>,
 	<code>`inline code`</code>, fenced multiline code blocks, and <code>[anchor](https://example.com)</code>.
 	Raw HTML is shown as text.</p>
 
 <h2 id="send-back">Return Tasks</h2>
 <p>The reply icon puts the grid into select mode: a checkbox appears before every ID, the icon itself is replaced by its confirmation, and the rest of the toolbar keeps working. Only the rows already at <code>Triaged</code> offer a checkbox - the work you just finished - and they go back to whoever handed them over. <em>Yes</em> opens one editable block per ticked item.</p>
-<p>Ticking can be done from the keyboard: <code>j</code> and <code>k</code> move down and up the rows, and <code>Space</code> ticks the one you are on. Rows that are not yet <code>Triaged</code> are still there to read but have no checkbox, so <code>Space</code> does nothing on them. See <em>Keyboard navigation</em> above.</p>
+<p>Ticking can be done from the keyboard: <code>j</code> and <code>k</code> move down and up the rows, and <code>Space</code> ticks the one you are on. Rows that are not yet <code>Triaged</code> are still there to read but have no checkbox, so <code>Space</code> does nothing on them. See <a href="#/keyboard-shortcuts">Keyboard Shortcuts</a>.</p>
 <p>The <em>All</em> box on the confirmation ticks every row currently on offer, and clearing it unticks them. It follows the rows rather than leading them: untick one and it shows the partial (dash) state, tick the last one and it fills in. A tag chip or the quick filter narrows what <em>All</em> speaks for, so it covers the rows you can see.</p>
 <div class="tfs-release cc-help-demo cc-reduce-4">
 	<div class="cc-modal-panel cc-modal--lg modal-comment">
@@ -641,7 +631,7 @@ return x + y;</code></pre></div>
 </div>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>Every field is prefilled: <em>Return To</em> with whoever owned the item before you, Triage with <code>Pending</code>, and the comment with your <em>Default Return Task Comment</em> from <a href="#/start-here/settings">Settings</a> (blank until you set it). Change or clear what doesn't apply.</li>
+	<li>Every field is prefilled: <em>Return To</em> with whoever owned the item before you, Triage with <code>Pending</code>, and the comment with your <em>Default Return Task Comment</em> from <a href="#/settings">Settings</a> (blank until you set it). Change or clear what doesn't apply.</li>
 	<li><em>Return To</em> is the same combobox as the single-item form - that item's own participants first, then your team members, and type to search every identity beyond them.</li>
 	<li><em>Return To</em> comes up blank when there is genuinely nobody to return the item to - you created it, you own it, and it has never changed hands. Pick someone yourself.</li>
 	<li>Only the comment is optional. An item without a <em>Return To</em> blocks the submit and is marked in place.</li>

@@ -7,7 +7,7 @@
 
 <span class="cc-help-anchor-alias" id="reading-status" aria-hidden="true"></span>
 <h2 id="sample-calcengine-pipeline">Sample CalcEngine Pipeline</h2>
-<p>The ↻ button in the card header refreshes this card and its KPI tile, and nothing else. <code>Ctrl+Shift+C</code> does the same from anywhere in the app; on a site with no CalcEngine filter there is no card to refresh, so it does nothing.</p>
+<p>The ↻ button in the card header refreshes this card and its KPI tile, and nothing else. The matching keyboard shortcut is listed under <a href="#/keyboard-shortcuts/app-refresh">Keyboard Shortcuts</a>; on a site with no CalcEngine filter there is no card to refresh, so it does nothing.</p>
 <div class="tfs-release cc-help-demo cc-reduce-5">
 	<details class="detail-card" open="">
 		<summary>
@@ -20,12 +20,6 @@
 			</div>
 		</summary>
 		<div class="ce-wrap">
-			<!--
-			<div class="cc-callout cc-callout--warning ce-callout">
-				<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm-.75 3.75a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0zM7 7h2v5H7V7z"></path></svg>
-				<span>Approvals, promotions, and check-ins are available by clicking the environment chips.</span>
-			</div>
-			-->
 			<div class="ce-filters">
 				<input class="cc-input" type="text" onkeydown="event.preventDefault()" placeholder="Filter by name / checkout...">
 				<select class="cc-input" onchange="this.selectedIndex=0;">
@@ -226,7 +220,7 @@
 	<p>When downloading CalcEngines, by default files are downloaded to your Downloads folder.  You can set the Always Replace and Auto Open settings as you desire.</p>
 	<div><b>Always Replace</b> - Automatically replaces existing files without prompting for new file name.  Default is <code>false</code>.</div>
 	<div><b>Auto Open</b> - Automatically opens the CalcEngine after download in Excel.  Default is <code>false</code>.</div>
-	<p><b>Note:</b> Once these settings are set to <code>true</code>, the only way to reset them is to use the pencil in the first row of the Work Items bar opens the settings file in VS Code for direct editing.</p>
+	<p><b>Note:</b> Once these settings are set to <code>true</code>, the only way to reset them is <em>Open settings file</em> in <a href="#/settings">Settings</a>, which opens the settings file in VS Code for direct editing.</p>
 </div>
 
 <h2 id="filtering">CalcEngine Filter Expressions</h2>

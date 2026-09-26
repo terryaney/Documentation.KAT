@@ -1,0 +1,169 @@
+<header class="cc-help-article-header">
+	<div class="cc-help-eyebrow">Advanced · keyboard reference</div>
+	<h1>Keyboard Shortcuts</h1>
+	<p class="cc-help-lede">Use keyboard shortcuts to refresh high-traffic sections, move through Work Items, and submit comment dialogs without leaving the keyboard.</p>
+</header>
+
+<h2 id="app-refresh">Application refresh shortcuts</h2>
+<p>The refreshes you reach for most often have keys. <code>F5</code> is the app bar's whole-site <strong>Refresh</strong>. The others each do exactly what that section's <span class="cc-help-chip cc-help-muted">↻</span> button does: re-fetch that section and leave every other card alone.</p>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>F5</code></div>
+		<div class="cc-help-legend-copy">Refreshes the <strong>whole site</strong>, the same as the app bar's <strong>Refresh</strong>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Shift+W</code></div>
+		<div class="cc-help-legend-copy">Re-runs every saved <strong>Work Items</strong> query: the chips and the results of whichever queries are open.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Shift+Q</code></div>
+		<div class="cc-help-legend-copy">Re-runs just the <strong>open query</strong>, the same as the <span class="cc-help-chip cc-help-muted">↻</span> at the end of its results' action bar. With no query's results open, it does nothing.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Shift+R</code></div>
+		<div class="cc-help-legend-copy">Refreshes the <strong>Release Pipeline</strong>, the Release Pipeline KPI tile, and Release Differences together, because all three come from one fetch.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Shift+C</code></div>
+		<div class="cc-help-legend-copy">Refreshes the <strong>CalcEngine Pipeline</strong>. On a site with no CalcEngine filter there is no card to refresh, so the key does nothing.</div>
+	</div>
+</div>
+<p>A shortcut is ignored while a dialog is open, so a keystroke cannot re-render rows or a work item you are part-way through acting on. It is also refused with the usual amber message while a cleanup or CalcEngine operation is running.</p>
+<p>The browser's own reload and print keys (<code>Ctrl+R</code>, <code>Ctrl+F5</code>, <code>Shift+F5</code> and <code>Ctrl+P</code>) do nothing: reloading would throw away every card and any open dialog. <code>Ctrl+Shift+R</code> is the Release Pipeline refresh above rather than the browser's hard reload. <code>Ctrl+F</code> still finds text on the page.</p>
+
+<h2 id="app-bar">Application bar</h2>
+<p>The bar across the top of the window has access keys for its site picker, its <strong>Refresh</strong> and its filter boxes. Press and release <code>Alt</code> on its own to underline their letters; press it again, or click anywhere, to hide them. Like the refresh shortcuts, they are ignored while a dialog is open - a dialog uses <code>Alt</code> for its own fields.</p>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Alt+S</code></div>
+		<div class="cc-help-legend-copy">Opens the <strong>site picker</strong> with its search box focused. Type to narrow the list, <code>&uarr;</code>/<code>&darr;</code> (or <code>Page Up</code>/<code>Page Down</code>) to move, <code>Enter</code> to load the highlighted site and <code>Esc</code> to close it without changing anything. With the closed picker focused, typing a letter opens it with that letter already searched.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Alt+R</code></div>
+		<div class="cc-help-legend-copy"><strong>Refresh</strong>, the same as <code>F5</code>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Alt+F</code> / <code>Alt+T</code> / <code>Alt+C</code></div>
+		<div class="cc-help-legend-copy">Focus <strong>From Release #</strong>, <strong>To Release #</strong> or <strong>CalcEngine Filter</strong>, showing the filter row first if it was hidden.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Enter</code></div>
+		<div class="cc-help-legend-copy">In a release box, refreshes the <strong>Release Pipeline</strong> with the new numbers; in <strong>CalcEngine Filter</strong>, refreshes the <strong>CalcEngine Pipeline</strong>. Nothing else is re-fetched.</div>
+	</div>
+</div>
+
+<h2 id="work-items-grid">Work Items grid</h2>
+<p>With a query open, the grid can be driven from the keyboard without reaching for the mouse. The keys match GitHub's, so they should already be in your fingers. They also work when focus is on one of the app bar's buttons - after clicking <strong>Refresh</strong>, for instance - so you do not have to click back into the grid first. The exception is when you are typing in a box, such as the site search or a filter box, where a letter means what it always means.</p>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<div class="cc-help-legend-copy"><b>Navigation</b></div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>j</code></div>
+		<div class="cc-help-legend-copy">Move down one row, wrapping from the last row back to the first. With nothing selected yet, selects the first row.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>k</code></div>
+		<div class="cc-help-legend-copy">Move up one row, wrapping from the first row round to the last. With nothing selected yet, selects the last row.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>o</code></div>
+		<div class="cc-help-legend-copy">Open the selected row's work item detail - the same thing clicking its title does. Does nothing when no row is selected.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Esc</code></div>
+		<div class="cc-help-legend-copy">Unselects the currently selected row.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<div class="cc-help-legend-copy"><b>Actions - Grid focused</b><br/><br/>All actions open 'edit' dialog for a task's <code>Assigned To</code>, <code>Comment</code>, <code>State</code> and <code>Triage</code>.  These same actions are also available on each row's Context Menu.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>c</code></div>
+		<div class="cc-help-legend-copy"><strong>Add Comment</strong> to the selected row.  Defaults: <code>Comment = Default Comment Text</code>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>r</code></div>
+		<div class="cc-help-legend-copy"><strong>Return Task</strong> to previous owner.  Defaults: <code>Triage = Pending</code>, <code>Reassign To = previous owner</code>, <code>Comment = Default Return Task Comment</code>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>t</code></div>
+		<div class="cc-help-legend-copy"><strong>Triage Task</strong>. Defaults: <code>Triage = Triaged</code>, <code>Comment = Default Triage Comment</code>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>x</code></div>
+		<div class="cc-help-legend-copy"><strong>Close Task</strong>. Defaults: <code>State = Closed</code>, <code>Comment = Default Close Task Comment</code>.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<div class="cc-help-legend-copy"><b>Return Triaged Tasks</b></div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Space</code></div>
+		<div class="cc-help-legend-copy">Tick or untick the selected row's checkbox while a batch workflow is active.</div>
+	</div>
+</div>
+
+<h2 id="work-item-detail">Work Item detail</h2>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<div class="cc-help-legend-copy"><b>TFS Actions</b></div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>v</code></div>
+		<div class="cc-help-legend-copy"><strong>View task in TFS</strong> in your default browser.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>i</code></div>
+		<div class="cc-help-legend-copy"><strong>Copies the work item ID</strong> to share or use in git commits.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>s</code></div>
+		<div class="cc-help-legend-copy"><strong>Copies TFS Link</strong> to share with team members.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<div class="cc-help-legend-copy"><b>Task Actions</b></div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>c</code></div>
+		<div class="cc-help-legend-copy"><strong>Add Comment</strong> to the selected row.  Defaults: <code>Comment = Default Comment Text</code>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>r</code></div>
+		<div class="cc-help-legend-copy"><strong>Return Task</strong> to previous owner.  Defaults: <code>Triage = Pending</code>, <code>Reassign To = previous owner</code>, <code>Comment = Default Return Task Comment</code>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>t</code></div>
+		<div class="cc-help-legend-copy"><strong>Triage Task</strong>. Defaults: <code>Triage = Triaged</code>, <code>Comment = Default Triage Comment</code>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>x</code></div>
+		<div class="cc-help-legend-copy"><strong>Close Task</strong>. Defaults: <code>State = Closed</code>, <code>Comment = Default Close Task Comment</code>.</div>
+	</div>
+</div>
+
+<h2 id="comment-modals">Comment modals</h2>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Enter</code></div>
+		<div class="cc-help-legend-copy"><strong>Validates and submits current edits</strong>. To enable this feature, you must turn on <em>Submit comment dialogs with Ctrl+Enter</em> in <a href="#/settings">Settings</a>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><strong>Keyboard Mnemonics</strong></div>
+		<div class="cc-help-legend-copy">Access keys focus the editable fields via <code>Alt+</code> appropriate key.  For example, <code>Alt+C</code> would focus Comment.  Press and hold <code>Alt</code> to underline the hotkey for each field.</div>
+	</div>
+</div>
+
+<h2 id="settings">Settings</h2>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Enter</code></div>
+		<div class="cc-help-legend-copy"><strong>Save</strong> every page, from any box. Always on - it does not depend on the comment dialogs setting. While a query is open for <em>Add</em> or <em>Edit</em>, it saves just that query back to the list instead.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Enter</code></div>
+		<div class="cc-help-legend-copy">In an account's boxes on <strong>Profile</strong>, <strong>signs in to that one account</strong> and leaves <a href="#/settings">Settings</a> open whatever the answer. Anywhere else it does nothing, so it never saves the form.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Esc</code></div>
+		<div class="cc-help-legend-copy"><strong>Close without saving</strong>, restoring the saved themes, color mode and density if you were previewing Display changes. While a query is open for <em>Add</em> or <em>Edit</em>, it drops just that query's changes and returns to the <strong>Work Items</strong> page.</div>
+	</div>
+</div>
