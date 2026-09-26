@@ -694,6 +694,63 @@
 		document.getElementById('diffBaseBlockHelp')?.classList.toggle('hidden', box.checked);
 	});
 
+	// Release Differences demo: repo headers and release chips collapse the rows under them,
+	// matching the app's own delegated handler.
+	document.addEventListener('click', event => {
+		const header = event.target.closest('.release-diff .repo-header, .release-diff .origin-chip');
+		if (!header || event.target.closest('a[href], button')) return;
+		header.classList.toggle('collapsed');
+	});
+
+	// Work item detail demo: the description clamp and the per-person comment filter, the two
+	// controls worth trying by hand. Keyed off data- attributes rather than ids because a release
+	// note body may not carry an id.
+	function wiDemoFilter(demo, who) {
+		const entries = [...demo.querySelectorAll('.history-entry[data-wi-author]')];
+		const shown = entries.filter(entry => {
+			const on = !who || entry.dataset.wiAuthor === who;
+			entry.hidden = !on;
+			return on;
+		});
+
+		const people = demo.querySelector('.wi-thread-people');
+		people?.classList.toggle('is-filtered', !!who);
+		people?.querySelectorAll('[data-wi-person]').forEach(button => {
+			const on = button.dataset.wiPerson === who;
+			button.setAttribute('aria-pressed', on ? 'true' : 'false');
+			button.title = on
+				? `Showing only ${button.dataset.wiPerson} - click to show everyone`
+				: `Show only ${button.dataset.wiPerson}'s comments`;
+		});
+
+		const count = demo.querySelector('.wi-thread-count');
+		if (!count) return;
+		count.innerHTML = who
+			? `${shown.length} ${shown.length === 1 ? 'comment' : 'comments'} from <strong>${who}</strong> \u00b7 latest ${shown[0]?.dataset.wiRel ?? ''}`
+			: count.dataset.wiCount;
+	}
+
+	document.addEventListener('click', event => {
+		const demo = event.target.closest?.('[data-wi-demo]');
+		if (!demo) return;
+
+		const more = event.target.closest('[data-wi-more]');
+		if (more) {
+			const clamp = demo.querySelector('.wi-desc-clamp');
+			const open = clamp.classList.toggle('is-open');
+			clamp.classList.toggle('is-clamped', !open);
+			more.setAttribute('aria-expanded', open ? 'true' : 'false');
+			more.textContent = more.dataset.wiMore.split('|')[open ? 1 : 0];
+			return;
+		}
+
+		const person = event.target.closest('[data-wi-person]');
+		if (person) {
+			const who = person.getAttribute('aria-pressed') === 'true' ? null : person.dataset.wiPerson;
+			wiDemoFilter(demo, who);
+		}
+	});
+
 	// Globals the dashboard samples call from inline attributes. In the app they belong to the
 	// dashboard script; here they are only what a sample needs to behave sensibly on its own.
 	window.wiCopy = (text, el) => {

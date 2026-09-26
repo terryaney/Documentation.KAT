@@ -1,0 +1,296 @@
+<section data-kind="story">
+	<h3>Unified and Polished</h3>
+	<p>KAT Command Center is now one unified app without the visual split between the container and its content. The entire application lives in the same window and follows your Dark, Light or System theme preference.</p>
+	<p>That brings a new Settings dialog, a themed loading screen, a new application bar, and keyboard and right-click behaviour that feels like an app rather than a web page.  In addition to functional changes, both the light and dark theme were visually refined for a more polished experience and of course a batch of new features making KCC an even more powerful tool for managing your work than before.</p>
+</section>
+
+<section data-kind="story">
+	<h3>Softer, yet clearer, appearance</h3>
+	<p>The visual design of KAT Command Center has been refined to be softer and more modern, while maintaining clarity and readability across all themes.  With KCC being the go to application of the KAT team, it was essential to ensure that the interface is both aesthetically pleasing and highly functional.</p>
+	<p>The application now features a theme picker to choose a theme that best suits your preference.  Every aspect of the application was scrutinized and adjusted to ensure this vision was realized.</p>
+	<p>If you find any themes online that you believe would enhance the application, please share them with the development team for consideration.</p>
+	<ul>
+		<li><a href="https://vscodethemes.com/" target="_blank">Explore VS Code Themes</a> - Sample themes.  Each has variants discoverable by hovering over the different 'dots' under each preview.</li>
+		<li><a href="https://coolors.co/palettes/trending" target="_blank">Explore Coolors Palettes</a> - Simply find a color palette that appeals to you that contains 5-8 different colors and lets turn it into a theme for KCC.</li>
+	</ul>
+</section>
+
+<section data-kind="story">
+	<h3>The new Settings dialog</h3>
+	<p>The profile button <span style="font-family: 'Segoe MDL2 Assets';">&#xE77B;</span> at the right of the app bar opens Settings. Hover it to see who you are signed in as for each account. It combines multiple setting management functions into a single, cohesive dialog.</p>
+	<p>Your passwords and token are never shown back to you. Their boxes stay empty, and an empty box means "keep what is saved".</p>
+	<p>Settings follows the app's theme and fits the window and shrinks from its full size in a smaller window when necessary.</p>
+	<ol class="cc-help-workflow compact">
+		<li><strong>Profile</strong> holds your KAT DataStore, Conduent and TFS sign-ins.</li>
+		<li><strong>Display</strong> lets you choose separate palettes for Light and Dark modes, select Light, Dark or System color mode, and switch between Normal and Compact density.</li>
+		<li><strong>Work Items</strong> holds the settings that drive the functionality of viewing and managing work items.  Queries are now added, edited and removed here rather than on the Work Items card: <em>Add</em> or <em>Edit</em> slides the query's settings over the page, a changed query shows a dot and an <em>Undo</em>, and nothing is saved until you press <em>Save</em>. See <a href="#/work-items/create-queries">Creating Queries Views</a>.</li>
+		<li><strong>Connections</strong> controls how the application connects to external services, including automatic updates, api polling, and online documentation.</li>
+	</ol>
+	<div class="tfs-release cc-help-demo" role="img" aria-label="Settings open on the Profile page after a save. KAT DataStore is signed in and the TFS token is saved; the Conduent password was rejected, so its box is highlighted, Profile carries an error count in the list on the left and the footer asks for a fix before saving again.">
+		<div class="cc-modal-panel ccs-panel" style="width: 100%; height: 750px; zoom: 0.85;" inert>
+			<aside class="ccs-rail">
+				<div class="ccs-brand">
+					<img src="media/releases/1.3.0/settings-app-icon.webp" alt="" width="96" height="96">
+					<div class="ccs-brand-text">
+						<span class="ccs-brand-name">KAT Command Center</span>
+						<span class="ccs-version">Version 1.x</span>
+					</div>
+				</div>
+				<nav class="ccs-nav" aria-label="Settings pages">
+					<button type="button" class="cc-button ccs-nav-item" aria-current="page">
+						<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="5.5" r="2.75"/><path d="M2.75 14c.6-2.9 2.6-4.25 5.25-4.25S12.65 11.1 13.25 14"/></svg>
+						<span>Profile</span>
+						<span class="ccs-nav-count">1</span>
+					</button>
+					<button type="button" class="cc-button ccs-nav-item">
+						<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.75" y="2.25" width="12.5" height="8.5" rx="1.5"/><path d="M8 10.75v3M4.5 13.75h7"/></svg>
+						<span>Display</span>
+					</button>
+					<button type="button" class="cc-button ccs-nav-item">
+						<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.25" y="2.25" width="11.5" height="11.5" rx="2"/><path d="M5 6h6M5 8.5h6M5 11h3.5"/></svg>
+						<span>Work Items</span>
+					</button>
+					<button type="button" class="cc-button ccs-nav-item">
+						<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 10 10 6M7 4.5l1.25-1.25a2.65 2.65 0 0 1 3.75 3.75L10.75 8.25M9 11.5l-1.25 1.25a2.65 2.65 0 0 1-3.75-3.75L5.25 7.75"/></svg>
+						<span>Connections</span>
+					</button>
+				</nav>
+				<div class="ccs-rail-foot">
+					<button type="button" class="cc-button cc-button--link">Check for updates</button>
+					<button type="button" class="cc-button cc-button--link">Open settings file</button>
+				</div>
+			</aside>
+			<div class="ccs-main">
+				<header class="ccs-head">
+					<span style="font-size: var(--type-xl); font-weight: 700;">Profile</span>
+					<button type="button" class="cc-button cc-button--icon ccs-close" aria-label="Close without saving">
+						<svg width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12"/></svg>
+					</button>
+				</header>
+				<div class="ccs-body">
+					<div class="ccs-section">
+						<div class="ccs-section-head">
+							<span style="font-size: var(--type-lg); font-weight: 700;">KAT DataStore</span>
+							<span class="ccs-status ccs-status--ok">Signed in</span>
+						</div>
+						<p class="ccs-section-desc">Your KAT Management sign-in. CalcEngine Pipeline and Site Metrics use it.</p>
+						<div class="ccs-grid">
+							<div class="ccs-field">
+								<label>Email</label>
+								<input type="text" class="cc-input" value="engineer.sample@example.com" readonly>
+							</div>
+							<div class="ccs-field">
+								<label>Password</label>
+								<input type="password" class="cc-input" placeholder="Saved. Leave blank to keep it." readonly>
+							</div>
+						</div>
+					</div>
+					<div class="ccs-section">
+						<div class="ccs-section-head">
+							<span style="font-size: var(--type-lg); font-weight: 700;">Conduent</span>
+							<span class="ccs-status ccs-status--bad">Sign-in failed</span>
+						</div>
+						<p class="ccs-section-desc">Your Conduent (AMERICAS) network account. Site Scope uses it.</p>
+						<div class="ccs-grid">
+							<div class="ccs-field">
+								<label>Username</label>
+								<input type="text" class="cc-input" value="engineer.sample" readonly>
+							</div>
+							<div class="ccs-field has-error">
+								<label>Password</label>
+								<input type="password" class="cc-input" value="sample" readonly>
+								<div class="ccs-error"><svg viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1a6 6 0 1 0 0 12A6 6 0 0 0 7 1zm-.75 3h1.5v4h-1.5zm0 5h1.5v1.5h-1.5z"/></svg><span>Invalid credentials.</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="ccs-section">
+						<div class="ccs-section-head">
+							<span style="font-size: var(--type-lg); font-weight: 700;">TFS</span>
+							<span class="ccs-status ccs-status--ok">Token saved</span>
+						</div>
+						<p class="ccs-section-desc">A personal access token for TFS. Releases, builds and work items use it. Stored on this machine.</p>
+						<div class="ccs-field">
+							<label>Personal access token <button type="button" class="cc-help-link" aria-label="How to create a token" title="How to create a token">?</button></label>
+							<input type="password" class="cc-input ccs-mono" placeholder="Saved. Leave blank to keep it." readonly>
+						</div>
+						<div class="ccs-remember">
+							<label class="cc-check"><input type="checkbox" checked><span>Remember my passwords</span></label>
+							<div class="ccs-hint">Encrypted by Windows for your account on this machine. Clear this to delete both saved passwords.</div>
+						</div>
+					</div>
+				</div>
+				<div class="ccs-foot">
+					<div class="ccs-foot-msg is-error">Everything else was saved. Fix the 1 highlighted setting, then save again.</div>
+					<button type="button" class="cc-button">Cancel</button>
+					<button type="button" class="cc-button cc-button--success">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section data-kind="story">
+	<h3>Work Item Detail reads like a document and a conversation</h3>
+	<p>Work Item Detail used to be two collapsible boxes you had to open before you could read anything. It is now the thing you actually came for: the description as prose at a comfortable measure, and the discussion underneath it as a single threaded conversation.</p>
+	<p>Comments carry the author's initials in a colored circle, and a person keeps the same color everywhere and between sessions, so you learn a thread's cast at a glance. A rail connects one comment to the next so a six-message back-and-forth reads as one exchange rather than six disconnected rows.</p>
+	<p>The summary line above the thread is also the controls. Click a person's initials to show only their comments and everyone else dims out; click again for everyone. <em>Newest</em> and <em>Oldest</em> flip the order, and the count re-reads itself for whatever is in view. A long description is trimmed to about four lines and fades out, with <em>Show full description</em> to open it - and the fade only appears once there is genuinely more to show, so a two-line description never looks truncated.</p>
+
+	<div class="tfs-release cc-help-demo" data-wi-demo>
+		<div class="cc-modal-panel cc-modal--lg modal-detail" style="width: 100%; max-width: none; max-height: none; zoom: 0.52;">
+			<div class="detail-header">
+				<span class="detail-id copyable">#900147</span>
+				<span class="detail-heading">
+					<span class="wi-type-icon bug doc-icon doc-icon--bug" aria-hidden="true"></span>
+					<span class="detail-title">Pension calc returns null benefit for rehires with a break in service over 5 years</span>
+				</span>
+				<div class="header-actions">
+					<a href="#" target="_blank" class="cc-button cc-button--sm"><span class="btn-icon doc-icon doc-icon--tfs" style="color:#0078d4" aria-hidden="true"></span> View in TFS</a>
+					<button class="cc-button cc-button--sm copyable"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 9.5l3-3" /><path d="M5.25 11.75H4a2.75 2.75 0 0 1 0-5.5h2" /><path d="M10.75 4.25H12a2.75 2.75 0 0 1 0 5.5h-2" /></svg> Share</button>
+					<span class="header-actions-sep" aria-hidden="true"></span>
+					<button class="cc-button cc-button--sm" title="Comment and move to Triaged"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="4" width="11" height="9" rx="1.5" /><path d="M6 4V2.5h4V4" /><path d="M8 6.75v3.5M6.25 8.5h3.5" /></svg> Triage</button>
+					<button class="cc-button cc-button--sm" title="Comment and return to the previous owner"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5L2.5 7 6 10.5" /><path d="M2.5 7h6.5a4 4 0 0 1 4 4v1.5" /></svg> Return Task</button>
+					<button class="cc-button cc-button--icon cc-button--sm" title="Add Comment" aria-label="Add Comment"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3.5 2v-2h-1.5z" /></svg></button>
+					<span class="header-actions-sep" aria-hidden="true"></span>
+					<button class="cc-button cc-button--icon cc-button--sm" aria-label="Close work item details"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" /></svg></button>
+				</div>
+			</div>
+			<div class="detail-fields">
+				<div class="detail-field">
+					<div class="field-label">Type</div>
+					<div class="field-value"><span class="wi-type-icon bug doc-icon doc-icon--bug" aria-hidden="true"></span> Bug</div>
+				</div>
+				<div class="detail-field">
+					<div class="field-label">Assigned To</div>
+					<div class="field-value"><span title="Sample, Alex">Sample, Alex</span></div>
+				</div>
+				<div class="detail-field">
+					<div class="field-label">Changed By</div>
+					<div class="field-value"><span title="Example, Jordan">Example, Jordan</span></div>
+				</div>
+				<div class="detail-field">
+					<div class="field-label">Changed On</div>
+					<div class="field-value field-value--mono">Sep 25, 2026 4:12 PM</div>
+				</div>
+				<div class="detail-field">
+					<div class="field-label">State</div>
+					<div class="field-value"><span class="cc-chip cc-chip--info state-chip st-active">Active</span></div>
+				</div>
+				<div class="detail-field">
+					<div class="field-label">Priority</div>
+					<div class="field-value pri-1">1</div>
+				</div>
+				<div class="detail-field tags">
+					<div class="field-label">Tags</div>
+					<div class="field-value"><span class="cc-chip tag-inline">calc-engine</span><span class="cc-chip tag-inline">regression</span></div>
+				</div>
+				<div class="detail-field detail-attachments" style="display: flex;">
+					<div class="field-label">Attachments:</div>
+					<div class="detail-attachment-list">
+						<button type="button" class="cc-button attachment-item"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.25 8.75l4.5-4.5a2.12 2.12 0 0 1 3 3l-5.5 5.5a3.18 3.18 0 0 1-4.5-4.5l5-5" /></svg>Bridge Rule Trace.txt</button>
+						<button type="button" class="cc-button attachment-item"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.25 8.75l4.5-4.5a2.12 2.12 0 0 1 3 3l-5.5 5.5a3.18 3.18 0 0 1-4.5-4.5l5-5" /></svg>Estimate Comparison 08 vs 09.xlsx</button>
+					</div>
+				</div>
+			</div>
+			<div class="detail-tabs" role="tablist" aria-label="Work item detail panels">
+				<button type="button" class="detail-tab is-active" role="tab" aria-selected="true">Details</button>
+				<button type="button" class="detail-tab" role="tab" aria-selected="false">Links <span class="detail-tab-count">7</span></button>
+			</div>
+			<div class="detail-body cc-modal-scroll">
+				<div class="detail-panel is-active" data-wi-panel="details">
+					<div class="wi-desc">
+						<div class="wi-desc-heading">Description</div>
+						<div class="wi-desc-clamp is-clamped"><div class="description-content">
+							<p>Rehired participants whose break in service exceeds 5 years get a <code>null</code> accrued benefit from the Final Average Pay calc instead of bridging their prior service.</p>
+							<ol>
+								<li>Open site <strong>SAMPLE</strong> in QA and load participant <code>000000042</code>.</li>
+								<li>Set hire history: hired 2004-03-01, terminated 2011-06-30, rehired 2018-01-15.</li>
+								<li>Run <em>Estimate Benefit</em> with a retirement date of 2027-01-01.</li>
+								<li>Observe the Accrued Benefit panel shows <strong>$0.00</strong> and the RBLe trace logs the error below.</li>
+							</ol>
+							<pre><code>RBLe: tabDef 'rbl-fap' row 42
+  BreakInService = 6.54
+  BridgeRule(5)  = #N/A
+  AccruedBenefit = null</code></pre>
+							<p>Expected: prior service is bridged per the plan document and the accrued benefit is roughly <strong>$1,812.40/mo</strong>.</p>
+							<p>Regressed after the 2026.09 calc-engine publish; 2026.08 returns the correct figure for the same inputs.</p>
+						</div></div>
+						<button type="button" class="wi-desc-more" aria-expanded="false" data-wi-more="Show full description|Show less">Show full description</button>
+					</div>
+					<div class="wi-thread">
+						<div class="wi-thread-summary">
+							<span class="wi-thread-people" role="group" aria-label="Filter comments by person"><button type="button" class="wi-thread-person" aria-pressed="false" title="Show only Example, Jordan's comments" data-wi-person="Example, Jordan"><span class="wi-avatar wi-avatar--sm" data-tone="2" aria-hidden="true">JE</span></button><button type="button" class="wi-thread-person" aria-pressed="false" title="Show only Placeholder, Riley's comments" data-wi-person="Placeholder, Riley"><span class="wi-avatar wi-avatar--sm" data-tone="1" aria-hidden="true">RP</span></button><button type="button" class="wi-thread-person" aria-pressed="false" title="Show only Sample, Alex's comments" data-wi-person="Sample, Alex"><span class="wi-avatar wi-avatar--sm" data-tone="3" aria-hidden="true">AS</span></button><button type="button" class="wi-thread-person" aria-pressed="false" title="Show only Demo, Casey's comments" data-wi-person="Demo, Casey"><span class="wi-avatar wi-avatar--sm" data-tone="5" aria-hidden="true">CD</span></button></span>
+							<span class="wi-thread-count" data-wi-count="6 comments from 4 people &#183; latest 2 hours ago">6 comments from 4 people &#183; latest 2 hours ago</span>
+							<span class="wi-thread-sort" role="group" aria-label="Sort comments"><button type="button" aria-pressed="true">Newest</button><button type="button" aria-pressed="false">Oldest</button></span>
+						</div>
+						<ol class="wi-thread-list">
+							<li class="history-entry" data-wi-author="Example, Jordan" data-wi-rel="2 hours ago"><span class="wi-avatar" data-tone="2" aria-hidden="true">JE</span><div class="history-main">
+								<div class="history-meta"><span class="history-author" title="Example, Jordan">Example, Jordan</span><time class="history-date" title="Sep 25, 2026 4:12 PM">2 hours ago</time></div>
+								<div class="history-body">Confirmed on UAT too. Bumping to P1 - three sites run their annual statements off this calc next week.</div>
+							</div></li>
+							<li class="history-entry" data-wi-author="Example, Jordan" data-wi-rel="2 hours ago"><span class="wi-avatar" data-tone="2" aria-hidden="true">JE</span><div class="history-main">
+								<div class="history-meta"><span class="history-author" title="Example, Jordan">Example, Jordan</span><time class="history-date" title="Sep 25, 2026 4:05 PM">2 hours ago</time></div>
+								<div class="history-body">Also attaching the trace from UAT, same row.</div>
+							</div></li>
+							<li class="history-entry" data-wi-author="Placeholder, Riley" data-wi-rel="yesterday"><span class="wi-avatar" data-tone="1" aria-hidden="true">RP</span><div class="history-main">
+								<div class="history-meta"><span class="history-author" title="Placeholder, Riley">Placeholder, Riley</span><time class="history-date" title="Sep 24, 2026 11:30 AM">Yesterday</time></div>
+								<div class="history-body">Looks like <code>BridgeRule</code> lost its default branch in the 09 publish. The lookup now only covers breaks of 0-5 years:<pre><code>=IFS(B&lt;=1,"full",B&lt;=5,"partial")</code></pre>Anything over 5 falls through to <code>#N/A</code>.</div>
+							</div></li>
+							<li class="history-entry" data-wi-author="Sample, Alex" data-wi-rel="2 days ago"><span class="wi-avatar" data-tone="3" aria-hidden="true">AS</span><div class="history-main">
+								<div class="history-meta"><span class="history-author" title="Sample, Alex">Sample, Alex</span><time class="history-date" title="Sep 23, 2026 2:18 PM">2 days ago</time></div>
+								<div class="history-body">Can repro. Moving to Active. Riley, can you check what changed in <code>rbl-fap</code> between 08 and 09?</div>
+							</div></li>
+							<li class="history-entry" data-wi-author="Demo, Casey" data-wi-rel="2 days ago"><span class="wi-avatar" data-tone="5" aria-hidden="true">CD</span><div class="history-main">
+								<div class="history-meta"><span class="history-author" title="Demo, Casey">Demo, Casey</span><time class="history-date" title="Sep 23, 2026 10:02 AM">2 days ago</time></div>
+								<div class="history-body">Reported through the support queue - the participant was told their estimate was zero.</div>
+							</div></li>
+							<li class="history-entry" data-wi-author="Example, Jordan" data-wi-rel="2 days ago"><span class="wi-avatar" data-tone="2" aria-hidden="true">JE</span><div class="history-main">
+								<div class="history-meta"><span class="history-author" title="Example, Jordan">Example, Jordan</span><time class="history-date" title="Sep 23, 2026 9:41 AM">2 days ago</time></div>
+								<div class="history-body">Opened from triage.</div>
+							</div></li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p>Comment bodies keep their formatting instead of flattening it. Code blocks, inline code, lists, bold and links all render, and a pasted screenshot is a real image you can click to enlarge rather than a broken box. Times read as <em>2 hours ago</em> or <em>Yesterday</em>, with the exact timestamp on hover. See <a href="#/work-items/work-item-detail">Work Item Detail</a>.</p>
+</section>
+
+<section data-kind="improvements">
+	<ul>
+		
+		<li>A new <a href="#/keyboard-shortcuts">Keyboard Shortcuts</a> page in Help lists every shortcut in one place.</li>
+		<li>The application bar is part of the application.  It stays in place as you scroll, follows the theme, and grows with everything else when you zoom with <code>Ctrl</code>+mouse wheel.  In a narrow window the bar wraps onto two lines, Refresh shrinks to a &#x21BB; icon and the filter button joins the icons on the right.</li>
+		<li>Errors and warnings now appear in a themed bar along the bottom of the window. A warning and an error can show at the same time, each with its own <strong>&times;</strong> to dismiss it, and a long message scrolls instead of taking over the window. The bar stays visible even while a dialog is open, without covering the dialog's buttons.</li>
+		<li>Each section's &#x21BB; refresh button now shows its keyboard shortcut in its tooltip, for example "(Ctrl+Shift+R)" to refresh the Release Pipeline.</li>
+		<li>Unsaved edits in Add Comment, Triage, Return Task, Close Task and Create New are protected by <strong>Discard your changes?</strong>. In comment dialogs, <code>Esc</code> prompts only after a user edit; Cancel closes directly.</li>
+		<li>While the dashboard loads, the new loading screen shows what is happening to get KCC up and running.</li>
+		<li>Keys and right-click that behave like an app.  'Browser-like' behavior is minimized giving KCC a more native application feel.  Hold <code>Ctrl</code> while you right-click to get the browser's menu anywhere (or <em>F12</em>), for troubleshooting.</li>
+		
+		<li>The Work Items card is simpler: the add query button and each query's edit and delete buttons are gone, now that queries are managed in Settings. The bar reads <strong>Work Items</strong>, its <strong>?</strong>, then <strong>Task ID Search</strong>, Search and Create New.</li>
+		<li>A query can now <strong>Hide chip when no work items present</strong>, so a query with nothing in it stops taking room on the bar. It is on for new queries; queries you already have keep their chips until you turn it on in Settings.</li>
+		<li><code>Ctrl+Shift+Q</code> re-runs just the query whose results are open, the same as the &#x21BB; at the end of its action bar.</li>
+		<li>A query's filter box names the query it filters, for example "Filter My To Do's items…".</li>
+		<li>Work Item Detail always shows <strong>Details</strong> and <strong>Links</strong> in a stable tab strip. A tab with no content is dimmed and unavailable; Links collects related work items, associated commits and builds.</li>
+		<li>The batch return flow is consistently named <strong>Return Triage Tasks</strong> in its action and dialog.</li>
+		<li>The Diagnostics trace now has a bounded scroll area, with jumps to the first entry, the first unseen entry and the newest entry.</li>
+		<li>Release Differences lets you collapse commits by repository or hide a whole release group while keeping its headers fixed during scrolling.</li>
+		<li>CalcEngine Pipeline's download action now uses a download arrow instead of a save icon.</li>
+		<li>Copying a work-item ID includes its <code>#</code> prefix, and Task ID Search accepts that prefix when pasted.</li>
+		<li>Conduent links show an orange border on hover.</li>
+		<li>The footer's product and generated text is gone; zoom guidance now sits in the header before Last Refresh.</li>
+		<li>The production-release check for the site-picker dot is configurable in Settings, with a 20-minute default.</li>
+	</ul>
+</section>
+
+<section data-kind="fixes">
+	<ul>
+		<li>When the Microsoft Edge WebView2 Runtime is missing, the app now says so in plain words, with a link to download it, instead of crashing with a technical error box.</li>
+		<li>Pressing <code>Alt</code> on its own no longer leaves the keyboard unresponsive on every second press.</li>
+		<li>Scrollbars are the same thin style everywhere, including the site picker, the message bar and Settings.</li>
+		<li>CalcEngine Pipeline rows now keep controls beside the CalcEngine name on wide cards and move them below on narrower cards. Long checkout labels shorten with an ellipsis instead of crossing the row border; hover still shows the full details.</li>
+		<li>Complete editorial review of the help documentation.</li>
+		<li>Task ID Search now matches the height of a query's filter field.</li>
+		<li>Icon-only buttons are square, with standard controls at 28px and compact controls matching neighboring text buttons; Task Detail also loses its divider bars.</li>
+	</ul>
+</section>

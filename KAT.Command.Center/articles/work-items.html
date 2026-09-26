@@ -1,5 +1,5 @@
 <header class="cc-help-article-header" id="reading-chips">
-	<div class="cc-help-eyebrow">Command Center · triage and collaboration</div>
+	<div class="cc-help-eyebrow">Command Center · 7 minute read</div>
 	<h1>Work Items</h1>
 	<p class="cc-help-lede">KAT Command Center can render TFS queries directly in Work Items as 'Query Chips'.  Query chips summarize pressure at a glance <span class="tfs-release cc-help-demo cc-reduce-3"><span class="wi-bar-chips" style="display: inline-flex;"><span class="cc-chip cc-chip--interactive wi-chip is-selected"><span class="chip-total">4</span>My To Do's<span class="chip-indicators"><span class="ind over-threshold" title="Priority 1: 1"><span class="ind-icon">‼</span>1</span><span class="ind normal" title="Priority 2: 4"><span class="ind-icon">!</span>4</span><span class="ind over-threshold-orange" title="Old (30+ days): 1"><span class="ind-icon">⟳</span>1</span></span></span></span></span>.</p>
 </header>
@@ -248,14 +248,14 @@
 					<span class="cc-chip cc-chip--interactive tag-chip">KAT Nexgen Core <span class="tag-count">1</span></span>
 					<span class="cc-chip cc-chip--interactive tag-chip">KAT Nexgen SAMPLE <span class="tag-count">1</span></span>
 				</div>
-				<button class="cc-button cc-button--icon cc-button--round action-btn triage" title="Return Triaged tasks">
+				<button class="cc-button cc-button--icon action-btn triage" title="Return Triaged tasks">
 					<svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M6 3.5L2.5 7 6 10.5"></path>
 						<path d="M2.5 7h6.5a4 4 0 0 1 4 4v1.5"></path>
 					</svg>
 				</button>
-				<a class="cc-button cc-button--icon cc-button--round action-btn tfs-link" title="View Query In TFS" href="#" target="_blank" onclick="return false;"><span class="doc-icon doc-icon--tfs" aria-hidden="true"></span></a>
-				<button class="cc-button cc-button--icon cc-button--round refresh-btn" title="Refresh this query (Ctrl+Shift+Q)">↻</button>
+				<a class="cc-button cc-button--icon action-btn tfs-link" title="View Query In TFS" href="#" target="_blank" onclick="return false;"><span class="doc-icon doc-icon--tfs" aria-hidden="true"></span></a>
+				<button class="cc-button cc-button--icon refresh-btn" title="Refresh this query (Ctrl+Shift+Q)">↻</button>
 			</div>
 			<div class="wi-table-wrap">
 				<table class="cc-table wi-table">
@@ -379,11 +379,9 @@
 			<div class="header-actions">
 				<a href="#" target="_blank" class="cc-button cc-button--sm" onclick="return false;"><span class="btn-icon doc-icon doc-icon--tfs" style="color:#0078d4" aria-hidden="true"></span> View in TFS</a>
 				<button class="cc-button cc-button--sm copyable"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 9.5l3-3" /><path d="M5.25 11.75H4a2.75 2.75 0 0 1 0-5.5h2" /><path d="M10.75 4.25H12a2.75 2.75 0 0 1 0 5.5h-2" /></svg> Share</button>
-				<span class="header-actions-sep" aria-hidden="true"></span>
 				<button class="cc-button cc-button--sm" title="Comment and move to Triaged"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="4" width="11" height="9" rx="1.5" /><path d="M6 4V2.5h4V4" /><path d="M8 6.75v3.5M6.25 8.5h3.5" /></svg> Triage</button>
 				<button class="cc-button cc-button--sm" title="Comment and return to the previous owner"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5L2.5 7 6 10.5" /><path d="M2.5 7h6.5a4 4 0 0 1 4 4v1.5" /></svg> Return Task</button>
 				<button class="cc-button cc-button--icon cc-button--sm" title="Add Comment" aria-label="Add Comment"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3.5 2v-2h-1.5z" /></svg></button>
-				<span class="header-actions-sep" aria-hidden="true"></span>
 				<button class="cc-button cc-button--icon cc-button--sm" aria-label="Close work item details">
 					<svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M4 4l8 8M12 4l-8 8" />
@@ -393,28 +391,28 @@
 		</div>
 		<div class="detail-fields">
 			<div class="detail-field">
-				<div class="field-label">Type</div>
-				<div class="field-value"><span class="wi-type-icon task doc-icon doc-icon--task" aria-hidden="true"></span> Task</div>
-			</div>
-			<div class="detail-field">
 				<div class="field-label">Assigned To</div>
 				<div class="field-value"><span title="Sample, Alex">Sample, Alex</span></div>
 			</div>
 			<div class="detail-field">
-				<div class="field-label">Changed By</div>
-				<div class="field-value"><span title="Sample, Alex">Sample, Alex</span></div>
+				<div class="field-label">Assigned By</div>
+				<div class="field-value"><span title="Rivera, Dana">Rivera, Dana</span></div>
+			</div>
+			<div class="detail-field">
+				<div class="field-label">Created By</div>
+				<div class="field-value"><span title="Rivera, Dana">Rivera, Dana</span></div>
 			</div>
 			<div class="detail-field">
 				<div class="field-label">Changed On</div>
 				<div class="field-value field-value--mono">Aug 19, 2026 7:10 PM</div>
 			</div>
 			<div class="detail-field">
-				<div class="field-label">State</div>
-				<div class="field-value"><span class="cc-chip cc-chip--neutral state-chip st-unknown">Proposed</span></div>
+				<div class="field-label">Type / State</div>
+				<div class="field-value detail-pair"><span class="detail-pair-part"><span class="wi-type-icon task doc-icon doc-icon--task" aria-hidden="true"></span> Task</span><span class="detail-pair-part"><span class="cc-chip cc-chip--neutral state-chip st-unknown">Proposed</span></span></div>
 			</div>
 			<div class="detail-field">
-				<div class="field-label">Priority</div>
-				<div class="field-value pri-1">1</div>
+				<div class="field-label">Priority / Severity</div>
+				<div class="field-value detail-pair"><span class="detail-pair-part pri-1">1</span><span class="detail-pair-part sev-2">2 - High</span></div>
 			</div>
 			<div class="detail-field tags">
 				<div class="field-label">Tags</div>
@@ -439,28 +437,34 @@
 			<button type="button" class="detail-tab" role="tab" aria-selected="false">Links <span class="detail-tab-count">3</span></button>
 		</div>
 		<div class="detail-body cc-modal-scroll">
-			<div class="detail-section"	>
-				<div class="detail-section-header"><span class="section-chevron">▾</span> Description</div>
-				<div class="detail-section-content description-content">This is a <b>sample</b>&#160;task with <span style="font-style:italic;">italics</span> and <span style="text-decoration-line:underline;">underline</span>&#160;in the description.</div>
-			</div>
-			<div class="detail-section"	>
-				<div class="detail-section-header"><span class="section-chevron">▾</span> History</div>
-				<div class="detail-section-content">
-					<div class="history-entry">
-						<div class="history-meta"><span class="history-author" title="Sample, Alex">Sample, Alex</span><span class="history-date">· Aug 15, 2026 12:51 AM</span></div>
-						<div class="history-body">Code example: <pre><code>var x = 5;
+			<div class="detail-panel is-active" data-wi-panel="details">
+				<section class="wi-desc">
+					<h3 class="wi-desc-heading">Description</h3>
+					<div class="wi-desc-clamp"><div class="description-content">This is a <b>sample</b>&#160;task with <span style="font-style:italic;">italics</span> and <span style="text-decoration-line:underline;">underline</span>&#160;in the description.</div></div>
+				</section>
+				<section class="wi-thread">
+					<div class="wi-thread-summary">
+						<span class="wi-thread-people" role="group" aria-label="Filter comments by person"><button type="button" class="wi-thread-person" aria-pressed="false" title="Show only Sample, Alex's comments"><span class="wi-avatar wi-avatar--sm" data-tone="3" aria-hidden="true">AS</span></button><button type="button" class="wi-thread-person" aria-pressed="false" title="Show only Example, Jordan's comments"><span class="wi-avatar wi-avatar--sm" data-tone="2" aria-hidden="true">JE</span></button></span>
+						<span class="wi-thread-count">3 comments from 2 people · latest 2 days ago</span>
+						<span class="wi-thread-sort" role="group" aria-label="Sort comments"><button type="button" aria-pressed="true">Newest</button><button type="button" aria-pressed="false">Oldest</button></span>
+					</div>
+					<ol class="wi-thread-list">
+						<li class="history-entry"><span class="wi-avatar" data-tone="3" aria-hidden="true">AS</span><div class="history-main">
+							<div class="history-meta"><span class="history-author" title="Sample, Alex">Sample, Alex</span><time class="history-date" title="Aug 15, 2026 12:51 AM">2 days ago</time></div>
+							<div class="history-body">Code example: <pre><code>var x = 5;
 var y = 10;
 return x + y;</code></pre></div>
-					</div>
-					<div class="history-entry">
-						<div class="history-meta"><span class="history-author" title="Sample, Alex">Sample, Alex</span><span class="history-date">· Aug 14, 2026 11:52 PM</span></div>
-						<div class="history-body"><strong>Bold text</strong> and <code>code example</code> and <em>italic</em></div>
-					</div>
-					<div class="history-entry">
-						<div class="history-meta"><span class="history-author" title="Sample, Alex">Sample, Alex</span><span class="history-date">· Feb 8, 2026 12:35 AM</span></div>
-						<div class="history-body">Start working on fixing syntax in CalcEngines</div>
-					</div>
-				</div>
+						</div></li>
+						<li class="history-entry"><span class="wi-avatar" data-tone="2" aria-hidden="true">JE</span><div class="history-main">
+							<div class="history-meta"><span class="history-author" title="Example, Jordan">Example, Jordan</span><time class="history-date" title="Aug 14, 2026 11:52 PM">3 days ago</time></div>
+							<div class="history-body"><strong>Bold text</strong> and <code>code example</code> and <em>italic</em></div>
+						</div></li>
+						<li class="history-entry"><span class="wi-avatar" data-tone="3" aria-hidden="true">AS</span><div class="history-main">
+							<div class="history-meta"><span class="history-author" title="Sample, Alex">Sample, Alex</span><time class="history-date" title="Feb 8, 2026 12:35 AM">Feb 8</time></div>
+							<div class="history-body">Start working on fixing syntax in CalcEngines</div>
+						</div></li>
+					</ol>
+				</section>
 			</div>
 		</div>
 	</div>	
@@ -468,9 +472,12 @@ return x + y;</code></pre></div>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
 	<li>'Click to copy' ID and Title to easily share or use in commit comments and messages/emails</li>
+	<li>The banner carries who has it and how it got there - <em>Assigned To</em>, <em>Assigned By</em>, <em>Created By</em> and when it last changed - then the classification it was filed under: <em>Type / State</em>, <em>Priority / Severity</em>, and its tags.</li>
 	<li>Header action bar provides easy access to view on TFS, direct link sharing, and the three comment variants - <em>Triage</em>, <em>Return Task</em>, and a plain <em>Add Comment</em>.</li>
 	<li>Attachment chips enable file download. If a task tag matches a spec sheet attachment, it will be displayed in a separate row for easy access.</li>
 	<li>Keyboard warriors rejoice. <a href="#/keyboard-shortcuts/work-item-detail">Keyboard Shortcuts</a> provide quick access to all the actions you need to manage a work item efficiently.</li>
+	<li>Comments show newest first with who wrote them and when (hover a time for the exact date). Click a person's avatar to show only their comments; click them again to show everyone. <em>Newest</em>/<em>Oldest</em> flips the order. A long description is trimmed with a <em>Show full description</em> link.</li>
+	<li>People show as coloured initials, replaced by their TFS profile photo a moment after the modal opens if they have one. The photos load in the background, so they never hold the comments up, and anyone without a photo simply keeps their initials.</li>
 	<li><em>Links</em> tab shows related work items, associated commits, and integrated builds.</li>
 </ol>
 

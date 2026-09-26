@@ -1458,12 +1458,12 @@ body {
 }
 
 .cc-help-link {
-	width: 21px;
-	height: 21px;
+	width: 28px;
+	height: 28px;
 	display: inline-grid;
 	place-items: center;
 	border: 1px solid var(--border);
-	border-radius: 50%;
+	border-radius: 6px;
 	background: var(--panel2);
 	color: var(--dim);
 	cursor: pointer;

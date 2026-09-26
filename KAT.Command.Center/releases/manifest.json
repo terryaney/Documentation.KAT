@@ -3,10 +3,14 @@
 	"minors": [
 		{
 			"version": "1.2",
-			"frozen": false,
+			"frozen": true,
 			"intro": [
 				"Release notes are published from 1.2.13 onward. Earlier 1.2 updates, summarized: Command Center learned to update itself; Return Tasks gained an All checkbox; the Work Items modal became fully keyboard driven; work item detail tabs and the quick filter arrived; the Update button got louder when an update is waiting; tasks can be closed from the dashboard; and the comment, CalcEngine History and Site Scope dialogs received a round of fixes, including the comment modal's input order and default assignee."
 			]
+		},
+		{
+			"version": "1.3",
+			"frozen": false
 		}
 	],
 	"releases": [
@@ -27,6 +31,12 @@
 			"date": "2026-09-24",
 			"theme": "Help that opens where you need it, Work Items that keep up with you, and CalcEngine history you can trust",
 			"sha256": "BF99A30DD8394BBC9DDF11392D0E04D2C495682234A7C7B5B82812014789E579"
+		},
+		{
+			"version": "1.3.0",
+			"date": "2026-09-26",
+			"theme": "KAT Command Center is now as beautiful as it is functional.",
+			"sha256": "5246BFF84E768ED833C3EB49CF75D9B31E7C42740AE801AFBBCA4BB17DD38712"
 		}
 	]
 }
