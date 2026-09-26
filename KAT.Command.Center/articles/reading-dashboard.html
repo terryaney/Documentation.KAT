@@ -10,12 +10,6 @@
 <div class="cc-help-tour" data-help-tour>
 	<div class="cc-help-tour-stage">
 		<img src="media/CommandCenter.jpg" alt="KAT Command Center dashboard with the application bar, Work Items controls, four KPI tiles in a two-by-two grid, and collapsed detail cards." loading="lazy">
-		<!-- Regions and pins are percentages of the screenshot, measured off CommandCenter.jpg
-			 itself (1681x1681) rather than eyeballed. A --br pin sits exactly on its region's
-			 bottom-right corner - r = 100 - (x + w), b = 100 - (y + h) - and a plain pin sits
-			 inside the top-left corner with the same small inset every other one uses. Re-measure
-			 all of them together whenever the screenshot is replaced; a half-updated set puts
-			 numbers on the wrong tiles. -->
 		<div class="cc-help-tour-region" data-help-tour-region="application" style="--x:0.30%;--y:1.78%;--w:99.40%;--h:4.70%"></div>
 		<div class="cc-help-tour-region" data-help-tour-region="work-items" style="--x:2.26%;--y:12.43%;--w:94.59%;--h:5.77%"></div>
 		<div class="cc-help-tour-region" data-help-tour-region="release-kpi" style="--x:2.26%;--y:19.45%;--w:46.58%;--h:20.94%"></div>
@@ -43,7 +37,7 @@
 				<span>Enter explicit release numbers when you need a specific comparison. An invalid number makes the Release Pipeline and Release Differences unavailable until corrected.</span>
 			</span>
 			<span class="cc-help-tour-detail">The profile button opens Settings, where Profile holds your sign-ins and Display holds your appearance preferences.</span>
-			<span class="cc-help-tour-detail">The bar stays at the top of the window as you scroll. <b>Refresh</b> and the site picker stay unavailable until the first load finishes. The theme button cycles Dark, Light and System, using your preferred palette for each mode. Choose those palettes and Normal/Compact density in <strong>Settings &gt; Display</strong>. <em>?</em> opens this help and the list icon opens What's New.</span>
+			<span class="cc-help-tour-detail">The bar stays at the top of the window as you scroll. <b>Refresh</b> and the site picker stay unavailable until the first load finishes. The theme button cycles Dark, Light and System, using your preferred palette for each mode. Choose those palettes and Normal/Compact density in <b>Settings &gt; Display</b>. <em>?</em> opens this help and the list icon opens What's New.</span>
 			<span class="cc-help-tour-detail">An amber dot beside a site name means that site's newest release has <b>not</b> finished publishing to every environment. Type <code>*</code> in the site search to see only those sites — see <em>Sites with a release in flight</em> below.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="work-items">
@@ -55,36 +49,29 @@
 			<span class="cc-help-tour-number">03</span>
 			<span><strong>Release Pipeline KPI</strong><small>Summarizes the current release targeted for PROD deployment.  Highlights additional candidates, cleanup actions, and commit counts across repositories.</small></span>
 			<span class="cc-help-tour-detail">The two chips read <b>from &rarr; to</b>: the environment and number of the release being compared, then the one it is compared against. Hover either for who requested it, when it published, and the build it was cut from. Candidates are <b>newer</b> releases after the <em>from</em> release; cleanup actions cancel and/or delete stale releases, and are called out in red. Commit counts cover <em>all</em> repositories needed to build the site that will be included in the release.</span>
-			<span class="cc-help-tour-detail">The circular navigation glyph on a KPI tile jumps to its matching card.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="calcengine-kpi">
 			<span class="cc-help-tour-number">04</span>
 			<span><strong>CalcEngine Pipeline KPI</strong><small>Summarizes the CalcEngines associated with the selected site.</small></span>
-			<span class="cc-help-tour-detail">Total CalcEngines associated with the site, then one chip per environment reading <b>ENV: count</b> - how many CalcEngines have their newest deployed version sitting there. The chips always add up to the total, and each one opens the card below filtered to that environment. <em>Checkouts</em> list users and checkout counts and call out how many <code>_PROD</code> CalcEngines <b>block</b> QA-to-UAT promotion.</span>
-			<span class="cc-help-tour-detail">The circular navigation glyph on a KPI tile jumps to its matching card.</span>
+			<span class="cc-help-tour-detail">Total CalcEngines associated with the site, then one chip per environment reading <b>ENV: count</b> - how many CalcEngines have their newest deployed version sitting there. The chips always add up to the total, and each one opens the card below filtered to that environment. <em>Checkouts</em> list users and checkout counts and call out how many <code>_PROD</code> CalcEngine checkouts <b>block</b> QA-to-UAT promotion.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="sitescope-kpi">
 			<span class="cc-help-tour-number">05</span>
 			<span><strong>Site Scope KPI</strong><small>One cell per monitored site, worst first, so "is anything wrong right now" is answered without reading a number.</small></span>
 			<span class="cc-help-tour-detail">Hover any cell for the site, its state, and who is on call for it. Below the strip: the OK / Warn / Fail counts - a tone with nothing in it is left off rather than shown as a zero - then the slowest and the erroring sites of the last hour. Those site names are links: clicking one opens the card below filtered to that site, with the scope reset to <b>All</b>.</span>
-			<span class="cc-help-tour-detail">The circular navigation glyph on a KPI tile jumps to its matching card.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="metrics-kpi">
 			<span class="cc-help-tour-number">06</span>
 			<span><strong>Site Metrics KPI</strong><small>Highlights logins, page requests, calculation requests, and errors.</small></span>
 			<span class="cc-help-tour-detail">The tile and its card are titled after the site you are on - <b>sample.nexgen.ess Metrics</b> in this screenshot - because these are the only numbers on the dashboard that describe the running site rather than its pipelines.</span>
 			<span class="cc-help-tour-detail">Site Metrics currently uses representative mock values while the real metrics source is being completed.</span>
-			<span class="cc-help-tour-detail">The circular navigation glyph on a KPI tile jumps to its matching card.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="detail-cards">
 			<span class="cc-help-tour-number">07</span>
-			<span><strong>Detail Cards</strong><small>Each area of the command center has its own detail card. Expand a card for evidence, management actions, and deeper analysis.</small></span>
-			<span class="cc-help-tour-detail">Release Pipeline, Release Differences, CalcEngine Pipeline, Site Scope, <em>{Site}</em> Metrics, and Diagnostics each carry a header badge summarizing the most relevant information; release, commit, CalcEngine, and site counts.  Each area can be independently refreshed without affecting non-related areas.</span>
+			<span><strong>Detail Cards</strong><small>Each area of the command center has its own detail card. Expand a card for evidence, management actions, and deeper analysis.</small></span>			<span class="cc-help-tour-detail">Release Pipeline, Release Differences, CalcEngine Pipeline, Site Scope, Site Metrics, and Diagnostics each carry a header badge summarizing the most relevant information; release, commit, CalcEngine, and site counts.  Each area can be independently refreshed without affecting non-related areas.</span>
 		</button>
 	</div>
 </div>
-
-<p>For preferred light/dark palettes, live appearance previews and Normal/Compact spacing, see <a href="#/settings/all-settings">Available Settings</a>.</p>
 
 <h2 id="site-dots">Sites with a release in flight</h2>
 <p>The site picker answers one question about every site at once, without you having to select them one at a time: <b>has its newest release finished publishing to every environment?</b> If it has not, the site carries an amber dot - on its row in the dropdown, and on the closed picker when it is the site you are looking at.</p>
@@ -131,11 +118,7 @@
 	<p><b>Typing <code>*</code></b> filters the list to sites carrying a dot. Anything you type after it still has to match as usual, so <code>*sample</code> means <em>outstanding <b>and</b> matches "sample"</em> - not either one on its own. The <code>*</code> only does this at the front of what you type; it is a mode switch, not a wildcard.</p>
 </div>
 
-<p>The dots are filled in by a background sweep that runs shortly after the app starts and again every 20 minutes - about two and a half seconds and one call per site. It never blocks anything you are doing: sites light up as their answers arrive, and refreshing a site updates its own dot immediately from data that refresh already fetched. A site the sweep cannot reach keeps whatever dot it had rather than going dark, because a failed call is not evidence that a release finished. With no TFS token configured, no dots appear at all and <code>*</code> matches nothing.</p>
-
-<p>While a sweep is running, the small dot in the top-right of the header - beside <span class="cc-help-chip cc-help-muted">LAST REFRESH … · N CALLS</span> - turns grey and pulses. It sits solid green the rest of the time; hover it for when the last sweep ran and what it cost. The sweep also records a single <span class="cc-help-chip cc-help-muted">site release sweep</span> row on the Diagnostics card, with its total time and call count. Its individual calls are deliberately kept off that card: dozens of release reads would bury the handful a refresh makes.</p>
-
-<p>Some sites never get a dot in either direction. Those are catalog entries with no release definition in TFS at all - the same sites whose Release Pipeline card reports the definition as missing when you select them.</p>
+<p>The dots are filled in by a background sweep that runs shortly after the app starts and continues to periodically poll in the background. It never blocks anything you are doing: sites light up as their answers arrive, and refreshing a site updates its own dot immediately from data that refresh already fetched. A site the sweep cannot reach keeps whatever dot it had rather than going dark, because a failed call is not evidence that a release finished.</p>
 
 <h2 id="notation">Shared notation</h2>
 <div class="cc-help-legend">
@@ -198,13 +181,13 @@
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">External links</div>
 		<div class="cc-help-legend-demo">
-			<span class="cc-help-legend-copy">Build, release, repository, commit, query, and work-item links open in your default browser. They do not replace the Command Center view.</span>
+			<span class="cc-help-legend-copy">Build, release, repository, commit, query, and work-item links open in your default browser.</span>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Warnings and errors</div>
 		<div class="cc-help-legend-demo">
-			<span class="cc-help-legend-copy">Messages appear in a bar pinned to the bottom of the window. Amber messages report a condition that did not prevent the dashboard from rendering; red messages report a harder failure. Close either with its &times;; it comes back only when the app reports it again. A full <em>Refresh</em> clears both, while refreshing a single section leaves them in place, because a message raised by one section is not resolved by refreshing another. Read the message before retrying; changing filters or signing in may be the required fix.</span>
+			<span class="cc-help-legend-copy">Messages appear in a bar pinned to the bottom of the window. Amber messages report a condition that did not prevent the dashboard from rendering; red messages report a harder failure.</span>
 		</div>
 	</div>
 </div>

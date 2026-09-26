@@ -992,7 +992,7 @@ body {
 
 .cc-help-tour-cards {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	gap: 9px;
 	margin-top: 11px
 }
@@ -1165,6 +1165,25 @@ body {
 	font-size: var(--type-2xs);
 	color: var(--help-dim)
 }
+
+.cc-help-history-key {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px
+}
+
+.cc-help-history-key::before {
+	content: "";
+	width: 12px;
+	height: 18px;
+	border: 1px solid color-mix(in srgb, var(--history-tone) 55%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--history-tone) 24%, transparent)
+}
+
+.cc-help-history-key--ok { --history-tone: var(--help-green) }
+.cc-help-history-key--slow { --history-tone: var(--help-amber) }
+.cc-help-history-key--failed { --history-tone: var(--help-red) }
 
 .cc-help-legend-demo {
 	display: flex;

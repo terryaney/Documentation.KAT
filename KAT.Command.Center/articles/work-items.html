@@ -206,9 +206,7 @@
 		</section>
 	</div>
 </div>
-<p>While the pane is open, the footer's <em>Cancel</em> and <em>Save</em> act on this one query - the <em>Query Edits</em> label above them says so.</p>
-<p>To change a query later, press <em>Edit</em> on its row. No query edits, additions, or deletions are saved until you press <em>Save</em>, and <em>Cancel</em> discards all of it.</p>
-<p><a href="#/settings/all-settings">See Settings</a> for all available settings.</p>
+<p>While the Add/Edit query pane is open, the footer's <em>Cancel</em> and <em>Save</em> act on this one query - the <em>Query Edits</em> label above them says so.  To change a query later, press <em>Edit</em> on its row. No query edits, additions, or deletions are saved until you press <em>Save</em> from any of the main Settings pages, and <em>Cancel</em> discards all of it.  <a href="#/settings/all-settings">See Settings</a> for explanation of Work Query settings.</p>
 
 <h2 id="query-results">View Query Results</h2>
 <p>Toggle a query chip to view, filter, and sort query results.</p>
@@ -355,25 +353,20 @@
 </div>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>Query results pane has action bar for refresh, view in TFS, and Return Triaged tasks. The query itself is edited or removed in Settings - see <a href="#/work-items/add-query-help">Creating Queries Views</a></li>
-	<li>The reply icon acts on many rows at once - see <em>Return Tasks</em> below</li>
-	<li>Refresh every query at once with the ↻ button on the bar, or just the open query with the ↻ at the end of its action bar. Both have shortcuts, listed under <a href="#/keyboard-shortcuts/app-refresh">Keyboard Shortcuts</a></li>
+	<li>Query results pane has action bar for refresh, view in TFS, and Return Triaged tasks - see below</li>
 	<li>A query set to <strong>Hide chip when no work items present</strong> has no chip while it is empty. If every query is empty, the row of chips goes too</li>
-	<li>Clickable tag count chips to filter list; each row shows its own tags as one chip beside the title</li>
-	<li><strong>Assigned By</strong> names whoever handed the item over - the owner before the current one, or the person who created it if it was never reassigned. It is the column that answers "who is waiting on me for this".</li>
-	<li>Quick filter box at the left of the action bar - a case-insensitive <em>contains</em> match across the title, description, tags, assignee, assigned by, and comments. It stacks with the tag chips rather than replacing them, so you can narrow by tag and then by words. A count under the last row says how many of the query's items are showing. It survives a refresh and clears when you switch queries.</li>
-	<li>Descriptions and comments are not in the original query - they are fetched in the background once the grid is on screen. While that is still running, typing in the filter shows a note saying which fields are not being searched yet. It goes away on its own as the data lands.</li>
-	<li><strong>Toggling to a chip re-runs that query.</strong> The grid paints instantly from what was already fetched, then corrects itself a moment later, so what you open is what the query says right now.</li>
-	<li>When a query changes <em>while you are looking at it</em> - you refreshed, or the rolling background re-check found something - the grid animates rather than jumping: a row that has left fades out, and a new row fades in and then flashes its border. <strong>Rows being animated cannot be clicked</strong> - wait for the animation to finish. Chip counts update either way, so a query you are <em>not</em> looking at still tells you something happened.</li>
-	<li>Context menu for direct actions on specific work item</li>
+	<li>Refresh all queries at once or the currently open query by clicking the appropriate ↻ button.</li>
+	<li>Context menu for direct actions on every work item row and sortable data by clicking column headings</li>
+	<li>Quick filter - a case-insensitive <em>contains</em> match across the title, description, tags, assignee, assigned by, and comments. Descriptions and comments are <em>not</em> in the original query - they are fetched in the background once the grid is on screen. While that is still running, typing in the filter shows a note saying which fields are not being searched yet.</li>
+	<li>Tag count chips for easy way to filter results even further based on assigned tags</li>
 	<li>'Click to copy' work item IDs to easily share/commit</li>
-	<li>Sort data by clicking column headings</li>
-	<li>Clickable title to open work item detail</li>
-	<li>Keyboard navigation over the rows - see <a href="#/keyboard-shortcuts/work-items-grid">Keyboard Shortcuts</a></li>
+	<li><strong>Assigned By</strong> names whoever handed the item over - or the person who created it if it was never reassigned. It answers "who is waiting on me for this".</li>
+	<li><strong>Toggling to a chip re-runs that query.</strong> The grid paints instantly from what was already fetched, then auto-corrects itself if the underlying data has changed.  The same happens if a background re-check found something. All query chip counts update - even a query you are <em>not</em> looking at still tells you when something changed.</li>
+	<li>See <a href="#/keyboard-shortcuts/work-items-grid">Keyboard Shortcuts</a> for navigation and action shortcuts.</li>
 </ol>
 
 <h2 id="work-item-detail">Work Item Detail</h2>
-<p>Work Item detail displays all item categorization details, description, comment history and access to download attachments. If an item has a client KAT tag but is not itself tagged <strong>KAT Spec Sheet</strong>, matching spec sheet attachments are shown in a separate row.</p>
+<p>Work Item detail displays all task details, comment history and access to download attachments. If an item has a client KAT tag but is not itself tagged <strong>KAT Spec Sheet</strong>, matching spec sheet attachments are shown in a separate row.</p>
 
 <div class="tfs-release cc-help-demo cc-reduce-3">
 	<div class="cc-modal-panel cc-modal--lg modal-detail">
@@ -441,6 +434,10 @@
 				</div>
 			</div>
 		</div>
+		<div class="detail-tabs" role="tablist" aria-label="Work item detail panels">
+			<button type="button" class="detail-tab is-active" role="tab" aria-selected="true">Details</button>
+			<button type="button" class="detail-tab" role="tab" aria-selected="false">Links <span class="detail-tab-count">3</span></button>
+		</div>
 		<div class="detail-body cc-modal-scroll">
 			<div class="detail-section"	>
 				<div class="detail-section-header"><span class="section-chevron">▾</span> Description</div>
@@ -470,21 +467,15 @@ return x + y;</code></pre></div>
 </div>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>'Click to copy' ID to easily share or use in commit comment</li>
-	<li>'Click to copy' Title to easily use in messages/emails</li>
-	<li>Header action bar provides access to view on TFS, direct link sharing via 'Click to copy', and the three comment variants - <em>Triage</em>, <em>Return Task</em>, and a plain <em>Add Comment</em>.</li>
-	<li>Attachment chips enable file download</li>
-	<li>Header actions from the keyboard: <code>i</code> copies the ID, <code>v</code> views in TFS, <code>s</code> copies the share link, and <code>c</code>, <code>r</code>, <code>t</code> open the three comment variants - see <a href="#/keyboard-shortcuts/work-item-detail">Keyboard Shortcuts</a></li>
-	<li>Tabs appear only for the panels that have something in them, and the first one with content is the one you land on. An item with no description and no discussion opens straight on <em>Links</em>; one with no links has no tab strip at all. Adding a comment to an item that had no <em>Details</em> tab brings it back and switches to it.</li>
+	<li>'Click to copy' ID and Title to easily share or use in commit comments and messages/emails</li>
+	<li>Header action bar provides easy access to view on TFS, direct link sharing, and the three comment variants - <em>Triage</em>, <em>Return Task</em>, and a plain <em>Add Comment</em>.</li>
+	<li>Attachment chips enable file download. If a task tag matches a spec sheet attachment, it will be displayed in a separate row for easy access.</li>
+	<li>Keyboard warriors rejoice. <a href="#/keyboard-shortcuts/work-item-detail">Keyboard Shortcuts</a> provide quick access to all the actions you need to manage a work item efficiently.</li>
+	<li><em>Links</em> tab shows related work items, associated commits, and integrated builds.</li>
 </ol>
 
 <h2 id="comment-reassign">Comment, reassign, or change State</h2>
-<p>You may comment, reassign, change State, change Triage, or combine them. Add Comment, Triage,
-	and Return Task require at least one actual change. Close Task requires a changed, nonblank
-	State even when you enter a comment. Selecting the current assignee is not a reassignment.</p>
-<p>The field order is full-width Reassign To, then Comment, then State and Triage side by side.
-	The same modal has four variants; Close Task is available from the row's right-click menu
-	or <a href="#/keyboard-shortcuts/work-items-grid"><code>x</code></a>, and the other three also have detail-header buttons:</p>
+<p>You may comment, reassign, change State, and change Triage. The same modal has four variants; Triage, Return Task, Add Comment, and Close Task.  Each is available from the row's right-click menu, detail-header buttons, or <a href="#/keyboard-shortcuts/work-items-grid">keyboard shortcuts</a>.  All essentially perform the same action of submitting your changes but vary by the defaults they provide.</p>
 <table class="cc-help-table">
 	<thead>
 		<tr><th>Opened as</th><th>State</th><th>Triage</th><th>Reassign To</th><th>Comment</th></tr>
@@ -496,14 +487,8 @@ return x + y;</code></pre></div>
 		<tr><td><strong>Close Task</strong></td><td><code>Closed</code></td><td>blank</td><td>blank</td><td><em>Default Close Task Comment</em></td></tr>
 	</tbody>
 </table>
-<p>The four comment defaults are yours to set in
-	<a href="#/settings">Settings</a>, on its Work Items page - the profile button in
-	the app header. They are blank until you set them. State and Triage are written only when you change them from
-	what the item already has, so a prefill that matches costs no revision, and a blank one never
-	clears a value. An unrecognized current State falls back to leave unchanged. <em>Previous owner</em> means whoever owned the item before its current owner -
-	the person who handed it over - falling back to its creator when it has never changed hands, and
-	suggesting nobody when that would be you.</p>
-	<p><a href="#/keyboard-shortcuts/comment-modals"><code>Ctrl+Enter</code></a> presses <strong>OK</strong> from any field in this modal once <em>Submit comment dialogs with Ctrl+Enter</em> is turned on in <a href="#/settings">Settings</a>.</p>
+<p>The four comment defaults are yours to set in <a href="#/settings">Settings > Work Items</a> (along with <em>Submit comment dialogs with Ctrl+Enter</em>). They are blank until you set them. State and Triage are written only when you change them, so a prefill that matches costs no revision, and a blank one never clears a value. An unrecognized current State falls back to leave unchanged.</p>
+
 <div class="tfs-release cc-help-demo cc-reduce-4">
 	<div class="cc-modal-panel cc-modal--lg modal-comment">
 		<h3>Return Task</h3>
@@ -551,25 +536,18 @@ return x + y;</code></pre></div>
 </div>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>Markdown help starts hidden on every open. Click <em>See supported comment markdown.</em> to replace that link with its callout. The small X beside <em>Comment Markdown</em> hides the callout and restores the link.</li>
-	<li>The assignee list is in two sections: everyone who has ever created or owned <em>this</em> item, alphabetically, then your team members. Type to search every identity beyond those.</li>
-	<li>Opened from the Work Item Detail modal, a successful save closes that modal too when you reassign the item or your comment contains the word <em>done</em> - either way you are finished with it.</li>
-	<li>Comments support bold, italics, underline, inline code, fenced code blocks, and safe links via Markdown.</li>
-	<li>Raw HTML is not permitted and encoded as literal text.</li>
+	<li>Markdown help starts hidden on every open. Click <em>See supported comment markdown</em> for inline guidance.  Comment Markdown supports <code>**bold**</code>, <code>_italics_</code>, <code>__underline__</code>, <code>`inline code`</code>, fenced multiline code blocks, and <code>[anchor](https://example.com)</code>.  Raw HTML is shown as text.</li>
+	<li>The assignee list is in two sections: everyone who has ever created or owned <em>this</em> item, alphabetically, providing quick access to the people that matter most, then your team members. Type to search every identity beyond those.</li>
+	<li>Opened from the Work Item Detail modal, a successful save closes that modal too when you reassign the item or your comment contains the word <em>done</em>.</li>
 </ol>
 
-<div class="cc-help-callout"><strong>Reference note</strong>Detailed state transition rules live in <a href="#/reference-notes/work-item-state-transitions">Reference Notes</a>.</div>
-<p>Comment Markdown supports <code>**bold**</code>, <code>_italics_</code>, <code>__underline__</code>,
-	<code>`inline code`</code>, fenced multiline code blocks, and <code>[anchor](https://example.com)</code>.
-	Raw HTML is shown as text.</p>
+<h2 id="send-back">Return Triage Tasks</h2>
+<p>The Return Triage Tasks action puts the grid into select mode: a checkbox appears before every applicable ID. Only the rows already at <code>Triaged</code> offer a checkbox - the work you just finished - and they go back to whoever handed them over.</p>
+<p>Keyboard warriors, see <a href="#/keyboard-shortcuts">Keyboard Shortcuts</a> for details on how ticking and navigation can be done from the keyboard.</p>
 
-<h2 id="send-back">Return Tasks</h2>
-<p>The reply icon puts the grid into select mode: a checkbox appears before every ID, the icon itself is replaced by its confirmation, and the rest of the toolbar keeps working. Only the rows already at <code>Triaged</code> offer a checkbox - the work you just finished - and they go back to whoever handed them over. <em>Yes</em> opens one editable block per ticked item.</p>
-<p>Ticking can be done from the keyboard: <code>j</code> and <code>k</code> move down and up the rows, and <code>Space</code> ticks the one you are on. Rows that are not yet <code>Triaged</code> are still there to read but have no checkbox, so <code>Space</code> does nothing on them. See <a href="#/keyboard-shortcuts">Keyboard Shortcuts</a>.</p>
-<p>The <em>All</em> box on the confirmation ticks every row currently on offer, and clearing it unticks them. It follows the rows rather than leading them: untick one and it shows the partial (dash) state, tick the last one and it fills in. A tag chip or the quick filter narrows what <em>All</em> speaks for, so it covers the rows you can see.</p>
 <div class="tfs-release cc-help-demo cc-reduce-4">
 	<div class="cc-modal-panel cc-modal--lg modal-comment">
-		<h3>Return Tasks (2)</h3>
+		<h3>Return Triage Tasks (2)</h3>
 		<div class="cc-modal-scroll">
 			<div class="wi-back-item">
 				<div class="wi-back-head"><span class="wi-type-icon task doc-icon doc-icon--task" aria-hidden="true"></span><span class="wi-back-id">#900102</span><span class="wi-back-title">SAMPLE - estimate: separate details view</span></div>
@@ -631,10 +609,7 @@ return x + y;</code></pre></div>
 </div>
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>Every field is prefilled: <em>Return To</em> with whoever owned the item before you, Triage with <code>Pending</code>, and the comment with your <em>Default Return Task Comment</em> from <a href="#/settings">Settings</a> (blank until you set it). Change or clear what doesn't apply.</li>
-	<li><em>Return To</em> is the same combobox as the single-item form - that item's own participants first, then your team members, and type to search every identity beyond them.</li>
-	<li><em>Return To</em> comes up blank when there is genuinely nobody to return the item to - you created it, you own it, and it has never changed hands. Pick someone yourself.</li>
-	<li>Only the comment is optional. An item without a <em>Return To</em> blocks the submit and is marked in place.</li>
+	<li>Every field is prefilled: <em>Return To</em> with whoever owned the item before you, Triage with <code>Pending</code>, and the comment with your <em>Default Return Task Comment</em>. Change or clear what doesn't apply.</li>
+	<li>Only the comment is optional. An item without a <em>Return To</em> blocks the submit and is marked in place. If some items fail, the ones that landed disappear from the form and the rest stay with their error attached - press <em>OK</em> to retry just those.</li>
 	<li>Every item is written concurrently as one comment-plus-reassign-plus-Triage change, so the assigner sees a single revision rather than three.</li>
-	<li>A clean run closes the form and updates the grid. If some items fail, the ones that landed disappear from the form and the rest stay with their error attached - press <em>OK</em> to retry just those.</li>
 </ol>

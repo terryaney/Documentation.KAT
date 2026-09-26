@@ -71,6 +71,12 @@
 							<input type="password" class="cc-input" placeholder="Saved. Leave blank to keep it." onkeydown="event.preventDefault()">
 						</div>
 					</div>
+					<div class="ccs-field">
+						<label class="cc-check"><input type="checkbox" onclick="event.preventDefault()"><span>Always replace existing files when downloading CalcEngines</span></label>
+					</div>
+					<div class="ccs-field">
+						<label class="cc-check"><input type="checkbox" onclick="event.preventDefault()"><span>Automatically open downloaded CalcEngines after download</span></label>
+					</div>
 				</div>
 				<div class="ccs-section">
 					<div class="ccs-section-head">
@@ -164,6 +170,14 @@
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">KAT DataStore</div>
 		<div class="cc-help-legend-copy">Enter your KAT DataStore credentials here to enable CalcEngine Pipeline and Site Metrics.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Always replace existing files when downloading CalcEngines</div>
+		<div class="cc-help-legend-copy">Replace an existing file in Downloads with the same name without asking. Off by default.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Automatically open downloaded CalcEngines after download</div>
+		<div class="cc-help-legend-copy">Open each CalcEngine file after it is downloaded. Off by default.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Conduent</div>

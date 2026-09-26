@@ -2849,8 +2849,13 @@ html[data-theme-mode="system"] .tfs-release .cc-appbar-theme .cc-glyph::before {
 	border-bottom: 2px solid transparent;
 }
 
-.tfs-release .modal-detail .detail-tab:hover { color: var(--text); }
+.tfs-release .modal-detail .detail-tab:not(:disabled):hover { color: var(--text); }
 .tfs-release .modal-detail .detail-tab:focus-visible { outline: 1px solid var(--accent-primary); outline-offset: -2px; }
+
+.tfs-release .modal-detail .detail-tab:disabled {
+	cursor: default;
+	opacity: .45;
+}
 
 .tfs-release .modal-detail .detail-tab.is-active {
 	color: var(--text-primary);
@@ -3745,7 +3750,10 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	.tfs-release .ccs-panel { --ccs-foot-h: 56px; }
 }
 
-.tfs-release .ce-wrap { padding: var(--space-panel-y) var(--space-panel-x); }
+.tfs-release .ce-wrap {
+	padding: var(--space-panel-y) var(--space-panel-x);
+	container: ce-wrap / inline-size;
+}
 
 .tfs-release :is(.ce-callout, .ce-error-callout) {
 	display: flex;
@@ -3773,6 +3781,10 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 
 .tfs-release .ce-name { font-weight: 600; }
 
+.tfs-release .ce-name-content {
+	min-width: 0;
+}
+
 .tfs-release .ce-name-text {
 	min-width: 0;
 	overflow-wrap: anywhere;
@@ -3783,6 +3795,14 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	align-items: center;
 	gap: 5px;
 	flex: 0 0 auto;
+}
+
+@container ce-wrap (max-width: 1100px) {
+	.tfs-release .ce-name-content {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 5px;
+	}
 }
 
 .tfs-release .save-modal .modal-actions .cc-button { font-family: var(--font-body); }
@@ -3798,7 +3818,19 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	padding: 0;
 }
 
-.tfs-release .ce-checkout-pair { text-align: left; }
+.tfs-release .ce-checkout-pair {
+	min-width: 0;
+	text-align: left;
+}
+
+.tfs-release .ce-checkout-pair .ce-token {
+	display: inline-block;
+	max-width: 100%;
+	box-sizing: border-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+}
 
 .tfs-release .ce-empty {
 	padding: 14px 6px;

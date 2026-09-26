@@ -1,28 +1,23 @@
 <header class="cc-help-article-header">
 	<div class="cc-help-eyebrow">Command Center · DataStore</div>
-	<h1>CalcEngine</h1>
-	<p class="cc-help-lede">Read environment versions, approve or promote files, resolve checkouts, inspect version
-		history, and download the exact environment variant you need.</p>
+	<h1>CalcEngine Pipeline</h1>
+	<p class="cc-help-lede">Read environment versions, approve or promote files, resolve checkouts, inspect version history, and download the exact environment variant you need.</p>
 </header>
 
 <span class="cc-help-anchor-alias" id="reading-status" aria-hidden="true"></span>
-<h2 id="sample-calcengine-pipeline">Sample CalcEngine Pipeline</h2>
-<p>The ↻ button in the card header refreshes this card and its KPI tile, and nothing else. The matching keyboard shortcut is listed under <a href="#/keyboard-shortcuts/app-refresh">Keyboard Shortcuts</a>; on a site with no CalcEngine filter there is no card to refresh, so it does nothing.</p>
+<h2 id="sample-calcengine-pipeline">Sample Pipeline</h2>
 <div class="tfs-release cc-help-demo cc-reduce-5">
-	<details class="detail-card" open="">
-		<summary>
-			<span class="card-chevron">▸</span>
-			<span class="card-title">CalcEngine Pipeline</span>
-			<div class="card-header-right">
-				<span class="cc-refreshed">refreshed 01:45:20 · 0.42s · 1 call</span>
-				<button class="cc-button cc-button--icon cc-button--sm cc-refresh" type="button" title="Refresh CalcEngine Pipeline">↻</button>
-				<div class="cc-chip cc-chip--pill card-badge">4 engines · DEV/QA/UAT/PROD</div>
-			</div>
-		</summary>
-		<div class="ce-wrap">
+	<div class="detail-card-frame">
+		<details class="detail-card" id="calcEngineCard" open="">
+			<summary>
+				<span class="card-chevron">▸</span>
+				<span class="card-title">CalcEngine Pipeline</span>
+			</summary>
+			<div class="ce-wrap" data-ce-total="4" data-ce-user="engineer.sample@example.com" data-ce-badge="4 engines · DEV/QA/UAT/PROD">
 			<div class="ce-filters">
-				<input class="cc-input" type="text" onkeydown="event.preventDefault()" placeholder="Filter by name / checkout...">
-				<select class="cc-input" onchange="this.selectedIndex=0;">
+				<button class="cc-button cc-button--sm ce-checkin-mine" type="button" data-ce-count="3" title="Check in all my CalcEngines">Check Mine In</button>
+				<input class="cc-input ce-filter-search" type="text" id="ceSearchInput" onkeydown="event.preventDefault()" placeholder="Filter by name / checkout…">
+				<select class="cc-input ce-filter-status" id="ceStatusFilter" onchange="this.selectedIndex=0;">
 					<option value="all">All</option>
 					<option value="pending">Prod Approval Required</option>
 					<option value="blocked">Blocked Promotions</option>
@@ -50,7 +45,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="ce-row has-checkout">
+					<tr class="ce-row has-checkout" data-ce-status="pending" data-ce-env="DEV" data-ce-checkouts="engineer.sample@example.com">
 						<td class="ce-name">
 							<span class="ce-name-content">
 								<span>Conduent_Nexgen_SampleLibrary_SE.xlsm</span>
@@ -87,7 +82,7 @@
 						<td class="ce-checkout-pair" colspan="2"><span class="cc-chip cc-chip--pill ce-token checkout-muted clickable" title="Conduent_Nexgen_SampleLibrary_SE.xlsm checked out by engineer.sample@example.com on 8/4/2026 1:09 PM">☑ engineer.sample@example.com</span></td>
 						<td class="ce-checkout-pair" colspan="2"></td>
 					</tr>
-					<tr class="ce-row has-checkout ce-flagged ce-flag-warn">
+					<tr class="ce-row has-checkout ce-flagged ce-flag-warn" data-ce-status="pending" data-ce-env="QA" data-ce-checkouts="analyst.sample@example.com engineer.sample@example.com">
 						<td class="ce-name">
 							<span class="ce-name-content">
 								<span class="ce-name-text">Conduent_Nexgen_SAMPLE_Severance_SE.xlsm</span>
@@ -124,7 +119,7 @@
 						<td class="ce-checkout-pair" colspan="2"><span class="cc-chip cc-chip--pill ce-token checkout-muted clickable" title="Conduent_Nexgen_SAMPLE_Severance_SE.xlsm checked out by analyst.sample@example.com on 6/24/2026 9:15 AM">☑ analyst.sample@example.com</span></td>
 						<td class="ce-checkout-pair" colspan="2"><span class="cc-chip cc-chip--pill cc-chip--warning ce-token checkout-blocking clickable" title="Conduent_Nexgen_SAMPLE_Severance_PROD_SE.xlsm checked out by engineer.sample@example.com on 4/30/2026 10:22 AM — this blocks the TFS Release Pipeline from promoting it. Manual approve/promote here is still allowed.">☑ engineer.sample@example.com: blocks pipeline</span></td>
 					</tr>
-					<tr class="ce-row">
+					<tr class="ce-row" data-ce-status="promoted" data-ce-env="PROD" data-ce-checkouts="">
 						<td class="ce-name">
 							<span class="ce-name-content">
 								<span class="ce-name-text">Conduent_Nexgen_EXAMPLE_BRD_SE.xlsm</span>
@@ -149,7 +144,7 @@
 						<td class="center"></td>
 						<td class="center"><span class="cc-chip cc-chip--pill cc-chip--success ce-token green" title="Conduent_Nexgen_EXAMPLE_BRD_PROD_SE.xlsm approved by reviewer.sample@example.com on 12/9/2024 9:32 AM">1.0251 ✓</span></td>
 					</tr>
-					<tr class="ce-row has-checkout">
+					<tr class="ce-row has-checkout" data-ce-status="pending" data-ce-env="DEV" data-ce-checkouts="engineer.sample@example.com">
 						<td class="ce-name">
 							<span class="ce-name-content">
 								<span class="ce-name-text">Conduent_Nexgen_SAMPLE_BRD_SE.xlsm</span>
@@ -188,24 +183,30 @@
 					</tr>
 				</tbody>
 			</table>
+			</div>
+		</details>
+		<div class="card-header-left">
+			<button type="button" class="cc-help-link" title="Open CalcEngine Help" aria-label="Open CalcEngine Help">?</button>
 		</div>
-	</details>
+		<div class="card-header-right">
+			<span class="cc-refreshed">refreshed 01:45:20 · 0.42s · 1 call</span>
+			<div class="cc-chip cc-chip--pill card-badge">4 engines · DEV/QA/UAT/PROD</div>
+			<button class="cc-button cc-button--icon cc-button--sm cc-refresh" type="button" title="Refresh CalcEngine Pipeline">↻</button>
+		</div>
+	</div>
 </div>
 
-<div class="cc-help-callout warning"><strong>Consequence</strong>Approvals and Promotions change the KAT DataStore version available to associated site environments.  Ensure the CalcEngine has been tested before actions taken.</div>
+<div class="cc-help-callout warning"><strong>Consequence</strong>Approvals and Promotions move CalcEngines to associated site environments.  Ensure the CalcEngine has been tested before actions taken.</div>
 
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
 	<li>Supports 2 environment (QA/PROD) or 4 environment (DEV/QA/UAT/PROD) CalcEngines showing exactly where the 'latest' CalcEngine is running</li>
-	<li>Use the dropdown to filter CalcEngines by environment or all CalcEngines requiring a production move.</li>
-	<li><strong>Blocked Promotions</strong> (full pipelines only) shows every CalcEngine that cannot currently move forward, for either reason: a later environment is running a <em>higher</em> version than the one behind it, so there is nothing valid left to promote until the earlier environment catches up; or the upper file is checked out, which stops TFS's automatic Release Pipeline from promoting it.</li>
-	<li>Displays checkout user (including Promotion blocking during TFS's automatic Release Pipeline) if CalcEngine checked out.  Clicking chip checks in CalcEngines (forcibly for other users).</li>	
-	<li>Quick filter by CalcEngine name or checkout user name.</li>
-	<li><strong>Check Mine In</strong> checks in every CalcEngine you currently hold, in one confirmed action. It appears only while you hold at least one, and counts files rather than rows - a CalcEngine and its upper counterpart are checked out independently.</li>
-	<li>Approve and Promote CalcEngines to the 'next environment' when ready. Both ask for an authority email - the person signing the move off - prefilled with your KAT Management Site email. It cannot be left blank, and it cannot be the person whose file is moving: the <strong>Approval Authority</strong> may not be whoever uploaded the test CalcEngine, and the <strong>Promotion Authority</strong> may not be whoever uploaded the live CalcEngine.</li>	
 	<li>Hover over environment chips to see their state, who uploaded, approved, or promoted and when each environment state occurred. UAT reports a promotion only when the version arrived by promotion - uploading a test version directly replaces that history, so the chip says <em>uploaded</em> instead.</li>
-	<li>Download CalcEngines or view their version history across environments via action buttons next to each CalcEngine.</li>
-	<li>Jump straight to a CalcEngine on the Conduent Management Site via the Conduent button next to each CalcEngine.</li>
+	<li>Use the dropdown to filter CalcEngines by environment, blocked promotions, or all CalcEngines requiring a production move.  Quick filter by CalcEngine name or checkout user name.</li>
+	<li>Displays checkout user (including Promotion blocking during TFS's automatic Release Pipeline) if CalcEngine checked out.  Clicking chip checks in CalcEngines (forcibly for other users).</li>	
+	<li><strong>Check Mine In</strong> checks in every CalcEngine you currently hold, in one confirmed action.</li>
+	<li>Approve and Promote CalcEngines to the 'next environment' when ready by clicking version chip. Both ask for an authority email - the person signing the move off - prefilled with your KAT Management Site email. It cannot be left blank, and it cannot be the person whose file is moving: the <strong>Approval Authority</strong> may not be whoever uploaded the test CalcEngine, and the <strong>Promotion Authority</strong> may not be whoever uploaded the live CalcEngine.</li>
+	<li>Download CalcEngines or view their version history across environments via action buttons next to each CalcEngine or jump straight to a CalcEngine on the Conduent Management Site via the Conduent button next to each CalcEngine.</li>
 </ol>
 
 <div class="cc-help-callout">
@@ -218,9 +219,8 @@
 <div class="cc-help-callout">
 	<strong>Download Preferences</strong>
 	<p>When downloading CalcEngines, by default files are downloaded to your Downloads folder.  You can set the Always Replace and Auto Open settings as you desire.</p>
-	<div><b>Always Replace</b> - Automatically replaces existing files without prompting for new file name.  Default is <code>false</code>.</div>
+	<div><b>Always Replace</b> - Automatically replaces files without prompting for new file name.  Default is <code>false</code>.</div>
 	<div><b>Auto Open</b> - Automatically opens the CalcEngine after download in Excel.  Default is <code>false</code>.</div>
-	<p><b>Note:</b> Once these settings are set to <code>true</code>, the only way to reset them is <em>Open settings file</em> in <a href="#/settings">Settings</a>, which opens the settings file in VS Code for direct editing.</p>
 </div>
 
 <h2 id="filtering">CalcEngine Filter Expressions</h2>
@@ -259,17 +259,12 @@
 </table>
 
 <h2 id="history">Version history</h2>
-<p>Linked work-item references open in TFS, and each checkout line identifies its filename and current owner. The base CalcEngine (DEV/QA) and its production-suffixed counterpart (UAT/PROD) have separate checkouts, so the same owner can appear twice.</p>
-<p>History starts with one request to the lower CalcEngine, spanning the lowest through highest version currently shown in the environment grid. For four environments, if both UAT and PROD versions are present in that history, no upper request is needed.</p>
+<p>See the historical differences between the lowest and highest versions of a CalcEngine.  Each 'checkout line' identifies its filename and current owner. The base CalcEngine (DEV/QA) and its production-suffixed counterpart (UAT/PROD) have separate checkouts, so the same owner can appear twice.</p>
+
 <h3>Recognizing probable hotfixes</h3>
 <p>A direct upload to the upper CalcEngine can introduce versions that do not exist in lower history. A warning triangle marks these as <strong>probable patches</strong>.</p>
-<ol>
-	<li>If PROD is already in lower history but UAT is missing, fetch upper history between those two environment versions. Add upper-only versions with patch warnings.</li>
-	<li>If the lowest upper version is missing and is older than the oldest lower result, look back one decimal increment in lower history. For example, an oldest result of <code>1.1636</code> means a lookup from <code>1.1635</code> through <code>1.1636</code>. Take the nearest strictly older lower version; use it as the baseline only if it is below the lowest upper version.</li>
-	<li>Fetch upper history from that baseline (or the lowest upper version if no baseline was found) through the oldest lower result, extending the upper end when needed to include UAT/PROD. Merge newest first, keeping lower's entry when the same version appears in both histories. The confirmed lower baseline is not a patch.</li>
-</ol>
-<p>If lower history is empty, fetch the known UAT/PROD range and mark its rows as probable patches. With only one populated upper environment, that fallback requests its single version. The lookup makes at most three history requests; a failed request is shown as an error, not as an empty result.</p>
 <p>The example below is an illustrative excerpt: QA is <code>1.1678</code>, PROD is <code>1.16354</code>, and DEV/UAT are empty. The lookup finds the shared baseline <code>1.1635</code> and brings back all four probable patches, <code>1.16351</code> through <code>1.16354</code>.</p>
+
 <div class="tfs-release cc-help-demo cc-reduce-3">
 	<div class="cc-modal-panel cc-modal--lg">
 		<div class="modal-title">Conduent_Nexgen_QA_SAMPLE_BRD_SE History 1.1635 - 1.1678</div>
@@ -290,7 +285,6 @@
 			</table>
 			<div class="ce-hist-legend"><span class="ce-hist-patch" aria-hidden="true">&#9888;</span> Probable patch found only in Upper CalcEngine.</div>
 		</div>
-		<p>This is a version-number heuristic, not a file-content comparison. A hotfix that reuses a lower version number cannot be distinguished; older upper-only changes are not searched when the current upper versions already exist in lower history. The backward lookup checks one decimal increment only, so skipped numbers or unusual numbering can leave the baseline undiscovered. Such cases retain the known upper minimum rather than guessing an older baseline.</p>
 		<div class="modal-actions" style="margin-top:14px;">
 			<button class="cc-button" type="button">Close</button>
 		</div>
