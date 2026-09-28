@@ -241,7 +241,7 @@ window.KCC_DOCS = {
 				"version-1",
 				"whats-new"
 			],
-			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes</div>\n<h1>Release Notes</h1>\n<p class=\"cc-help-lede\">What changed in each version of KAT Command Center. Each version line has one page, and its updates read oldest to newest.</p>\n</header>\n<h2 id=\"latest\">Latest update</h2>\n<a class=\"kd-release-latest\" href=\"#/releases/2.0/2.0.0\"><strong>2.0.0</strong><time datetime=\"2026-09-27\">September 27, 2026</time><span>Your journey towards the dark side is now complete.</span></a>\n<h2 id=\"all-versions\">All versions</h2>\n<h3 id=\"version-2\">Version 2</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/2.0\">Version 2.0</a> <span>1 update, latest 2.0.0 on September 27, 2026</span></li>\n</ul>\n<h3 id=\"version-1\">Version 1</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/1.3\">Version 1.3</a> <span>1 update, latest 1.3.0 on September 26, 2026</span></li>\n<li><a href=\"#/releases/1.2\">Version 1.2</a> <span>3 updates, latest 1.2.15 on September 24, 2026</span></li>\n</ul>\n<h2 id=\"whats-new\">What's New after an update</h2>\n<p>After Command Center updates itself, it opens <a href=\"#/whats-new\">What's New</a> with the version you were running before. Every update you have not seen is highlighted, even when it spans more than one version line, and you can dismiss the notice once you have read it.</p>",
+			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes</div>\n<h1>Release Notes</h1>\n<p class=\"cc-help-lede\">What changed in each version of KAT Command Center. Each version line has one page, and its updates read oldest to newest.</p>\n</header>\n<h2 id=\"latest\">Latest update</h2>\n<a class=\"kd-release-latest\" href=\"#/releases/2.0/2.0.1\"><strong>2.0.1</strong><time datetime=\"2026-09-27\">September 27, 2026</time><span>Laver Cup, Baby!</span></a>\n<h2 id=\"all-versions\">All versions</h2>\n<h3 id=\"version-2\">Version 2</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/2.0\">Version 2.0</a> <span>2 updates, latest 2.0.1 on September 27, 2026</span></li>\n</ul>\n<h3 id=\"version-1\">Version 1</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/1.3\">Version 1.3</a> <span>1 update, latest 1.3.0 on September 26, 2026</span></li>\n<li><a href=\"#/releases/1.2\">Version 1.2</a> <span>3 updates, latest 1.2.15 on September 24, 2026</span></li>\n</ul>\n<h2 id=\"whats-new\">What's New after an update</h2>\n<p>After Command Center updates itself, it opens <a href=\"#/whats-new\">What's New</a> with the version you were running before. Every update you have not seen is highlighted, even when it spans more than one version line, and you can dismiss the notice once you have read it.</p>",
 			"navTitle": "Overview"
 		},
 		"releases/2.0": {
@@ -252,14 +252,20 @@ window.KCC_DOCS = {
 			"icon": "notes",
 			"anchors": [
 				"2.0.0",
-				"2.0.0-from-linqpad-query-to-first-class-application"
+				"2.0.0-from-linqpad-query-to-first-class-application",
+				"2.0.1",
+				"2.0.1-improvements"
 			],
-			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes &middot; Version 2</div>\n<h1>Version 2.0</h1>\n<p class=\"cc-help-lede\">1 update, released September 27, 2026. Updates read oldest to newest.</p>\n</header>\n<section class=\"kd-patch\" data-version=\"2.0.0\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.0\">2.0.0</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-27\">September 27, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Your journey towards the dark side is now complete.</p>\n<div class=\"kd-patch-part kd-patch-story\">\n<h3 id=\"2.0.0-from-linqpad-query-to-first-class-application\">From LINQPad query to first-class application</h3>\n<p>What started as an ad hoc LINQPad query, runnable only by the Chief Sherpa, has completed its journey into a first-class application for the entire KAT team to use every day.</p>\n\t<figure>\n\t\t<img src=\"media/releases/2.0.0/command-center-journey.webp\" alt=\"The original LINQPad query dashboard transitions into the dark KAT Command Center application\" width=\"900\" height=\"604\">\n\t</figure>\n\t<p>This release followed <a href=\"#/releases/1.3/1.3.0\">Version 1.3.0</a> so quickly that you should review its functionality updates too, especially if you updated directly to this release skipping 1.3.0 (or any other 1.x release).</p>\n</div>\n</section>",
+			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes &middot; Version 2</div>\n<h1>Version 2.0</h1>\n<p class=\"cc-help-lede\">2 updates, from 2.0.0 (September 27, 2026) to 2.0.1 (September 27, 2026). Updates read oldest to newest.</p>\n<p class=\"kd-release-jump\"><a href=\"#/releases/2.0/2.0.1\">Jump to the latest update, 2.0.1</a></p>\n</header>\n<section class=\"kd-patch\" data-version=\"2.0.0\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.0\">2.0.0</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-27\">September 27, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Your journey towards the dark side is now complete.</p>\n<div class=\"kd-patch-part kd-patch-story\">\n<h3 id=\"2.0.0-from-linqpad-query-to-first-class-application\">From LINQPad query to first-class application</h3>\n<p>What started as an ad hoc LINQPad query, runnable only by the Chief Sherpa, has completed its journey into a first-class application for the entire KAT team to use every day.</p>\n\t<figure>\n\t\t<img src=\"media/releases/2.0.0/command-center-journey.webp\" alt=\"The original LINQPad query dashboard transitions into the dark KAT Command Center application\" width=\"900\" height=\"604\">\n\t</figure>\n\t<p>This release followed <a href=\"#/releases/1.3/1.3.0\">Version 1.3.0</a> so quickly that you should review its functionality updates too, especially if you updated directly to this release skipping 1.3.0 (or any other 1.x release).</p>\n</div>\n</section>\n<section class=\"kd-patch\" data-version=\"2.0.1\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.1\">2.0.1</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-27\">September 27, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Laver Cup, Baby!</p>\n<div class=\"kd-patch-part kd-patch-improvements\">\n<h3 id=\"2.0.1-improvements\">Improvements</h3>\n<ul>\n\t\t<li>If you are a tennis fan, check out the dark theme option :)</li>\n\t</ul>\n</div>\n</section>",
 			"navTitle": "2.0",
 			"children": [
 				{
 					"anchor": "2.0.0",
 					"title": "2.0.0"
+				},
+				{
+					"anchor": "2.0.1",
+					"title": "2.0.1"
 				}
 			]
 		},
@@ -362,6 +368,14 @@ window.KCC_DOCS = {
 			"major": "2",
 			"date": "2026-09-27",
 			"theme": "Your journey towards the dark side is now complete.",
+			"page": "releases/2.0"
+		},
+		{
+			"version": "2.0.1",
+			"minor": "2.0",
+			"major": "2",
+			"date": "2026-09-27",
+			"theme": "Laver Cup, Baby!",
 			"page": "releases/2.0"
 		}
 	],
@@ -868,7 +882,7 @@ window.KCC_DOCS = {
 			"anchor": "latest",
 			"title": "Release Notes",
 			"heading": "Latest update",
-			"text": "2.0.0September 27, 2026Your journey towards the dark side is now complete."
+			"text": "2.0.1September 27, 2026Laver Cup, Baby!"
 		},
 		{
 			"section": "releases",
@@ -884,7 +898,7 @@ window.KCC_DOCS = {
 			"anchor": "version-2",
 			"title": "Release Notes",
 			"heading": "Version 2",
-			"text": "Version 2.0 1 update, latest 2.0.0 on September 27, 2026"
+			"text": "Version 2.0 2 updates, latest 2.0.1 on September 27, 2026"
 		},
 		{
 			"section": "releases",
@@ -908,7 +922,7 @@ window.KCC_DOCS = {
 			"anchor": "",
 			"title": "Version 2.0",
 			"heading": "Version 2.0",
-			"text": "Release Notes · Version 2 Version 2.0 1 update, released September 27, 2026. Updates read oldest to newest."
+			"text": "Release Notes · Version 2 Version 2.0 2 updates, from 2.0.0 (September 27, 2026) to 2.0.1 (September 27, 2026). Updates read oldest to newest. Jump to the latest update, 2.0.1"
 		},
 		{
 			"section": "releases",
@@ -925,6 +939,22 @@ window.KCC_DOCS = {
 			"title": "Version 2.0",
 			"heading": "From LINQPad query to first-class application",
 			"text": "What started as an ad hoc LINQPad query, runnable only by the Chief Sherpa, has completed its journey into a first-class application for the entire KAT team to use every day. This release followed Version 1.3.0 so quickly that you should review its functionality updates too, especially if you updated directly to this release skipping 1.3.0 (or any other 1.x release)."
+		},
+		{
+			"section": "releases",
+			"page": "releases/2.0",
+			"anchor": "2.0.1",
+			"title": "Version 2.0",
+			"heading": "2.0.1",
+			"text": "September 27, 2026 Laver Cup, Baby!"
+		},
+		{
+			"section": "releases",
+			"page": "releases/2.0",
+			"anchor": "2.0.1-improvements",
+			"title": "Version 2.0",
+			"heading": "Improvements",
+			"text": "If you are a tennis fan, check out the dark theme option :)"
 		},
 		{
 			"section": "releases",

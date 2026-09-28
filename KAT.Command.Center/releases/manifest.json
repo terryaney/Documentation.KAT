@@ -47,6 +47,12 @@
 			"date": "2026-09-27",
 			"theme": "Your journey towards the dark side is now complete.",
 			"sha256": "8EC8B7874D99009741CA4010C477C7306A67433F9BFC67BE6510E485B67D3570"
+		},
+		{
+			"version": "2.0.1",
+			"date": "2026-09-27",
+			"theme": "Laver Cup, Baby!",
+			"sha256": "386EC289A47976ADADB08AADFF09391CD9880FBBD4C0B8EBCF90162C832A5F40"
 		}
 	]
 }

@@ -113,6 +113,58 @@
 	--text-muted: #a5b5c4;
 }
 
+:root[data-palette="laver"] {
+	--laver-black: var(--color-black);
+	--laver-line: #f8f9fa;
+	--laver-europe: #0052cc;
+	--laver-europe-hi: #3b82ff;
+	--laver-world: #e50027;
+	--laver-world-hi: #ff3d5e;
+	--laver-rolex: #006039;
+	--laver-rolex-hi: #3dcb86;
+	--laver-led: #ffd23f;
+	--laver-hairline: #1c1f23;
+
+	--laver-court: #3a4046;
+
+	--laver-chrome: #222529;
+	--laver-chrome-border: #45494e;
+	--laver-raise: #16191c;
+	--laver-rule: #2a2f35;
+	--laver-rule-strong: #444b53;
+	--laver-badge: #101a14;
+	--font-display: 'Bahnschrift', var(--font-body);
+
+	--surface-page: var(--laver-black);
+	--surface-card: #2b3035;
+	--surface-raised: #363c42;
+	--border-default: #4c545c;
+	--text-primary: var(--laver-line);
+	--text-muted: #aeb6be;
+	--status-success: var(--laver-rolex-hi);
+	--status-info: #5c9bff;
+	--status-warning: var(--laver-led);
+	--status-danger: var(--laver-world-hi);
+	--accent-primary: var(--laver-led);
+
+	--laver-s1-fg: var(--laver-led);
+	--laver-s1-bg: var(--laver-rolex);
+	--laver-s2-fg: var(--color-white);
+	--laver-s2-bg: var(--laver-europe);
+	--laver-s3-fg: var(--laver-raise);
+	--laver-s3-bg: var(--laver-led);
+	--laver-s4-fg: var(--color-white);
+	--laver-s4-bg: var(--laver-world);
+	--env-dev-fg: var(--laver-s1-fg);
+	--env-dev-bg: var(--laver-s1-bg);
+	--env-qa-fg: var(--laver-s2-fg);
+	--env-qa-bg: var(--laver-s2-bg);
+	--env-uat-fg: var(--laver-s3-fg);
+	--env-uat-bg: var(--laver-s3-bg);
+	--env-prod-fg: var(--laver-s4-fg);
+	--env-prod-bg: var(--laver-s4-bg);
+}
+
 :root[data-palette="slate"][data-theme="light"] {
 	--surface-page: #dce2e8;
 	--surface-card: #edf1f4;
@@ -4880,3 +4932,215 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 .tfs-release .sm-mini .sm-hrow,
 .tfs-release .sm-mini .sm-row { grid-template-columns: 0 86px 1fr 0 0 repeat(4, 120px); }
 .tfs-release .sm-mini .sm-row:hover { background: none; }
+
+:root[data-palette="laver"] .tfs-release.cc-shell:has(#ccEnvSeats[data-env-dev="2"]) { --env-dev-fg: var(--laver-s2-fg); --env-dev-bg: var(--laver-s2-bg); }
+:root[data-palette="laver"] .tfs-release.cc-shell:has(#ccEnvSeats[data-env-dev="3"]) { --env-dev-fg: var(--laver-s3-fg); --env-dev-bg: var(--laver-s3-bg); }
+:root[data-palette="laver"] .tfs-release.cc-shell:has(#ccEnvSeats[data-env-dev="4"]) { --env-dev-fg: var(--laver-s4-fg); --env-dev-bg: var(--laver-s4-bg); }
+:root[data-palette="laver"] .tfs-release.cc-shell:has(#ccEnvSeats[data-env-qa="3"]) { --env-qa-fg: var(--laver-s3-fg); --env-qa-bg: var(--laver-s3-bg); }
+:root[data-palette="laver"] .tfs-release.cc-shell:has(#ccEnvSeats[data-env-qa="4"]) { --env-qa-fg: var(--laver-s4-fg); --env-qa-bg: var(--laver-s4-bg); }
+:root[data-palette="laver"] .tfs-release.cc-shell:has(#ccEnvSeats[data-env-uat="4"]) { --env-uat-fg: var(--laver-s4-fg); --env-uat-bg: var(--laver-s4-bg); }
+
+:root[data-palette="laver"] .tfs-release :is(#calcEngineTile, #calcEngineCard, .env-heat--ce) {
+	--env-dev-fg: var(--laver-s1-fg);
+	--env-dev-bg: var(--laver-s1-bg);
+	--env-qa-fg: var(--laver-s2-fg);
+	--env-qa-bg: var(--laver-s2-bg);
+	--env-uat-fg: var(--laver-s3-fg);
+	--env-uat-bg: var(--laver-s3-bg);
+}
+
+:root[data-palette="laver"] .tfs-release .cc-chip.env-heat {
+	border-color: var(--env-heat-bg);
+	box-shadow: inset 0 1px 0 color-mix(in srgb, var(--laver-line) 16%, transparent);
+}
+
+:root[data-palette="laver"] .tfs-release .env-heat:is(.approvable, .redeployable, .ce-kpi-env, .clickable):hover {
+	color: var(--env-heat-fg);
+	background: var(--env-heat-bg);
+	border-color: var(--laver-line);
+	filter: brightness(1.12);
+}
+
+:root[data-palette="laver"] .tfs-release.cc-shell,
+:root[data-palette="laver"] .tfs-release .cc-main { background: transparent; }
+:root[data-palette="laver"] .tfs-release .cc-main { grid-row: 1; }
+
+:root[data-palette="laver"] .tfs-release.cc-shell {
+	--cc-nav-border: color-mix(in srgb, var(--laver-chrome-border) 55%, transparent);
+}
+
+:root[data-palette="laver"] .tfs-release :is(.cc-appbar, .cc-nav) { background: var(--laver-chrome); }
+
+:root[data-palette="laver"] .tfs-release .cc-nav-badge:not(.cc-nav-badge--attn, .cc-nav-badge--bad) {
+	background: var(--laver-badge);
+	color: var(--laver-led);
+	border-color: color-mix(in srgb, var(--laver-rolex) 70%, transparent);
+}
+
+:root[data-palette="laver"] .tfs-release .sec-head {
+	background: color-mix(in srgb, var(--laver-black) 80%, transparent);
+}
+
+.tfs-release .cc-court { display: none; }
+
+:root[data-palette="laver"] .tfs-release .cc-court {
+
+	--cc-court-edge: calc(var(--cc-gutter) * 3);
+	display: block;
+	grid-area: 1 / 2;
+	position: relative;
+
+	z-index: -1;
+	min-width: 0;
+	margin-right: var(--cc-court-sb, 0px);
+	overflow: hidden;
+	pointer-events: none;
+	user-select: none;
+}
+
+.tfs-release .cc-court-crowd {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: var(--cc-court-edge);
+	animation: cc-crowd-breathe 9s ease-in-out infinite;
+}
+
+.tfs-release .cc-court-crowd--europe { left: 0; --crowd-dir: to right; }
+.tfs-release .cc-court-crowd--world { right: 0; --crowd-dir: to left; animation-delay: -4.5s; }
+
+.tfs-release .cc-court-crowd {
+	background: linear-gradient(to bottom,
+		color-mix(in srgb, var(--laver-europe-hi) 60%, transparent) 0 42%,
+		transparent 50%,
+		color-mix(in srgb, var(--laver-world-hi) 60%, transparent) 58% 100%);
+	-webkit-mask-image: linear-gradient(var(--crowd-dir), var(--laver-black), transparent);
+	mask-image: linear-gradient(var(--crowd-dir), var(--laver-black), transparent);
+}
+
+@keyframes cc-crowd-breathe {
+	0%, 100% { opacity: .78; }
+	50% { opacity: 1; }
+}
+
+.tfs-release .cc-court-field {
+	position: absolute;
+	top: var(--cc-court-top, 0px);
+	bottom: 0;
+	left: var(--cc-court-edge);
+	right: var(--cc-court-edge);
+	container-type: inline-size;
+}
+
+.tfs-release .cc-court-lines {
+	--cc-court-gap: .6rem;
+	position: absolute;
+	top: calc(var(--cc-court-gap) * 3);
+	left: 0;
+	right: 0;
+	margin-inline: auto;
+	width: calc((100% - var(--cc-court-gap) * 2) * .7);
+	height: calc(100% - var(--cc-court-gap) * 6 - 1.1rem - min(var(--type-4xl), 3.6cqi) - .45rem - min(var(--type-2xs), 1.5cqi));
+	background: var(--laver-court);
+	box-shadow: 0 0 var(--cc-court-edge) calc(var(--cc-court-edge) / 2) var(--laver-court);
+	fill: none;
+	stroke: var(--laver-line);
+	stroke-width: 6;
+	vector-effect: non-scaling-stroke;
+}
+
+.tfs-release .cc-court-lines * { vector-effect: non-scaling-stroke; }
+.tfs-release .cc-court-lines .cc-court-net { stroke-width: 8; }
+
+.tfs-release .cc-court-mark {
+	position: absolute;
+	inset: auto 0 1.1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .45rem;
+	color: var(--laver-line);
+	white-space: nowrap;
+	line-height: 1;
+}
+
+.tfs-release .cc-court-mark-name {
+	font-family: var(--font-display);
+	font-size: min(var(--type-4xl), 3.6cqi);
+	font-weight: 700;
+	letter-spacing: .24em;
+	padding-left: .24em;
+	opacity: .92;
+}
+
+.tfs-release .cc-court-mark-sub {
+	font-family: var(--font-display);
+	font-size: min(var(--type-2xs), 1.5cqi);
+	font-weight: 600;
+	letter-spacing: .7em;
+	padding-left: .7em;
+	opacity: .62;
+}
+
+.tfs-release .cc-court-ball {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2.1rem;
+	height: 2.1rem;
+	background: var(--cc-laver-ball) center / contain no-repeat;
+	filter: drop-shadow(0 5px 4px color-mix(in srgb, var(--laver-black) 65%, transparent));
+	will-change: transform;
+}
+
+.tfs-release .cc-court-ball.is-reverse { background-image: var(--cc-laver-ball-reverse); }
+
+@media (prefers-reduced-motion: reduce) {
+	.tfs-release .cc-court-crowd { animation: none; }
+	.tfs-release .cc-court-ball { display: none; }
+}
+
+:root[data-palette="laver"] .tfs-release .ccs-panel {
+	--panel: var(--laver-black);
+	--panel2: var(--laver-raise);
+	--bg: var(--laver-black);
+	--border: var(--laver-rule);
+	--border-strong: var(--laver-rule-strong);
+	--border-subtle: var(--laver-hairline);
+	background: var(--laver-black);
+	border-color: var(--laver-rule);
+}
+
+:root[data-palette="laver"] .tfs-release .ccs-rail {
+	background: var(--laver-black);
+	border-right-color: var(--laver-hairline);
+}
+
+:root[data-palette="laver"] .tfs-release .ccs-nav-item { color: color-mix(in srgb, var(--text-primary) 82%, transparent); }
+
+:root[data-palette="laver"] .tfs-release .ccs-nav-item[aria-current="page"] {
+	color: var(--laver-line);
+	background: var(--laver-hairline);
+	box-shadow: none;
+}
+
+:root[data-palette="laver"] .tfs-release .ccs-nav-item[data-page="profile"] { --ccs-ico: var(--laver-europe-hi); }
+:root[data-palette="laver"] .tfs-release .ccs-nav-item[data-page="display"] { --ccs-ico: var(--laver-led); }
+:root[data-palette="laver"] .tfs-release .ccs-nav-item[data-page="work"] { --ccs-ico: var(--laver-rolex-hi); }
+:root[data-palette="laver"] .tfs-release .ccs-nav-item[data-page="connections"] { --ccs-ico: var(--laver-world-hi); }
+
+:root[data-palette="laver"] .tfs-release .ccs-nav-item svg {
+	width: 24px;
+	height: 24px;
+	padding: 4px;
+	border-radius: 6px;
+	color: var(--ccs-ico, currentColor);
+	background: color-mix(in srgb, var(--ccs-ico, currentColor) 14%, transparent);
+}
+
+:root[data-palette="laver"] .tfs-release .ccs-toggle input[role="switch"]:checked {
+	background: var(--laver-europe-hi);
+	border-color: var(--laver-europe-hi);
+}
+
+:root[data-palette="laver"] .tfs-release .ccs-toggle input[role="switch"]:checked::before { background: var(--laver-line); }
