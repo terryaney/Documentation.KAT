@@ -1,7 +1,7 @@
 <header class="cc-help-article-header">
-	<div class="cc-help-eyebrow">Orientation · 5 minute read</div>
+	<div class="cc-help-eyebrow">Orientation · 6 minute read</div>
 	<h1>Read the dashboard without guessing.</h1>
-	<p class="cc-help-lede">KPI tiles answer "what needs attention?" Detail cards answer "why?" and expose the relevant controls.  The combination of these are you KAT Command Center!</p>
+	<p class="cc-help-lede">The rail tells you where something needs you. The tiles give each area's headline. <b>What's Happening</b> lists what needs you, and what is moving, right now. Select a section in the rail for its evidence and controls.</p>
 </header>
 
 <h2 id="dashboard-tour">Command Center at a glance</h2>
@@ -9,70 +9,247 @@
 
 <div class="cc-help-tour" data-help-tour>
 	<div class="cc-help-tour-stage">
-		<img src="media/CommandCenter.webp" alt="KAT Command Center dashboard with the application bar, Work Items controls, four KPI tiles in a two-by-two grid, and collapsed detail cards." loading="lazy">
-		<div class="cc-help-tour-region" data-help-tour-region="application" style="--x:0.20%;--y:1.44%;--w:99.61%;--h:2.32%"></div>
-		<div class="cc-help-tour-region" data-help-tour-region="work-items" style="--x:1.66%;--y:9.31%;--w:95.95%;--h:4.59%"></div>
-		<div class="cc-help-tour-region" data-help-tour-region="release-kpi" style="--x:1.66%;--y:34.78%;--w:47.44%;--h:19.31%"></div>
-		<div class="cc-help-tour-region" data-help-tour-region="calcengine-kpi" style="--x:50.12%;--y:34.78%;--w:47.49%;--h:19.31%"></div>
-		<div class="cc-help-tour-region" data-help-tour-region="sitescope-kpi" style="--x:1.66%;--y:54.96%;--w:47.49%;--h:16.64%"></div>
-		<div class="cc-help-tour-region" data-help-tour-region="metrics-kpi" style="--x:50.17%;--y:54.96%;--w:47.44%;--h:16.64%"></div>
-		<div class="cc-help-tour-region" data-help-tour-region="detail-cards" style="--x:1.61%;--y:72.43%;--w:96.00%;--h:23.81%"></div>
-		<button class="cc-help-tour-pin" type="button" data-help-tour-target="application" aria-label="Show Application Bar explanation" aria-pressed="false" style="--x:0.50%;--y:0.75%">1</button>
-		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="work-items" aria-label="Show Work Items Bar explanation" style="--r:2.39%;--b:86.11%">2</button>
-		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="release-kpi" aria-label="Show Release Pipeline KPI explanation" style="--r:50.90%;--b:45.92%">3</button>
-		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="calcengine-kpi" aria-label="Show CalcEngine Pipeline KPI explanation" style="--r:2.39%;--b:45.92%">4</button>
-		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="sitescope-kpi" aria-label="Show Site Scope KPI explanation" style="--r:50.85%;--b:28.40%">5</button>
-		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="metrics-kpi" aria-label="Show Site Metrics KPI explanation" style="--r:2.39%;--b:28.40%">6</button>
-		<button class="cc-help-tour-pin" type="button" data-help-tour-target="detail-cards" aria-label="Show Detail Cards explanation" style="--x:1.91%;--y:72.88%">7</button>
+		<img src="media/CommandCenter.webp" alt="KAT Command Center with the application bar across the top, the navigation rail on the left, four KPI tiles in a two-by-two grid, and the What's Happening list below them." loading="lazy">
+		<div class="cc-help-tour-region" data-help-tour-region="application" style="--x:0.00%;--y:2.55%;--w:100.00%;--h:4.49%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="rail" style="--x:0.00%;--y:7.04%;--w:17.93%;--h:92.96%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="release-kpi" style="--x:18.80%;--y:11.52%;--w:39.48%;--h:37.51%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="calcengine-kpi" style="--x:59.73%;--y:11.52%;--w:39.33%;--h:37.51%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="sitescope-kpi" style="--x:18.80%;--y:50.73%;--w:39.48%;--h:30.39%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="metrics-kpi" style="--x:59.73%;--y:50.73%;--w:39.33%;--h:30.39%"></div>
+		<div class="cc-help-tour-region" data-help-tour-region="happening" style="--x:18.80%;--y:82.83%;--w:80.26%;--h:15.55%"></div>
+		<button class="cc-help-tour-pin" type="button" data-help-tour-target="application" aria-label="Show Application Bar explanation" aria-pressed="false" style="--x:25.00%;--y:3.67%">1</button>
+		<button class="cc-help-tour-pin" type="button" data-help-tour-target="rail" aria-label="Show Navigation Rail explanation" style="--x:8.97%;--y:50.00%">2</button>
+		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="release-kpi" aria-label="Show Release Pipeline KPI explanation" style="--r:41.72%;--b:50.97%">3</button>
+		<button class="cc-help-tour-pin" type="button" data-help-tour-target="calcengine-kpi" aria-label="Show CalcEngine Pipeline KPI explanation" style="--x:77.50%;--y:13.54%">4</button>
+		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="sitescope-kpi" aria-label="Show Site Scope KPI explanation" style="--r:41.72%;--b:18.87%">5</button>
+		<button class="cc-help-tour-pin cc-help-tour-pin--br" type="button" data-help-tour-target="metrics-kpi" aria-label="Show Site Metrics KPI explanation" style="--r:0.94%;--b:18.87%">6</button>
+		<button class="cc-help-tour-pin" type="button" data-help-tour-target="happening" aria-label="Show What's Happening explanation" style="--x:51.50%;--y:83.30%">7</button>
 	</div>
 
 	<div class="cc-help-tour-cards">
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="application" aria-pressed="false">
 			<span class="cc-help-tour-number">01</span>
-			<span><strong>Application Bar</strong><small>Choose the site, release/CalcEngine filters, change theme, or sign in.</small></span>
-			<span class="cc-help-tour-detail">
-				<span>The filter icon shows or hides From Release, To Release, and CalcEngine Filter. Leave <em>To/From</em> blank for automatic release resolution.</span><br/><br/>
-				<b>To</b>: Last <b>Complete</b> Release<br/>
-				<b>From</b>: First <b>Available</b> Release after <em>To</em><br/><br/>
-				<span>Enter explicit release numbers when you need a specific comparison. An invalid number makes the Release Pipeline and Release Differences unavailable until corrected.</span>
-			</span>
-			<span class="cc-help-tour-detail">The profile button opens Settings, where Profile holds your sign-ins and Display holds your appearance preferences.</span>
-			<span class="cc-help-tour-detail">The bar stays at the top of the window as you scroll. <b>Refresh</b> and the site picker stay unavailable until the first load finishes. The theme button cycles Dark, Light and System, using your preferred palette for each mode. Choose those palettes and Normal/Compact density in <b>Settings &gt; Display</b>. <em>?</em> opens this help and the list icon opens What's New.</span>
-			<span class="cc-help-tour-detail">An amber dot beside a site name means that site's newest release has <b>not</b> finished publishing to every environment. Type <code>*</code> in the site search to see only those sites — see <em>Sites with a release in flight</em> below.</span>
+			<span><strong>Application Bar</strong><small>Show or hide the rail, choose the site, change theme, open help, or open Settings.</small></span>
+			<span class="cc-help-tour-detail">The site picker sets which site the Release Pipeline, Release Differences and CalcEngine sections describe. Work Items and Site Scope do not depend on it. The picker stays unavailable until the first load finishes.</span>
+			<span class="cc-help-tour-detail">A green dot pulsing beside the title means the background site sweep is running. It says nothing about the health of the site you are on.</span>
+			<span class="cc-help-tour-detail">An amber dot beside a site name means that site's newest release has <b>not</b> finished publishing to every environment. Type <code>*</code> in the site search to see only those sites. See <em>Sites with a release in flight</em> below.</span>
+			<span class="cc-help-tour-detail">The theme button cycles Dark, Light and System. The gear opens Settings, where Profile holds your sign-ins and Display holds your appearance preferences.</span>
 		</button>
-		<button class="cc-help-tour-card" type="button" data-help-tour-target="work-items">
+		<button class="cc-help-tour-card" type="button" data-help-tour-target="rail">
 			<span class="cc-help-tour-number">02</span>
-			<span><strong>Work Items Bar</strong><small>Look up tasks by ID, create work items, and view saved query results. Queries are set up in Settings.</small></span>
-			<span class="cc-help-tour-detail">Query chips toggle the visibility of saved query results and show total count plus ⊗ Critical, ⚠ High, ‼ Priority 1, ! Priority 2, and ⟳ Old indicators. A <span class="ind over-threshold">red</span> or <span class="ind over-threshold-orange">orange</span> indicator means its configured threshold has been reached or exceeded.</span>
+			<span><strong>Navigation Rail</strong><small>One entry per section. A badge counts what in it needs you.</small></span>
+			<span class="cc-help-tour-detail">Your saved work item queries sit under Work Items. Releases holds Release Pipeline, Release Differences and CalcEngine Pipeline, and Sentinel holds Site Scope and Site Metrics. <a href="#/reading-dashboard/diagnostics">Diagnostics</a> sits at the bottom. A badge is amber when something waits on you and red when something is broken. See <em>Rail badges</em> below for what each one counts. The footer names the selected site's repository.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="release-kpi">
 			<span class="cc-help-tour-number">03</span>
-			<span><strong>Release Pipeline KPI</strong><small>Summarizes the current release targeted for PROD deployment.  Highlights additional candidates, cleanup actions, and commit counts across repositories.</small></span>
-			<span class="cc-help-tour-detail">The two chips read <b>from &rarr; to</b>: the environment and number of the release being compared, then the one it is compared against. Hover either for who requested it, when it published, and the build it was cut from. Candidates are <b>newer</b> releases after the <em>from</em> release; cleanup actions cancel and/or delete stale releases, and are called out in red. Commit counts cover <em>all</em> repositories needed to build the site that will be included in the release.</span>
+			<span><strong>Release Pipeline KPI</strong><small>The release being compared and the one it is compared against, plus commit counts across repositories.</small></span>
+			<span class="cc-help-tour-detail">The two chips read <b>from &rarr; to</b>. Hover either one to see who requested it, when it published, and the build it was cut from. The commit counts cover every repository the site is built from.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="calcengine-kpi">
 			<span class="cc-help-tour-number">04</span>
-			<span><strong>CalcEngine Pipeline KPI</strong><small>Summarizes the CalcEngines associated with the selected site.</small></span>
-			<span class="cc-help-tour-detail">Total CalcEngines associated with the site, then one chip per environment reading <b>ENV: count</b> - how many CalcEngines have their newest deployed version sitting there. The chips always add up to the total, and each one opens the card below filtered to that environment. <em>Checkouts</em> list users and checkout counts and call out how many <code>_PROD</code> CalcEngine checkouts <b>block</b> QA-to-UAT promotion.</span>
+			<span><strong>CalcEngine Pipeline KPI</strong><small>The CalcEngines associated with the selected site.</small></span>
+			<span class="cc-help-tour-detail">The total comes first, then one chip per environment reading <b>ENV: count</b>: how many CalcEngines have their newest deployed version in that environment. The chips always add up to the total. <em>Checkouts</em> lists who has CalcEngines checked out, and calls out how many <code>_PROD</code> checkouts <b>block</b> QA-to-UAT promotion.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="sitescope-kpi">
 			<span class="cc-help-tour-number">05</span>
-			<span><strong>Site Scope KPI</strong><small>One cell per monitored site, worst first, so "is anything wrong right now" is answered without reading a number.</small></span>
-			<span class="cc-help-tour-detail">Hover any cell for the site, its state, and who is on call for it. Below the strip: the OK / Warn / Fail counts - a tone with nothing in it is left off rather than shown as a zero - then the slowest and the erroring sites of the last hour. Those site names are links: clicking one opens the card below filtered to that site, with the scope reset to <b>All</b>.</span>
+			<span><strong>Site Scope KPI</strong><small>One cell per monitored site, worst first.</small></span>
+			<span class="cc-help-tour-detail">Hover any cell to see the site, its state, and who is on call for it. The counts leave out any state with nothing in it. The slowest sites and the sites with errors in the last hour are links that open Site Scope filtered to that site.</span>
 		</button>
 		<button class="cc-help-tour-card" type="button" data-help-tour-target="metrics-kpi">
 			<span class="cc-help-tour-number">06</span>
-			<span><strong>Site Metrics KPI</strong><small>Highlights logins, page requests, calculation requests, and errors.</small></span>
-			<span class="cc-help-tour-detail">The tile and its card are titled after the site you are on - <b>Camelot ESS Nexgen Metrics</b> in this screenshot - because these are the only numbers on the dashboard that describe the running site rather than its pipelines.</span>
-			<span class="cc-help-tour-detail">Site Metrics currently uses representative mock values while the real metrics source is being completed.</span>
+			<span><strong>Site Metrics KPI</strong><small>Logins, page requests, calculation requests, and errors.</small></span>
+			<span class="cc-help-tour-detail">It is titled after the site you are on. Site Metrics shows representative sample values (<b>Coming Soon</b>) until the real metrics source is finished.</span>
 		</button>
-		<button class="cc-help-tour-card" type="button" data-help-tour-target="detail-cards">
+		<button class="cc-help-tour-card" type="button" data-help-tour-target="happening">
 			<span class="cc-help-tour-number">07</span>
-			<span><strong>Detail Cards</strong><small>Each area of the command center has its own detail card. Expand a card for evidence, management actions, and deeper analysis.</small></span>			<span class="cc-help-tour-detail">Release Pipeline, Release Differences, CalcEngine Pipeline, Site Scope, Site Metrics, and Diagnostics each carry a header badge summarizing the most relevant information; release, commit, CalcEngine, and site counts.  Each area can be independently refreshed without affecting non-related areas.</span>
+			<span><strong>What's Happening</strong><small>One list of what needs you and what is moving right now.</small></span>
+			<span class="cc-help-tour-detail">Each row is a sentence naming the site and what happened. Click a row to go to its section, switching site first if the row is about another one. The coloured counts on the right total the rows by colour (red, amber, blue for in progress, green for finished, grey for information), and the header's "need you" count is the rows marked amber or red. See <em>What's Happening</em> below for the full rules.</span>
 		</button>
 	</div>
 </div>
 
+<h2 id="whats-happening">What's Happening</h2>
+<p>The list is built from the same facts the rail badges count, so a badge and its rows cannot disagree. There are two exceptions. The Release Pipeline badge counts approvals you can make, but approvals do not get rows of their own; they appear as chips on the release that has just deployed up to them. And a query set to <b>Exclude from What's Happening</b> (Settings &gt; Work Items) still badges, but lists nothing.</p>
+<p>Some rows describe a <b>state</b>: they stay while it is true and go when it is not. Others are <b>news</b>: they have a <b>&times;</b> and end on their own.</p>
+
+<table class="cc-help-table">
+	<tr>
+		<th>Row</th>
+		<th>Appears when</th>
+		<th>Actions</th>
+		<th>Lasts</th>
+		<th>&times;</th>
+	</tr>
+	<tr>
+		<td>Work item query</td>
+		<td>An item trips one of the query's enabled thresholds: critical or high severity, priority 1 or 2, or old.</td>
+		<td>Opens the query</td>
+		<td>While the item still trips it</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>Section unavailable</td>
+		<td>A section failed to load or is not signed in, or a query returned an error.</td>
+		<td>Opens the section</td>
+		<td>Until it loads</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>Failed stage</td>
+		<td>A stage on the selected site failed or partially succeeded, and no newer release covers it.</td>
+		<td>Opens Release Pipeline</td>
+		<td>Until a newer release covers it</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>Failed build</td>
+		<td>A build on the selected site's Release Pipeline failed or was cancelled.</td>
+		<td>Opens Release Pipeline</td>
+		<td>Until it leaves the card</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>Commits waiting for a build</td>
+		<td>Release Differences found commits no build includes yet.</td>
+		<td>Opens Release Pipeline</td>
+		<td>Until they are built, or you change site</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>Cleanup</td>
+		<td>The Release Pipeline has cleanup actions ready.</td>
+		<td>Opens Release Pipeline</td>
+		<td>While they are ready</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>CalcEngine checkout</td>
+		<td>Anyone has a <code>_PROD</code> CalcEngine checked out (this blocks the pipeline), or you have any other one checked out.</td>
+		<td>Opens CalcEngine Pipeline</td>
+		<td>Until checked in</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>CalcEngine approved or promoted</td>
+		<td>Someone outside the KAT team approved or promoted a CalcEngine. The chip is the environment it moved into.</td>
+		<td>Opens CalcEngine Pipeline</td>
+		<td>8 hours, or until you change site</td>
+		<td>Yes, until the app restarts</td>
+	</tr>
+	<tr>
+		<td>Site Scope</td>
+		<td>A non-QA site is failing, or has warnings.</td>
+		<td>Opens Site Scope</td>
+		<td>While it is</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>Warning</td>
+		<td>Each warning in the bar at the bottom of the window.</td>
+		<td>Opens Diagnostics</td>
+		<td>While it is shown</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>Queued, running or deploying</td>
+		<td>A build or release is in flight on a site you have visited, or one you started from the app. The elapsed time counts up in the row.</td>
+		<td>None</td>
+		<td>Until it finishes, even if you change site</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>Successfully deployed</td>
+		<td>A stage finished deploying while its site was selected.</td>
+		<td>One chip per approval you can make next. Clicking a chip asks you to confirm, then approves.</td>
+		<td>Removes itself after <b>Auto dismiss completed</b> seconds (Settings &gt; Display), unless it still has approval chips</td>
+		<td>Yes</td>
+	</tr>
+	<tr>
+		<td>Failed (watched)</td>
+		<td>A build or stage the app was watching failed, and the selected site's Release Pipeline is not already showing it.</td>
+		<td>None</td>
+		<td>Until you dismiss it</td>
+		<td>Yes</td>
+	</tr>
+	<tr>
+		<td>No longer watched</td>
+		<td>The app stopped watching something that had stopped changing.</td>
+		<td>None</td>
+		<td>Until you dismiss it</td>
+		<td>Yes</td>
+	</tr>
+	<tr>
+		<td>Already approved</td>
+		<td>You approved from a chip, but someone else had approved it first.</td>
+		<td>None</td>
+		<td>10 minutes</td>
+		<td>Yes</td>
+	</tr>
+</table>
+
+<div class="cc-help-callout">
+	<p><b>Actions only work on the selected site.</b> A row about another site never shows approval chips; clicking it selects that site and opens the section. <b>More than five rows of one kind</b> fold into a single row that opens their section, and its tooltip lists the first ten. Rows for builds and releases the app is watching are never folded.</p>
+</div>
+
+<h3 id="happening-colour">Colour in the list</h3>
+<ul>
+	<li>The <b>left edge</b> is the row's tone:
+		<ul>
+			<li><span class="cc-help-chip cc-help-red">red</span> something is broken: a failed stage or build, a failing site, an unavailable section, or critical or priority 1 items over their threshold.</li>
+			<li><span class="cc-help-chip cc-help-amber">amber</span> something waits on you: a checkout, or high severity, priority 2 or old items. A checkout turns red once it is older than <b>Checkout alerts</b> (Settings &gt; Display).</li>
+			<li><span class="cc-help-chip cc-help-blue">blue</span> it is in flight.</li>
+			<li><span class="cc-help-chip cc-help-green">green</span> it has just deployed.</li>
+			<li>No edge means it is for your information only.</li>
+		</ul>
+	</li>
+	<li>The <b>icon</b> is the rail icon of the section the row belongs to, in that section's colour.</li>
+	<li><b>Environment chips</b> are coloured exactly as they are on Release Pipeline: the environment's own colour once deployed or waiting for approval, red when failed, blue while deploying, and grey while queued.</li>
+	<li><b>Red text</b> on a row means an action you took was refused. Hover the row to read TFS's message.</li>
+</ul>
+
+<h2 id="rail-badges">Rail badges</h2>
+<p>A badge counts what in its section needs <b>you</b> and will still be true after a refresh. A badge is never grey: it takes the worst tone among the things it counts, using the colours above.</p>
+
+<table class="cc-help-table">
+	<tr>
+		<th>Rail entry</th>
+		<th>Counts</th>
+	</tr>
+	<tr>
+		<td>Each work item query</td>
+		<td>The items that trip any of its enabled thresholds, each counted once. Red if a critical or priority 1 threshold is reached, otherwise amber. The tooltip gives the breakdown.</td>
+	</tr>
+	<tr>
+		<td>Release Pipeline</td>
+		<td>Approvals you can make (amber), plus failed stages no newer release covers and failed or cancelled builds (red).</td>
+	</tr>
+	<tr>
+		<td>CalcEngine Pipeline</td>
+		<td>Every <code>_PROD</code> checkout, whoever holds it, and your own other checkouts. Amber, turning red past <b>Checkout alerts</b>.</td>
+	</tr>
+	<tr>
+		<td>Site Scope</td>
+		<td>Non-QA sites that are failing (red). Warnings do not count.</td>
+	</tr>
+	<tr>
+		<td>Dashboard, Release Differences, Site Metrics, Diagnostics</td>
+		<td>Never badge.</td>
+	</tr>
+</table>
+
+<ul>
+	<li><b>!</b> means the section failed to load or is not signed in. Hover it to see why.</li>
+	<li>A <b>group</b> (Work Items, Releases, Sentinel) shows the total of its children, in their worst tone, only while those children are hidden: collapsed, in icons mode, or combined into one page.</li>
+	<li>Badges for the selected site (Release Pipeline and CalcEngine) clear the moment you change site, and come back when the new site loads.</li>
+	<li>In icons mode a badge becomes a coloured dot.</li>
+	<li>Three animated dots on an entry are not a badge. They mean it is being checked: a query refreshing in the background, or Release Pipeline watching a build or release in flight.</li>
+</ul>
+
+<h2 id="diagnostics">Diagnostics</h2>
+<p>The last entry in the rail shows how the latest refresh went. Its tiles give the headline: <b>Total refresh</b> time, <b>HTTP calls</b> made, <b>Sum of call time</b>, <b>Concurrency</b> (sum of call time divided by total refresh - how much of the work ran side by side), and <b>Cache</b> hits and misses. Below them, <em>Command Center Details</em> names the TFS account the app is running as and where the settings file is, and <em>Trace</em> lists every step and call, nested under the step that made it.</p>
+<div class="cc-help-callout">
+	<p><b>Reporting a problem?</b> Diagnostics has two buttons in its header for sending the KAT team what you are seeing. <b>Save Diagnostics</b> saves the refresh log as a JSON file, and <b>Save HTML</b> saves the current screen exactly as it is. Each shows where it saved the file. Attach the file when you contact the KAT team.</p>
+</div>
 <h2 id="site-dots">Sites with a release in flight</h2>
 <p>The site picker answers one question about every site at once, without you having to select them one at a time: <b>has its newest release finished publishing to every environment?</b> If it has not, the site carries an amber dot - on its row in the dropdown, and on the closed picker when it is the site you are looking at.</p>
 

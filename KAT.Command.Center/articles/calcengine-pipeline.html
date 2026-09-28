@@ -6,195 +6,9 @@
 
 <span class="cc-help-anchor-alias" id="reading-status" aria-hidden="true"></span>
 <h2 id="sample-calcengine-pipeline">Sample Pipeline</h2>
-<div class="tfs-release cc-help-demo cc-reduce-5">
-	<div class="detail-card-frame">
-		<details class="detail-card" id="calcEngineCard" open="">
-			<summary>
-				<span class="card-chevron">▸</span>
-				<span class="card-title">CalcEngine Pipeline</span>
-			</summary>
-			<div class="ce-wrap" data-ce-total="4" data-ce-user="engineer.sample@example.com" data-ce-badge="4 engines · DEV/QA/UAT/PROD">
-			<div class="ce-filters">
-				<button class="cc-button cc-button--sm ce-checkin-mine" type="button" data-ce-count="3" title="Check in all my CalcEngines">Check Mine In</button>
-				<input class="cc-input ce-filter-search" type="text" id="ceSearchInput" onkeydown="event.preventDefault()" placeholder="Filter by name / checkout…">
-				<select class="cc-input ce-filter-status" id="ceStatusFilter" onchange="this.selectedIndex=0;">
-					<option value="all">All</option>
-					<option value="pending">Prod Approval Required</option>
-					<option value="blocked">Blocked Promotions</option>
-					<option value="env:DEV">DEV Environment</option>
-					<option value="env:QA">QA Environment</option>
-					<option value="env:UAT">UAT Environment</option>
-					<option value="env:PROD">PROD Environment</option>
-				</select>
-			</div>
-			<table class="cc-table ce">
-				<colgroup>
-					<col class="name-col">
-					<col class="chip-col">
-					<col class="chip-col">
-					<col class="chip-col">
-					<col class="chip-col">
-				</colgroup>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>DEV</th>
-						<th>QA</th>
-						<th>UAT</th>
-						<th>PROD</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="ce-row has-checkout" data-ce-status="pending" data-ce-env="DEV" data-ce-checkouts="engineer.sample@example.com">
-						<td class="ce-name">
-							<span class="ce-name-content">
-								<span>Conduent_Nexgen_SampleLibrary_SE.xlsm</span>
-								<span class="ce-row-actions">
-									<button class="cc-button cc-button--icon cc-button--sm ce-row-icon ce-history-icon" type="button" title="View version history">
-										<svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor">
-											<path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.17A5.83 5.83 0 1 1 2.17 8 5.83 5.83 0 0 1 8 2.17z"></path>
-											<path d="M7.25 4.5v4l3.2 1.92.5-.82L8 8.08V4.5z"></path>
-											<path d="M3.5 8a4.5 4.5 0 0 1 .74-2.49l-.95-.95A5.83 5.83 0 0 0 2.17 8h1.33z"></path>
-										</svg>
-									</button>
-									<button class="cc-button cc-button--icon cc-button--sm ce-row-icon ce-download-icon" type="button" title="Download CalcEngine">
-										<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
-											<path d="M8 2.25v7.25"></path>
-											<path d="M4.75 6.5L8 9.75 11.25 6.5"></path>
-											<path d="M2.75 11.5v1.75h10.5V11.5"></path>
-										</svg>
-									</button>
-									<a class="cc-button cc-button--icon cc-button--sm cc-conduent-link ce-row-icon ce-conduent-icon" title="Manage Conduent_Nexgen_SampleLibrary_SE.xlsm on the Conduent Management Site">
-										<svg class="cc-icon cc-icon--brand" viewBox="0 0 1556 1538" aria-hidden="true">
-											<path d="m453.3 523.6v752.1l-452.7 262.2v-752.9zm649.2 375.7l452.7 262.2-650 376.4-451.9-262.2zm0-522.8v522.8l-650-375.6v-523.6z"></path>
-										</svg>
-									</a>
-								</span>
-							</span>
-						</td>
-						<td class="center"><span class="clickable" data-ce-action="approve"><span class="cc-chip cc-chip--pill cc-chip--success ce-token green" title="Conduent_Nexgen_SampleLibrary_SE.xlsm uploaded by engineer.sample@example.com on 8/18/2026 10:38 AM. Checked out by engineer.sample@example.com — blocks the TFS Release Pipeline, not this action.">1.0005 →</span></span></td>
-						<td class="center"><span class="clickable" data-ce-action="promote"><span class="cc-chip cc-chip--pill ce-token grey" title="Conduent_Nexgen_SampleLibrary_SE.xlsm approved by engineer.sample@example.com on 8/6/2026 8:45 AM">1.0004</span></span></td>
-						<td class="center"><span class="cc-chip cc-chip--pill ce-token none">No Upper</span></td>
-						<td class="center"></td>
-					</tr>
-					<tr class="ce-checkout-row">
-						<td class="empty"></td>
-						<td class="ce-checkout-pair" colspan="2"><span class="cc-chip cc-chip--pill ce-token checkout-muted clickable" title="Conduent_Nexgen_SampleLibrary_SE.xlsm checked out by engineer.sample@example.com on 8/4/2026 1:09 PM">☑ engineer.sample@example.com</span></td>
-						<td class="ce-checkout-pair" colspan="2"></td>
-					</tr>
-					<tr class="ce-row has-checkout ce-flagged ce-flag-warn" data-ce-status="pending" data-ce-env="QA" data-ce-checkouts="analyst.sample@example.com engineer.sample@example.com">
-						<td class="ce-name">
-							<span class="ce-name-content">
-								<span class="ce-name-text">Conduent_Nexgen_SAMPLE_Severance_SE.xlsm</span>
-								<span class="ce-row-actions">
-									<button class="cc-button cc-button--icon cc-button--sm ce-row-icon ce-history-icon" type="button" title="View version history">
-										<svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor">
-											<path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.17A5.83 5.83 0 1 1 2.17 8 5.83 5.83 0 0 1 8 2.17z"></path>
-											<path d="M7.25 4.5v4l3.2 1.92.5-.82L8 8.08V4.5z"></path>
-											<path d="M3.5 8a4.5 4.5 0 0 1 .74-2.49l-.95-.95A5.83 5.83 0 0 0 2.17 8h1.33z"></path>
-										</svg>
-									</button>
-									<button class="cc-button cc-button--icon cc-button--sm ce-row-icon ce-download-icon" type="button" title="Download CalcEngine">
-										<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
-											<path d="M8 2.25v7.25"></path>
-											<path d="M4.75 6.5L8 9.75 11.25 6.5"></path>
-											<path d="M2.75 11.5v1.75h10.5V11.5"></path>
-										</svg>
-									</button>
-									<a class="cc-button cc-button--icon cc-button--sm cc-conduent-link ce-row-icon ce-conduent-icon" title="Manage Conduent_Nexgen_SAMPLE_Severance_SE.xlsm on the Conduent Management Site">
-										<svg class="cc-icon cc-icon--brand" viewBox="0 0 1556 1538" aria-hidden="true">
-											<path d="m453.3 523.6v752.1l-452.7 262.2v-752.9zm649.2 375.7l452.7 262.2-650 376.4-451.9-262.2zm0-522.8v522.8l-650-375.6v-523.6z"></path>
-										</svg>
-									</a>
-								</span>
-							</span>
-						</td>
-						<td class="center"></td>
-						<td class="center"><span class="clickable" data-ce-action="promote"><span class="cc-chip cc-chip--pill cc-chip--success ce-token green" title="Conduent_Nexgen_SAMPLE_Severance_SE.xlsm approved by analyst.sample@example.com on 8/4/2026 4:26 PM. Checked out by engineer.sample@example.com — blocks the TFS Release Pipeline, not this action.">1.0067 →</span></span></td>
-						<td class="center"></td>
-						<td class="center"><span class="cc-chip cc-chip--pill cc-chip--neutral ce-token grey" title="Conduent_Nexgen_SAMPLE_Severance_PROD_SE.xlsm approved by engineer.sample@example.com on 6/16/2026 9:23 PM">1.0058</span></td>
-					</tr>
-					<tr class="ce-checkout-row ce-flagged ce-flag-warn">
-						<td class="empty"></td>
-						<td class="ce-checkout-pair" colspan="2"><span class="cc-chip cc-chip--pill ce-token checkout-muted clickable" title="Conduent_Nexgen_SAMPLE_Severance_SE.xlsm checked out by analyst.sample@example.com on 6/24/2026 9:15 AM">☑ analyst.sample@example.com</span></td>
-						<td class="ce-checkout-pair" colspan="2"><span class="cc-chip cc-chip--pill cc-chip--warning ce-token checkout-blocking clickable" title="Conduent_Nexgen_SAMPLE_Severance_PROD_SE.xlsm checked out by engineer.sample@example.com on 4/30/2026 10:22 AM — this blocks the TFS Release Pipeline from promoting it. Manual approve/promote here is still allowed.">☑ engineer.sample@example.com: blocks pipeline</span></td>
-					</tr>
-					<tr class="ce-row" data-ce-status="promoted" data-ce-env="PROD" data-ce-checkouts="">
-						<td class="ce-name">
-							<span class="ce-name-content">
-								<span class="ce-name-text">Conduent_Nexgen_EXAMPLE_BRD_SE.xlsm</span>
-								<span class="ce-row-actions">
-									<button class="cc-button cc-button--icon cc-button--sm ce-row-icon ce-download-icon" type="button" title="Download CalcEngine">
-										<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
-											<path d="M8 2.25v7.25"></path>
-											<path d="M4.75 6.5L8 9.75 11.25 6.5"></path>
-											<path d="M2.75 11.5v1.75h10.5V11.5"></path>
-										</svg>
-									</button>
-									<a class="cc-button cc-button--icon cc-button--sm cc-conduent-link ce-row-icon ce-conduent-icon" title="Manage Conduent_Nexgen_EXAMPLE_BRD_SE.xlsm on the Conduent Management Site">
-										<svg class="cc-icon cc-icon--brand" viewBox="0 0 1556 1538" aria-hidden="true">
-											<path d="m453.3 523.6v752.1l-452.7 262.2v-752.9zm649.2 375.7l452.7 262.2-650 376.4-451.9-262.2zm0-522.8v522.8l-650-375.6v-523.6z"></path>
-										</svg>
-									</a>
-								</span>
-							</span>
-						</td>
-						<td class="center"></td>
-						<td class="center"><span class="cc-chip cc-chip--pill ce-token grey" title="Conduent_Nexgen_EXAMPLE_BRD_SE.xlsm approved by reviewer.sample@example.com on 12/9/2024 9:32 AM">1.0251</span></td>
-						<td class="center"></td>
-						<td class="center"><span class="cc-chip cc-chip--pill cc-chip--success ce-token green" title="Conduent_Nexgen_EXAMPLE_BRD_PROD_SE.xlsm approved by reviewer.sample@example.com on 12/9/2024 9:32 AM">1.0251 ✓</span></td>
-					</tr>
-					<tr class="ce-row has-checkout" data-ce-status="pending" data-ce-env="DEV" data-ce-checkouts="engineer.sample@example.com">
-						<td class="ce-name">
-							<span class="ce-name-content">
-								<span class="ce-name-text">Conduent_Nexgen_SAMPLE_BRD_SE.xlsm</span>
-								<span class="ce-row-actions">
-									<button class="cc-button cc-button--icon cc-button--sm ce-row-icon ce-history-icon" type="button" title="View version history">
-										<svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor">
-											<path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.17A5.83 5.83 0 1 1 2.17 8 5.83 5.83 0 0 1 8 2.17z"></path>
-											<path d="M7.25 4.5v4l3.2 1.92.5-.82L8 8.08V4.5z"></path>
-											<path d="M3.5 8a4.5 4.5 0 0 1 .74-2.49l-.95-.95A5.83 5.83 0 0 0 2.17 8h1.33z"></path>
-										</svg>
-									</button>
-									<button class="cc-button cc-button--icon cc-button--sm ce-row-icon ce-download-icon" type="button" title="Download CalcEngine">
-										<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
-											<path d="M8 2.25v7.25"></path>
-											<path d="M4.75 6.5L8 9.75 11.25 6.5"></path>
-											<path d="M2.75 11.5v1.75h10.5V11.5"></path>
-										</svg>
-									</button>
-									<a class="cc-button cc-button--icon cc-button--sm cc-conduent-link ce-row-icon ce-conduent-icon" title="Manage Conduent_Nexgen_SAMPLE_BRD_SE.xlsm on the Conduent Management Site">
-										<svg class="cc-icon cc-icon--brand" viewBox="0 0 1556 1538" aria-hidden="true">
-											<path d="m453.3 523.6v752.1l-452.7 262.2v-752.9zm649.2 375.7l452.7 262.2-650 376.4-451.9-262.2zm0-522.8v522.8l-650-375.6v-523.6z"></path>
-										</svg>
-									</a>
-								</span>
-							</span>
-						</td>
-						<td class="center"><span class="clickable" data-ce-action="approve"><span class="cc-chip cc-chip--pill cc-chip--success ce-token green" title="Conduent_Nexgen_SAMPLE_BRD_SE.xlsm uploaded by engineer.sample@example.com on 8/20/2026 4:22 PM. Checked out by engineer.sample@example.com — blocks the TFS Release Pipeline, not this action.">1.0227 →</span></span></td>
-						<td class="center"><span class="clickable" data-ce-action="promote"><span class="cc-chip cc-chip--pill ce-token grey" title="Conduent_Nexgen_SAMPLE_BRD_SE.xlsm approved by engineer.sample@example.com on 8/20/2026 1:15 PM">1.0226</span></span></td>
-						<td class="center"><span class="clickable" data-ce-action="approve"><span class="cc-chip cc-chip--pill ce-token grey" title="Conduent_Nexgen_SAMPLE_BRD_PROD_SE.xlsm promoted by engineer.sample@example.com on 7/31/2026 7:29 AM">1.0178</span></span></td>
-						<td class="center"><span class="cc-chip cc-chip--pill cc-chip--neutral ce-token grey" title="Conduent_Nexgen_SAMPLE_BRD_PROD_SE.xlsm approved by engineer.sample@example.com on 12/16/2025 12:29 PM">1.0004</span></td>
-					</tr>
-					<tr class="ce-checkout-row">
-						<td class="empty"></td>
-						<td class="ce-checkout-pair" colspan="2"><span class="cc-chip cc-chip--pill ce-token checkout-muted clickable" title="Conduent_Nexgen_SAMPLE_BRD_SE.xlsm checked out by engineer.sample@example.com on 3/24/2026 2:38 PM">☑ engineer.sample@example.com</span></td>
-						<td class="ce-checkout-pair" colspan="2"></td>
-					</tr>
-				</tbody>
-			</table>
-			</div>
-		</details>
-		<div class="card-header-left">
-			<button type="button" class="cc-help-link" title="Open CalcEngine Help" aria-label="Open CalcEngine Help">?</button>
-		</div>
-		<div class="card-header-right">
-			<span class="cc-refreshed">refreshed 01:45:20 · 0.42s · 1 call</span>
-			<div class="cc-chip cc-chip--pill card-badge">4 engines · DEV/QA/UAT/PROD</div>
-			<button class="cc-button cc-button--icon cc-button--sm cc-refresh" type="button" title="Refresh CalcEngine Pipeline">↻</button>
-		</div>
-	</div>
-</div>
+<figure class="cc-help-shot">
+	<img src="media/calcengine-pipeline.webp" alt="CalcEngine Pipeline page: environment count chips and Check Mine In in the section head, the Filter, Show and CalcEngine Patterns tools, and a table of CalcEngines with an actions button, version chips per environment and checkout chips." width="1364" height="934" loading="lazy">
+</figure>
 
 <div class="cc-help-callout warning"><strong>Consequence</strong>Approvals and Promotions move CalcEngines to associated site environments.  Ensure the CalcEngine has been tested before actions taken.</div>
 
@@ -202,17 +16,18 @@
 <ol class="cc-help-workflow compact">
 	<li>Supports 2 environment (QA/PROD) or 4 environment (DEV/QA/UAT/PROD) CalcEngines showing exactly where the 'latest' CalcEngine is running</li>
 	<li>Hover over environment chips to see their state, who uploaded, approved, or promoted and when each environment state occurred. UAT reports a promotion only when the version arrived by promotion - uploading a test version directly replaces that history, so the chip says <em>uploaded</em> instead.</li>
-	<li>Use the dropdown to filter CalcEngines by environment, blocked promotions, or all CalcEngines requiring a production move.  Quick filter by CalcEngine name or checkout user name.</li>
-	<li>Displays checkout user (including Promotion blocking during TFS's automatic Release Pipeline) if CalcEngine checked out.  Clicking chip checks in CalcEngines (forcibly for other users).</li>	
+	<li>Use the section tools to narrow fetched rows by name, checkout user, environment, blocked promotions, or production moves.</li>
+	<li>Displays checkout owners. Upper (<code>_PROD</code>) checkouts can block the TFS Release Pipeline; clicking a checkout chip checks the file in, forcibly when it belongs to someone else.</li>
 	<li><strong>Check Mine In</strong> checks in every CalcEngine you currently hold, in one confirmed action.</li>
+	<li>The rail badge and <strong>What's Happening</strong> rows follow the shared dashboard rules for checkouts and recent moves by someone outside the KAT team; see <a href="#/reading-dashboard/rail-badges">Rail badges</a> and <a href="#/reading-dashboard/whats-happening">What's Happening</a>.</li>
 	<li>Approve and Promote CalcEngines to the 'next environment' when ready by clicking version chip. Both ask for an authority email - the person signing the move off - prefilled with your KAT Management Site email. It cannot be left blank, and it cannot be the person whose file is moving: the <strong>Approval Authority</strong> may not be whoever uploaded the test CalcEngine, and the <strong>Promotion Authority</strong> may not be whoever uploaded the live CalcEngine.</li>
-	<li>Download CalcEngines or view their version history across environments via action buttons next to each CalcEngine or jump straight to a CalcEngine on the Conduent Management Site via the Conduent button next to each CalcEngine.</li>
+	<li>Each row's <strong>&#x22EF;</strong> button opens its actions: <strong>View History</strong> (on rows with a version still to move), <strong>Manage</strong> to open the CalcEngine on the Conduent Management Site, and a <strong>Download</strong> item for each environment variant.</li>
 </ol>
 
 <div class="cc-help-callout">
 	<strong>Conduent Management Site</strong>
-	<p>The Conduent button opens the management site in your default browser, not inside Command Center. It appears in two places, and where you click it decides where you land.</p>
-	<div><b>Next to a CalcEngine</b> - opens CalcEngine Management with that file already selected: <code>.../default.aspx?startPage=lnkCalcEngineManagement&amp;startCE=Conduent_Nexgen_SAMPLE_BRD_SE</code>. The <code>startCE</code> value is the CalcEngine name without its file extension, and always the base file - never the <code>_PROD_</code> variant.</div>
+	<p>The management site opens in your default browser, not inside Command Center. You can reach it from two places, and where you start decides where you land.</p>
+	<div><b>Manage, in a CalcEngine's &#x22EF; menu</b> - opens CalcEngine Management with that file already selected: <code>.../default.aspx?startPage=lnkCalcEngineManagement&amp;startCE=Conduent_Nexgen_SAMPLE_BRD_SE</code>. The <code>startCE</code> value is the CalcEngine name without its file extension, and always the base file - never the <code>_PROD_</code> variant.</div>
 	<div><b>On the KPI tile</b> - opens the management site's home page, with no CalcEngine selected. This button is present even when the KPI has nothing to show, which is the point: it is how you get to the site when you are not signed in to KAT DataStore yet.</div>
 </div>
 
@@ -223,8 +38,8 @@
 	<div><b>Auto Open</b> - Automatically opens the CalcEngine after download in Excel.  Default is <code>false</code>.</div>
 </div>
 
-<h2 id="filtering">CalcEngine Filter Expressions</h2>
-<p>By default, sites already have a filter expression defined that includes known CalcEngines at time of latest release.  You can modify the expression filter in the 'CalcEngine Filter' input in the header bar's filter row.</p>
+<h2 id="filtering">CalcEngine Pattern Expressions</h2>
+<p>By default, each site already has CalcEngine Patterns that include the CalcEngines known at the time of the latest release. Change those listing patterns in the CalcEngine section head. <span class="cc-help-chip">Alt+C</span> opens the CalcEngine page and focuses the field; <span class="cc-help-chip">Enter</span> refreshes only CalcEngine. The separate search box in the same tools row only narrows rows that are already fetched.</p>
 
 <p><strong>Expression Rules</strong></p>
 <ol class="cc-help-workflow compact">
@@ -263,30 +78,8 @@
 
 <h3>Recognizing probable hotfixes</h3>
 <p>A direct upload to the upper CalcEngine can introduce versions that do not exist in lower history. A warning triangle marks these as <strong>probable patches</strong>.</p>
-<p>The example below is an illustrative excerpt: QA is <code>1.1678</code>, PROD is <code>1.16354</code>, and DEV/UAT are empty. The lookup finds the shared baseline <code>1.1635</code> and brings back all four probable patches, <code>1.16351</code> through <code>1.16354</code>.</p>
+<p>In the example below, DEV is <code>1.1696</code>, QA is <code>1.1688</code>, and PROD is <code>1.16355</code>. The lookup finds the shared baseline <code>1.1635</code> and brings back all five probable patches, <code>1.16351</code> through <code>1.16355</code>. The PROD checkout line is marked <strong>(blocking)</strong> because an upper checkout blocks the TFS Release Pipeline.</p>
 
-<div class="tfs-release cc-help-demo cc-reduce-3">
-	<div class="cc-modal-panel cc-modal--lg">
-		<div class="modal-title">Conduent_Nexgen_QA_SAMPLE_BRD_SE History 1.1635 - 1.1678</div>
-		<div class="ce-history-wrap cc-modal-scroll">
-			<table class="cc-table ce-hist">
-				<colgroup><col class="hist-ver"><col class="hist-date"><col class="hist-author"><col></colgroup>
-				<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Comments</th></tr></thead>
-				<tbody>
-					<tr><td class="hist-ver-cell">1.1678</td><td class="hist-date-cell">9/22/2026</td><td>engineer.sample</td><td class="hist-comments">Lower CalcEngine development (QA)</td></tr>
-					<tr><td class="hist-ver-cell">1.1637</td><td class="hist-date-cell">9/2/2026</td><td>engineer.sample</td><td class="hist-comments">Sample sheet - add parent page setting</td></tr>
-					<tr><td class="hist-ver-cell">1.1636</td><td class="hist-date-cell">9/1/2026</td><td>analyst.sample</td><td class="hist-comments">Sample sheet - update eligibility folders</td></tr>
-					<tr><td class="hist-ver-cell">1.16354<span class="ce-hist-patch" role="img" aria-label="Probable patch" title="Probable patch found only in Upper CalcEngine.">&#9888;</span></td><td class="hist-date-cell">9/17/2026</td><td>analyst.sample</td><td class="hist-comments">Sample users - fix lookup formula</td></tr>
-					<tr><td class="hist-ver-cell">1.16353<span class="ce-hist-patch" role="img" aria-label="Probable patch" title="Probable patch found only in Upper CalcEngine.">&#9888;</span></td><td class="hist-date-cell">9/17/2026</td><td>reviewer.sample</td><td class="hist-comments">Upper-only hotfix (third patch)</td></tr>
-					<tr><td class="hist-ver-cell">1.16352<span class="ce-hist-patch" role="img" aria-label="Probable patch" title="Probable patch found only in Upper CalcEngine.">&#9888;</span></td><td class="hist-date-cell">9/16/2026</td><td>engineer.sample</td><td class="hist-comments">Sample sheet - disable profile navigation email</td></tr>
-					<tr><td class="hist-ver-cell">1.16351<span class="ce-hist-patch" role="img" aria-label="Probable patch" title="Probable patch found only in Upper CalcEngine.">&#9888;</span></td><td class="hist-date-cell">9/10/2026</td><td>engineer.sample</td><td class="hist-comments">Upper-only hotfix (first patch)</td></tr>
-					<tr><td class="hist-ver-cell">1.1635</td><td class="hist-date-cell">9/1/2026</td><td>engineer.sample</td><td class="hist-comments">Sample sheet - update payment frequency override</td></tr>
-				</tbody>
-			</table>
-			<div class="ce-hist-legend"><span class="ce-hist-patch" aria-hidden="true">&#9888;</span> Probable patch found only in Upper CalcEngine.</div>
-		</div>
-		<div class="modal-actions" style="margin-top:14px;">
-			<button class="cc-button" type="button">Close</button>
-		</div>
-	</div>
-</div>
+<figure class="cc-help-shot">
+	<img src="media/calcengine-history.webp" alt="CalcEngine History dialog listing versions with date, author and comments, with the two checkout lines above the table and warning triangles beside probable patches." width="1284" height="885" loading="lazy">
+</figure>

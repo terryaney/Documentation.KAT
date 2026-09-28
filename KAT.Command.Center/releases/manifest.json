@@ -10,6 +10,10 @@
 		},
 		{
 			"version": "1.3",
+			"frozen": true
+		},
+		{
+			"version": "2.0",
 			"frozen": false
 		}
 	],
@@ -37,6 +41,12 @@
 			"date": "2026-09-26",
 			"theme": "KAT Command Center is now as beautiful as it is functional.",
 			"sha256": "5246BFF84E768ED833C3EB49CF75D9B31E7C42740AE801AFBBCA4BB17DD38712"
+		},
+		{
+			"version": "2.0.0",
+			"date": "2026-09-27",
+			"theme": "Your journey towards the dark side is now complete.",
+			"sha256": "8EC8B7874D99009741CA4010C477C7306A67433F9BFC67BE6510E485B67D3570"
 		}
 	]
 }

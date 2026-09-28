@@ -686,22 +686,6 @@
 		}
 	});
 
-	// Release Differences demo: the pending toggle swaps the base block for the pending one.
-	document.addEventListener('change', event => {
-		const box = event.target.closest('#diffPendingToggleHelp input');
-		if (!box) return;
-		document.getElementById('diffPendingBlockHelp')?.classList.toggle('visible', box.checked);
-		document.getElementById('diffBaseBlockHelp')?.classList.toggle('hidden', box.checked);
-	});
-
-	// Release Differences demo: repo headers and release chips collapse the rows under them,
-	// matching the app's own delegated handler.
-	document.addEventListener('click', event => {
-		const header = event.target.closest('.release-diff .repo-header, .release-diff .origin-chip');
-		if (!header || event.target.closest('a[href], button')) return;
-		header.classList.toggle('collapsed');
-	});
-
 	// Work item detail demo: the description clamp and the per-person comment filter, the two
 	// controls worth trying by hand. Keyed off data- attributes rather than ids because a release
 	// note body may not carry an id.

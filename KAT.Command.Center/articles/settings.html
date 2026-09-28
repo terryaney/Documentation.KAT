@@ -4,132 +4,29 @@
 </header>
 
 <h2 id="settings">Settings</h2>
-<p>The profile button in the app bar (<span style="font-family:'Segoe MDL2 Assets';">&#xE77B;</span>) opens Settings.</p>
+<p>The <strong>Settings</strong> button at the right end of the app bar (<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px" aria-label="gear"><circle cx="8" cy="8" r="2.3"/><path d="M13 9.6a1.2 1.2 0 0 0 .24 1.32l.05.04a1.45 1.45 0 1 1-2.05 2.05l-.04-.05a1.2 1.2 0 0 0-2.04.85v.12a1.45 1.45 0 1 1-2.9 0v-.06a1.2 1.2 0 0 0-2.1-.8l-.05.04a1.45 1.45 0 1 1-2.05-2.05l.05-.04A1.2 1.2 0 0 0 2.2 9.6h-.12a1.45 1.45 0 0 1 0-2.9h.06a1.2 1.2 0 0 0 .8-2.1l-.04-.05a1.45 1.45 0 1 1 2.05-2.05l.04.05a1.2 1.2 0 0 0 2.04-.85v-.12a1.45 1.45 0 1 1 2.9 0v.06a1.2 1.2 0 0 0 2.1.8l.05-.04a1.45 1.45 0 1 1 2.05 2.05l-.05.04a1.2 1.2 0 0 0 .85 2.04h.12a1.45 1.45 0 0 1 0 2.9h-.06Z"/></svg>) opens Settings.</p>
 
 <ol class="cc-help-workflow compact">
 	<li><strong>Profile</strong> page: your KAT Management site credentials, your Conduent network account, and a TFS Personal Access Token (PAT).</li>
-	<li><strong>Display</strong> page: adjust the appearance and layout of the application according to your preferences.</li>
+	<li><strong>Display</strong> page: adjust the appearance and layout of the application - theme, density, how the rail collapses, whether Releases and Sentinel are one page or several - and when CalcEngine checkouts and What's Happening items change.</li>
 	<li><strong>Work Items</strong> page: configure your work item queries and workflow used within the application.</li>
 	<li><strong>Connections</strong> page: manage your application's connections to external services and data sources.</li>
 </ol>
 
-<div class="tfs-release cc-help-demo cc-reduce-4">
-	<div class="cc-modal-panel ccs-panel" style="height: 640px;">
-		<aside class="ccs-rail">
-			<div class="ccs-brand">
-				<img src="media/app-icon.png" alt="">
-				<div class="ccs-brand-text">
-					<span class="ccs-brand-name">KAT Command Center</span>
-					<span class="ccs-version">Version 1.4.0</span>
-				</div>
-			</div>
-			<nav class="ccs-nav" aria-label="Settings pages">
-				<button type="button" class="cc-button ccs-nav-item" aria-current="page">
-					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="5.5" r="2.75"/><path d="M2.75 14c.6-2.9 2.6-4.25 5.25-4.25S12.65 11.1 13.25 14"/></svg>
-					<span>Profile</span>
-					<span class="ccs-nav-count">1</span>
-				</button>
-				<button type="button" class="cc-button ccs-nav-item">
-					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.75" y="2.25" width="12.5" height="8.5" rx="1.5"/><path d="M5 13.75h6M8 10.75v3"/></svg>
-					<span>Display</span>
-				</button>
-				<button type="button" class="cc-button ccs-nav-item">
-					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.25" y="2.25" width="11.5" height="11.5" rx="2"/><path d="M5 6h6M5 8.5h6M5 11h3.5"/></svg>
-					<span>Work Items</span>
-				</button>
-				<button type="button" class="cc-button ccs-nav-item">
-					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 10 10 6M7 4.5l1.25-1.25a2.65 2.65 0 0 1 3.75 3.75L10.75 8.25M9 11.5l-1.25 1.25a2.65 2.65 0 0 1-3.75-3.75L5.25 7.75"/></svg>
-					<span>Connections</span>
-				</button>
-			</nav>
-			<div class="ccs-rail-foot">
-				<button type="button" class="cc-button cc-button--link">Check for updates</button>
-				<button type="button" class="cc-button cc-button--link">Open settings file</button>
-			</div>
-		</aside>
-		<section class="ccs-main">
-			<header class="ccs-head">
-				<h2>Profile</h2>
-				<button type="button" class="cc-button cc-button--icon ccs-close" aria-label="Close without saving">
-					<svg width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12"/></svg>
-				</button>
-			</header>
-			<div class="ccs-body">
-				<div class="ccs-section">
-					<div class="ccs-section-head">
-						<h3>KAT DataStore</h3>
-						<span class="ccs-status ccs-status--ok">Signed in</span>
-					</div>
-					<p class="ccs-section-desc">Your KAT Management sign-in. CalcEngine Pipeline and Site Metrics use it.</p>
-					<div class="ccs-grid">
-						<div class="ccs-field">
-							<label>Email</label>
-							<input type="text" class="cc-input" value="engineer.sample@example.com" onkeydown="event.preventDefault()">
-						</div>
-						<div class="ccs-field">
-							<label>Password</label>
-							<input type="password" class="cc-input" placeholder="Saved. Leave blank to keep it." onkeydown="event.preventDefault()">
-						</div>
-					</div>
-					<div class="ccs-field">
-						<label class="cc-check"><input type="checkbox" onclick="event.preventDefault()"><span>Always replace existing files when downloading CalcEngines</span></label>
-					</div>
-					<div class="ccs-field">
-						<label class="cc-check"><input type="checkbox" onclick="event.preventDefault()"><span>Automatically open downloaded CalcEngines after download</span></label>
-					</div>
-				</div>
-				<div class="ccs-section">
-					<div class="ccs-section-head">
-						<h3>Conduent</h3>
-						<span class="ccs-status ccs-status--bad">Sign-in failed</span>
-					</div>
-					<p class="ccs-section-desc">Your Conduent (AMERICAS) network account. Site Scope uses it.</p>
-					<div class="ccs-grid">
-						<div class="ccs-field">
-							<label>Username</label>
-							<input type="text" class="cc-input" value="engineer.sample" onkeydown="event.preventDefault()">
-						</div>
-						<div class="ccs-field has-error">
-							<label>Password</label>
-							<input type="password" class="cc-input" value="wrong" onkeydown="event.preventDefault()">
-							<div class="ccs-error"><svg viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1a6 6 0 1 0 0 12A6 6 0 0 0 7 1zm-.75 3h1.5v4h-1.5zm0 5h1.5v1.5h-1.5z"/></svg><span>Invalid credentials.</span></div>
-						</div>
-					</div>
-				</div>
-				<div class="ccs-section">
-					<div class="ccs-section-head">
-						<h3>TFS</h3>
-						<span class="ccs-status ccs-status--ok">Token saved</span>
-					</div>
-					<p class="ccs-section-desc">A personal access token for TFS. Releases, builds and work items use it. Stored on this machine.</p>
-					<div class="ccs-field">
-						<label>Personal access token</label>
-						<input type="password" class="cc-input ccs-mono" placeholder="Saved. Leave blank to keep it." onkeydown="event.preventDefault()">
-					</div>
-					<div class="ccs-remember">
-						<label class="cc-check"><input type="checkbox" checked onclick="event.preventDefault()"><span>Remember my passwords</span></label>
-						<div class="ccs-hint">Encrypted by Windows for your account on this machine. Clear this to delete both saved passwords.</div>
-					</div>
-				</div>
-			</div>
-			<div class="ccs-foot">
-				<div class="ccs-foot-msg is-error">Everything else was saved. Fix the 1 highlighted setting, then save again.</div>
-				<button type="button" class="cc-button">Cancel</button>
-				<button type="button" class="cc-button cc-button--success">Save</button>
-			</div>
-		</section>
-	</div>
-</div>
+<figure class="cc-help-shot">
+	<img src="media/settings-profile.webp" alt="Settings Profile page with both accounts signed in: KAT DataStore email and password and the two CalcEngine download toggles, the Conduent username and password followed by the Remember my passwords toggle, and the saved TFS personal access token, above the Show release notes and Open settings file links and the Cancel and Save buttons." width="938" height="858" loading="lazy">
+</figure>
 
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>On first launch with no PAT, Settings opens on Profile by itself.  Nothing asks for credentials in the middle of a refresh. A card whose sign-in is missing or rejected says <em>Needs credentials</em>; fix it on Profile and that card refreshes.</li>
+	<li>On first launch with no PAT, Settings opens on Profile by itself.  Nothing asks for credentials in the middle of a refresh. A section whose sign-in is missing or rejected says <em>Needs credentials</em>; fix it on Profile and that section refreshes.</li>
 	<li>Changes on Display preview immediately in Settings and the dashboard behind it.</li>
 	<li>You can mix theme families: a light preference does not change your dark preference.</li>
 	<li>For the keyboard warriors, <code>Ctrl+Enter</code> triggers an immediate save in the Settings dialog.</li>
 	<li>Validation errors are indicated with a badge count beside its page in the list, so a problem on a page you are not looking at is still easy to find.</li>
 	<li>Saved settings reach the open dashboard immediately; no refresh is needed.</li>
-	<li>When a newer build is waiting, an <em>Update</em> button appears in the app bar. Pressing it replaces the app and restarts it, so finish what you are doing first.</li>
+	<li>When a newer build is waiting, an <em>Update available</em> button appears at the bottom of the rail. Pressing it replaces the app and restarts it, so finish what you are doing first.</li>
+	<li><em>Show release notes</em>, under the page list, opens What's New. <em>Open settings file</em> opens the saved settings file itself.</li>
 </ol>
 
 <h2 id="setup-access">Setting Up Access</h2>
@@ -142,13 +39,13 @@
 	<li>In the Personal access tokens page, click the 'Add' button to create a new token.</li>
 	<li>Use <code>KAT PAT</code> as the name, select <code>1 year</code> for expiration, and leave the default <code>All scopes</code> selected for authorized scopes.</li>
 	<li>Click 'Create Token' to generate your token.</li>
-	<li>Copy the generated token value. Click the profile button in KAT Command Center, paste the value into <em>Personal access token</em> and click <em>Save</em>.</li>
+	<li>Copy the generated token value. Click the Settings button in KAT Command Center's app bar, paste the value into <em>Personal access token</em> and click <em>Save</em>.</li>
 </ol>
 
 <h3 id="providing-credentials">KAT Credentials</h3>
 <p>The KAT Management site credentials enable CalcEngine Pipeline and Site Metrics. The Conduent (AMERICAS) network account enables Site Scope.</p>
 <ol class="cc-help-workflow">
-	<li>Click the profile button in KAT Command Center.</li>
+	<li>Click the Settings button in KAT Command Center's app bar.</li>
 	<li>Enter your KAT DataStore and/or your Conduent username and password.</li>
 	<li>Click <em>Save</em>.</li>
 </ol>
@@ -159,7 +56,7 @@
 </div>
 
 <h3 id="remember-passwords">Remember my passwords</h3>
-<p>By default the KAT Management and Conduent passwords live in memory only, so each launch starts without them and the cards that need them say so. Tick <strong>Remember my passwords</strong> on Profile and both are saved instead, and the app signs in with them silently on the next launch.</p>
+<p>By default the KAT Management and Conduent passwords live in memory only, so each launch starts without them and the sections that need them say so. Turn on <strong>Remember my passwords</strong> on Profile and both are saved instead, and the app signs in with them silently on the next launch.</p>
 <p>They are encrypted with Windows for your account, on this machine. Copied elsewhere, or read by another Windows user, the saved values are useless. What that does <em>not</em> protect against is anything already running as you, which is why it is off unless you turn it on.</p>
 
 <h2 id="all-settings">Available Settings</h2>
@@ -184,12 +81,12 @@
 		<div class="cc-help-legend-copy">Your Conduent (AMERICAS) network account credentials go here to enable Site Scope.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">TFS</div>
-		<div class="cc-help-legend-copy">Your TFS personal access token (PAT) goes here to enable integration with the TFS system.</div>
+		<div class="cc-help-legend-label">Remember my passwords</div>
+		<div class="cc-help-legend-copy">Remember the KAT DataStore and Conduent passwords you enter, so the app signs in with them on the next launch. Encrypted by Windows for your account on this machine.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Remember my passwords</div>
-		<div class="cc-help-legend-copy">Enable this option to have the application remember your passwords for easier login and access to integrated services.</div>
+		<div class="cc-help-legend-label">TFS</div>
+		<div class="cc-help-legend-copy">Your TFS personal access token (PAT) goes here to enable integration with the TFS system.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<div class="cc-help-legend-copy"><b>Display</b></div>
@@ -204,11 +101,31 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Color mode</div>
-		<div class="cc-help-legend-copy"><em>Light</em> and <em>Dark</em> use the matching preferred palette. <em>System</em> follows the Windows light/dark setting and switches palettes when that setting changes. The app bar's theme button still cycles Dark, Light and System; it does not change either preferred palette.</div>
+		<div class="cc-help-legend-copy"><em>Light</em> and <em>Dark</em> use the matching preferred palette. <em>System</em> follows the Windows light/dark setting and switches palettes when that setting changes. The theme button in the app bar still cycles Dark, Light and System; it does not change either preferred palette.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Density</div>
-		<div class="cc-help-legend-copy"><em>Normal</em> is the default, with larger table text and roomier spacing. <em>Compact</em> uses smaller table text and tighter rows, controls and card spacing to show more at once. Section headings and task descriptions/comments stay the same size. Density applies in both light and dark modes.</div>
+		<div class="cc-help-legend-copy"><em>Normal</em> is the default, with larger table text and roomier spacing. <em>Compact</em> uses smaller table text and tighter rows, controls and section spacing to show more at once. Section headings and task descriptions/comments stay the same size. Density applies in both light and dark modes.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Navigation</div>
+		<div class="cc-help-legend-copy">What the rail's collapse button (at the left of the app bar) does. <em>Collapse to icons</em> leaves a strip of section icons; hovering or clicking a group there opens its entries beside it. <em>Hide completely</em> removes the rail so the content takes the full width, and the same button brings it back.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Viewing releases</div>
+		<div class="cc-help-legend-copy"><em>Separate</em> puts Release Pipeline, Release Differences and CalcEngine Pipeline under a <b>Releases</b> group in the rail, one page each, each keeping its own scroll position. <em>Combined</em> makes <b>Releases</b> a single entry with all three stacked on one page under one header.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Viewing Sentinel</div>
+		<div class="cc-help-legend-copy">The same choice for Site Metrics and Site Scope under <b>Sentinel</b>: one page each, or both stacked on one page.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Checkout alerts: Turn red after (days)</div>
+		<div class="cc-help-legend-copy">A checked-out CalcEngine counts on the CalcEngine Pipeline rail badge in amber, and turns it red once it has been checked out this many days. Blank uses 3.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">What's Happening: Auto dismiss completed after (seconds)</div>
+		<div class="cc-help-legend-copy">How long a build or deployment that finished successfully stays in the Dashboard's <a href="#/reading-dashboard/whats-happening">What's Happening</a> list before fading out. Failures stay until you dismiss them. Blank uses 10.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<div class="cc-help-legend-copy"><b>Work Items > Comment Defaults</b></div>
@@ -238,38 +155,42 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Query ID and Name</div>
-		<div class="cc-help-legend-copy">Use the saved TFS query ID from its URL and choose the label shown on the chip.</div>
+		<div class="cc-help-legend-copy">Use the saved TFS query ID from its URL and choose the label shown in the rail and the Work Items header.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Severity threshold</div>
-		<div class="cc-help-legend-copy">When combined total of Critical and High counts are greater than threshhold, indicators are colored as <span class="over-threshold">⊗ Critical Count</span> and <span class="over-threshold-orange">⚠ High Count</span>. Clear to hide severity indicators.</div>
+		<div class="cc-help-legend-copy">Shows Critical and High counts in the Work Items header. Once their combined total reaches the threshold they are colored as <span class="over-threshold">⊗ Critical Count</span> and <span class="over-threshold-orange">⚠ High Count</span>, and those items count on the query's rail badge. Clear to hide severity indicators.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Priority threshold</div>
-		<div class="cc-help-legend-copy">When combined Priority 1 and 2 counts are greater than threshhold, indicators are colored as <span class="over-threshold">‼ Priority 1 Count</span> and <span class="over-threshold-orange">! Priority 2 Count</span>. Clear to hide priority indicators.</div>
+		<div class="cc-help-legend-copy">Shows Priority 1 and 2 counts in the Work Items header. Once their combined total reaches the threshold they are colored as <span class="over-threshold">‼ Priority 1 Count</span> and <span class="over-threshold-orange">! Priority 2 Count</span>, and those items count on the query's rail badge. Clear to hide priority indicators.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Old threshold</div>
-		<div class="cc-help-legend-copy">Counts items unchanged for more than this many days and displays as <span class="over-threshold-orange">⟳ Old Count</span>. Clear to hide.</div>
+		<div class="cc-help-legend-copy">Counts items unchanged for more than this many days and displays as <span class="over-threshold-orange">⟳ Old Count</span>; they also count on the query's rail badge. Clear to hide.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Active within</div>
 		<div class="cc-help-legend-copy">
 			When greater than <code>0</code>, filters query results to items <em>you</em> revised within that many days. Clear to show all.
 			<p>A TFS query can only ask about an item's <em>latest</em> revision (<code>Changed Date</code>, <code>Changed By = @Me</code>), so it can't answer "did I touch this in the last N days" - an item you worked yesterday drops out the moment someone else edits it, and an item you never touched shows up because you happened to be the last one in. Active Within instead reads each item's full revision history and keeps the item if <em>any</em> revision in the window is yours.</p>
-			<p>That accuracy costs one extra API call per item in the query. Every query makes that call eventually - it is the same read that fills in comments for the filter - but for the others it happens in the background <em>after</em> the grid is on screen, while this setting has to wait for it before the grid can be drawn at all. Answers are cached per item and reused until the item's changed date moves, which makes repeat refreshes nearly free, but the first run on a large query is noticeably slower - leave it clear unless the query is one you filter down this way. The chip's severity, priority, old, and tag counts are all computed <em>after</em> this filter, so they describe your active items rather than the whole query.</p>
+			<p>That accuracy costs one extra API call per item in the query. Every query makes that call eventually - it is the same read that fills in comments for the filter - but for the others it happens in the background <em>after</em> the grid is on screen, while this setting has to wait for it before the grid can be drawn at all. Answers are cached per item and reused until the item's changed date moves, which makes repeat refreshes nearly free, but the first run on a large query is noticeably slower - leave it clear unless the query is one you filter down this way. The query's severity, priority, old, and tag counts are all computed <em>after</em> this filter, so they describe your active items rather than the whole query.</p>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Show tag counts</div>
-		<div class="cc-help-legend-copy">Shows <code>KAT-</code> prefixed tag totals above the grid and lets those tags filter rows (useful to turn off when the majority of result rows have unique tags).</div>
+		<div class="cc-help-legend-copy">Shows <code>KAT-</code> prefixed tag totals under the Work Items header and lets those tags filter rows (useful to turn off when the majority of result rows have unique tags).</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Hide chip when no work items present</div>
-		<div class="cc-help-legend-copy">Leaves the query's chip off the Work Items bar while the query has no items; it comes back as soon as the query finds one. A chip whose results you have open stays until you close them. Ticked for a new query. A query saved before this option existed keeps its chip until you tick it.</div>
+		<div class="cc-help-legend-label">Hide query when no work items present</div>
+		<div class="cc-help-legend-copy">Leaves the query out of the rail while it has no items; it comes back as soon as the query finds one. The query you have open stays until you open another. On for a new query. A query saved before this option existed stays in the rail until you turn it on.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Exclude from What's Happening</div>
+		<div class="cc-help-legend-copy">Keeps this query's items out of the Dashboard's <a href="#/reading-dashboard/whats-happening">What's Happening</a> list. Its rail badge still counts them. Off for a new query.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Connections > Release Pipeline</b></div>
+		<div class="cc-help-legend-copy"><b>Connections > Release Pipeline Polling</b></div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Check every (seconds)</div>
@@ -295,7 +216,7 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Check every (hours)</div>
-		<div class="cc-help-legend-copy">How often that folder is checked; blank uses 8 hours. It is also checked once at startup, and whenever you press <em>Check for updates</em> under the page list.</div>
+		<div class="cc-help-legend-copy">How often that folder is checked; blank uses 8 hours. It is also checked once at startup, and whenever you press <em>Check for updates now</em> beneath it.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<div class="cc-help-legend-copy"><b>Connections > Documentation</b></div>

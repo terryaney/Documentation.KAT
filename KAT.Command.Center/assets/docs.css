@@ -29,8 +29,11 @@
 	color-scheme: light;
 }
 
+/* The shell's body rule arrives through components.generated.css and pins the page, because in the
+   app only the content pane scrolls. This site scrolls the document, so it undoes that. */
 body {
 	margin: 0;
+	overflow: visible;
 	min-height: 100vh;
 	background:
 		radial-gradient(1000px 440px at 12% -15%, color-mix(in srgb, var(--status-success) 6.5%, transparent), transparent 58%),
@@ -889,6 +892,21 @@ body {
 	margin: 18px 0 34px
 }
 
+/* A screenshot of one section or dialog. The width/height attributes are the natural size, so a
+   small dialog shows at 1:1 and a full-width page shrinks to the column instead of overflowing it. */
+.cc-help-shot {
+	margin: 16px 0 24px
+}
+
+.cc-help-shot img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border: 1px solid var(--help-border);
+	border-radius: 8px;
+	box-shadow: 0 10px 28px color-mix(in srgb, var(--color-black) 16%, transparent)
+}
+
 .cc-help-tour-stage {
 	position: relative;
 	border: 1px solid var(--help-border);
@@ -1109,15 +1127,6 @@ body {
 	color: var(--help-dim);
 	font-size: var(--type-sm);
 	line-height: 1.6
-}
-
-.cc-help-highlight {
-	border: 1px solid var(--help-blue);
-	border-left-width: 3px;
-	background: color-mix(in srgb, var(--help-blue) 8%, var(--help-panel));
-	box-shadow:
-		0 0 0 3px color-mix(in srgb, var(--help-blue) 28%, transparent),
-		0 0 14px 2px color-mix(in srgb, var(--help-blue) 60%, transparent)
 }
 
 .cc-help-callout.warning {
@@ -1477,10 +1486,6 @@ body {
 .cc-help-link:hover {
 	color: var(--status-success);
 	border-color: var(--status-success)
-}
-
-.tfs-release .detail-card:not([open])>summary .cc-help-link {
-	display: none
 }
 
 /* ---------- dashboard icons ---------- */
