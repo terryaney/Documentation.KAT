@@ -241,7 +241,7 @@ window.KCC_DOCS = {
 				"version-1",
 				"whats-new"
 			],
-			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes</div>\n<h1>Release Notes</h1>\n<p class=\"cc-help-lede\">What changed in each version of KAT Command Center. Each version line has one page, and its updates read oldest to newest.</p>\n</header>\n<h2 id=\"latest\">Latest update</h2>\n<a class=\"kd-release-latest\" href=\"#/releases/2.0/2.0.2\"><strong>2.0.2</strong><time datetime=\"2026-09-28\">September 28, 2026</time><span>Maintenance release that softens the KCC Laver Cup dark theme.</span></a>\n<h2 id=\"all-versions\">All versions</h2>\n<h3 id=\"version-2\">Version 2</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/2.0\">Version 2.0</a> <span>3 updates, latest 2.0.2 on September 28, 2026</span></li>\n</ul>\n<h3 id=\"version-1\">Version 1</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/1.3\">Version 1.3</a> <span>1 update, latest 1.3.0 on September 26, 2026</span></li>\n<li><a href=\"#/releases/1.2\">Version 1.2</a> <span>3 updates, latest 1.2.15 on September 24, 2026</span></li>\n</ul>\n<h2 id=\"whats-new\">What's New after an update</h2>\n<p>After Command Center updates itself, it opens <a href=\"#/whats-new\">What's New</a> with the version you were running before. Every update you have not seen is highlighted, even when it spans more than one version line, and you can dismiss the notice once you have read it.</p>",
+			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes</div>\n<h1>Release Notes</h1>\n<p class=\"cc-help-lede\">What changed in each version of KAT Command Center. Each version line has one page, and its updates read oldest to newest.</p>\n</header>\n<h2 id=\"latest\">Latest update</h2>\n<a class=\"kd-release-latest\" href=\"#/releases/2.0/2.0.3\"><strong>2.0.3</strong><time datetime=\"2026-09-28\">September 28, 2026</time><span>Final Laver tweak for court size and animation speed.</span></a>\n<h2 id=\"all-versions\">All versions</h2>\n<h3 id=\"version-2\">Version 2</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/2.0\">Version 2.0</a> <span>4 updates, latest 2.0.3 on September 28, 2026</span></li>\n</ul>\n<h3 id=\"version-1\">Version 1</h3>\n<ul class=\"kd-release-index\">\n<li><a href=\"#/releases/1.3\">Version 1.3</a> <span>1 update, latest 1.3.0 on September 26, 2026</span></li>\n<li><a href=\"#/releases/1.2\">Version 1.2</a> <span>3 updates, latest 1.2.15 on September 24, 2026</span></li>\n</ul>\n<h2 id=\"whats-new\">What's New after an update</h2>\n<p>After Command Center updates itself, it opens <a href=\"#/whats-new\">What's New</a> with the version you were running before. Every update you have not seen is highlighted, even when it spans more than one version line, and you can dismiss the notice once you have read it.</p>",
 			"navTitle": "Overview"
 		},
 		"releases/2.0": {
@@ -255,9 +255,10 @@ window.KCC_DOCS = {
 				"2.0.0-from-linqpad-query-to-first-class-application",
 				"2.0.1",
 				"2.0.1-improvements",
-				"2.0.2"
+				"2.0.2",
+				"2.0.3"
 			],
-			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes &middot; Version 2</div>\n<h1>Version 2.0</h1>\n<p class=\"cc-help-lede\">3 updates, from 2.0.0 (September 27, 2026) to 2.0.2 (September 28, 2026). Updates read oldest to newest.</p>\n<p class=\"kd-release-jump\"><a href=\"#/releases/2.0/2.0.2\">Jump to the latest update, 2.0.2</a></p>\n</header>\n<section class=\"kd-patch\" data-version=\"2.0.0\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.0\">2.0.0</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-27\">September 27, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Your journey towards the dark side is now complete.</p>\n<div class=\"kd-patch-part kd-patch-story\">\n<h3 id=\"2.0.0-from-linqpad-query-to-first-class-application\">From LINQPad query to first-class application</h3>\n<p>What started as an ad hoc LINQPad query, runnable only by the Chief Sherpa, has completed its journey into a first-class application for the entire KAT team to use every day.</p>\n\t<figure>\n\t\t<img src=\"media/releases/2.0.0/command-center-journey.webp\" alt=\"The original LINQPad query dashboard transitions into the dark KAT Command Center application\" width=\"900\" height=\"604\">\n\t</figure>\n\t<p>This release followed <a href=\"#/releases/1.3/1.3.0\">Version 1.3.0</a> so quickly that you should review its functionality updates too, especially if you updated directly to this release skipping 1.3.0 (or any other 1.x release).</p>\n</div>\n</section>\n<section class=\"kd-patch\" data-version=\"2.0.1\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.1\">2.0.1</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-27\">September 27, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Laver Cup, Baby!</p>\n<div class=\"kd-patch-part kd-patch-improvements\">\n<h3 id=\"2.0.1-improvements\">Improvements</h3>\n<ul>\n\t\t<li>If you are a tennis fan, check out the dark theme option :)</li>\n\t</ul>\n</div>\n</section>\n<section class=\"kd-patch\" data-version=\"2.0.2\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.2\">2.0.2</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-28\">September 28, 2026</time><span class=\"kd-badge kd-badge-maintenance\">Maintenance</span></div>\n</header>\n<p class=\"kd-patch-theme\">Maintenance release that softens the KCC Laver Cup dark theme.</p>\n</section>",
+			"html": "<header class=\"cc-help-article-header\">\n<div class=\"cc-help-eyebrow\">Release Notes &middot; Version 2</div>\n<h1>Version 2.0</h1>\n<p class=\"cc-help-lede\">4 updates, from 2.0.0 (September 27, 2026) to 2.0.3 (September 28, 2026). Updates read oldest to newest.</p>\n<p class=\"kd-release-jump\"><a href=\"#/releases/2.0/2.0.3\">Jump to the latest update, 2.0.3</a></p>\n</header>\n<section class=\"kd-patch\" data-version=\"2.0.0\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.0\">2.0.0</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-27\">September 27, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Your journey towards the dark side is now complete.</p>\n<div class=\"kd-patch-part kd-patch-story\">\n<h3 id=\"2.0.0-from-linqpad-query-to-first-class-application\">From LINQPad query to first-class application</h3>\n<p>What started as an ad hoc LINQPad query, runnable only by the Chief Sherpa, has completed its journey into a first-class application for the entire KAT team to use every day.</p>\n\t<figure>\n\t\t<img src=\"media/releases/2.0.0/command-center-journey.webp\" alt=\"The original LINQPad query dashboard transitions into the dark KAT Command Center application\" width=\"900\" height=\"604\">\n\t</figure>\n\t<p>This release followed <a href=\"#/releases/1.3/1.3.0\">Version 1.3.0</a> so quickly that you should review its functionality updates too, especially if you updated directly to this release skipping 1.3.0 (or any other 1.x release).</p>\n</div>\n</section>\n<section class=\"kd-patch\" data-version=\"2.0.1\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.1\">2.0.1</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-27\">September 27, 2026</time></div>\n</header>\n<p class=\"kd-patch-theme\">Laver Cup, Baby!</p>\n<div class=\"kd-patch-part kd-patch-improvements\">\n<h3 id=\"2.0.1-improvements\">Improvements</h3>\n<ul>\n\t\t<li>If you are a tennis fan, check out the dark theme option :)</li>\n\t</ul>\n</div>\n</section>\n<section class=\"kd-patch\" data-version=\"2.0.2\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.2\">2.0.2</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-28\">September 28, 2026</time><span class=\"kd-badge kd-badge-maintenance\">Maintenance</span></div>\n</header>\n<p class=\"kd-patch-theme\">Maintenance release that softens the KCC Laver Cup dark theme.</p>\n</section>\n<section class=\"kd-patch\" data-version=\"2.0.3\">\n<header class=\"kd-patch-header\">\n<h2 id=\"2.0.3\">2.0.3</h2>\n<div class=\"kd-patch-meta\"><time datetime=\"2026-09-28\">September 28, 2026</time><span class=\"kd-badge kd-badge-maintenance\">Maintenance</span></div>\n</header>\n<p class=\"kd-patch-theme\">Final Laver tweak for court size and animation speed.</p>\n</section>",
 			"navTitle": "2.0",
 			"children": [
 				{
@@ -271,6 +272,10 @@ window.KCC_DOCS = {
 				{
 					"anchor": "2.0.2",
 					"title": "2.0.2"
+				},
+				{
+					"anchor": "2.0.3",
+					"title": "2.0.3"
 				}
 			]
 		},
@@ -389,6 +394,15 @@ window.KCC_DOCS = {
 			"major": "2",
 			"date": "2026-09-28",
 			"theme": "Maintenance release that softens the KCC Laver Cup dark theme.",
+			"page": "releases/2.0",
+			"maintenance": true
+		},
+		{
+			"version": "2.0.3",
+			"minor": "2.0",
+			"major": "2",
+			"date": "2026-09-28",
+			"theme": "Final Laver tweak for court size and animation speed.",
 			"page": "releases/2.0",
 			"maintenance": true
 		}
@@ -896,7 +910,7 @@ window.KCC_DOCS = {
 			"anchor": "latest",
 			"title": "Release Notes",
 			"heading": "Latest update",
-			"text": "2.0.2September 28, 2026Maintenance release that softens the KCC Laver Cup dark theme."
+			"text": "2.0.3September 28, 2026Final Laver tweak for court size and animation speed."
 		},
 		{
 			"section": "releases",
@@ -912,7 +926,7 @@ window.KCC_DOCS = {
 			"anchor": "version-2",
 			"title": "Release Notes",
 			"heading": "Version 2",
-			"text": "Version 2.0 3 updates, latest 2.0.2 on September 28, 2026"
+			"text": "Version 2.0 4 updates, latest 2.0.3 on September 28, 2026"
 		},
 		{
 			"section": "releases",
@@ -936,7 +950,7 @@ window.KCC_DOCS = {
 			"anchor": "",
 			"title": "Version 2.0",
 			"heading": "Version 2.0",
-			"text": "Release Notes · Version 2 Version 2.0 3 updates, from 2.0.0 (September 27, 2026) to 2.0.2 (September 28, 2026). Updates read oldest to newest. Jump to the latest update, 2.0.2"
+			"text": "Release Notes · Version 2 Version 2.0 4 updates, from 2.0.0 (September 27, 2026) to 2.0.3 (September 28, 2026). Updates read oldest to newest. Jump to the latest update, 2.0.3"
 		},
 		{
 			"section": "releases",
@@ -977,6 +991,14 @@ window.KCC_DOCS = {
 			"title": "Version 2.0",
 			"heading": "2.0.2",
 			"text": "September 28, 2026Maintenance Maintenance release that softens the KCC Laver Cup dark theme."
+		},
+		{
+			"section": "releases",
+			"page": "releases/2.0",
+			"anchor": "2.0.3",
+			"title": "Version 2.0",
+			"heading": "2.0.3",
+			"text": "September 28, 2026Maintenance Final Laver tweak for court size and animation speed."
 		},
 		{
 			"section": "releases",

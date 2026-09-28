@@ -60,6 +60,13 @@
 			"theme": "Maintenance release that softens the KCC Laver Cup dark theme.",
 			"maintenance": true,
 			"sha256": "B69FBFBFFC1DB8BC735256118D4961CC118E540943DE17B68B8FF199D4781863"
+		},
+		{
+			"version": "2.0.3",
+			"date": "2026-09-28",
+			"theme": "Final Laver tweak for court size and animation speed.",
+			"maintenance": true,
+			"sha256": "4A6A238EA149FB84C387D7C7FF268ACB5F2563879F5377BC43C15DFBD78C7801"
 		}
 	]
 }

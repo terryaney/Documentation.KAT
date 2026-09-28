@@ -4994,7 +4994,8 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	width: var(--cc-court-edge);
+
+	width: calc(var(--cc-court-edge) * 1.38);
 	animation: cc-crowd-breathe 9s ease-in-out infinite;
 }
 
@@ -5026,13 +5027,14 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 
 .tfs-release .cc-court-lines {
 	--cc-court-gap: .6rem;
+	--cc-court-foot: calc(var(--cc-court-gap) * 3 + 1.1rem + min(var(--type-4xl), 3.6cqi) + .45rem + min(var(--type-2xs), 1.5cqi));
 	position: absolute;
-	top: calc(var(--cc-court-gap) * 3);
+	top: var(--cc-court-foot);
 	left: 0;
 	right: 0;
 	margin-inline: auto;
-	width: calc((100% - var(--cc-court-gap) * 2) * .7);
-	height: calc(100% - var(--cc-court-gap) * 6 - 1.1rem - min(var(--type-4xl), 3.6cqi) - .45rem - min(var(--type-2xs), 1.5cqi));
+	width: calc((100% - var(--cc-court-gap) * 2) * .61);
+	height: calc(100% - var(--cc-court-foot) * 2);
 	background: var(--laver-court);
 	box-shadow: 0 0 var(--cc-court-edge) calc(var(--cc-court-edge) / 2) var(--laver-court);
 	fill: none;
