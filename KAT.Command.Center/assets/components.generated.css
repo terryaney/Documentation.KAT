@@ -127,12 +127,13 @@
 
 	--laver-court: #3a4046;
 
+	--laver-nav-work: #b9acdb;
+
 	--laver-chrome: #222529;
 	--laver-chrome-border: #45494e;
 	--laver-raise: #16191c;
 	--laver-rule: #2a2f35;
 	--laver-rule-strong: #444b53;
-	--laver-badge: #101a14;
 	--font-display: 'Bahnschrift', var(--font-body);
 
 	--surface-page: var(--laver-black);
@@ -141,10 +142,6 @@
 	--border-default: #4c545c;
 	--text-primary: var(--laver-line);
 	--text-muted: #aeb6be;
-	--status-success: var(--laver-rolex-hi);
-	--status-info: #5c9bff;
-	--status-warning: var(--laver-led);
-	--status-danger: var(--laver-world-hi);
 	--accent-primary: var(--laver-led);
 
 	--laver-s1-fg: var(--laver-led);
@@ -4945,7 +4942,7 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	--env-dev-bg: var(--laver-s1-bg);
 	--env-qa-fg: var(--laver-s2-fg);
 	--env-qa-bg: var(--laver-s2-bg);
-	--env-uat-fg: var(--laver-s3-fg);
+	--env-uat-fg: var(--laver-rolex);
 	--env-uat-bg: var(--laver-s3-bg);
 }
 
@@ -4970,12 +4967,7 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 }
 
 :root[data-palette="laver"] .tfs-release :is(.cc-appbar, .cc-nav) { background: var(--laver-chrome); }
-
-:root[data-palette="laver"] .tfs-release .cc-nav-badge:not(.cc-nav-badge--attn, .cc-nav-badge--bad) {
-	background: var(--laver-badge);
-	color: var(--laver-led);
-	border-color: color-mix(in srgb, var(--laver-rolex) 70%, transparent);
-}
+:root[data-palette="laver"] .tfs-release .cc-nav-item:is([data-nav-to="workitems"], [data-nav-query]) { --cc-nav-accent: var(--laver-nav-work); }
 
 :root[data-palette="laver"] .tfs-release .sec-head {
 	background: color-mix(in srgb, var(--laver-black) 80%, transparent);
@@ -4985,7 +4977,7 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 
 :root[data-palette="laver"] .tfs-release .cc-court {
 
-	--cc-court-edge: calc(var(--cc-gutter) * 3);
+	--cc-court-edge: calc(var(--cc-gutter) * 13);
 	display: block;
 	grid-area: 1 / 2;
 	position: relative;
@@ -5006,14 +4998,14 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	animation: cc-crowd-breathe 9s ease-in-out infinite;
 }
 
-.tfs-release .cc-court-crowd--europe { left: 0; --crowd-dir: to right; }
-.tfs-release .cc-court-crowd--world { right: 0; --crowd-dir: to left; animation-delay: -4.5s; }
+.tfs-release .cc-court-crowd--europe { left: 0; --crowd-dir: to right; --crowd-top: var(--laver-europe-hi); --crowd-bottom: var(--laver-world-hi); }
+.tfs-release .cc-court-crowd--world { right: 0; --crowd-dir: to left; --crowd-top: var(--laver-world-hi); --crowd-bottom: var(--laver-europe-hi); animation-delay: -4.5s; }
 
 .tfs-release .cc-court-crowd {
 	background: linear-gradient(to bottom,
-		color-mix(in srgb, var(--laver-europe-hi) 60%, transparent) 0 42%,
+		color-mix(in srgb, var(--crowd-top) 60%, transparent) 0 42%,
 		transparent 50%,
-		color-mix(in srgb, var(--laver-world-hi) 60%, transparent) 58% 100%);
+		color-mix(in srgb, var(--crowd-bottom) 60%, transparent) 58% 100%);
 	-webkit-mask-image: linear-gradient(var(--crowd-dir), var(--laver-black), transparent);
 	mask-image: linear-gradient(var(--crowd-dir), var(--laver-black), transparent);
 }
@@ -5045,6 +5037,7 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	box-shadow: 0 0 var(--cc-court-edge) calc(var(--cc-court-edge) / 2) var(--laver-court);
 	fill: none;
 	stroke: var(--laver-line);
+	stroke-opacity: .8;
 	stroke-width: 6;
 	vector-effect: non-scaling-stroke;
 }
@@ -5060,6 +5053,7 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	align-items: center;
 	gap: .45rem;
 	color: var(--laver-line);
+	opacity: .8;
 	white-space: nowrap;
 	line-height: 1;
 }

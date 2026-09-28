@@ -53,6 +53,13 @@
 			"date": "2026-09-27",
 			"theme": "Laver Cup, Baby!",
 			"sha256": "386EC289A47976ADADB08AADFF09391CD9880FBBD4C0B8EBCF90162C832A5F40"
+		},
+		{
+			"version": "2.0.2",
+			"date": "2026-09-28",
+			"theme": "Maintenance release that softens the KCC Laver Cup dark theme.",
+			"maintenance": true,
+			"sha256": "B69FBFBFFC1DB8BC735256118D4961CC118E540943DE17B68B8FF199D4781863"
 		}
 	]
 }
