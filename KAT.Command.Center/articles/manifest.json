@@ -8,6 +8,8 @@
 	{ "id": "calcengine-pipeline", "title": "CalcEngine Pipeline", "group": "Command Center", "icon": "calcengine" },
 	{ "id": "site-metrics", "title": "Site Metrics", "group": "Command Center", "icon": "metrics" },
 	{ "id": "site-scope", "title": "Site Scope", "group": "Command Center", "icon": "sitescope" },
+	{ "id": "tools/grazer", "title": "Grazer", "group": "Tools", "icon": "grazer" },
+	{ "id": "tools/repository-status", "title": "Repository Status", "group": "Tools", "icon": "repository" },
 	{ "id": "keyboard-shortcuts", "title": "Keyboard Shortcuts", "group": "Advanced", "icon": "dashboard" },
 	{ "id": "reference-notes", "title": "Reference Notes", "group": "Advanced", "icon": "notes" }
 ]

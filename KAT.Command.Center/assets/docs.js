@@ -44,6 +44,8 @@
 		workitems: '<path d="M5 4h14v16H5zM8 8h8M8 12h5M8 16h7"/>',
 		metrics: '<path d="M5 19V9m5 10V5m5 14v-7m5 7V8"/>',
 		sitescope: '<rect x="3" y="5" width="18" height="13" rx="2"/><path d="M6 12h2.5l1.5-3 2 6 1.5-3H18"/>',
+		grazer: '<circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/>',
+		repository: '<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10M18 9a6 6 0 0 1-6 6H6"/>',
 		notes: '<path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 11h6M9 15h6"/>',
 		help: '<circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.4 2.4 0 1 1 3.8 2c-1 .7-1.6 1.2-1.6 2.5M12 17h.01"/>'
 	};

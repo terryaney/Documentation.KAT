@@ -1,0 +1,36 @@
+<section data-kind="story">
+	<h3>Search local folders with Grazer</h3>
+	<p>Find the same setting, phrase or old name across your local folders without opening each project. Grazer, under Tools, searches multiple literal terms together, with a case / whole word setting for each. Review matching lines grouped by folder and file, or switch to file or folder names for a broader view. Searches run only when you ask, never while you type or on a timer.</p>
+	<p>For replacements, each changed line shows its Old and New text before you write. Apply changes to a line, file or folder, or use Replace All; dismiss matches you want to leave alone. Grazer re-reads files before writing and refuses files changed since the search, preserving their encoding and line endings. ZIP entries, when ZIP searching is enabled, remain read-only. No backup files are created, so keep changes under source control. See <a href="#/tools/grazer">Grazer in Help</a>.</p>
+	<figure>
+		<img src="media/releases/2.1.0/grazer-replacement-preview.webp" alt="Grazer with a replacement chip and a search-only chip, showing matching lines grouped by folder and file, with an updated line's Old and New text previewed before Replace All." width="1461" height="1060">
+		<figcaption>Preview every replacement before writing, from a single line to Replace All.</figcaption>
+	</figure>
+</section>
+
+<section data-kind="story">
+	<h3>Your repositories, at a glance</h3>
+	<p>Repository Status, under Tools, brings your local Git repositories into one view. See checked-out branches, incoming and outgoing commits, staged and unstaged changes, and conflicts without visiting each folder. Expand a repository to inspect its other branches and linked worktrees, each with its own status. Filter by root or path, focus on Needs Attention, or use a reason chip to find a specific problem.</p>
+	<figure>
+		<img src="media/releases/2.1.0/repository-status-overview.webp" alt="Repository Status listing nine sample repositories with reason chips for no upstream, detached HEAD, conflicts, a failed fetch and a gone upstream; one repository is expanded to show its local and remote branches and three linked worktrees, with incoming and outgoing commit counts and working-tree status chips." width="1461" height="1060">
+		<figcaption>Every repository, its branches and worktrees, with problems called out by colour and reason chip.</figcaption>
+	</figure>
+	<p>Monitoring continues while you work elsewhere in the app or minimize it. By default, local status is checked every two minutes and upstream remotes are fetched every 30 minutes; fetching updates incoming counts but never pulls or edits your files. Incoming commits and conflicts also appear in What's Happening. Use <code>F5</code> to rediscover repositories and check local status, or <code>Ctrl+F5</code> to fetch now.</p>
+	<p>Act on one checkout or select several for a batch Pull, Push, Commit or worktree cleanup. Sync pulls then pushes a diverged checkout, using your Git pull configuration. Commit reviews every change, including untracked files; force pushes always use a reviewed lease and refuse a remote branch that changed afterward. Worktree cleanup reviews the selected worktrees, warns when removal requires force, and keeps their branches. Show Differences and terminal shortcuts let you continue in your preferred tools. See <a href="#/tools/repository-status">Repository Status in Help</a>.</p>
+</section>
+
+<section data-kind="improvements" data-title="KCC Improvements">
+	<ul>
+		<li>In the Work Items grid, press <code>Enter</code> to open the selected work item, just like <code>o</code>. See <a href="#/keyboard-shortcuts/work-items-grid">Keyboard Shortcuts</a>.</li>
+		<li>Work Item updates now protect against stale saves. If an item changed after its dialog opened, nothing is overwritten: the current item is refreshed, the dialog preserves anything you typed for copying, and unaffected items in a batch can still be saved. See <a href="#/work-items">Work Items</a>.</li>
+		<li>Return Triaged now shows the selected count and progress in a batch action strip. Failed items are listed above the grid, with Retry reopening only those items and preserving the values you submitted. Return Task requires an assignee, and Move to Triaged requires a Triage value. See <a href="#/work-items/send-back">Return Triage Tasks</a>.</li>
+		<li>Work Item query badges now explain their count as the number of distinct items flagged by your thresholds, rather than a breakdown that could count an item more than once. See <a href="#/reading-dashboard/rail-badges">Rail badges</a>.</li>
+		<li>Authentication is more resilient for DataLocker, CalcEngine, and Site Scope. Saved credentials are retained through expired tokens and temporary service or network failures so a later refresh can sign in again automatically; credentials are cleared only when the service actually rejects them, and unexpected failures now report their real error instead of looking like a bad password. See <a href="#/calcengine-pipeline">CalcEngine</a> and <a href="#/site-scope">Site Scope</a>.</li>
+	</ul>
+</section>
+
+<section data-kind="fixes" data-title="KCC Fixes">
+	<ul>
+		<li>In single-item comment and new work item dialogs, <code>Esc</code> asks before discarding edits only when pressed in an edited Comment, Description, or Repro Steps field; pressing it elsewhere closes without an extra confirmation. See <a href="#/keyboard-shortcuts/comment-modals">Keyboard Shortcuts</a>.</li>
+	</ul>
+</section>

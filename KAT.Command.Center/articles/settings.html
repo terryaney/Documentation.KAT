@@ -10,8 +10,11 @@
 	<li><strong>Profile</strong> page: your KAT Management site credentials, your Conduent network account, and a TFS Personal Access Token (PAT).</li>
 	<li><strong>Display</strong> page: adjust the appearance and layout of the application - theme, density, how the rail collapses, whether Releases and Sentinel are one page or several - and when CalcEngine checkouts and What's Happening items change.</li>
 	<li><strong>Work Items</strong> page: configure your work item queries and workflow used within the application.</li>
+	<li><strong>Grazer</strong> page: configure local search roots, exclusions, result limits, ZIP/Git options, and replacement confirmation.</li>
+	<li><strong>Repository Status</strong> page: choose the folders searched for Git repositories, the ignore patterns, how often status is checked and remotes are fetched, and which Git actions ask for confirmation.</li>
 	<li><strong>Connections</strong> page: manage your application's connections to external services and data sources.</li>
 </ol>
+<p>Folder paths in <strong>Grazer</strong>, the <strong>Repository Status</strong> roots and the <strong>Release folder</strong> setting share an editable picker. Type or paste a path, use the up/down arrows and <code>Enter</code> to choose one of up to 25 immediate child-folder suggestions, or press the folder button beside the path; <code>Esc</code> closes the suggestions. These edits stay in the Settings draft until you choose <em>Save</em>; <em>Cancel</em> discards them. Editing a path does not run a Grazer search or rescan repositories; saving changed Repository Status roots does.</p>
 
 <figure class="cc-help-shot">
 	<img src="media/settings-profile.webp" alt="Settings Profile page with both accounts signed in: KAT DataStore email and password and the two CalcEngine download toggles, the Conduent username and password followed by the Remember my passwords toggle, and the saved TFS personal access token, above the Show release notes and Open settings file links and the Cancel and Save buttons." width="938" height="858" loading="lazy">
@@ -148,10 +151,14 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Submit comment dialogs with Ctrl+Enter</div>
-		<div class="cc-help-legend-copy">Lets <code>Ctrl+Enter</code> press <em>OK</em> from anywhere in a comment modal, including the batch Return Task modal. Off unless you turn it on.</div>
+		<div class="cc-help-legend-copy">Lets <code>Ctrl+Enter</code> press <em>OK</em> from anywhere in a comment modal, including the batch Return Task modal, or <em>Create</em> in a new work item modal. Off unless you turn it on.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<div class="cc-help-legend-copy"><b>Work Items > Queries</b></div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Order</div>
+		<div class="cc-help-legend-copy">The queries' order is the order of their entries in the rail and their chips on the Work Items page. Drag a query by its grip, or focus the grip and press <code>Alt+↑</code> / <code>Alt+↓</code>; the new order is saved with Save.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Query ID and Name</div>
@@ -188,6 +195,68 @@
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Exclude from What's Happening</div>
 		<div class="cc-help-legend-copy">Keeps this query's items out of the Dashboard's <a href="#/reading-dashboard/whats-happening">What's Happening</a> list. Its rail badge still counts them. Off for a new query.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<div class="cc-help-legend-copy"><b>Tools > Grazer</b></div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Search roots</div>
+		<div class="cc-help-legend-copy">Named folders Grazer searches. Edit the names and paths for your machine; missing or inaccessible roots are reported without stopping the other roots.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Default file patterns</div>
+		<div class="cc-help-legend-copy">Filename wildcards, separated by semicolons, commas or line breaks, prefilled in Grazer's search form. The form's current patterns can be changed without changing this default.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Excluded folders</div>
+		<div class="cc-help-legend-copy">Literal folder paths excluded from traversal. The shared directory picker supports typing, immediate-child suggestions and the folder (Browse) button.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Excluded directory names and path fragments</div>
+		<div class="cc-help-legend-copy">Directory names match whole folder names; path fragments match anywhere in a path. Both lists are editable. Git metadata is controlled separately by its switch.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Maximum result rows</div>
+		<div class="cc-help-legend-copy">Bounds the results retained and shown; the default is 10,000, and it can be 1 to 100,000. A limit reached during a search is marked incomplete.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Maximum file / ZIP entry size (MB)</div>
+		<div class="cc-help-legend-copy">Bounds ordinary files and ZIP containers by their on-disk size, and ZIP entries by their uncompressed size. The default is 50 MB; 1 to 256 MB.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Search Git metadata</div>
+		<div class="cc-help-legend-copy">Includes folders named <code>.git</code>. Off by default.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Include ZIP files</div>
+		<div class="cc-help-legend-copy">Searches matching text entries without extracting or changing the archive. Off by default; entries are read-only.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Confirm before applying replacements</div>
+		<div class="cc-help-legend-copy">Adds a final confirmation after the mandatory preview. On by default; the confirmation can remember an opt-out, and this setting can turn it back on.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<div class="cc-help-legend-copy"><b>Tools > Repository Status</b></div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Repository roots</div>
+		<div class="cc-help-legend-copy">Folders searched for Git repositories, nested ones included. Each root has an optional name (the Show list on the Repository Status page offers <em>{name} Repos</em>, or the folder name when it has none) and a path; add and remove rows with the shared folder picker and the trash button. A missing root is reported without stopping the others. Changing the roots rescans on Save. The order of the roots is the order repositories are listed in on the page: drag a root by its grip, or focus the grip and press <code>Alt+↑</code> / <code>Alt+↓</code>. Reordering alone does not rescan. Defaults: <code>C:\BTR</code>, <code>C:\Windows\System32\drivers\etc</code> and Visual Studio's XML schemas folder.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Ignore patterns</div>
+		<div class="cc-help-legend-copy">One case-insensitive .NET regular expression per line, tested against each folder path; a match skips that folder and everything under it. An invalid pattern is named under the box and nothing is saved on this page until it is fixed. Changing the patterns rescans on Save.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Check local status / Every (seconds)</div>
+		<div class="cc-help-legend-copy">How often each checkout's branch, changes and incoming and outgoing counts are read from disk. On, every 120 seconds (2 minutes), by default; 10 to 3,600 seconds. A value you saved before keeps its setting.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Fetch upstream remotes / Every (minutes)</div>
+		<div class="cc-help-legend-copy">How often the upstream remote of each checked-out branch is fetched. On, every 30 minutes, by default; 1 to 1,440 minutes. A value you saved before keeps its setting. Fetching never pulls or changes files. With either switch off, <code>F5</code> still rescans and checks status.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Confirm Push, Pull, Sync and worktree cleanup</div>
+		<div class="cc-help-legend-copy">Each selected Git action asks before it runs. All are on by default and independent; a prompt's opt-out turns its switch off here, and you can turn it back on. Pull, Push and Sync ask one question naming the repository or how many there are. Commit always opens its review with the message field and changed-file list. A force push has no setting: it always opens its review and always carries its lease. With Confirm worktree cleanup off, cleanup still opens its review whenever anything needs force, a prune is involved or something cannot be removed, and every check (unchanged since the review, and, where force was not confirmed, locked, clean and a reason to go) still applies; see <a href="#/tools/repository-status/worktree-cleanup">Cleaning up worktrees</a>.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<div class="cc-help-legend-copy"><b>Connections > Release Pipeline Polling</b></div>

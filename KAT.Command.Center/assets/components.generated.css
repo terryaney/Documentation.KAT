@@ -79,6 +79,7 @@
 
 :root[data-theme="light"] {
 	color-scheme: light;
+	--cc-file-json: #b36b00;
 	--surface-page: #deded9;
 	--surface-card: #f2f2ed;
 	--surface-raised: #e8e8e2;
@@ -2259,6 +2260,7 @@ html[data-theme-mode="system"] .tfs-release .cc-appbar-theme .cc-glyph::before {
 .tfs-release .cc-happening-row.is-error .cc-happening-text { color: var(--status-danger); }
 .tfs-release .cc-happening-elapsed { color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .tfs-release .cc-happening-dismiss { flex: 0 0 auto; }
+.tfs-release .cc-happening-action { flex: 0 0 auto; }
 
 .tfs-release .cc-happening-env { --cc-chip-pad-y: 1px; min-height: 0; padding: 1px 6px; gap: 3px; font-size: var(--type-xs); vertical-align: text-bottom; }
 .tfs-release .cc-happening-env .cc-icon { width: .75rem; height: .75rem; }
@@ -2581,18 +2583,21 @@ html[data-theme-mode="system"] .tfs-release .cc-appbar-theme .cc-glyph::before {
 
 .tfs-release .wi-query-actions { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
 .tfs-release .wi-query-actions:empty { display: none; }
-.tfs-release #wiBar .sec-tools:has(> .wi-query-tools:empty) { display: none; }
-.tfs-release #wiBar .sec-head:has(.wi-query-tools:empty) .sec-head-row { padding-bottom: var(--cc-sec-pad-y); }
+.tfs-release #wiBar .sec-tools:has(> .wi-query-tools:not(:has(> :not([hidden])))) { display: none; }
+.tfs-release #wiBar .sec-head:has(.wi-query-tools:not(:has(> :not([hidden])))) .sec-head-row { padding-bottom: var(--cc-sec-pad-y); }
 
 .tfs-release .wi-query-tools {
 
 	--wi-tag-h: 28px;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: flex-start;
 	gap: 8px;
 	flex: 1 1 auto;
 	min-width: 0;
 }
+
+.tfs-release .wi-query-tools > .cc-batch-strip { flex: 1 0 100%; }
 
 .tfs-release .wi-back-btn { height: 28px; min-height: 28px; padding: 0 10px; font-size: var(--type-xs); }
 .tfs-release .wi-back-btn .cc-icon { width: 14px; height: 14px; }
@@ -2854,35 +2859,15 @@ html[data-theme-mode="system"] .tfs-release .cc-appbar-theme .cc-glyph::before {
 
 .tfs-release .wi-expanded .loading-overlay.visible { display: flex; }
 
-.tfs-release #wiBar .triage-confirm {
-	display: none;
-	background: var(--panel2);
-	border: 1px solid var(--status-info);
-	border-radius: 6px;
-	padding: 4px 10px;
-	font-size: var(--type-xs);
-	color: var(--status-info);
-	gap: 8px;
-	align-items: center;
-}
-
-.tfs-release #wiBar .triage-confirm.visible { display: inline-flex; }
-
-.tfs-release #wiBar .triage-confirm button {
-	font-size: var(--type-xs);
-}
-
-.tfs-release #wiBar .triage-confirm .select-all {
-	display: inline-flex;
-	align-items: center;
-	gap: 4px;
-	cursor: pointer;
-	user-select: none;
-}
-
-.tfs-release #wiBar .triage-confirm .select-all input { cursor: pointer; margin: 0; }
-
-.tfs-release #wiBar .action-btn[hidden] { display: none; }
+.tfs-release .cc-batch-strip { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; font-size: var(--type-xs); }
+.tfs-release .sec-head > .cc-batch-strip { padding-bottom: var(--cc-sec-pad-y); }
+.tfs-release .cc-batch-strip[hidden], .tfs-release .cc-batch-strip [hidden] { display: none; }
+.tfs-release .cc-batch-label { font-weight: 600; white-space: nowrap; }
+.tfs-release .cc-batch-all { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; user-select: none; }
+.tfs-release .cc-batch-all input { margin: 0; cursor: pointer; }
+.tfs-release .cc-batch-count { color: var(--dim); white-space: nowrap; }
+.tfs-release .cc-batch-strip .cc-button { min-height: 0; font-size: var(--type-xs); }
+.tfs-release .cc-batch-status { color: var(--dim); white-space: nowrap; }
 
 .tfs-release .wi-table .col-select { display: none; }
 
@@ -2899,6 +2884,13 @@ html[data-theme-mode="system"] .tfs-release .cc-appbar-theme .cc-glyph::before {
 }
 
 .tfs-release .wi-table.is-selecting-back tr[data-triaged="false"] .wi-select { display: none; }
+
+.tfs-release .wi-table.is-batch-running .wi-select { pointer-events: none; opacity: .5; }
+.tfs-release .wi-table tr.is-batch-failed > td { background: color-mix(in srgb, var(--status-danger) 12%, transparent); }
+.tfs-release .wi-batch-errors { margin: 10px 0 8px; }
+.tfs-release .wi-batch-errors ul { margin: 4px 0 0; padding-left: 1.2rem; }
+.tfs-release .wi-batch-errors-head { display: flex; align-items: center; gap: 8px; }
+.tfs-release .wi-batch-errors-dismiss { margin-left: auto; }
 
 .tfs-release :is(.tag-chip, .tag-inline, .state-chip) {
 	font: 400 var(--type-sm)/1.2 var(--font-body);
@@ -3046,10 +3038,20 @@ html[data-theme-mode="system"] .tfs-release .cc-appbar-theme .cc-glyph::before {
 .tfs-release .modal-comment .modal-actions { margin-top: 20px; }
 
 .tfs-release .modal-comment .validation-msg {
-	font-size: var(--type-xs);
-	color: var(--red);
-	margin-top: 6px;
 	display: none;
+	margin-top: 10px;
+	padding: 10px 14px;
+	border: 1px solid color-mix(in srgb, var(--status-danger) 35%, transparent);
+	border-radius: 6px;
+	background: color-mix(in srgb, var(--status-danger) 8%, transparent);
+	color: var(--status-danger);
+	font-size: var(--type-sm);
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+
+	width: 0;
+	min-width: 100%;
+	box-sizing: border-box;
 }
 
 .tfs-release .modal-comment .validation-msg.visible { display: block; }
@@ -4140,6 +4142,7 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 }
 
 .tfs-release .modal-body b { color: var(--text); }
+.tfs-release .cc-confirm-optout { margin: -4px 0 20px; }
 
 .tfs-release .modal-actions {
 	display: flex;
@@ -4161,7 +4164,6 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	padding-left: 0;
 	padding-right: 0;
 	color: var(--accent-metrics);
-	text-decoration: underline;
 }
 
 .tfs-release .cc-button--link:hover {
@@ -4248,7 +4250,8 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 .tfs-release .ccs-section-desc { margin: 0 0 14px; color: var(--dim); font-size: var(--type-sm); line-height: 1.45; max-width: 62ch; }
 
 .tfs-release .ccs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; align-items: start; }
-.tfs-release .ccs-section > h3 + .ccs-grid { margin-top: 14px; }
+.tfs-release .ccs-section > h3 + :is(.ccs-grid, .ccs-field, p.ccs-section-desc) { margin-top: 14px; }
+.tfs-release .ccs-section > h3 + .ccs-field ~ .ccs-field { margin-top: 10px; }
 
 .tfs-release .ccs-section > :is(.ccs-grid, .ccs-field) + :is(.ccs-grid, .ccs-field) { margin-top: 14px; }
 .tfs-release .ccs-field { min-width: 0; }
@@ -4341,6 +4344,15 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 .tfs-release .ccs-dirty { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--text); opacity: .8; }
 .tfs-release .ccs-list-row.is-removed .ccs-dirty { background: var(--dim); }
 .tfs-release .ccs-list-actions { flex: none; display: flex; gap: 6px; }
+.tfs-release .ccs-list-row .cc-drag-handle { margin-left: -8px; }
+
+.tfs-release .cc-drag-handle { flex: none; width: 1.4rem; min-width: 0; min-height: var(--size-control); padding: 0; cursor: grab; color: var(--dim); touch-action: none; }
+.tfs-release .cc-drag-handle svg { width: .95rem; height: .95rem; }
+.tfs-release .ccs-list-actions .cc-button--icon svg { width: .85rem; height: .85rem; }
+.tfs-release .cc-drag-handle:active { cursor: grabbing; }
+.tfs-release .is-dragging { position: fixed; z-index: 600; margin: 0; background: var(--panel); box-shadow: 0 8px 24px color-mix(in srgb, var(--color-black) 30%, transparent); pointer-events: none; opacity: .95; }
+.tfs-release .cc-drag-placeholder { border: 1px dashed var(--accent-primary); border-radius: 6px; background: color-mix(in srgb, var(--accent-primary) 6%, transparent); }
+.tfs-release .cc-drag-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @keyframes ccs-row-arrive { from { background: color-mix(in srgb, var(--accent-primary) 16%, transparent); } }
 .tfs-release .ccs-list-row.is-arrived { animation: ccs-row-arrive 1.4s cubic-bezier(.16, 1, .3, 1); }
 @media (prefers-reduced-motion: reduce) { .tfs-release .ccs-list-row.is-arrived { animation: none; } }
@@ -4392,12 +4404,436 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 }
 .tfs-release .ccs-foot-scope[hidden] { display: none; }
 
+.tfs-release .grazer-card { padding: 16px; }
+
+.tfs-release .sec-tools.grazer-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: .35rem .9rem; }
+.tfs-release .grazer-tools > .sec-field .cc-input { width: 100%; min-width: 0; }
+.tfs-release .grazer-tools > :is(.grazer-chips, .grazer-validation, .grazer-search-actions) { grid-column: 1 / -1; }
+.tfs-release .grazer-search-actions { display: flex; align-items: center; gap: .6rem; min-width: 0; }
+.tfs-release .grazer-search-actions > .cc-button { flex: none; }
+.tfs-release .grazer-status { flex: 1 1 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; overflow-wrap: normal; }
+.tfs-release .grazer-attn { color: var(--status-warning); }
+.tfs-release .grazer-chips { display: flex; flex-wrap: wrap; gap: .35rem; min-width: 0; }
+.tfs-release .grazer-chips[hidden] { display: none; }
+.tfs-release .grazer-chip { display: inline-flex; align-items: center; gap: .15rem; min-width: 0; max-width: min(100%, 32rem); padding: 1px 3px 1px .6rem; border: 1px solid var(--border); border-radius: 999px; background: var(--panel2); font-size: var(--type-xs); color: var(--text); }
+.tfs-release .grazer-chip-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--font-mono, monospace); }
+.tfs-release .grazer-chip-search { flex: 0 1 auto; max-width: 16rem; }
+.tfs-release .grazer-chip-replace { display: inline-flex; align-items: center; gap: .25rem; min-width: 0; color: var(--status-warning); font-weight: 600; }
+.tfs-release .grazer-chip-replace > svg { flex: none; width: .85rem; height: .85rem; }
+.tfs-release .grazer-chip-replace .grazer-chip-text { max-width: 12rem; }
+.tfs-release .grazer-chip-empty { font-family: inherit; font-style: italic; }
+.tfs-release .grazer-chips[data-replace-off] .grazer-chip-replace { opacity: .6; }
+.tfs-release .grazer-chip button { flex: none; display: inline-grid; place-items: center; width: 1.25rem; height: 1.25rem; padding: 0; border: 0; border-radius: 4px; background: none; color: var(--dim); font: inherit; font-weight: 600; cursor: pointer; }
+.tfs-release .grazer-chip button svg { width: .9rem; height: .9rem; }
+.tfs-release .grazer-chip button[data-grazer-chip-case] { margin-left: .15rem; }
+.tfs-release .grazer-chip button:hover:not(:disabled) { background: color-mix(in srgb, currentColor 14%, transparent); }
+.tfs-release .grazer-chip button[data-grazer-chip-remove] { color: var(--red); }
+.tfs-release .grazer-chip button[aria-pressed="true"] { background: color-mix(in srgb, var(--accent-primary) 16%, transparent); }
+.tfs-release .grazer-chip button:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 1px; }
+.tfs-release .grazer-chip button:disabled { opacity: .5; cursor: default; }
+.tfs-release .grazer-inline-status { min-width: 0; color: var(--dim); font-size: var(--type-sm); line-height: 1.45; overflow-wrap: anywhere; }
+.tfs-release .grazer-validation { padding: 6px 12px; border: 1px solid color-mix(in srgb, var(--red) 40%, var(--border)); border-radius: 7px; background: var(--red-bg); color: var(--red); font-size: var(--type-sm); }
+.tfs-release .grazer-validation[hidden] { display: none; }
+.tfs-release .grazer-warning-list { display: grid; gap: 6px; margin-top: 12px; }
+.tfs-release .grazer-warning-list:empty { display: none; }
+.tfs-release .grazer-warning { display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px; border: 1px solid color-mix(in srgb, var(--status-warning) 42%, var(--border)); border-radius: 7px; background: color-mix(in srgb, var(--status-warning) 8%, var(--panel)); font-size: var(--type-sm); overflow-wrap: anywhere; }
+.tfs-release .grazer-warning strong { flex: none; }
+.tfs-release .grazer-results-section[hidden] { display: none; }
+.tfs-release .grazer-card:has(> .grazer-warning-list:empty):has(> .grazer-results-section[hidden]) { display: none; }
+.tfs-release .grazer-summary { margin: 0 0 8px; color: var(--dim); font-size: var(--type-sm); text-align: left; }
+.tfs-release .grazer-summary:empty { display: none; }
+.tfs-release .grazer-results { --grazer-icon: 1.25rem; display: block; }
+
+.tfs-release .grazer-node { --grazer-depth: 0; min-width: 0; }
+.tfs-release .grazer-node[data-depth="1"] { --grazer-depth: 1; }
+.tfs-release .grazer-node[data-depth="2"] { --grazer-depth: 2; }
+.tfs-release .grazer-node[aria-expanded="false"] > .grazer-children { display: none; }
+.tfs-release .grazer-row {
+	display: flex; align-items: center; gap: 6px; min-width: 0; border-radius: 5px;
+	padding: 1px 8px 1px calc(8px + var(--grazer-depth) * var(--grazer-icon));
+}
+.tfs-release .grazer-row:is(:hover, :focus-within) { background: var(--panel2); }
+.tfs-release .grazer-row[data-grazer-toggle] { cursor: pointer; }
+.tfs-release .grazer-ico { flex: none; display: inline-flex; align-items: center; justify-content: center; width: var(--grazer-icon); height: var(--grazer-icon); color: var(--dim); }
+.tfs-release .grazer-ico svg { width: 1rem; height: 1rem; }
+
+.tfs-release .grazer-ico-caret { display: none; transition: transform 140ms ease; }
+.tfs-release .grazer-node[aria-expanded="true"] > .grazer-row .grazer-ico-caret { transform: rotate(90deg); }
+.tfs-release .grazer-row[data-grazer-toggle]:is(:hover, :focus-visible) > .grazer-ico > .grazer-ico-glyph { display: none; }
+.tfs-release .grazer-row[data-grazer-toggle]:is(:hover, :focus-visible) > .grazer-ico > .grazer-ico-caret { display: block; }
+
+.tfs-release .grazer-name { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.tfs-release .grazer-callout { flex: 0 100 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--dim); font-size: var(--type-xs); }
+.tfs-release .grazer-badge { flex: none; padding: 1px 7px; border: 1px solid var(--border); border-radius: 999px; background: var(--panel2); color: var(--dim); font-size: var(--type-xs); font-weight: 700; font-variant-numeric: tabular-nums; }
+.tfs-release .grazer-actions { flex: none; display: inline-flex; gap: 2px; margin-left: auto; opacity: 0; }
+.tfs-release .grazer-row:is(:hover, :focus-within) .grazer-actions { opacity: 1; }
+.tfs-release .grazer-action { display: inline-flex; align-items: center; justify-content: center; width: 1.4rem; height: 1.4rem; padding: 0; border: 0; border-radius: 4px; background: none; color: var(--dim); cursor: pointer; }
+.tfs-release .grazer-action:hover { background: var(--border); color: inherit; }
+.tfs-release .grazer-action svg { width: .8rem; height: .8rem; }
+.tfs-release .grazer-file-link { min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; border: 0; padding: 0; background: none; color: var(--accent-primary); font: inherit; font-weight: 650; text-align: left; cursor: pointer; text-decoration: none; }
+.tfs-release .grazer-file-link:hover, .tfs-release .grazer-line-number:hover { text-decoration: underline; }
+.tfs-release .grazer-row--line { align-items: center; }
+.tfs-release .grazer-row--line .grazer-actions { align-self: center; }
+.tfs-release .grazer-line-number { flex: none; border: 0; padding: 0; background: none; color: var(--accent-primary); font-family: var(--font-mono, monospace); font-size: var(--type-xs); cursor: pointer; text-decoration: none; }
+.tfs-release span.grazer-line-number { color: var(--dim); cursor: default; }
+.tfs-release .grazer-text { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: pre; font-family: var(--font-mono, monospace); font-size: var(--type-xs); }
+.tfs-release .grazer-text.is-truncated { color: var(--dim); }
+.tfs-release .grazer-hit { border-radius: 2px; background: color-mix(in srgb, var(--status-warning) 38%, transparent); color: inherit; }
+
+.tfs-release .grazer-updated-label { flex: none; color: var(--status-warning); font-size: var(--type-xs); font-weight: 700; }
+.tfs-release .grazer-row--change { padding-left: calc(8px + (var(--grazer-depth) + 1) * var(--grazer-icon)); }
+.tfs-release .grazer-change-label { flex: none; width: 2.6em; color: var(--dim); font-size: var(--type-xs); font-weight: 600; }
+.tfs-release .grazer-hit--new { background: color-mix(in srgb, var(--status-success) 38%, transparent); }
+.tfs-release .grazer-row-error { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--red); font-size: var(--type-xs); }
+.tfs-release .grazer-results-more { display: flex; justify-content: center; padding: 10px 0 2px; }
+
+.tfs-release .cc-directory-picker { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; }
+.tfs-release .cc-directory-picker > input { min-width: 0; }
+
+.tfs-release :is(.cc-directory-browse, .grazer-settings-remove, .repo-settings-remove) { flex: none; width: var(--size-control); height: var(--size-control); min-height: var(--size-control); padding: 0; }
+.tfs-release :is(.cc-directory-browse, .grazer-settings-remove, .repo-settings-remove) svg { width: 1rem; height: 1rem; }
+.tfs-release .cc-directory-suggestions {
+	position: absolute; z-index: 12; top: calc(100% + 3px); left: 0; right: 0; max-height: 220px; overflow: auto;
+	padding: 4px; border: 1px solid var(--border-strong); border-radius: 7px; background: var(--panel);
+	box-shadow: 0 8px 22px color-mix(in srgb, var(--color-black) 24%, transparent);
+}
+.tfs-release .cc-directory-suggestions[hidden] { display: none; }
+.tfs-release .cc-directory-option { display: block; width: 100%; border: 0; border-radius: 4px; padding: 6px 8px; background: transparent; color: var(--text); font: inherit; font-family: var(--font-mono, monospace); text-align: left; overflow-wrap: anywhere; cursor: pointer; }
+.tfs-release .cc-directory-option:hover, .tfs-release .cc-directory-option[aria-selected="true"] { background: var(--panel2); }
+.tfs-release .cc-directory-message { grid-column: 1 / -1; color: var(--dim); font-size: var(--type-xs); overflow-wrap: anywhere; }
+.tfs-release .cc-directory-message[data-tone="error"] { color: var(--red); }
+.tfs-release .grazer-settings-roots, .tfs-release .grazer-settings-paths { display: grid; gap: 8px; }
+.tfs-release .grazer-settings-root, .tfs-release .grazer-settings-path-row { display: grid; grid-template-columns: minmax(120px, .35fr) minmax(0, 1fr) auto; align-items: start; gap: 8px; }
+.tfs-release .grazer-settings-root > .cc-input { min-width: 0; }
+.tfs-release .grazer-settings-path-row { grid-template-columns: minmax(0, 1fr) auto; }
+
+.tfs-release .grazer-settings-remove { align-self: start; white-space: nowrap; }
+.tfs-release .grazer-settings-roots .cc-directory-message,
+.tfs-release .grazer-settings-paths .cc-directory-message { margin-top: -4px; }
+
 @container ccs-main (max-width: 520px) {
 	.tfs-release .ccs-grid { grid-template-columns: minmax(0, 1fr); }
 	.tfs-release .ccs-field--half { max-width: none; }
 	.tfs-release .ccs-head, .tfs-release .ccs-foot { padding-left: 18px; padding-right: 14px; }
 	.tfs-release .ccs-body { padding: 0 18px 18px; }
 	.tfs-release .ccs-pane-body { padding: 4px 18px 32px; }
+}
+
+@media (max-width: 900px) {
+	.tfs-release .sec-tools.grazer-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+	.tfs-release .grazer-card { padding: 10px; }
+	.tfs-release .sec-tools.grazer-tools { grid-template-columns: minmax(0, 1fr); }
+	.tfs-release .grazer-line-row { grid-template-columns: auto minmax(0, 1fr); }
+	.tfs-release .grazer-line-row code { grid-column: 1 / -1; }
+	.tfs-release .grazer-settings-root { grid-template-columns: minmax(0, 1fr) auto; }
+	.tfs-release .grazer-settings-root > .cc-directory-picker { grid-column: 1 / -1; grid-row: 2; }
+	.tfs-release .repo-settings-root { grid-template-columns: auto minmax(0, 1fr) auto; }
+	.tfs-release .repo-settings-root > .cc-directory-picker { grid-column: 1 / -1; grid-row: 2; }
+}
+
+.tfs-release :is(#repoStatusCard, .repo-status-menu) { --repo-warn: var(--status-warning); --repo-bad: var(--status-danger); }
+[data-theme="light"] .tfs-release :is(#repoStatusCard, .repo-status-menu) { --repo-warn: var(--status-warning-strong); }
+.tfs-release .repo-status-card { padding: 16px; container: repo-status / inline-size; }
+.tfs-release .sec-tools.repo-status-tools { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .35rem .9rem; }
+.tfs-release .repo-status-tools > .repo-status-path { flex: 1 1 16rem; }
+.tfs-release .repo-status-tools > .repo-status-path .cc-input { width: 100%; min-width: 8rem; }
+.tfs-release .repo-status-tools > .repo-status-worktrees { align-self: end; min-height: var(--cc-field-input-h); padding: 0; }
+
+.tfs-release .repo-show-wrap { position: relative; display: inline-flex; }
+
+.tfs-release .repo-show-wrap > .repo-show-button {
+	display: flex; justify-content: flex-start; width: 12.5rem; height: var(--cc-field-input-h); min-height: 0; padding: 0 32px 0 11px;
+	border-color: var(--border-strong); color: var(--text); font-size: var(--type-xs); font-weight: 400; line-height: 1.3; text-align: left;
+	background: var(--panel2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E") no-repeat right 10px center / 10px 6px;
+}
+.tfs-release .repo-show-wrap > .repo-show-button:focus-visible { border-color: var(--accent-primary); }
+
+@media (max-width: 56rem) { .tfs-release .repo-show-wrap > .repo-show-button { width: 100%; } }
+.tfs-release .repo-show-wrap > .repo-show-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-primary) 12%, transparent); }
+.tfs-release .repo-show-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tfs-release .repo-show-popup {
+	position: absolute; top: calc(100% + 4px); left: 0; z-index: 500;
+	min-width: 100%; padding: 4px;
+	border: 1px solid var(--border-strong); border-radius: 8px; background: var(--panel); box-shadow: var(--shadow-modal);
+}
+.tfs-release .repo-show-popup[hidden] { display: none; }
+.tfs-release .repo-show-list { max-height: min(360px, 60vh); overflow-y: auto; overscroll-behavior: contain; }
+.tfs-release .repo-show-option {
+	display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 6px;
+	color: var(--text); font-size: var(--type-xs); white-space: nowrap; cursor: pointer; user-select: none;
+}
+.tfs-release .repo-show-option-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+.tfs-release .repo-show-count {
+	flex: none; padding: .16rem .3rem; margin-left: -4px; margin-right: auto;
+	border: 1px solid var(--cc-nav-border); border-radius: 999px; background: var(--surface-raised); color: var(--text-muted);
+	font-size: var(--type-2xs); font-weight: 700; font-family: var(--font-code); line-height: 1;
+}
+.tfs-release .repo-show-count[hidden] { display: none; }
+.tfs-release .repo-show-separator { height: 1px; margin: 4px 6px; background: var(--border); }
+.tfs-release .repo-head-count { color: var(--dim); font-weight: 400; }
+
+.tfs-release .repo-show-list[data-keyed] .repo-show-option.is-highlighted { background: color-mix(in srgb, var(--accent-primary) 14%, transparent); }
+
+.tfs-release .repo-show-wrap :is(.repo-show-option, .repo-show-button)[data-tone] { font-weight: 700; }
+.tfs-release .repo-show-wrap :is(.repo-show-option, .repo-show-button)[data-tone="warn"] { color: var(--status-warning); }
+.tfs-release .repo-show-wrap :is(.repo-show-option, .repo-show-button)[data-tone="bad"] { color: var(--status-danger); }
+
+.tfs-release .repo-show-wrap .cc-site-dot[hidden] { display: none; }
+.tfs-release .repo-show-wrap .cc-site-dot.repo-show-bad { background: var(--status-danger); box-shadow: 0 0 6px color-mix(in srgb, var(--status-danger) 70%, transparent); }
+.tfs-release .repo-show-dot { position: absolute; top: -3px; right: -3px; pointer-events: none; }
+
+.tfs-release .repo-meta-part { display: inline-flex; align-items: center; gap: 4px; vertical-align: bottom; }
+.tfs-release .repo-meta-ico { width: .95em; height: .95em; flex: none; }
+.tfs-release #repoStatusMeta .repo-meta-part--warn { color: var(--repo-warn); }
+
+.tfs-release .repo-status-status-row { flex: none; width: 100%; display: flex; align-items: center; gap: .6rem; min-width: 0; }
+.tfs-release .repo-status-status { flex: 1 1 0; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 6px; color: var(--dim); font-size: var(--type-sm); line-height: 1.45; }
+.tfs-release .repo-status-status:empty { display: none; }
+.tfs-release .repo-status-text { overflow-wrap: anywhere; }
+.tfs-release .repo-status-text--warn { color: var(--repo-warn); }
+.tfs-release .repo-status-text--bad { color: var(--repo-bad); }
+
+.tfs-release .repo-status-chip.cc-chip--warning { --cc-tone: var(--repo-warn); }
+.tfs-release .repo-status-chip.cc-chip--danger { --cc-tone: var(--repo-bad); }
+.tfs-release .repo-status-chip.is-selected { border-color: var(--cc-tone, var(--border-strong)); box-shadow: inset 0 0 0 1px var(--cc-tone, var(--border-strong)); }
+.tfs-release .repo-status-status:has(.repo-status-chip.is-selected) .repo-status-chip:not(.is-selected) { opacity: .85; }
+.tfs-release .repo-status-chip-x { margin-left: 2px; opacity: .7; }
+.tfs-release .repo-status-warning-list { display: grid; gap: 6px; margin-bottom: 12px; }
+.tfs-release .repo-status-warning-list:empty { display: none; }
+.tfs-release .repo-status-warning { padding: 8px 10px; border: 1px solid color-mix(in srgb, var(--status-warning) 42%, var(--border)); border-radius: 7px; background: color-mix(in srgb, var(--status-warning) 8%, var(--panel)); font-size: var(--type-sm); overflow-wrap: anywhere; }
+.tfs-release .repo-status-warning--bad { border-color: color-mix(in srgb, var(--repo-bad) 45%, var(--border)); background: color-mix(in srgb, var(--repo-bad) 8%, var(--panel)); }
+.tfs-release .repo-status-warning p { margin: 0; }
+.tfs-release .repo-status-warning p + p { margin-top: 5px; }
+.tfs-release .repo-status-empty { margin: 0; color: var(--dim); font-size: var(--type-sm); }
+.tfs-release .repo-status-empty[hidden], .tfs-release .repo-status-results-section[hidden] { display: none; }
+.tfs-release .repo-status-card:has(> .repo-status-warning-list:empty):has(> .repo-status-empty[hidden]):has(> .repo-status-results-section[hidden]) { display: none; }
+
+.tfs-release .repo-status-scroll {
+	--repo-icon: 1.25rem;
+	--repo-cols: minmax(14rem, 1fr) minmax(7rem, .45fr) 5.5rem minmax(9rem, auto);
+	overflow-x: auto;
+}
+.tfs-release :is(.repo-status-head, .repo-row) { display: grid; grid-template-columns: var(--repo-cols); align-items: center; column-gap: 10px; min-width: 34rem; }
+.tfs-release .repo-status-head { padding: 0 8px 4px; border-bottom: 1px solid var(--border); margin-bottom: 4px; color: var(--text-muted); font-size: var(--type-xs); font-weight: 600; }
+.tfs-release .repo-node { --repo-depth: 0; min-width: 0; }
+.tfs-release .repo-node[data-depth="1"] { --repo-depth: 1; }
+.tfs-release .repo-node[hidden] { display: none; }
+.tfs-release .repo-node[aria-expanded="false"] > .repo-children { display: none; }
+.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[data-kind="worktree"][data-attention="0"] { display: none; }
+.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[aria-level="1"]:not([data-has-attention-worktree]) > .repo-row .repo-count-wt { display: none; }
+.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[aria-level="1"]:not([data-has-attention-worktree]) > .repo-row .repo-count-chip:not(:has(.repo-count-br)) { display: none; }
+.tfs-release .repo-row { position: relative; min-height: 1.9rem; padding: 2px 8px; border-radius: 5px; }
+.tfs-release .repo-row:is(:hover, :focus-within) { background: var(--panel2); }
+.tfs-release .repo-row:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: -2px; }
+.tfs-release .repo-row[data-repo-toggle] { cursor: pointer; }
+.tfs-release .repo-cell { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--type-sm); }
+.tfs-release .repo-cell--name { display: flex; align-items: center; gap: 6px; padding-block: 4px; padding-left: calc(var(--repo-depth) * var(--repo-icon)); }
+.tfs-release .repo-ico { flex: none; display: inline-flex; align-items: center; justify-content: center; width: var(--repo-icon); height: var(--repo-icon); color: var(--dim); }
+.tfs-release .repo-ico svg { width: 1rem; height: 1rem; }
+
+.tfs-release .repo-ico-caret { display: none; transition: transform 140ms ease; }
+.tfs-release .repo-node[aria-expanded="true"] > .repo-row .repo-ico-caret { transform: rotate(90deg); }
+.tfs-release .repo-row[data-repo-toggle]:is(:hover, :focus-visible) > .repo-cell--name > .repo-ico > .repo-ico-glyph { display: none; }
+.tfs-release .repo-row[data-repo-toggle]:is(:hover, :focus-visible) > .repo-cell--name > .repo-ico > .repo-ico-caret { display: block; }
+
+.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[data-only-clean-worktrees] > .repo-row[data-repo-toggle] { cursor: default; }
+.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[data-only-clean-worktrees] > .repo-row[data-repo-toggle]:is(:hover, :focus-visible) > .repo-cell--name > .repo-ico > .repo-ico-glyph { display: block; }
+.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[data-only-clean-worktrees] > .repo-row[data-repo-toggle]:is(:hover, :focus-visible) > .repo-cell--name > .repo-ico > .repo-ico-caret { display: none; }
+
+.tfs-release .repo-name { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
+.tfs-release .repo-row--branch .repo-name { font-weight: 500; }
+.tfs-release .repo-callout { flex: 0 100000 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--dim); font-size: var(--type-xs); }
+.tfs-release .repo-more { flex: none; width: 1.4rem; min-width: 0; height: 1.4rem; min-height: 0; padding: 0; }
+.tfs-release .repo-more svg { width: .95rem; height: .95rem; }
+.tfs-release .repo-more[aria-expanded="true"] { border-color: var(--accent-primary); color: var(--text); }
+.tfs-release .repo-count-chip { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 0 6px; border: 1px solid var(--border); border-radius: 999px; color: var(--dim); font-size: var(--type-xs); font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.35; }
+.tfs-release .repo-count-chip svg { width: .8rem; height: .8rem; }
+.tfs-release :is(.repo-count-wt, .repo-count-br) { display: inline-flex; align-items: center; gap: 3px; }
+.tfs-release .repo-busy-dots { flex: none; color: var(--dim); }
+.tfs-release .repo-row--warn > .repo-cell--name > :is(.repo-ico, .repo-name) { color: var(--repo-warn); }
+.tfs-release .repo-row--bad > .repo-cell--name > :is(.repo-ico, .repo-name) { color: var(--repo-bad); }
+.tfs-release .repo-row:has(> .repo-result--attn:not([hidden])) { border: 1px solid color-mix(in srgb, var(--repo-warn) 65%, var(--border)); background: color-mix(in srgb, var(--repo-warn) 8%, var(--panel)); }
+.tfs-release .repo-row:has(> .repo-result--bad:not([hidden])) { border: 1px solid color-mix(in srgb, var(--repo-bad) 70%, var(--border)); background: color-mix(in srgb, var(--repo-bad) 9%, var(--panel)); }
+
+.tfs-release .repo-row:has(> .repo-result--attn:not([hidden])):focus-within { outline: 0; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--repo-warn) 65%, var(--border)); }
+.tfs-release .repo-row:has(> .repo-result--bad:not([hidden])):focus-within { outline: 0; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--repo-bad) 70%, var(--border)); }
+
+.tfs-release .repo-row.is-busy > :not(.repo-cell--name), .tfs-release .repo-row.is-busy > .repo-cell--name > :not(.repo-busy-dots) { opacity: .55; }
+.tfs-release .repo-row.is-busy :is(.repo-count, .repo-more) { pointer-events: none; }
+
+.tfs-release .repo-row .repo-select { display: none; }
+.tfs-release .repo-status-results[data-batch="pull"] .repo-row[data-can~="pull"] .repo-select,
+.tfs-release .repo-status-results[data-batch="push"] .repo-row[data-can~="push"] .repo-select,
+.tfs-release .repo-status-results[data-batch="commit"] .repo-row[data-can~="commit"] .repo-select,
+.tfs-release .repo-status-results[data-batch="cleanup"] .repo-row[data-can~="cleanup"] .repo-select { display: block; }
+.tfs-release .repo-select { flex: none; margin: 0; cursor: pointer; }
+.tfs-release .repo-row { --repo-select-space: 0px; }
+.tfs-release .repo-status-results[data-batch] .repo-row { --repo-select-space: 19px; }
+
+.tfs-release .repo-status-results[data-batch="pull"] .repo-row:not([data-can~="pull"]) > .repo-cell--name,
+.tfs-release .repo-status-results[data-batch="push"] .repo-row:not([data-can~="push"]) > .repo-cell--name,
+.tfs-release .repo-status-results[data-batch="commit"] .repo-row:not([data-can~="commit"]) > .repo-cell--name,
+.tfs-release .repo-status-results[data-batch="cleanup"] .repo-row:not([data-can~="cleanup"]) > .repo-cell--name { padding-left: calc(var(--repo-depth) * var(--repo-icon) + var(--repo-select-space)); }
+.tfs-release :is(.repo-select, .repo-wt-select):focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 1px; }
+
+.tfs-release .repo-wt-select { flex: none; margin: 0; cursor: pointer; }
+.tfs-release :is(.repo-select, .repo-wt-select) { width: 13px; height: 13px; }
+.tfs-release .repo-cell--branch { font-family: var(--font-mono, monospace); font-size: var(--type-xs); }
+
+.tfs-release .repo-cell--sync { overflow: visible; }
+.tfs-release .repo-dim { color: var(--dim); font-weight: 400; }
+.tfs-release .repo-sync { display: inline-flex; gap: 4px; font-variant-numeric: tabular-nums; font-weight: 700; }
+.tfs-release .repo-count { padding: 0 3px; border: 0; border-radius: 4px; background: none; font: inherit; color: inherit; }
+.tfs-release button.repo-count { cursor: pointer; }
+.tfs-release button.repo-count:hover { background: color-mix(in srgb, currentColor 14%, transparent); }
+.tfs-release button.repo-count:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 1px; }
+.tfs-release .repo-in { color: var(--repo-warn); }
+.tfs-release .repo-out { color: var(--accent-primary); }
+
+.tfs-release .repo-sync.is-stale { font-style: italic; opacity: .8; }
+.tfs-release .repo-na { --cc-chip-pad-y: 0; min-height: 0; padding: 0 6px; font-size: var(--type-xs); line-height: 1.35; }
+.tfs-release .repo-cell--changes { display: flex; }
+.tfs-release .repo-chg { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; padding: 0 7px; border: 1px solid var(--border); border-radius: 999px; font-size: var(--type-xs); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.35; white-space: nowrap; }
+.tfs-release .repo-chg-side { display: inline-flex; align-items: center; gap: 3px; }
+.tfs-release .repo-chg-side svg { flex: none; width: .8rem; height: .8rem; }
+.tfs-release .repo-chg-side--working { color: var(--repo-warn); }
+.tfs-release .repo-chg-side--staged { color: var(--status-success); }
+.tfs-release .repo-chg-sep { align-self: stretch; width: 1px; margin-block: 3px; background: var(--border); }
+.tfs-release .repo-chg-conflict { color: var(--repo-bad); }
+.tfs-release .repo-chg-op { display: inline-flex; color: var(--repo-warn); }
+.tfs-release .repo-chg-op svg { flex: none; width: .8rem; height: .8rem; }
+.tfs-release .repo-chg-untracked { margin-left: 2px; }
+
+.tfs-release .repo-result {
+	grid-column: 1 / -1; min-width: 0; padding: 2px 0 5px;
+	padding-left: calc(6px + (var(--repo-depth) + 1) * var(--repo-icon) + var(--repo-select-space));
+	font-size: var(--type-xs); overflow-wrap: anywhere; white-space: normal; cursor: default;
+}
+.tfs-release .repo-result-text { overflow-wrap: anywhere; white-space: normal; }
+.tfs-release .repo-result--bad .repo-result-text { color: var(--repo-bad); }
+.tfs-release .repo-result--attn .repo-result-text { color: var(--repo-warn); }
+.tfs-release :is(.repo-result-link, .repo-result-dismiss) { display: inline-block; min-height: 0; margin-left: 6px; padding: 0; font-size: inherit; line-height: inherit; vertical-align: baseline; }
+.tfs-release .repo-result-link svg { width: .85rem; height: .85rem; margin-right: 4px; vertical-align: -.12em; }
+
+.tfs-release .repo-unstick { position: absolute; top: 50%; right: 8px; transform: translateY(-50%); width: 1.2rem; min-width: 0; height: 1.2rem; min-height: 0; padding: 0; font-size: var(--type-xs); }
+.tfs-release .repo-row.has-unstick > .repo-cell--changes { padding-right: calc(1.2rem + 6px); }
+
+.tfs-release .repo-split { display: inline-flex; align-items: center; flex: none; }
+.tfs-release .repo-split[hidden] { display: none; }
+.tfs-release .repo-split > .cc-button:first-child:not(:only-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.tfs-release .repo-split > .repo-act--caret { margin-left: -1px; padding: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.tfs-release .repo-split--batch > .cc-button { height: var(--cc-head-control-h); min-height: 0; padding-block: 0; font-size: var(--type-sm); }
+.tfs-release .repo-split--batch > .repo-act--caret { display: inline-flex; align-items: center; justify-content: center; width: 22px; min-width: 22px; }
+.tfs-release .repo-split--batch > .repo-act--caret svg { width: .8rem; height: .8rem; }
+.tfs-release #repoStatusCard .sec-head-row { flex-wrap: wrap; }
+.tfs-release .repo-status-menu .cc-menu-sep { margin: 4px 6px; }
+
+.tfs-release .repo-review-panel { display: flex; flex-direction: column; max-width: 720px; width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: hidden; }
+.tfs-release .repo-review-body { display: grid; align-content: start; gap: 10px; min-height: 0; overflow: auto; }
+.tfs-release .repo-review-body > .repo-pull-intro { margin: 0; }
+.tfs-release .repo-review-message { display: grid; gap: 4px; }
+.tfs-release .repo-review-message[hidden] { display: none; }
+.tfs-release .repo-review-label { font-size: var(--type-sm); font-weight: 600; }
+.tfs-release .repo-review-message textarea { width: 100%; min-height: 5.5rem; resize: vertical; font-size: var(--type-sm); }
+.tfs-release .repo-review-list { display: grid; gap: 10px; }
+.tfs-release .repo-review-item { display: grid; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
+.tfs-release .repo-review-item + .repo-review-item { padding-top: 10px; border-top: 1px solid var(--border); }
+.tfs-release .repo-review-item.is-blocked { opacity: .75; }
+.tfs-release .repo-review-head { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tfs-release .repo-review-path { color: var(--dim); font-size: var(--type-xs); }
+.tfs-release .repo-review-item .repo-pull-reason { grid-column: auto; }
+.tfs-release .repo-review-line { font-family: var(--font-mono, monospace); font-size: var(--type-xs); }
+.tfs-release .repo-review-lease { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1px 10px; margin: 4px 0 0; font-size: var(--type-xs); }
+.tfs-release .repo-review-lease dt { color: var(--dim); }
+.tfs-release .repo-review-lease dd { margin: 0; font-family: var(--font-mono, monospace); overflow-wrap: anywhere; }
+.tfs-release .repo-review-files { max-height: 110px; overflow-y: auto; padding: 4px 6px 4px 12px; border: 1px solid var(--border); border-radius: 6px; scrollbar-width: thin; }
+.tfs-release .repo-review-files ul { display: grid; gap: 1px; margin: 0; padding: 0; list-style: none; font-family: var(--font-mono, monospace); font-size: var(--type-xs); }
+.tfs-release .repo-review-files li { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr); min-width: 0; white-space: nowrap; }
+.tfs-release .repo-review-file-path { overflow: hidden; text-overflow: ellipsis; }
+.tfs-release .repo-review-more { grid-column: 1 / -1; overflow: hidden; text-overflow: ellipsis; }
+.tfs-release .repo-review-code { color: var(--status-warning); font-weight: 700; }
+.tfs-release .repo-review-optouts { display: grid; gap: 6px; }
+.tfs-release .repo-review-optouts:empty { display: none; }
+.tfs-release .repo-review-optouts .cc-confirm-optout { margin: 0; }
+.tfs-release .repo-status-menu { position: fixed; min-width: 11rem; max-width: min(22rem, calc(100vw - 16px)); max-height: min(20rem, calc(100vh - 16px)); overflow: auto; }
+.tfs-release .repo-status-menu .cc-menu-item { display: flex; align-items: flex-start; gap: .55rem; padding-block: 6px; }
+.tfs-release .repo-status-menu .cc-menu-item:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: -2px; background: color-mix(in srgb, var(--accent-primary) 12%, transparent); color: var(--text); }
+.tfs-release .repo-status-menu .cc-menu-item[aria-disabled="true"] { cursor: default; }
+.tfs-release .repo-status-menu .cc-menu-item[aria-disabled="true"]:hover { background: none; color: var(--dim); }
+.tfs-release .repo-status-menu .cc-menu-item[aria-disabled="true"] :is(.repo-menu-ico, .repo-menu-label) { opacity: .55; }
+.tfs-release .repo-menu-ico { flex: none; display: inline-flex; width: 1rem; height: 1.2em; align-items: center; }
+.tfs-release .repo-menu-ico svg { width: 1rem; height: 1rem; }
+.tfs-release .repo-menu-text { display: grid; flex: 1 1 auto; min-width: 0; }
+.tfs-release .repo-menu-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tfs-release .repo-menu-reason { color: var(--dim); font-size: var(--type-xs); line-height: 1.3; white-space: normal; }
+.tfs-release .repo-menu-caret { flex: none; display: inline-flex; align-items: center; height: 1.2em; margin-left: .75rem; }
+.tfs-release .repo-menu-caret svg { width: .8rem; height: .8rem; }
+.tfs-release .repo-status-menu .cc-menu-item.repo-menu-item--danger:not([aria-disabled="true"]) { color: var(--repo-bad); }
+.tfs-release .repo-status-menu .cc-menu-item[aria-expanded="true"] { background: color-mix(in srgb, var(--accent-primary) 12%, transparent); color: var(--text); }
+.tfs-release .repo-pull-panel { max-width: 640px; width: min(640px, calc(100vw - 32px)); }
+.tfs-release .repo-pull-intro { margin: 0 0 10px; color: var(--dim); }
+.tfs-release .repo-pull-list { display: grid; gap: 2px; max-height: min(50vh, 22rem); overflow: auto; padding: 4px; border: 1px solid var(--border); border-radius: 6px; }
+.tfs-release .repo-pull-item { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; align-items: start; padding: 5px 6px; border-radius: 4px; cursor: pointer; }
+.tfs-release .repo-pull-item:hover { background: var(--panel2); }
+.tfs-release .repo-pull-item.is-blocked { opacity: .7; cursor: default; }
+.tfs-release .repo-pull-item input { margin: 3px 0 0; accent-color: var(--accent-primary); }
+.tfs-release .repo-pull-item > span { min-width: 0; overflow-wrap: anywhere; }
+.tfs-release .repo-pull-name { font-weight: 600; }
+.tfs-release .repo-pull-meta { color: var(--dim); font-family: var(--font-mono, monospace); font-size: var(--type-xs); }
+.tfs-release .repo-pull-path { grid-column: 2; color: var(--dim); font-size: var(--type-xs); }
+.tfs-release .repo-pull-reason { grid-column: 2; color: var(--status-warning); font-size: var(--type-xs); }
+
+.tfs-release .repo-cleanup-panel { display: flex; flex-direction: column; max-width: 832px; width: min(832px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: hidden; }
+.tfs-release .repo-cleanup-panel .repo-review-body { display: flex; flex-direction: column; flex: 1 1 auto; }
+.tfs-release .repo-cleanup-panel .repo-review-body > * { flex: none; }
+.tfs-release .repo-cleanup-panel .repo-pull-list { max-height: none; overflow: visible; }
+.tfs-release .repo-cleanup-section { display: grid; gap: 6px; }
+.tfs-release .repo-cleanup-panel .repo-review-body > #repoStatusCleanupWorktreeSection:not([hidden]) { display: flex; flex-direction: column; flex: 0 1 auto; min-height: 0; }
+.tfs-release .repo-cleanup-frame { display: flex; flex-direction: column; flex: 0 1 auto; min-height: 100px; overflow: hidden; border: 1px solid var(--border); border-radius: 6px; }
+.tfs-release .repo-cleanup-panel .repo-cleanup-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; border: 0; border-radius: 0; gap: 4px; }
+.tfs-release .repo-cleanup-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; font-size: var(--type-sm); font-weight: 600; }
+.tfs-release .repo-cleanup-callout { font-size: var(--type-xs); font-weight: 600; }
+.tfs-release .repo-cleanup-callout[hidden] { display: none; }
+.tfs-release .repo-cleanup-callout p { margin: 0; }
+.tfs-release .repo-cleanup-callout p + p { margin-top: 6px; }
+.tfs-release .repo-cleanup-item { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 5px 6px; border: 1px solid transparent; border-radius: 4px; overflow-wrap: anywhere; }
+.tfs-release .repo-cleanup-item:not(.repo-cleanup-item--forced) + .repo-cleanup-item:not(.repo-cleanup-item--forced) { border-top-color: var(--border); border-radius: 0; }
+.tfs-release .repo-cleanup-item--forced { border-color: color-mix(in srgb, var(--status-warning) 35%, transparent); background: color-mix(in srgb, var(--status-warning) 6%, transparent); }
+.tfs-release .repo-cleanup-item--blocked { opacity: .65; }
+.tfs-release .repo-cleanup-label { font-size: var(--type-sm); }
+.tfs-release .repo-cleanup-worktree { color: var(--dim); }
+.tfs-release .repo-cleanup-chip { --cc-chip-pad-y: 1px; padding-inline: 6px; vertical-align: 1px; font: 600 var(--type-xs)/1.2 var(--font-body); white-space: nowrap; }
+.tfs-release .repo-cleanup-detail { color: var(--dim); font-size: var(--type-xs); }
+.tfs-release .repo-cleanup-paths { color: var(--dim); font-size: var(--type-xs); white-space: pre-line; font-family: var(--font-mono, monospace); }
+.tfs-release .repo-cleanup-basis { color: var(--status-success, var(--dim)); font-size: var(--type-xs); }
+.tfs-release .repo-cleanup-reason, .tfs-release .repo-cleanup-warning { color: var(--status-warning); font-size: var(--type-xs); }
+.tfs-release .repo-cleanup-problems { padding: 6px 8px; border: 1px solid var(--status-warning); border-radius: 6px; color: var(--status-warning); font-size: var(--type-xs); }
+.tfs-release .repo-cleanup-problems[hidden], .tfs-release .repo-cleanup-section[hidden] { display: none; }
+.tfs-release .repo-settings-roots { display: grid; gap: 8px; }
+.tfs-release .repo-settings-root { display: grid; grid-template-columns: auto minmax(7rem, .3fr) minmax(0, 1fr) auto; align-items: start; gap: 8px; }
+.tfs-release .repo-settings-root > .cc-input { min-width: 0; }
+.tfs-release .repo-settings-root > .cc-drag-handle { height: var(--size-control); min-height: var(--size-control); }
+.tfs-release .repo-settings-remove { align-self: start; white-space: nowrap; }
+.tfs-release .repo-settings-roots .cc-directory-message { margin-top: -4px; }
+
+@container repo-status (max-width: 44rem) {
+	.tfs-release .repo-status-scroll { --repo-cols: minmax(10rem, 1fr) minmax(4.5rem, .5fr) 4.25rem minmax(6.5rem, auto); }
+	.tfs-release :is(.repo-status-head, .repo-row) { min-width: 26rem; column-gap: 8px; }
+}
+
+@media (max-width: 56rem) {
+	.tfs-release .sec-tools.repo-status-tools { align-items: stretch; }
+	.tfs-release .repo-status-tools > .repo-status-path { flex: none; }
+	.tfs-release .repo-status-tools > .repo-status-worktrees { align-self: start; }
+}
+@media (max-width: 600px) {
+	.tfs-release .repo-status-card { padding: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.tfs-release .repo-ico-caret { transition: none; }
 }
 
 @media (max-width: 680px) {
@@ -4566,7 +5002,7 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 	min-width: 120px;
 }
 
-.tfs-release .cc-menu-sep { height: 1px; margin: 4px 0; background: var(--border); }
+.tfs-release .cc-menu-sep { height: 0; margin: 4px 0; border-top: 1px solid var(--border); }
 
 .tfs-release .ce-history-wrap { overflow-x: hidden; }
 

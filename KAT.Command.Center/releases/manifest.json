@@ -14,6 +14,10 @@
 		},
 		{
 			"version": "2.0",
+			"frozen": true
+		},
+		{
+			"version": "2.1",
 			"frozen": false
 		}
 	],
@@ -67,6 +71,12 @@
 			"theme": "Final Laver tweak for court size and animation speed.",
 			"maintenance": true,
 			"sha256": "4A6A238EA149FB84C387D7C7FF268ACB5F2563879F5377BC43C15DFBD78C7801"
+		},
+		{
+			"version": "2.1.0",
+			"date": "2026-10-08",
+			"theme": "Search local folders with Grazer, monitor and manage Git repositories from one place, and work more reliably with Work Items and service authentication.",
+			"sha256": "8A2C09C3E6F37681A361CA2929172125061CFD7546EBF2F48C40D959DD965846"
 		}
 	]
 }

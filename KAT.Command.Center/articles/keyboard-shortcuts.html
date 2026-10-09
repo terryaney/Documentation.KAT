@@ -5,11 +5,11 @@
 </header>
 
 <h2 id="app-refresh">Application refresh shortcuts</h2>
-<p>The refreshes you reach for most often have keys. <code>F5</code> refreshes the whole site; there is no button for it. The others each do exactly what that section's <span class="cc-help-chip cc-help-muted">↻</span> button does: re-fetch that section and leave every other section alone.</p>
+<p>The refreshes you reach for most often have keys.</p>
 <div class="cc-help-legend">
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label"><code>F5</code></div>
-		<div class="cc-help-legend-copy">Refreshes the <strong>whole site</strong>: every section, and the rail's badges with them.</div>
+		<div class="cc-help-legend-copy">Refreshes the <strong>whole site</strong>: every section, and the rail's badges with them. On <strong>Tools &gt; Grazer</strong>, re-runs the last submitted search; before the first accepted search, it does nothing. On <strong>Tools &gt; Repository Status</strong>, rescans the roots and checks every repository's local status, without fetching; use <code>Ctrl+F5</code>, or <code>Ctrl+Click</code>, there for a manual fetch. See <a href="#/tools/repository-status/refresh">Refreshing</a>.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label"><code>Ctrl+Shift+W</code></div>
@@ -60,12 +60,12 @@
 		<div class="cc-help-legend-copy">Move up one row, wrapping from the first row round to the last. With nothing selected yet, selects the last row.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label"><code>o</code></div>
+		<div class="cc-help-legend-label"><code>o</code> / <code>Enter</code></div>
 		<div class="cc-help-legend-copy">Open the selected row's work item detail - the same thing clicking its title does. Does nothing when no row is selected.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label"><code>Esc</code></div>
-		<div class="cc-help-legend-copy">Unselects the currently selected row.</div>
+		<div class="cc-help-legend-copy">Leaves <a href="#/work-items/send-back">Return Triage Tasks</a> select mode if it is active; otherwise unselects the currently selected row. With both, the first press leaves select mode and the second unselects the row.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
 		<div class="cc-help-legend-copy"><b>Actions - Grid focused</b><br/><br/>All actions open 'edit' dialog for a task's <code>Assigned To</code>, <code>Comment</code>, <code>State</code> and <code>Triage</code>.  These same actions are also available on each row's Context Menu.</div>
@@ -133,7 +133,7 @@
 	</div>
 </div>
 
-<h2 id="comment-modals">Comment modals</h2>
+<h2 id="comment-modals">Comment and new work item modals</h2>
 <div class="cc-help-legend">
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label"><code>Ctrl+Enter</code></div>
@@ -141,11 +141,36 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label"><code>Esc</code></div>
-		<div class="cc-help-legend-copy"><strong>Closes the dialog.</strong> If you have typed anything, the first press asks whether to discard your edits instead of closing. Press <code>Esc</code> again to discard and close, or keep typing to carry on. <em>Cancel</em> closes straight away - it is already an explicit "throw this away".</div>
+		<div class="cc-help-legend-copy"><strong>Closes the dialog.</strong> In the single-item comment and new work item dialogs, the first press inside Comment, Description, or Repro Steps asks whether to discard only if the dialog has changes from its initial values. Press <code>Esc</code> again to discard and close, or choose <em>Keep editing</em>. <em>Cancel</em> and <code>Esc</code> outside those text boxes close without confirmation.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label"><strong>Keyboard Mnemonics</strong></div>
-		<div class="cc-help-legend-copy">Access keys focus the editable fields via <code>Alt+</code> appropriate key.  For example, <code>Alt+C</code> would focus Comment.  Press and hold <code>Alt</code> to underline the hotkey for each field.</div>
+		<div class="cc-help-legend-copy">In single-item comment dialogs, access keys focus the editable fields via <code>Alt+</code> appropriate key.  For example, <code>Alt+C</code> would focus Comment.  Press and hold <code>Alt</code> to underline the hotkey for each field.</div>
+	</div>
+</div>
+
+<h2 id="repository-status">Repository Status</h2>
+<p>Besides <code>F5</code> (see above), the <strong>Tools &gt; Repository Status</strong> table, its menus and its dialogs work from the keyboard. Each row's <span class="cc-help-chip cc-help-muted">…</span> actions button is always there, so <code>Tab</code> reaches it.</p>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Enter</code> / <code>Space</code> / <code>&rarr;</code> / <code>&larr;</code></div>
+		<div class="cc-help-legend-copy">On a focused repository row, <code>Enter</code> or <code>Space</code> expands or collapses it to show its branches and <a href="#/tools/repository-status/worktree-cleanup">worktrees</a>; <code>&rarr;</code> expands and <code>&larr;</code> collapses. Expansion and focus survive background checks.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>&darr;</code> / <code>Enter</code> on <span class="cc-help-chip cc-help-muted">…</span> or <span class="cc-help-chip cc-help-muted">&#9662;</span></div>
+		<div class="cc-help-legend-copy">Opens a row's actions menu, or the Batch Action menu, with its first available item focused. <code>&uarr;</code>/<code>&darr;</code> and <code>Home</code>/<code>End</code> move, <code>&rarr;</code> opens a remote's Fetch / Push / Force Push entries and <code>&larr;</code> closes them, <code>Enter</code> chooses, and <code>Esc</code> closes the menu and returns focus to its button. Pressing the button again also closes it.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Space</code> on a row checkbox</div>
+		<div class="cc-help-legend-copy">In <a href="#/tools/repository-status/selecting">batch mode</a>, ticks or clears that row; <strong>All</strong> in the header does every applicable row on screen. <strong>Continue</strong> runs the batch action, <strong>Cancel</strong> leaves batch mode, and so does <code>Esc</code> while you are still choosing rows; once the action is running, <strong>Cancel</strong> stops it instead.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Esc</code> in a dialog</div>
+		<div class="cc-help-legend-copy">Cancels the Pull preview, the Commit / Push review, the worktree cleanup review or a confirmation, changes nothing (a "Don't ask me" switch is saved only when you confirm), and returns focus to the control that opened it.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Ctrl+Enter</code> in the commit message</div>
+		<div class="cc-help-legend-copy">Confirms the Commit / Push review, like its button. <code>Enter</code> alone starts a new line.</div>
 	</div>
 </div>
 
@@ -161,6 +186,10 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label"><code>Esc</code></div>
-		<div class="cc-help-legend-copy"><strong>Close without saving</strong>, restoring the saved themes, color mode and density if you were previewing Display changes. While a query is open for <em>Add</em> or <em>Edit</em>, it drops just that query's changes and returns to the <strong>Work Items</strong> page.</div>
+		<div class="cc-help-legend-copy"><strong>Close without saving</strong>, restoring the saved themes, color mode and density if you were previewing Display changes. While a query is open for <em>Add</em> or <em>Edit</em>, it drops just that query's changes and returns to the <strong>Work Items</strong> page. While you are dragging a list item, it puts the item back instead.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><code>Alt+&uarr;</code> / <code>Alt+&darr;</code></div>
+		<div class="cc-help-legend-copy">On a focused grip in a reorderable list (the <strong>Work Items</strong> queries and the <strong>Repository Status</strong> roots), moves that item up or down one place; the new position is announced. The order is saved with <strong>Save</strong>.</div>
 	</div>
 </div>

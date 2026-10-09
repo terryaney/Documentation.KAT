@@ -89,6 +89,8 @@
 	</tbody>
 </table>
 <p>The four comment defaults are yours to set in <a href="#/settings">Settings > Work Items</a> (along with <em>Submit comment dialogs with Ctrl+Enter</em>). They are blank until you set them. State and Triage are written only when you change them, so a prefill that matches costs no revision, and a blank one never clears a value. An unrecognized current State falls back to leave unchanged.</p>
+<p>Return Task requires <em>Reassign To</em>, and Move to Triaged requires a <em>Triage</em> value; both labels drop "(Optional)" in those dialogs.</p>
+<p>Saving checks that nobody else has changed the work item since the dialog opened. If they have, nothing is saved: the error appears in a red callout above the buttons (the dialog grows taller, never wider) and Submit is disabled, so Ctrl+Enter and Alt+O do nothing. If you had typed a comment of your own, the message asks you to copy it before closing; a comment that is still just the default is not mentioned. The work item is refreshed at the same time. When its detail is open behind the dialog it reloads with the "Data was updated on the server" notice, and reopening the comment dialog then works. The same check applies to each item in Return Triage Tasks: items that changed are refreshed, not saved, and are listed above the grid when the run ends.</p>
 
 <figure class="cc-help-shot">
 	<img src="media/work-items-return-task.webp" alt="Return Task dialog with Reassign To, Comment, State and Triage fields, a link to the supported comment markdown, and Cancel and OK buttons." width="560" height="611" loading="lazy">
@@ -101,7 +103,7 @@
 </ol>
 
 <h2 id="send-back">Return Triage Tasks</h2>
-<p>The Return Triage Tasks action puts the grid into select mode: a checkbox appears before every applicable ID. Only the rows already at <code>Triaged</code> offer a checkbox - the work you just finished - and they go back to whoever handed them over.</p>
+<p>The <strong>Return Triaged</strong> button puts the grid into select mode. It disables itself and adds a row below the filters with <em>Return Tasks:</em>, an <strong>All</strong> box, how many are ticked, <strong>Continue</strong> and <strong>Cancel</strong>. A checkbox appears before every applicable ID, but only the rows already at <code>Triaged</code> offer one: the work you just finished, which goes back to whoever handed it over. <strong>Continue</strong> opens the dialog below. Dismissing it keeps the ticks so you can change them. <strong>Cancel</strong> or <code>Esc</code> leaves select mode.</p>
 <p>Keyboard warriors, see <a href="#/keyboard-shortcuts">Keyboard Shortcuts</a> for details on how ticking and navigation can be done from the keyboard.</p>
 
 <figure class="cc-help-shot">
@@ -110,6 +112,6 @@
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
 	<li>Every field is prefilled: <em>Return To</em> with whoever owned the item before you, Triage with <code>Pending</code>, and the comment with your <em>Default Return Task Comment</em>. Change or clear what doesn't apply.</li>
-	<li>Only the comment is optional. An item without a <em>Return To</em> blocks the submit and is marked in place. If some items fail, the ones that landed disappear from the form and the rest stay with their error attached - press <em>OK</em> to retry just those.</li>
+	<li>Only the comment is optional. An item without a <em>Return To</em> blocks the submit and is marked in place. Pressing <em>OK</em> closes the dialog, and the row reads <em>Processing…</em> until every item is written; a Return cannot be cancelled once it starts, so its <strong>Cancel</strong> is hidden. Items that failed, or that changed since you ticked them (those are refreshed, not saved), are marked in the grid and listed with their reason above it. Select mode then ends. <strong>Retry</strong> on that list reopens the dialog with only those items, filled in with what you submitted. The list, and the chance to retry, are cleared by its <strong>×</strong>, by pressing <em>Return Triaged</em> again, by submitting another Return, or by switching queries.</li>
 	<li>Every item is written concurrently as one comment-plus-reassign-plus-Triage change, so the assigner sees a single revision rather than three.</li>
 </ol>
