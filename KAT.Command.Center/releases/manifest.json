@@ -77,6 +77,12 @@
 			"date": "2026-10-08",
 			"theme": "Search local folders with Grazer, monitor and manage Git repositories from one place, and work more reliably with Work Items and service authentication.",
 			"sha256": "8A2C09C3E6F37681A361CA2929172125061CFD7546EBF2F48C40D959DD965846"
+		},
+		{
+			"version": "2.1.1",
+			"date": "2026-10-11",
+			"theme": "Find, filter and distinguish repositories, then review file-level changes directly.",
+			"sha256": "F53F5E73893D40537D4592261996F798E87FEDE83D7B38ACE1F6E5099FC67567"
 		}
 	]
 }

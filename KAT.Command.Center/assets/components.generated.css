@@ -4539,7 +4539,6 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 .tfs-release .sec-tools.repo-status-tools { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .35rem .9rem; }
 .tfs-release .repo-status-tools > .repo-status-path { flex: 1 1 16rem; }
 .tfs-release .repo-status-tools > .repo-status-path .cc-input { width: 100%; min-width: 8rem; }
-.tfs-release .repo-status-tools > .repo-status-worktrees { align-self: end; min-height: var(--cc-field-input-h); padding: 0; }
 
 .tfs-release .repo-show-wrap { position: relative; display: inline-flex; }
 
@@ -4622,9 +4621,6 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 .tfs-release .repo-node[data-depth="1"] { --repo-depth: 1; }
 .tfs-release .repo-node[hidden] { display: none; }
 .tfs-release .repo-node[aria-expanded="false"] > .repo-children { display: none; }
-.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[data-kind="worktree"][data-attention="0"] { display: none; }
-.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[aria-level="1"]:not([data-has-attention-worktree]) > .repo-row .repo-count-wt { display: none; }
-.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[aria-level="1"]:not([data-has-attention-worktree]) > .repo-row .repo-count-chip:not(:has(.repo-count-br)) { display: none; }
 .tfs-release .repo-row { position: relative; min-height: 1.9rem; padding: 2px 8px; border-radius: 5px; }
 .tfs-release .repo-row:is(:hover, :focus-within) { background: var(--panel2); }
 .tfs-release .repo-row:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: -2px; }
@@ -4638,10 +4634,6 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 .tfs-release .repo-node[aria-expanded="true"] > .repo-row .repo-ico-caret { transform: rotate(90deg); }
 .tfs-release .repo-row[data-repo-toggle]:is(:hover, :focus-visible) > .repo-cell--name > .repo-ico > .repo-ico-glyph { display: none; }
 .tfs-release .repo-row[data-repo-toggle]:is(:hover, :focus-visible) > .repo-cell--name > .repo-ico > .repo-ico-caret { display: block; }
-
-.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[data-only-clean-worktrees] > .repo-row[data-repo-toggle] { cursor: default; }
-.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[data-only-clean-worktrees] > .repo-row[data-repo-toggle]:is(:hover, :focus-visible) > .repo-cell--name > .repo-ico > .repo-ico-glyph { display: block; }
-.tfs-release .repo-status-results[data-hide-clean-worktrees] .repo-node[data-only-clean-worktrees] > .repo-row[data-repo-toggle]:is(:hover, :focus-visible) > .repo-cell--name > .repo-ico > .repo-ico-caret { display: none; }
 
 .tfs-release .repo-name { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
 .tfs-release .repo-row--branch .repo-name { font-weight: 500; }
@@ -4697,6 +4689,9 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 .tfs-release .repo-na { --cc-chip-pad-y: 0; min-height: 0; padding: 0 6px; font-size: var(--type-xs); line-height: 1.35; }
 .tfs-release .repo-cell--changes { display: flex; }
 .tfs-release .repo-chg { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; padding: 0 7px; border: 1px solid var(--border); border-radius: 999px; font-size: var(--type-xs); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.35; white-space: nowrap; }
+.tfs-release button.repo-chg { color: inherit; background: transparent; cursor: pointer; }
+.tfs-release button.repo-chg:hover { border-color: var(--accent-primary); background: var(--panel2); }
+.tfs-release button.repo-chg:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
 .tfs-release .repo-chg-side { display: inline-flex; align-items: center; gap: 3px; }
 .tfs-release .repo-chg-side svg { flex: none; width: .8rem; height: .8rem; }
 .tfs-release .repo-chg-side--working { color: var(--repo-warn); }
@@ -4749,12 +4744,23 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 .tfs-release .repo-review-lease { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1px 10px; margin: 4px 0 0; font-size: var(--type-xs); }
 .tfs-release .repo-review-lease dt { color: var(--dim); }
 .tfs-release .repo-review-lease dd { margin: 0; font-family: var(--font-mono, monospace); overflow-wrap: anywhere; }
-.tfs-release .repo-review-files { max-height: 110px; overflow-y: auto; padding: 4px 6px 4px 12px; border: 1px solid var(--border); border-radius: 6px; scrollbar-width: thin; }
+.tfs-release .repo-review-files { max-height: 220px; overflow-y: auto; padding: 4px 6px 4px 12px; border: 1px solid var(--border); border-radius: 6px; scrollbar-width: thin; }
 .tfs-release .repo-review-files ul { display: grid; gap: 1px; margin: 0; padding: 0; list-style: none; font-family: var(--font-mono, monospace); font-size: var(--type-xs); }
-.tfs-release .repo-review-files li { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr); min-width: 0; white-space: nowrap; }
+.tfs-release .repo-review-files li { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr) auto auto auto; gap: 0 8px; align-items: center; min-width: 0; white-space: nowrap; }
 .tfs-release .repo-review-file-path { overflow: hidden; text-overflow: ellipsis; }
 .tfs-release .repo-review-more { grid-column: 1 / -1; overflow: hidden; text-overflow: ellipsis; }
 .tfs-release .repo-review-code { color: var(--status-warning); font-weight: 700; }
+.tfs-release .repo-review-diff-count { font-variant-numeric: tabular-nums; text-align: right; }
+.tfs-release .repo-review-diff-count--added { color: var(--status-success); }
+.tfs-release .repo-review-diff-count--removed { color: var(--status-danger); }
+.tfs-release .repo-review-diff-count--unavailable { grid-column: 3 / 5; color: var(--dim); font-family: var(--font-sans, sans-serif); }
+.tfs-release .repo-review-diff-open { display: inline-flex; align-items: center; justify-content: center; vertical-align: middle; }
+.tfs-release .repo-review-diff-open svg { width: .75rem; height: .75rem; }
+.tfs-release .repo-review-diff-open svg use { stroke-width: 2; }
+.tfs-release .repo-diff-panel { display: flex; flex-direction: column; width: min(720px, calc(100vw - 32px)); max-width: 720px; max-height: 80vh; overflow: hidden; }
+.tfs-release .repo-diff-body { display: flex; min-height: 0; overflow: hidden; }
+.tfs-release .repo-diff-files { width: 100%; max-height: min(60vh, 34rem); }
+.tfs-release .repo-diff-empty { margin: 0; color: var(--dim); font-family: var(--font-sans, sans-serif); }
 .tfs-release .repo-review-optouts { display: grid; gap: 6px; }
 .tfs-release .repo-review-optouts:empty { display: none; }
 .tfs-release .repo-review-optouts .cc-confirm-optout { margin: 0; }
@@ -4827,7 +4833,6 @@ body.show-mnemonics .tfs-release .mn { text-decoration: underline; }
 @media (max-width: 56rem) {
 	.tfs-release .sec-tools.repo-status-tools { align-items: stretch; }
 	.tfs-release .repo-status-tools > .repo-status-path { flex: none; }
-	.tfs-release .repo-status-tools > .repo-status-worktrees { align-self: start; }
 }
 @media (max-width: 600px) {
 	.tfs-release .repo-status-card { padding: 10px; }
