@@ -127,6 +127,7 @@ The `release` command is used to execute all steps necessary to deploy a release
 **NOTE**: The `Process CalcEngine Action` and `Process Release Notes` below are skipped if a `release.skip.calcEngines` variable is added to the release with a value of `1`.  This is helpful if a code fix needs to be deployed, but CalcEngines shouldn't be approved or promoted.  After `DEV` environment is published, edit the release and add the variable inside the Variables tab.
 
 1. Wait specified number of seconds if provided in command line arguments.
+1. Force application health unhealthy (by copying `Health_Offline.json` file to the root of the site) to the destination/machines specified and waiting for load balancer flush pause.
 1. Take application offline (by copying `app_offline.htm` file to the root of the site) and deploying all `drop` files to the destination/machines specified.
 1. Swap Settings using the source and destination environments provided (happens automatically for .NET Framework, the `environment` argument is used).
 	1. In .NET Core, the `appsettings.{source}.json` file is copied over the `appsettings.{destination}.json` file.  Useful for 'pre-prod' sites that are running in the 'prod' .NET Core environment so need to get 'pre-prod' settings into the 'prod' settings file and used by the site.
@@ -141,7 +142,7 @@ The `release` command is used to execute all steps necessary to deploy a release
 	1. UAT normally promotes LOWER `Live` CalcEngines to UPPER `Test`.
 	1. PROD normally approves UPPER `Test` CalcEngines to `Live`.
 	1. Failures will trigger notifications but will not fail the job.  Details to finish the release manually will be logged in the job log.
-1. Take application online (by removing the `app_offline.htm` file from the root of the site).
+1. Take application online (by removing the `app_offline.htm` file, and the `Health_Offline.json` file when appropriate, from the root of the site).
 1. Send success or failure notifications to the 'KAT Site Publish' notification account.
 
 #### Command Line Arguments
@@ -211,31 +212,18 @@ Open the `*.csproj` file in VS Code or text editor and make the following change
 
 ```xml
 <PropertyGroup>
-	<PreBuildEvent>lprun9.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:ensure.assemblyinfo "ProjectFile:$(ProjectDir)$(ProjectName).csproj"</PreBuildEvent>
+	<PreBuildEvent>lprun.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:ensure.assemblyinfo "ProjectFile:$(ProjectDir)$(ProjectName).csproj"</PreBuildEvent>
 	<PostBuildEvent/>
 </PropertyGroup>
 ```
 
-For Admin sites, they need to additionally have the following `PostBuildEvent`:
+For Admin sites that have schedule jobs that run, they need to additionally have the following `PostBuildEvent`:
 
 ```xml
 <PropertyGroup>
-	<PreBuildEvent>lprun9.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:ensure.assemblyinfo "ProjectFile:$(ProjectDir)$(ProjectName).csproj"</PreBuildEvent>
-	<PostBuildEvent>lprun9.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:post.build ConfigurationName:$(ConfigurationName) "ProjectFile:$(ProjectDir)$(ProjectName).csproj" "BuildFolder:$(TargetDir)\"</PostBuildEvent>
+	<PreBuildEvent>lprun.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:ensure.assemblyinfo "ProjectFile:$(ProjectDir)$(ProjectName).csproj"</PreBuildEvent>
+	<PostBuildEvent>lprun.exe "C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" Command:post.build ConfigurationName:$(ConfigurationName) "ProjectFile:$(ProjectDir)$(ProjectName).csproj" "BuildFolder:$(TargetDir)\"</PostBuildEvent>
 </PropertyGroup>
-```
-
-For Windows Services or other Evolution projects where you want to stamp the git hash, instead of the `ensure.assemblyinfo` pre-build event, you should simply use this target:
-
-```xml
-<Target Name="StampCommitHash" BeforeTargets="CoreCompile">
-  <Exec Command="git rev-parse --short HEAD" ConsoleToMSBuild="true"
-        StandardOutputImportance="low" ContinueOnError="true">
-    <Output TaskParameter="ConsoleOutput" PropertyName="CommitHash" />
-  </Exec>
-  <WriteLinesToFile File="Properties\AssemblyInfo.generated.cs" Overwrite="true"
-                    Lines="using System.Reflection%3B;[assembly: AssemblyInformationalVersion( &quot;$(CommitHash)&quot; )]" />
-</Target>
 ```
 
 3\. Remove the items:
@@ -295,7 +283,7 @@ Clone existing Evolution Admin and/or ESS build/release pipelines and update the
 Create the following external tool to enable triggering a site/api publish:
 
 1. Title: `&KAT Publish`
-1. Command: `lprun9.exe`
+1. Command: `lprun.exe`
 1. Arguments: `"C:\BTR\Extensibility\Build.Scripts\Build.Events.linq" "ProjectFile:$(ProjectDir)$(ProjectFileName)" "GitType:synced" "Command:queue.cicd" "Tool:Visual Studio"`
 1. Initial Directory: `$(ProjectDir)`
 1. Use Output Window: `Checked`
