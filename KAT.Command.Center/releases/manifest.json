@@ -18,6 +18,10 @@
 		},
 		{
 			"version": "2.1",
+			"frozen": true
+		},
+		{
+			"version": "3.0",
 			"frozen": false
 		}
 	],
@@ -44,7 +48,7 @@
 			"version": "1.3.0",
 			"date": "2026-09-26",
 			"theme": "KAT Command Center is now as beautiful as it is functional.",
-			"sha256": "5246BFF84E768ED833C3EB49CF75D9B31E7C42740AE801AFBBCA4BB17DD38712"
+			"sha256": "89FBAF8A75127C4615448D46586970DFCF0029E5EA640B9E38EB9746172897CE"
 		},
 		{
 			"version": "2.0.0",
@@ -83,6 +87,12 @@
 			"date": "2026-10-11",
 			"theme": "Find, filter and distinguish repositories, then review file-level changes directly.",
 			"sha256": "F53F5E73893D40537D4592261996F798E87FEDE83D7B38ACE1F6E5099FC67567"
+		},
+		{
+			"version": "3.0.0",
+			"date": "2026-11-13",
+			"theme": "A new RBLe Balancer page arrives, and Work Item workflows, release management, Site Scope, Grazer, Repository Status, and shared controls are clearer and easier to use.",
+			"sha256": "23597B16CD9A6C681E5F76963B34F4246171E56CEE8CAB745DCF76BBFD65FA9F"
 		}
 	]
 }

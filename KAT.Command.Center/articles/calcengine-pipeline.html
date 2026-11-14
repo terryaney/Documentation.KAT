@@ -1,45 +1,61 @@
 <header class="cc-help-article-header">
-	<div class="cc-help-eyebrow">Command Center · 4 minute read</div>
-	<h1>CalcEngine Pipeline</h1>
+	<div class="cc-help-eyebrow">Command Center · 7 minute read</div>
+	<h1>CalcEngines</h1>
 	<p class="cc-help-lede">Read environment versions, approve or promote files, resolve checkouts, inspect version history, and download the exact environment variant you need.</p>
 </header>
 
+<p>Open <strong>Releases &gt; CalcEngines</strong> for the selected site. It uses your KAT DataStore sign-in from <a href="#/settings/providing-credentials">Settings &gt; Profile</a>; a TFS personal access token is not required.</p>
+
 <span class="cc-help-anchor-alias" id="reading-status" aria-hidden="true"></span>
-<h2 id="sample-calcengine-pipeline">Sample Pipeline</h2>
+<h2 id="sample-calcengine-pipeline">Read environment status</h2>
 <figure class="cc-help-shot">
 	<img src="media/calcengine-pipeline.webp" alt="CalcEngine Pipeline page: environment count chips and Check Mine In in the section head, the Filter, Show and CalcEngine Patterns tools, and a table of CalcEngines with an actions button, version chips per environment and checkout chips." width="1364" height="934" loading="lazy">
+	<figcaption>Earlier layout shown. The current page is named CalcEngines and switches to cards when space is narrow.</figcaption>
 </figure>
 
-<div class="cc-help-callout warning"><strong>Consequence</strong>Approvals and Promotions move CalcEngines to associated site environments.  Ensure the CalcEngine has been tested before actions taken.</div>
+<div class="cc-help-callout warning"><strong>Consequence</strong>Approvals and promotions move CalcEngines to the associated site environments. Ensure the CalcEngine has been tested before taking either action.</div>
 
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>Supports 2 environment (QA/PROD) or 4 environment (DEV/QA/UAT/PROD) CalcEngines showing exactly where the 'latest' CalcEngine is running</li>
-	<li>Hover over environment chips to see their state, who uploaded, approved, or promoted and when each environment state occurred. UAT reports a promotion only when the version arrived by promotion - uploading a test version directly replaces that history, so the chip says <em>uploaded</em> instead.</li>
-	<li>Use the section tools to narrow fetched rows by name, checkout user, environment, blocked promotions, or production moves.</li>
-	<li>Displays checkout owners. Upper (<code>_PROD</code>) checkouts can block the TFS Release Pipeline; clicking a checkout chip checks the file in, forcibly when it belongs to someone else.</li>
-	<li><strong>Check Mine In</strong> checks in every CalcEngine you currently hold, in one confirmed action.</li>
+	<li>Supports two-environment (QA/PROD) and four-environment (DEV/QA/UAT/PROD) sites. A green arrow marks a version ready to move forward; a red, struck-through QA version means the upper file has a newer version. Two-environment sites approve within one file and do not have a separate promotion step.</li>
+	<li>Hover over environment chips to see who uploaded, approved, or promoted, the authority when recorded, and when it happened. A blocked chip's tooltip starts with <strong>Blocked: {reason}</strong>, naming the QA and newer upper versions, then a blank line before the standard metadata. UAT reports a promotion only when the version arrived by promotion - uploading a test version directly replaces that history, so the chip says <em>uploaded</em> instead.</li>
+	<li>Use the section tools to narrow fetched rows by name, checkout user, environment, blocked promotions, or production moves. In <strong>Show</strong>, each option's count is its matching rows. <strong>My Checkouts</strong> and <strong>Team Member Checkouts</strong> have amber dots when your or other people's upper-file checkouts, respectively, block the TFS Release Pipeline. <strong>Blocked Promotions</strong> has an amber dot for anyone's blocking upper-file checkouts, upgraded to red if any QA version is blocked by a newer upper version. Flagged labels are bold in the dot's color, including the selected label; count chips stay neutral. No other Show options have warning or error dots. The closed Show picker also has a dot at its edge: red when any option has a red dot, otherwise amber when any has an amber dot, whatever is selected.</li>
+	<li>Displays checkout owners. Upper (<code>_PROD</code>) checkouts can block the TFS Release Pipeline. Clicking your checkout chip asks to check it in; someone else's asks for <strong>Force Check In</strong>.</li>
+	<li><strong>Check Mine In ({n})</strong> checks in only your checkouts in the rows left visible by Filter and Show, after confirmation. The count changes with those filters and the button hides at zero. The app's footer notice bar identifies each file that could not be checked in.</li>
 	<li>The rail badge and <strong>What's Happening</strong> rows follow the shared dashboard rules for checkouts and recent moves by someone outside the KAT team; see <a href="#/reading-dashboard/rail-badges">Rail badges</a> and <a href="#/reading-dashboard/whats-happening">What's Happening</a>.</li>
 	<li>Approve and Promote CalcEngines to the 'next environment' when ready by clicking version chip. Both ask for an authority email - the person signing the move off - prefilled with your KAT Management Site email. It cannot be left blank, and it cannot be the person whose file is moving: the <strong>Approval Authority</strong> may not be whoever uploaded the test CalcEngine, and the <strong>Promotion Authority</strong> may not be whoever uploaded the live CalcEngine.</li>
-	<li>Each row's <strong>&#x22EF;</strong> button opens its actions: <strong>View History</strong> (on rows with a version still to move), <strong>Manage</strong> to open the CalcEngine on the Conduent Management Site, and a <strong>Download</strong> item for each environment variant.</li>
+	<li>Each row's <strong>&#x22EF;</strong> button opens its actions: <strong>View History</strong> (on rows with a version still to move), <strong>Manage</strong> to open the CalcEngine on the Conduent Management Site, and <strong>Download</strong> items for available versions. When environments share a version, only the upper environment's download is offered.</li>
 </ol>
+
+<p>Filter matches both the base and upper filenames and checkout email addresses. Show combines selected environments with OR; choosing a status such as My Checkouts replaces the environment selection. Blocked Promotions includes both newer upper versions and upper checkouts. A header environment chip clears Filter and selects that environment; zero-count header chips and Show options are hidden. The title keeps the total while the footer shows the filtered count.</p>
+<p>Click Name or an environment heading to sort. In card view, use the Sort picker instead. Filter, Show and sort survive refreshes of the same selected site, but reset when you select a site again or restart.</p>
+<p>Checkouts do not prevent manual approval. For a promotion, if someone other than you or the entered authority holds the upper file, the confirmation warns that it will be force-checked in first. If that check-in fails, the promotion stops.</p>
+<p>Use <strong>&#x21BB;</strong> or <code>Ctrl+Shift+C</code> to refresh only CalcEngines. F5, selecting a site, or changing the DataStore sign-in also reloads it. There is no CalcEngine polling timer; the dashboard ages its cached checkout and recent-move notices every ten minutes. Refresh shortcuts do nothing while a dialog is open, and CalcEngines refresh does nothing when no patterns are set.</p>
 
 <div class="cc-help-callout">
 	<strong>Conduent Management Site</strong>
 	<p>The management site opens in your default browser, not inside Command Center. You can reach it from two places, and where you start decides where you land.</p>
 	<div><b>Manage, in a CalcEngine's &#x22EF; menu</b> - opens CalcEngine Management with that file already selected: <code>.../default.aspx?startPage=lnkCalcEngineManagement&amp;startCE=Conduent_Nexgen_SAMPLE_BRD_SE</code>. The <code>startCE</code> value is the CalcEngine name without its file extension, and always the base file - never the <code>_PROD_</code> variant.</div>
-	<div><b>On the KPI tile</b> - opens the management site's home page, with no CalcEngine selected. This button is present even when the KPI has nothing to show, which is the point: it is how you get to the site when you are not signed in to KAT DataStore yet.</div>
+	<div><b>On the KPI tile</b> - opens CalcEngine Management with no CalcEngine selected. This button is present even when the KPI has nothing to show, which is the point: it is how you get to the site when you are not signed in to KAT DataStore yet.</div>
+	<p>Both try to sign you in to the site with your KAT DataStore credentials first. A row's Manage action shows busy dots beside its name; the tile button shows Processing until the browser opens. Without credentials, or when that sign-in fails, the site opens anyway and asks you to sign in.</p>
 </div>
+
+<h2 id="downloads">Download a CalcEngine</h2>
+<p>Choose an environment's Download item from the row's <strong>&#x22EF;</strong> menu. Busy dots appear beside the name and that row's other downloads are disabled until it finishes. Files go to your Windows Downloads folder using the original filename; DEV and UAT downloads no longer add <code>_Test</code> to it.</p>
+<p>If the file already exists, choose Replace, Browse for another location, or Cancel. A locked file offers Browse or Cancel; choosing another location reuses the downloaded file instead of fetching it again. A failed download leaves an existing file untouched.</p>
 
 <div class="cc-help-callout">
 	<strong>Download Preferences</strong>
-	<p>When downloading CalcEngines, by default files are downloaded to your Downloads folder.  You can set the Always Replace and Auto Open settings as you desire.</p>
-	<div><b>Always Replace</b> - Automatically replaces files without prompting for new file name.  Default is <code>false</code>.</div>
-	<div><b>Auto Open</b> - Automatically opens the CalcEngine after download in Excel.  Default is <code>false</code>.</div>
+	<p>All three switches are in <a href="#/settings/all-settings">Settings &gt; Releases &gt; CalcEngine Download</a>, not Profile.</p>
+	<div><b>Always replace existing files</b> - Replaces a same-name file without asking. Off by default; a locked file still needs another location.</div>
+	<div><b>Automatically open downloaded CalcEngines</b> - Opens the saved file in its associated application. Off by default.</div>
+	<div><b>Show confirmation after downloading CalcEngines</b> - Shows the saved path with Copy Path, Open Folder, and Open CalcEngine. On by default; disabled while automatic opening is on, without losing its value.</div>
+	<p>The saved-file dialog can also turn on automatic opening for future downloads. Copy Path copies through Windows, including Clipboard History when enabled. Successful automatic opening is silent; if opening fails, the saved-file dialog shows the error and keeps the file's path available.</p>
 </div>
 
 <h2 id="filtering">CalcEngine Pattern Expressions</h2>
-<p>By default, each site already has CalcEngine Patterns that include the CalcEngines known at the time of the latest release. Change those listing patterns in the CalcEngine section head. <span class="cc-help-chip">Alt+C</span> opens the CalcEngine page and focuses the field; <span class="cc-help-chip">Enter</span> refreshes only CalcEngine. The separate search box in the same tools row only narrows rows that are already fetched.</p>
+<p>Sites with configured CalcEngines start with catalog patterns. Change them in the CalcEngine Patterns box and press <span class="cc-help-chip">Enter</span> to refresh only CalcEngines. While this page is visible, <span class="cc-help-chip">Alt+C</span> focuses the enabled box; it does not switch pages and has no visible Alt cue. It does nothing while a dialog is open. The separate Filter box only narrows rows already fetched.</p>
+<p>Pattern changes are temporary: selecting a site again, even the same one, or restarting restores the catalog defaults. They are not saved in Settings. Clearing Patterns disables the listing; non-API sites without defaults can enter custom patterns, while API sites cannot edit them.</p>
 
 <p><strong>Expression Rules</strong></p>
 <ol class="cc-help-workflow compact">
@@ -74,12 +90,14 @@
 </table>
 
 <h2 id="history">Version history</h2>
-<p>See the historical differences between the lowest and highest versions of a CalcEngine.  Each 'checkout line' identifies its filename and current owner. The base CalcEngine (DEV/QA) and its production-suffixed counterpart (UAT/PROD) have separate checkouts, so the same owner can appear twice.</p>
+<p>Choose <strong>View History</strong> on a row with a version still to move. The dialog opens while history loads, then lists versions from newest to oldest with dates, authors and comments. Each checkout line identifies its filename and current owner. The base CalcEngine (DEV/QA) and its production-suffixed counterpart (UAT/PROD) have separate checkouts, so the same owner can appear twice.</p>
+<p>Work item references in comments open Work Item Detail inside Command Center. Closing it returns to History at the same scroll position, unless you changed sites. A late history response cannot replace a newer dialog or another site's history.</p>
 
 <h3>Recognizing probable hotfixes</h3>
-<p>A direct upload to the upper CalcEngine can introduce versions that do not exist in lower history. A warning triangle marks these as <strong>probable patches</strong>.</p>
+<p>A direct upload to the upper CalcEngine can introduce versions that do not exist in lower history. A warning triangle marks these as <strong>probable patches</strong>; its legend stays in the dialog footer while you scroll.</p>
 <p>In the example below, DEV is <code>1.1696</code>, QA is <code>1.1688</code>, and PROD is <code>1.16355</code>. The lookup finds the shared baseline <code>1.1635</code> and brings back all five probable patches, <code>1.16351</code> through <code>1.16355</code>. The PROD checkout line is marked <strong>(blocking)</strong> because an upper checkout blocks the TFS Release Pipeline.</p>
 
 <figure class="cc-help-shot">
 	<img src="media/calcengine-history.webp" alt="CalcEngine History dialog listing versions with date, author and comments, with the two checkout lines above the table and warning triangles beside probable patches." width="1284" height="885" loading="lazy">
+	<figcaption>Earlier layout shown. The current dialog keeps the probable-patch legend in its footer and uses cards at narrow widths.</figcaption>
 </figure>

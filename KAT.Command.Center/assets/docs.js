@@ -44,6 +44,7 @@
 		workitems: '<path d="M5 4h14v16H5zM8 8h8M8 12h5M8 16h7"/>',
 		metrics: '<path d="M5 19V9m5 10V5m5 14v-7m5 7V8"/>',
 		sitescope: '<rect x="3" y="5" width="18" height="13" rx="2"/><path d="M6 12h2.5l1.5-3 2 6 1.5-3H18"/>',
+		balancer: '<path d="M12 3.3v17.4M7.5 20.7h9M3.9 6.9h16.2"/><circle cx="12" cy="3.9" r="1.35"/><path d="M3.9 6.9 1.8 12.9H6zM20.1 6.9l-2.1 6h4.2z"/><path d="M1.8 12.9a2.1 2.1 0 0 0 4.2 0M18 12.9a2.1 2.1 0 0 0 4.2 0"/>',
 		grazer: '<circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/>',
 		repository: '<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10M18 9a6 6 0 0 1-6 6H6"/>',
 		notes: '<path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 11h6M9 15h6"/>',
@@ -252,7 +253,7 @@
 	function showPage(key, html, title) {
 		currentId = key;
 		article.innerHTML = html;
-		document.title = `${title} — ${siteTitle}`;
+		document.title = `${title} - ${siteTitle}`;
 	}
 
 	function render() {
@@ -277,7 +278,7 @@
 			toc.innerHTML = '';
 			pager.innerHTML = '';
 			markActiveNav(null);
-			document.title = `Not found — ${siteTitle}`;
+			document.title = `Not found - ${siteTitle}`;
 			closeNav();
 			return;
 		}
@@ -454,7 +455,7 @@
 				const url = location.href.split('#')[0].split('?')[0] + href(whatsNewView.pageKey);
 				history.replaceState(null, '', url);
 				currentId = whatsNewView.pageKey;
-				document.title = `${docs.pages[currentId].title} — ${siteTitle}`;
+				document.title = `${docs.pages[currentId].title} - ${siteTitle}`;
 			} catch { /* some embedded origins refuse history writes; the view is already clean */ }
 		}
 	});
@@ -688,66 +689,6 @@
 		}
 	});
 
-	// Work item detail demo: the description clamp and the per-person comment filter, the two
-	// controls worth trying by hand. Keyed off data- attributes rather than ids because a release
-	// note body may not carry an id.
-	function wiDemoFilter(demo, who) {
-		const entries = [...demo.querySelectorAll('.history-entry[data-wi-author]')];
-		const shown = entries.filter(entry => {
-			const on = !who || entry.dataset.wiAuthor === who;
-			entry.hidden = !on;
-			return on;
-		});
-
-		const people = demo.querySelector('.wi-thread-people');
-		people?.classList.toggle('is-filtered', !!who);
-		people?.querySelectorAll('[data-wi-person]').forEach(button => {
-			const on = button.dataset.wiPerson === who;
-			button.setAttribute('aria-pressed', on ? 'true' : 'false');
-			button.title = on
-				? `Showing only ${button.dataset.wiPerson} - click to show everyone`
-				: `Show only ${button.dataset.wiPerson}'s comments`;
-		});
-
-		const count = demo.querySelector('.wi-thread-count');
-		if (!count) return;
-		count.innerHTML = who
-			? `${shown.length} ${shown.length === 1 ? 'comment' : 'comments'} from <strong>${who}</strong> \u00b7 latest ${shown[0]?.dataset.wiRel ?? ''}`
-			: count.dataset.wiCount;
-	}
-
-	document.addEventListener('click', event => {
-		const demo = event.target.closest?.('[data-wi-demo]');
-		if (!demo) return;
-
-		const more = event.target.closest('[data-wi-more]');
-		if (more) {
-			const clamp = demo.querySelector('.wi-desc-clamp');
-			const open = clamp.classList.toggle('is-open');
-			clamp.classList.toggle('is-clamped', !open);
-			more.setAttribute('aria-expanded', open ? 'true' : 'false');
-			more.textContent = more.dataset.wiMore.split('|')[open ? 1 : 0];
-			return;
-		}
-
-		const person = event.target.closest('[data-wi-person]');
-		if (person) {
-			const who = person.getAttribute('aria-pressed') === 'true' ? null : person.dataset.wiPerson;
-			wiDemoFilter(demo, who);
-		}
-	});
-
-	// Globals the dashboard samples call from inline attributes. In the app they belong to the
-	// dashboard script; here they are only what a sample needs to behave sensibly on its own.
-	window.wiCopy = (text, el) => {
-		copyText(String(text ?? ''));
-		const flash = el?.querySelector('.copy-toast');
-		if (!flash) return;
-		flash.classList.add('visible');
-		setTimeout(() => flash.classList.remove('visible'), 1500);
-	};
-	window.scrollToCard = () => { /* the sample has no card to scroll to */ };
-
 	/* ---------- boot ---------- */
 
 	// A local -Preview build carries the Unreleased draft; say so on every page so a screenshot of it
@@ -755,6 +696,10 @@
 	if (docs.preview) {
 		document.body.classList.add('kd-is-preview');
 		document.body.insertAdjacentHTML('afterbegin', '<div class="kd-preview-banner" role="note">Local draft preview: includes Unreleased notes. Never publish this build.</div>');
+	}
+
+	if (docs.icons) {
+		document.body.insertAdjacentHTML('afterbegin', `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>${docs.icons}</defs></svg>`);
 	}
 
 	buildNav();

@@ -1,0 +1,75 @@
+<header class="cc-help-article-header">
+	<div class="cc-help-eyebrow">Command Center · 6 minute read</div>
+	<h1>RBLe Balancer</h1>
+	<p class="cc-help-lede">How each RBLe Balancer is spreading requests across its nodes right now: which nodes are healthy, how busy each one is, how fast it answers, and - if you are a balancer King - the controls to take nodes out of rotation, bring them back and replace their settings files.</p>
+</header>
+
+<h2 id="what-it-shows">What it shows</h2>
+<p>Every number comes from Sentinel. Command Center signs in to each balancer's Sentinel endpoint with your KAT Management credentials (Settings &gt; Profile) and reads the balancer's status every few seconds. It never talks to a balancer or an RBLe node directly.</p>
+<p>A balancer runs on every web server behind your load balancer. Command Center reads one web server's balancer at a time: the one chosen in the <strong>Host</strong> picker, which starts on the first host listed in Settings. Sentinel reads that web server's balancer directly, whichever web server handled the request.</p>
+<p>The balancers are the ones you add under <a href="#/settings/sentinel-balancer">Settings &gt; Sentinel · Balancer</a>. They do not depend on the selected site, and switching sites changes nothing here. Status is read only while the Dashboard or this page is open.</p>
+
+<h2 id="kpi-tile">The KPI tile</h2>
+<p>The Dashboard tile, titled <strong>RBLe Balancer · {Name}</strong>, shows one balancer at a time. With more than one configured, the dots and arrows along its footer switch between them; the tile never advances on its own. Clicking it opens this page on that balancer.</p>
+<figure class="cc-help-shot">
+	<img src="media/rble-balancer-tile.webp" alt="Dashboard RBLe Balancer tile with the request rate across eight healthy nodes, the gate-retry summary, a row per node showing response time, CPU and memory meters, traffic share and gate, and dots to switch balancers." width="739" height="448" loading="lazy">
+</figure>
+<ul>
+	<li>The header counts nodes by state. Every node out of rotation counts as <strong>Offline</strong>, whatever the reason.</li>
+	<li>Each node's row reads <em>name · average response time</em>, then CPU and memory meters, its share of traffic over the last 10 seconds, and its gate (see <a href="#/rble-balancer/capacity">Capacity</a>). Response time turns amber at 650ms and red at 800ms, everywhere it appears.</li>
+	<li>When a read fails, the tile says so and keeps the last reading it has, dimmed.</li>
+</ul>
+
+<h2 id="reading-the-page">Reading the page</h2>
+<figure class="cc-help-shot">
+	<img src="media/rble-balancer-page.webp" alt="RBLe Balancer page for a balancer with eight healthy nodes: the Healthy chip, Balancer and Host pickers, the identity line, Response Time and Traffic Share charts, the node table with Share, Capacity, CPU, Rate, Avg Response and Total Requests, the selected node's details beside it, and Gate retries below." width="1497" height="1093" loading="lazy">
+</figure>
+<p>The header chips count nodes by state: <strong>Healthy</strong>, <strong>Unhealthy</strong>, <strong>Offline</strong> and <strong>Unknown</strong>. Click one to show only those nodes; click it again to show every node.</p>
+<p>Below them, <strong>Balancer</strong> picks which balancer to show and <strong>Host</strong> which web server Command Center reads. Choosing another host starts its charts over from its next reading, and the Dashboard tile follows the same host. The choice lasts until the app restarts. The identity line names the balancer and its version, then the web server that answered and when, with the cluster on the right.</p>
+
+<h3 id="banners">Banners</h3>
+<ul>
+	<li><strong>Unknown host</strong> (amber) - a web server that is not in the balancer's Hosts answered for the chosen host, usually because a name in Settings is not that web server's machine name. The page keeps working and shows that web server's numbers; it also joins the Host picker and every action's server list. Add it to the balancer in Settings, or dismiss the banner; dismissing also removes its What's Happening row until the app restarts.</li>
+	<li><strong>Balancer settings not applied</strong> - the balancer rejected its own configuration and lists why.</li>
+	<li><strong>Stale</strong> - the last read failed, so the page is showing older data.</li>
+	<li><strong>Gate-aware routing is off</strong> - the cluster does not use the LoadAware policy, so nodes cannot be taken offline from here.</li>
+</ul>
+
+<h3 id="charts">Charts</h3>
+<p><strong>Response Time</strong> plots each node's average response, with the cluster's current request rate in its title. <strong>Traffic Share</strong> plots each node's share of requests, with a dashed line at an even share across the nodes that can take traffic. Each node keeps its colour for the session. Click a node's coloured balancer icon in the table to hide or show its line; a hidden node's icon turns grey.</p>
+
+<h3 id="nodes">Nodes</h3>
+<p>Each row shows the node, its state, its share of traffic, its capacity, CPU, memory, request rate, average response and total requests since the counts started. Click a node, or move to it with <code>j</code> / <code>k</code>, to see its details beside the list. In a narrow window the details open below the node instead: click it or press <code>Enter</code>.</p>
+<div class="cc-help-legend">
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Healthy</div><div class="cc-help-legend-copy">In rotation and passing its health checks.</div></div>
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Unhealthy</div><div class="cc-help-legend-copy">In rotation but failing an active or passive health check.</div></div>
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Unknown</div><div class="cc-help-legend-copy">In rotation, with no health result yet.</div></div>
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Draining</div><div class="cc-help-legend-copy">Taken offline. Requests already running finish; no new requests are sent.</div></div>
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">Drained</div><div class="cc-help-legend-copy">Taken offline and no requests are running. Safe for maintenance.</div></div>
+	<div class="cc-help-legend-row"><div class="cc-help-legend-label">App Offline</div><div class="cc-help-legend-copy">The node is serving its app_offline page, so the balancer sends it nothing. Bring online cannot change this; it returns when the app does.</div></div>
+</div>
+
+<h3 id="capacity">Capacity</h3>
+<p>Each node reports how many requests it is running and queueing against its limits (<em>Q: queued/max</em>, with a pip per running slot). The balancer's gate uses that reading to decide whether a node can take another request. A node with no fresh reading is skipped by retries, and one with no reading at all is rejected.</p>
+
+<h3 id="gate-retries">Gate retries</h3>
+<p>When a node's gate is full, the balancer can resubmit the request to another node. The section under the table says whether retries are on and counts each outcome since the counts started on the chosen host.</p>
+
+<h2 id="actions">King actions</h2>
+<p>Only a balancer King for that balancer's Sentinel endpoint sees the actions; everyone else gets a read-only page. Each one names the nodes, the cluster and the balancer it will change, and asks you to confirm. A node's menu opens from the <strong>…</strong> button at the start of its row (or press <code>Space</code> on the row).</p>
+<ul>
+	<li><strong>Take Offline</strong> / <strong>Bring Online</strong> (a node's menu) and <strong>Take All Offline</strong> / <strong>Bring All Online</strong> (<strong>Take All</strong>) - stop or resume new requests to the nodes. Each comes in two forms: <strong>On</strong> the chosen host, or <strong>On All Hosts</strong>, whose confirmation warns how many nodes and hosts it changes. A node's menu offers the opposite of its state on the chosen host; its All Hosts items are always offered because other hosts may report a different state. A balancer with one host has no All Hosts form. Taking a node offline is offered only when the cluster uses gate-aware routing.</li>
+	<li><strong>Reset Counts</strong> - start the traffic, retry and pick counts again, on the chosen host or on all hosts.</li>
+</ul>
+<p>Nothing on the page changes until the next reading confirms it. If some servers fail, the dialog stays open and lists each one with what its failure means: a timeout may still have applied, while a denial or conflict changed nothing on that server.</p>
+
+<h2 id="settings-files">Settings files</h2>
+<p>A balancer with a publishing node (Settings &gt; Sentinel · Balancer) can read and replace its nodes' appsettings files. Without one these actions are unavailable.</p>
+<ul>
+	<li><strong>View Settings</strong> (a node's menu) asks for a file name - <code>appsettings.json</code> by default - and downloads that node's file to your Downloads folder as <code>{node}.{file name}</code>. It then opens in Visual Studio Code when it is installed, otherwise in the app Windows uses for the file. If the file is already there you can replace it, save it somewhere else or cancel; with automatic opening off, a confirmation shows the saved path with Copy Path, Open Folder and Open File. These choices live under <a href="#/settings/sentinel-balancer">Settings &gt; Sentinel · Balancer</a> &gt; View Settings Download. The node's file is never changed.</li>
+	<li><strong>Update Settings</strong> (a node's menu) and <strong>Update All Settings</strong> (every node in the cluster) ask for a local <code>appsettings*.json</code> file, then confirm the deployment type, file name, size and nodes before replacing that file on each of them. The file must already exist on the nodes; it is overwritten whole.</li>
+</ul>
+<p>A file you upload with Update Settings stays inside Command Center until it is sent. It is never shown, logged or saved.</p>
+
+<h2 id="refreshing">When it refreshes</h2>
+<p>Each balancer is read every <strong>Poll Every</strong> seconds while the Dashboard or this page is showing; balancers on the same Sentinel endpoint share one read. <span class="cc-help-chip">↻</span> and <code>F5</code> read now. A failed read never raises a warning; the page and tile show it instead, and What's Happening lists a balancer that is stale, unreachable, denied, unhealthy or not applying its settings.</p>

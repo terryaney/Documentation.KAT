@@ -1,0 +1,125 @@
+<section data-kind="story">
+	<h3>TFS Work Items Site Is Dead...</h3>
+	<p>In KCC, you can now use one Create New dialog for Bugs, Tasks, Features, and Requirements, with KAT and configured tags plus attachments. In <a href="#/work-items/work-item-detail">Work Item Detail</a>, review Details, Related Work, Commits, Builds, and a streamlined History that traces state and ownership changes alongside each save. Switch to <a href="#/work-items/comment-reassign">Edit Task</a> to update the fields the KAT team uses, choose KAT, configured, or already-present tags, and stage attachment additions, removals, or replacements before saving.</p>
+	<figure>
+		<img src="media/releases/3.0.0/work-item-history.webp" alt="Work Item Detail History tab with State and Owner lanes across the top and saves listed newest first by day, each showing the fields it changed." width="1156" height="1314">
+		<figcaption>History traces state, ownership and every save.</figcaption>
+	</figure>
+	<figure>
+		<img src="media/releases/3.0.0/work-item-edit.webp" alt="Edit Task form with the Tags picker open and staged attachment chips marked as removed, replaced and added." width="1154" height="907">
+		<figcaption>Edit Task with the Tags picker open and attachment changes staged.</figcaption>
+	</figure>
+	<p>Spec Sheet Magic shortens version updates: drop a valid workbook, and KCC finds its uniquely matching Spec Sheet task, opens it in Edit Task, updates the versioned title, and stages the replacement attachment. Review and save the proposed changes yourself; dropping the file does not save it. See <a href="#/work-items/spec-sheet-drop">Update a Spec Sheet by dropping it</a>.</p>
+	<figure>
+		<video src="media/releases/3.0.0/spec-sheet-magic.mp4" muted controls playsinline></video>
+		<figcaption>Dropping a Spec Sheet opens its task in Edit Task, ready to review and save.</figcaption>
+	</figure>
+	<p><strong>Notable Features</strong></p>
+	<ul>
+		<li>Paste screenshots into a new Work Item's description, an Edit Task comment, or a Return Triaged comment. Images upload when you save or return the item.</li>
+		<li>Open an image in Work Item Detail to zoom and pan, fit it to the window, view it at 100%, or open it in your browser.</li>
+		<li>Return Triaged keeps the dialog open when some updates fail, removes successful tasks, and leaves the remaining eligible tasks ready to correct and retry.</li>
+		<li>Work Item query navigation now gives Needs Action and Warning counts separate badges instead of combining them.</li>
+		<li>Work Item list mode adds a streamlined Tags filter picker.</li>
+		<li>Each query remembers its filter text, tags, indicator chips, and sort when you switch between queries.</li>
+		<li>The <a href="#/work-items/query-results">⋯ menu before each row's ID</a> replaces the right-click menu for Work Item actions.</li>
+	</ul>
+</section>
+
+<section data-kind="story">
+	<h3>A Unified Releases · Pipeline Page</h3>
+	<p><a href="#/release-pipeline">Releases &gt; Pipeline</a> brings builds, release environments, cleanup, and commit comparisons together on one page. Follow a release through its environments, approve the next stage or redeploy where needed, and review the cleanup plan alongside the work being delivered.</p>
+	<figure>
+		<img src="media/releases/3.0.0/pipeline-page.webp" alt="Pipeline page with releases and environment chips above From and To cards and expanded repository commit lists." width="1400" height="1165">
+		<figcaption>Track releases and compare commits from the Pipeline page.</figcaption>
+	</figure>
+	<p><strong>Notable Features</strong></p>
+	<ul>
+		<li>The From and To release cards lead into <a href="#/release-pipeline/release-differences">commits grouped by repository</a>, so you can see what changed without switching to a separate Release Differences page.</li>
+		<li>Open linked Work Items noted in commit comments directly from the Pipeline page without losing your focus or context.</li>
+		<li><a href="#/release-pipeline/from-to-detection">From and To</a> choices apply immediately and survive refreshes. From must be newer than To; an invalid pair keeps the previous comparison visible and pauses Pipeline refresh until you correct it or choose Restore comparison.</li>
+		<li><a href="#/reading-dashboard/whats-happening">What's Happening</a> rows let you approve the next environment or redeploy a stage directly, without first opening Pipeline. Approval chips for another site's release work without switching sites.</li>
+		<li><a href="#/release-pipeline/release-differences">Show Pending</a> includes newer release candidates, built work awaiting a release, and commits needing a build for both automatic and manually selected From/To comparisons, rather than only automatic mode.</li>
+		<li>For stages requiring approval, elapsed deployment time counts from approval to now while deploying, then from approval to finish. It no longer includes the potentially days-long wait after an environment becomes available to approve.</li>
+		<li>Partially succeeded stages now offer redeployment in both Pipeline and What's Happening.</li>
+	</ul>
+</section>
+
+<section data-kind="story">
+	<h3>Watch the RBLe Balancer</h3>
+	<p>The new <a href="#/rble-balancer">Sentinel &gt; RBLe Balancer</a> page shows how each balancer is spreading requests across its nodes right now: which nodes are healthy, how busy each one is and how fast it answers. Everything is read through Sentinel with your KAT Management credentials, whichever site is selected.</p>
+	<figure>
+		<img src="media/releases/3.0.0/rble-balancer-page.webp" alt="RBLe Balancer page for a balancer with eight healthy nodes: the Healthy chip, Balancer and Host pickers, the identity line, Response Time and Traffic Share charts, the node table with Share, Capacity, CPU, Rate, Avg Response and Total Requests, the selected node's details beside it, and Gate retries below." width="1497" height="1093">
+		<figcaption>Every node's state, load, response time and share of traffic in one place.</figcaption>
+	</figure>
+	<p>On the Dashboard, the <a href="#/rble-balancer/kpi-tile">RBLe Balancer tile</a> counts nodes by state and shows each node's response time, CPU, memory, traffic share and gate. Step between balancers from its footer, or click it to open the page on that balancer.</p>
+	<figure>
+		<img src="media/releases/3.0.0/rble-balancer-tile.webp" alt="Dashboard RBLe Balancer tile with the request rate across eight healthy nodes, the gate-retry summary, a row per node showing response time, CPU and memory meters, traffic share and gate, and dots to switch balancers." width="739" height="448">
+		<figcaption>The Dashboard tile keeps one balancer in view.</figcaption>
+	</figure>
+	<p><strong>Notable Features</strong></p>
+	<ul>
+		<li>Header chips count Healthy, Unhealthy, Offline and Unknown nodes; click one to show only those nodes. <strong>Balancer</strong> and <strong>Host</strong> choose which balancer to show and which web server to read.</li>
+		<li><a href="#/rble-balancer/charts">Response Time and Traffic Share</a> chart each node over time; click a node's icon in the table to hide or show its line.</li>
+		<li>The <a href="#/rble-balancer/nodes">node table</a> shows each node's state, traffic share, capacity, CPU, memory, request rate, response time and total requests, with details beside the list. <a href="#/rble-balancer/capacity">Capacity</a> shows each node's running and queued requests against its limits, and <a href="#/rble-balancer/gate-retries">gate retries</a> count how often a full node's requests were sent elsewhere.</li>
+		<li>Balancer Kings get <a href="#/rble-balancer/actions">actions</a> to take nodes offline or bring them back online, on the chosen host or on all hosts, and to reset counts. Each action confirms what it will change first.</li>
+		<li>With a publishing node configured, <a href="#/rble-balancer/settings-files">View Settings</a> downloads a node's appsettings file and opens it unless you turn automatic opening off, and Update Settings replaces that file on one node or every node in the cluster.</li>
+		<li>Add balancers, their hosts and publishing nodes under <a href="#/settings/sentinel-balancer">Settings &gt; Sentinel · Balancer</a>. <a href="#/reading-dashboard/whats-happening">What's Happening</a> lists a balancer that is stale, unreachable, unhealthy or answered by an unknown host.</li>
+	</ul>
+</section>
+
+<section data-kind="improvements" data-title="Releases - CalcEngines Improvements">
+	<ul>
+		<li><a href="#/calcengine-pipeline/reading-status">CalcEngines</a> now uses a standardized, scrollable list with searchable filenames and checkout owners, sortable Name and environment-version columns, and shared filtering controls.</li>
+		<li>Manage opens the KAT DataStore management website with single sign-on (SSO) using your DataStore credentials. If automatic sign-in is unavailable or unsuccessful, the website opens for normal sign-in.</li>
+		<li>Control stale-checkout notifications under <a href="#/settings/all-settings">Settings &gt; Releases</a>: set when your checkouts turn red and when teammates' checkouts appear, or hide teammates' checkout notifications.</li>
+		<li>Open task references, including completed tasks, from <a href="#/calcengine-pipeline/history">CalcEngine History</a> in Work Item Detail inside KCC. Closing the details returns to the same CalcEngine History and scroll position without leaving the app.</li>
+		<li>CalcEngines and Version History switch to compact card layouts in narrow windows, keeping versions, checkouts, and actions readable.</li>
+		<li>A temporary DataStore startup sign-in failure can be retried on refresh using remembered credentials, rather than asking you to re-enter credentials already saved.</li>
+		<li><a href="#/calcengine-pipeline/reading-status">Show</a> marks upper-file checkouts that can block the TFS Release Pipeline in amber and newer upper versions that block QA in red. Blocked version tooltips explain the mismatch.</li>
+		<li>Checkouts do not prevent manual approval or promotion. Promotion warns before force-checking in an upper file held by someone other than you or the authority, and stops if that check-in fails.</li>
+		<li>Check Mine In now checks in only your files in the filtered rows, rather than all your checkouts.</li>
+		<li><a href="#/calcengine-pipeline/downloads">Downloads</a> use the original filename; DEV and UAT downloads no longer add <code>_Test</code>.</li>
+		<li>Changes to CalcEngine Patterns last for the current site selection; selecting a site again or restarting restores its catalog patterns.</li>
+	</ul>
+</section>
+
+<section data-kind="improvements" data-title="Site Scope Improvements">
+	<ul>
+		<li><a href="#/site-scope">Site Scope</a> timestamps are all displayed in your local time zone.</li>
+	</ul>
+</section>
+
+<section data-kind="improvements" data-title="Grazer Improvements">
+	<ul>
+		<li><a href="#/tools/grazer/undo">Undo</a> the last replacement. Grazer restores only the lines it wrote and leaves files changed since then untouched.</li>
+		<li>Searches scan every folder and keep up to 2,000 results, showing full totals and how many were left out. The Maximum result rows setting is gone.</li>
+		<li>A new Replace read-only files setting, and separate confirmations for line and file replacements, under <a href="#/settings/all-settings">Settings &gt; Grazer</a>.</li>
+		<li>A compact <a href="#/tools/grazer/search-summary">scan-details strip</a> replaces the long status line; hover any count to see what it means.</li>
+		<li>Hide Inputs gives results more room, and Collapse All folds the results tree.</li>
+		<li>Custom file patterns last until you close the app; leave the box blank to use your Settings defaults.</li>
+		<li>Root problems show on the Grazer page instead of in What's Happening.</li>
+	</ul>
+</section>
+
+<section data-kind="improvements" data-title="Repository Status Improvements">
+	<ul>
+		<li>Refresh a single repository's local status without fetching. On <a href="#/tools/repository-status/refresh">Repository Status</a>, F5 checks only listed repositories; use <a href="#/settings/tools-repository-status">Rescan now</a> under Background Checks to discover newly cloned repositories.</li>
+		<li>Set a default Commit message in <a href="#/settings/tools-repository-status">Settings</a> for single and batch commit reviews.</li>
+		<li><a href="#/tools/repository-status/filters">Show</a> starts on Needs Attention; if nothing across your roots needs attention, it restores your last selected root when available.</li>
+		<li>A failed Pull started from <a href="#/reading-dashboard/whats-happening">What's Happening</a> shows a dismissible Dashboard notice that opens Repository Status.</li>
+		<li>When a root is selected, the text filter matches names, branches and root-relative paths without the shared root path causing every repository to match.</li>
+	</ul>
+</section>
+
+<section data-kind="improvements" data-title="General Improvements">
+	<ul>
+		<li>A standardized KCC dropdown supports searchable filtering, keyboard navigation, and single or multiple selection where appropriate.</li>
+		<li>Improved rendering in narrow windows includes compact headers, wrapping controls, and card layouts where a full table would be difficult to read.</li>
+		<li>Long page contents scroll beneath their section headers, keeping the controls available.</li>
+		<li>From the <a href="#/reading-dashboard">Dashboard</a>, open a Pipeline repository's commits or CalcEngines filtered by environment or checkout owner.</li>
+		<li><a href="#/reading-dashboard/diagnostics">Diagnostics</a> is now a Tools menu rather than a refresh-details page. It opens today's log or the log folder and saves a styled HTML snapshot of the current UI. Logs and snapshots are kept for 14 days; snapshots can contain information displayed on screen.</li>
+		<li>Pipeline Polling and Site Release Check settings moved from Connections to <a href="#/settings/all-settings">Releases</a>; existing values are preserved.</li>
+		<li>Background thread processing improvements eliminating unrelated threads from blocking each other.</li>
+	</ul>
+</section>

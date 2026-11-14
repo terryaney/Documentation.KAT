@@ -1,21 +1,25 @@
 <header class="cc-help-article-header">
-	<div class="cc-help-eyebrow">Command Center · 5 minute read</div>
-	<h1>Release Pipeline</h1>
-	<p class="cc-help-lede">Use this section to understand each release environment, approve pending gates, redeploy canceled stages, queue a build, and remove stale releases through a reviewed cleanup plan.</p>
+	<div class="cc-help-eyebrow">Command Center · 7 minute read</div>
+	<h1>Releases · Pipeline</h1>
+	<p class="cc-help-lede">Use this page to understand each release environment, approve pending gates, redeploy canceled stages, queue a build, remove stale releases through a reviewed cleanup plan, and compare the commits between two releases.</p>
 </header>
+
+<p>The page lists the site's builds and releases first, then the <b>From</b> and <b>To</b> release cards, then the commits between those two releases. Open it from the <b>Releases</b> group in the rail, or click the <b>Releases · Pipeline</b> tile on the Dashboard.</p>
 
 <h2 id="sample-pipeline">Sample Pipeline</h2>
 <figure class="cc-help-shot">
-	<img src="media/release-pipeline.webp" alt="Release Pipeline page: Queue Build and Run Cleanup in the section head beside the From and To pickers, the From and To release cards, and a table of releases with environment chips and Cleanup Status and Ad Hoc Delete columns." width="1388" height="640" loading="lazy">
+	<img src="media/release-pipeline.webp" alt="Release Pipeline page: the section head with the active release, repository and commit counts, the From and To pickers, Show Pending, Queue Build and Run Cleanup; a table with a running build row above the releases, each with environment chips and Cleanup Status and Ad Hoc Delete columns; then the From and To release cards and the commits between them, grouped by repository." width="1482" height="951" loading="lazy">
 </figure>
 
 <p><strong>Notable Features</strong></p>
 <ol class="cc-help-workflow compact">
-	<li>View and manage all active releases for a Site or API from the Release Pipeline page or the combined Releases page</li>
+	<li>View and manage all active releases for a Site or API</li>
 	<li>Queue new builds; on success, triggers a new release generation</li>
 	<li>Hover over environment chips to see their state, who triggered, approved, or rejected it and when each environment state occurred</li>
 	<li>Stale release cleanup; automatically removes outdated, unfinished releases to keep the pipeline clean or manually delete completed and covered releases</li>
+	<li>See the commits each release carries; see <a href="#/release-pipeline/release-differences">Release Differences</a></li>
 	<li>Watch the rail badge for approvals you can make, uncovered failed stages, and failed builds; see <a href="#/reading-dashboard/rail-badges">Rail badges</a> and <a href="#/reading-dashboard/whats-happening">What's Happening</a> for the cross-page rules.</li>
+	<li>After an approval, redeploy, queued build or cleanup, and while anything is still in flight, the page keeps itself current: the Pipeline rail entry shows three animated dots while it is watching.</li>
 </ol>
 
 <h2 id="reading-status">How to read pipeline</h2>
@@ -34,60 +38,42 @@
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">ENV Heat Map</div>
 		<div class="cc-help-legend-demo">
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<div class="cc-chip cc-chip--pill env-heat env-heat--dev env-chip success">DEV</div>
-				<div class="cc-chip cc-chip--pill env-heat env-heat--qa env-chip success">QA</div>
-				<div class="cc-chip cc-chip--pill env-heat env-heat--uat env-chip success">UAT</div>
-				<div class="cc-chip cc-chip--pill env-heat env-heat--prod env-chip success">PROD</div>
-			</span>
-			<span class="cc-help-legend-copy">Environments progress from neutral, warm, and hot indicating criticality of environment.</span>
+			<span class="cc-help-chips"><span class="cc-help-env"><span class="cc-help-env-name">DEV</span><span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-dev" role="img" aria-label="DEV: Succeeded"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-check"></use></svg></span></span><span class="cc-help-env"><span class="cc-help-env-name">QA</span><span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-qa" role="img" aria-label="QA: Succeeded"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-check"></use></svg></span></span><span class="cc-help-env"><span class="cc-help-env-name">UAT</span><span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-uat" role="img" aria-label="UAT: Succeeded"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-check"></use></svg></span></span><span class="cc-help-env"><span class="cc-help-env-name">PROD</span><span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-prod" role="img" aria-label="PROD: Succeeded"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-check"></use></svg></span></span></span>
+			<span class="cc-help-legend-copy">Environments progress from neutral, warm, and hot indicating criticality of environment. The environment name sits above its chip.</span>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Not Started</div>
 		<div class="cc-help-legend-demo">
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<div class="cc-chip cc-chip--pill cc-chip--neutral env-chip empty" title="Not Started"></div>
-			</span>
+			<span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-muted" role="img" aria-label="Not started"><span class="kcc-rp-chip-icon"></span></span>
 			<span class="cc-help-legend-copy">Release environment has not started yet.</span>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">In-Flight</div>
 		<div class="cc-help-legend-demo">
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<div class="cc-chip cc-chip--pill cc-chip--info env-chip inprogress"><svg class="cc-icon cc-icon--spin" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 5.5V2.75l-1 1A5.5 5.5 0 1 0 13.25 9"></path><path d="M9.75 5.5h2.75"></path></svg></div>
-			</span>
-			<span class="cc-help-legend-copy">Release environment is currently in progress.</span>
+			<span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-uat" role="img" aria-label="In progress"><span class="spinner-border kcc-chip-spinner" aria-hidden="true"></span></span>
+			<span class="cc-help-legend-copy">Release environment is currently in progress. It keeps its environment colour.</span>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Queued<br/>(builds only)</div>
 		<div class="cc-help-legend-demo">
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<div class="cc-chip cc-chip--pill cc-chip--neutral env-chip build-chip queued"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 4.75V8l2.25 1.5"></path></svg></div>
-			</span>
-			<span class="cc-help-legend-copy">A build is waiting for a build agent. The clock is deliberately not the person icon - nobody needs to approve anything, it is queued behind other work. Release environments have no equivalent state: one that has not started yet shows the blank pill above.</span>
+			<span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-muted" role="img" aria-label="Queued"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-slow"></use></svg></span>
+			<span class="cc-help-legend-copy">A build is waiting for a build agent. The clock is deliberately not the person icon - nobody needs to approve anything, it is queued behind other work. Release environments have no equivalent state: one that has not started yet shows the empty chip above.</span>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Canceled</div>
 		<div class="cc-help-legend-demo">
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<div class="cc-chip cc-chip--pill cc-chip--neutral env-chip canceled redeployable"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="M4 4l8 8"></path></svg></div>
-			</span>
+			<span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-muted" role="img" aria-label="Canceled"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-slash"></use></svg></span>
 			<span class="cc-help-legend-copy">Release environment is canceled.  Click to redeploy.</span>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Release Failed /<br/>Canceled Inflight</div>
 		<div class="cc-help-legend-demo">
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<div class="cc-chip cc-chip--pill cc-chip--danger env-chip failed redeployable"><svg class='cc-icon' viewBox='0 0 16 16' aria-hidden='true'><path d='M4.5 4.5l7 7'/><path d='M11.5 4.5l-7 7'/></svg></div>
-			</span>
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<div class="cc-chip cc-chip--pill cc-chip--danger env-chip canceled-inflight redeployable"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="M4 4l8 8"></path></svg></div>
-			</span>
+			<span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-danger" role="img" aria-label="Failed"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-close"></use></svg></span> <span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-danger" role="img" aria-label="Canceled in flight"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-slash"></use></svg></span>
 			<span class="cc-help-legend-copy">Release failed or was canceled in-flight, hover for details or click to redeploy.</span>
 		</div>
 	</div>
@@ -97,18 +83,14 @@
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Succeeded</div>
 		<div class="cc-help-legend-demo">
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<div class="cc-chip cc-chip--pill env-heat env-heat--dev env-chip success"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></div>
-			</span>
+			<span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-dev" role="img" aria-label="Succeeded"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-check"></use></svg></span>
 			<span class="cc-help-legend-copy">Release successfully deployed.</span>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Pending Approval</div>
 		<div class="cc-help-legend-demo">
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<div class="cc-chip cc-chip--pill env-heat env-heat--dev env-chip"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5" r="2.5"></circle><path d="M3.5 13c.5-3 2-4.5 4.5-4.5s4 1.5 4.5 4.5"></path></svg></div>
-			</span>
+			<span class="badge rounded-pill kcc-chip kcc-chip--env kcc-tone-dev" role="img" aria-label="Pending approval"><svg class="kcc-icon" aria-hidden="true"><use href="#kcc-i-profile"></use></svg></span>
 			<span class="cc-help-legend-copy">Release environment is pending approval.  Click to approve/deploy.</span>
 		</div>
 	</div>
@@ -128,8 +110,9 @@
 		</li>
 	</ol>
 	<p>Given above sample, <code>Release 10</code> is the last, most recent release that every environment is complete.  <code>Release 13</code> would be the first available release after even though it has a canceled PROD environment it is still eligible to redeploy.</p>
-	<p>Choose explicit release numbers with the <b>From</b> and <b>To</b> pickers in the Release Pipeline or Release Differences section head when you need a specific comparison. The pickers are filled with active releases, mark the auto-resolved release with <b>(auto)</b>, and commit a selection immediately. <b>Alt+F</b> and <b>Alt+T</b> open the page and focus those controls.</p>
-	<p>If a saved or restored choice cannot be resolved, the Release Pipeline and Release Differences sections render an amber <b>Unavailable</b> state with the range pickers still available so you can choose an active release.</p>
+	<p>Choose explicit releases with the <b>From</b> and <b>To</b> pickers in the page head when you need a specific comparison. Each entry shows the release number and the environment it has reached. <b>From</b> must be newer than <b>To</b>: a valid pair applies at once, and your choice lasts until you change site or close the window. While the Pipeline page is open, <b>Alt+F</b> and <b>Alt+T</b> open those pickers; hold <b>Alt</b> to see the underlined letters.</p>
+	<p>If you pick a <b>From</b> that is not newer than <b>To</b>, the page keeps showing the previous comparison, marks the pickers, and holds Pipeline refreshes until you fix the pair or click <b>Restore comparison</b>.</p>
+	<p>If a chosen release cannot be resolved, the page shows an amber warning with the range pickers still available so you can choose an active release.</p>
 </div>
 
 <div class="cc-help-callout warning"><strong>Comparison Unavailable</strong>The following cases can result in a grey <b>Nothing to compare</b> or amber <b>Unavailable</b> state: no PROD-complete release yet (brand new pipeline) or only a single PROD-complete release with nothing to compare against.</div>
@@ -139,27 +122,25 @@
 <h3>Cleanup Status Notation</h3>
 <div class="cc-help-legend">
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">
-			<span class="tfs-release cc-help-demo cc-reduce-3"><span class="action-chip action-cancel">CANCEL <span class="blocked-icon"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l6 11H2z"></path><path d="M8 6v3M8 11.5h.01"></path></svg></span></span></span>
-		</div>
+		<div class="cc-help-legend-label"><span class="fw-bold small text-nowrap text-warning">Cancel</span> <svg class="kcc-icon text-warning" aria-hidden="true"><use href="#kcc-i-warning"></use></svg></div>
 		<div class="cc-help-legend-demo">
-			<span class="cc-help-legend-copy">Release can be canceled but not deleted during cleanup; usually due to fact that no newer releases have deployed to the same environments.  Click icon for more details.</span>
+			<span class="cc-help-legend-copy">Release can be canceled but not deleted during cleanup; usually because no newer release has deployed to the same environments.  Click it for more details.</span>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">
-			<span class="tfs-release cc-help-demo cc-reduce-3"><span class="action-chip action-delete">CANCEL + DELETE</span></span>
+		<div class="cc-help-legend-label"><span class="fw-bold small text-nowrap text-warning">Blocked</span> <svg class="kcc-icon text-warning" aria-hidden="true"><use href="#kcc-i-warning"></use></svg></div>
+		<div class="cc-help-legend-demo">
+			<span class="cc-help-legend-copy">Release has nothing left to cancel but cannot be deleted yet, for the same reasons.  Click it for more details.</span>
 		</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label"><span class="fw-bold small text-nowrap text-danger">Cancel + Delete</span></div>
 		<div class="cc-help-legend-demo">
 			<span class="cc-help-legend-copy">All deployed environments for release have been covered by a newer release, but there are still active environments that need to be canceled before deletion.</span>
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">
-			<span class="tfs-release cc-help-demo cc-reduce-3">
-				<span class="action-chip action-delete">DELETE</span>
-			</span>
-		</div>
+		<div class="cc-help-legend-label"><span class="fw-bold small text-nowrap text-danger">Delete</span></div>
 		<div class="cc-help-legend-demo">
 			<span class="cc-help-legend-copy">Release has no environments to cancel and all deployed environments have been covered by a newer release.</span>
 		</div>
@@ -171,8 +152,8 @@
 <ol class="cc-help-workflow">
 	<li>Newest release (Anchor) is never touched.</li>
 	<li>Releases where every environment was successfully deployed are never touched (can use Ad Hoc Delete).</li>
-	<li>Releases covered by any newer release are marked as <span class="tfs-release cc-help-demo cc-reduce-3"><span class="action-chip action-delete">CANCEL + DELETE</span></span>.  Covered means all a newer release has <b>exactly matching environment(s)</b> deployed or is <b>fully complete</b> (meant to handle renames like <code>PROD</code> -> <code>PROD Group 1</code>/<code>PROD Group 2</code>).</li>
-	<li>Releases where a newer release exists, but the release is not covered are marked as <span class="tfs-release cc-help-demo cc-reduce-3"><span class="action-chip action-cancel">CANCEL <span class="blocked-icon"><svg class="cc-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l6 11H2z"></path><path d="M8 6v3M8 11.5h.01"></path></svg></span></span></span>.  Active environments are canceled with the assumption that a newer release will eventually be the production release candidate; the release is not deleted since it is only assumption and not fact.  Canceled environments can always be redeployed.</li>
+	<li>Releases covered by any newer release are marked as <span class="fw-bold small text-nowrap text-danger">Cancel + Delete</span>.  Covered means all a newer release has <b>exactly matching environment(s)</b> deployed or is <b>fully complete</b> (meant to handle renames like <code>PROD</code> -> <code>PROD Group 1</code>/<code>PROD Group 2</code>).</li>
+	<li>Releases where a newer release exists, but the release is not covered are marked as <span class="fw-bold small text-nowrap text-warning">Cancel</span> <svg class="kcc-icon text-warning" aria-hidden="true"><use href="#kcc-i-warning"></use></svg>.  Active environments are canceled with the assumption that a newer release will eventually be the production release candidate; the release is not deleted since it is only assumption and not fact.  Canceled environments can always be redeployed.</li>
 	<li>Two further rules limit what <em>you</em> may do, as opposed to what the pipeline allows. A stage waiting on an approval you are not an approver for is never cancelled - cancelling it ends the release's run at that gate, which is the approver's decision. And a release cannot be deleted, by cleanup or by Ad Hoc Delete, if it published to any environment you have no approval authority over. Authority comes from the release definition's approver roster for that environment, plus the definition owner's override; environments whose gate is automated (typically <code>DEV</code>) are exempt, as are environments this release never reached. Where a release carries an environment the definition no longer has - an old <code>PROD</code> against today's <code>PROD Group 1</code> - there is no roster to read, and only the person who actually approved that stage qualifies.</li>
 </ol>
 
@@ -180,11 +161,11 @@
 <div class="cc-help-callout danger"><strong>Irreversible</strong>Cleanup can cancel environments and delete releases. Review every planned API call before continuing.</div>
 
 <figure class="cc-help-shot">
-	<img src="media/cleanup-confirm.webp" alt="Confirm Cleanup dialog listing three pending planned API calls, a PATCH to cancel an environment, a DELETE of a release and another PATCH, with Cancel and Run Cleanup buttons." width="867" height="432" loading="lazy">
+	<img src="media/cleanup-confirm.webp" alt="Confirm Cleanup dialog listing three pending planned API calls, a CANCEL of one release's QA environment, a DELETE of that release and a CANCEL of another release's UAT environment, with Cancel and Run Cleanup buttons." width="500" height="429" loading="lazy">
 </figure>
 
 <h3 id="cleanup-states">Blocked, failed, and retry cleanup states</h3>
-<p>All <code>PATCH</code> (cancel) calls run concurrently first. Only if every cancel succeeds does it proceed to the <code>DELETE</code> calls.</p>
+<p>The cancel calls run first, a few at a time. A delete runs only once every cancel has succeeded; if any cancel fails, no release is deleted. The dialog shows each call's status as it finishes. A call that takes longer than ten seconds is reported as failed, but TFS may still have completed it, so refresh and review the new plan before running cleanup again.</p>
 <table class="cc-help-table">
 	<tr>
 		<th>Rendering</th>
@@ -204,11 +185,31 @@
 	<tr>
 		<td><span class="cc-help-chip cc-help-red">FAILED</span></td>
 		<td>A cancel or delete call returned an error.</td>
-		<td>Click the chip to see the error detail. Resolve the issue in TFS, then re-run cleanup.</td>
+		<td>The error shows beneath the call. Resolve the issue in TFS, then re-run cleanup.</td>
 	</tr>
 	<tr>
 		<td><span class="cc-help-chip cc-help-muted">SKIPPED</span></td>
-		<td>A cancel call failed, so dependent delete calls were not attempted.</td>
-		<td>Resolve the failed cancel first (click its chip for detail), then re-run cleanup.</td>
+		<td>A cancel call failed, so no delete calls were attempted.</td>
+		<td>Resolve the failed cancel first, then re-run cleanup.</td>
 	</tr>
 </table>
+
+<h2 id="release-differences">Release Differences</h2>
+<p>Below the release cards, the page lists every commit between the <b>To</b> release and the <b>From</b> release, grouped by repository. The sample below has <b>Show Pending</b> turned on, so work newer than <b>From</b> is listed above it, one group per origin, newest first: <b>Needs build</b> for commits newer than the latest successful build, <b>New</b> for commits that are built but not yet in any release, and one group per release newer than <b>From</b>. With Show Pending off, only the commits between <b>To</b> and <b>From</b> are shown.</p>
+
+<figure class="cc-help-shot">
+	<img src="media/release-differences.webp" alt="Pipeline page with Show Pending turned on: the From and To release cards, then commit groups for Needs build, New, two pending releases and the From release, each split by repository." width="1482" height="1060" loading="lazy">
+</figure>
+
+<p><strong>Notable Features</strong></p>
+<ol class="cc-help-workflow compact">
+	<li>See commits across <b>all repositories required to build the site or API</b> to be included in the current release (not just commits isolated to the site or API repository)</li>
+	<li>Uses the same <b>From</b> and <b>To</b> as the rest of the page; see <a href="#/release-pipeline/from-to-detection">From and To Detection</a>.</li>
+	<li><b>Show Pending</b> in the page head appears when there is pending work. It shows release candidates newer than the current <b>From</b> release and commits that have not been published yet; click it again (<b>Hide Pending</b>) to return to the plain comparison.</li>
+	<li>View any commit on TFS via the commit hash link.</li>
+	<li>Open an associated work item via the <code>#work-item</code> reference in a commit comment.</li>
+	<li>Read the complete commit comment with the details button when the comment has more lines or is cut off.</li>
+	<li>Collapse anything you have finished with: the chevron on a <b>repository header</b> folds that repository's commits away, and with <b>Show Pending</b> on, the chevron on a <b>release group</b> folds the whole release. Headers stay put while you scroll.</li>
+	<li>Click a repository on the Dashboard's <b>Releases · Pipeline</b> tile to jump straight to its commits here.</li>
+	<li>Commits waiting for a build are also surfaced in <a href="#/reading-dashboard/whats-happening">What's Happening</a>.</li>
+</ol>

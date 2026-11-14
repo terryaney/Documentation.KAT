@@ -8,16 +8,18 @@
 
 <ol class="cc-help-workflow compact">
 	<li><strong>Profile</strong> page: your KAT Management site credentials, your Conduent network account, and a TFS Personal Access Token (PAT).</li>
-	<li><strong>Display</strong> page: adjust the appearance and layout of the application - theme, density, how the rail collapses, whether Releases and Sentinel are one page or several - and when CalcEngine checkouts and What's Happening items change.</li>
+	<li><strong>Display</strong> page: adjust the appearance and layout of the application - theme, density and how the rail collapses.</li>
+	<li><strong>Releases</strong> page: how release pipelines are polled, when finished What's Happening items fade, how CalcEngine downloads behave, and which CalcEngine checkouts are flagged.</li>
 	<li><strong>Work Items</strong> page: configure your work item queries and workflow used within the application.</li>
-	<li><strong>Grazer</strong> page: configure local search roots, exclusions, result limits, ZIP/Git options, and replacement confirmation.</li>
-	<li><strong>Repository Status</strong> page: choose the folders searched for Git repositories, the ignore patterns, how often status is checked and remotes are fetched, and which Git actions ask for confirmation.</li>
+	<li><strong>Grazer</strong> page: configure local search roots, exclusions, the file-size limit, ZIP/Git/Shared options, replacement confirmations and read-only replacements.</li>
+	<li><strong>Repository Status</strong> page: choose the folders searched for Git repositories, ignore patterns, background checks, branch display, confirmations and the default Commit message.</li>
 	<li><strong>Connections</strong> page: manage your application's connections to external services and data sources.</li>
 </ol>
 <p>Folder paths in <strong>Grazer</strong>, the <strong>Repository Status</strong> roots and the <strong>Release folder</strong> setting share an editable picker. Type or paste a path, use the up/down arrows and <code>Enter</code> to choose one of up to 25 immediate child-folder suggestions, or press the folder button beside the path; <code>Esc</code> closes the suggestions. These edits stay in the Settings draft until you choose <em>Save</em>; <em>Cancel</em> discards them. Editing a path does not run a Grazer search or rescan repositories; saving changed Repository Status roots does.</p>
 
 <figure class="cc-help-shot">
 	<img src="media/settings-profile.webp" alt="Settings Profile page with both accounts signed in: KAT DataStore email and password and the two CalcEngine download toggles, the Conduent username and password followed by the Remember my passwords toggle, and the saved TFS personal access token, above the Show release notes and Open settings file links and the Cancel and Save buttons." width="938" height="858" loading="lazy">
+	<figcaption>Earlier Profile layout shown. CalcEngine download preferences and checkout alerts are now on Releases, as listed below.</figcaption>
 </figure>
 
 <p><strong>Notable Features</strong></p>
@@ -46,7 +48,7 @@
 </ol>
 
 <h3 id="providing-credentials">KAT Credentials</h3>
-<p>The KAT Management site credentials enable CalcEngine Pipeline and Site Metrics. The Conduent (AMERICAS) network account enables Site Scope.</p>
+<p>The KAT Management site credentials enable CalcEngines, Site Metrics and RBLe Balancer. The Conduent (AMERICAS) network account enables Site Scope.</p>
 <ol class="cc-help-workflow">
 	<li>Click the Settings button in KAT Command Center's app bar.</li>
 	<li>Enter your KAT DataStore and/or your Conduent username and password.</li>
@@ -65,19 +67,11 @@
 <h2 id="all-settings">Available Settings</h2>
 <div class="cc-help-legend">
 	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Profile</b></div>
+		<h3 class="cc-help-legend-copy" id="profile">Profile</h3>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">KAT DataStore</div>
-		<div class="cc-help-legend-copy">Enter your KAT DataStore credentials here to enable CalcEngine Pipeline and Site Metrics.</div>
-	</div>
-	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Always replace existing files when downloading CalcEngines</div>
-		<div class="cc-help-legend-copy">Replace an existing file in Downloads with the same name without asking. Off by default.</div>
-	</div>
-	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Automatically open downloaded CalcEngines after download</div>
-		<div class="cc-help-legend-copy">Open each CalcEngine file after it is downloaded. Off by default.</div>
+		<div class="cc-help-legend-copy">Enter your KAT DataStore credentials here to enable CalcEngines, Site Metrics and RBLe Balancer.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Conduent</div>
@@ -92,7 +86,7 @@
 		<div class="cc-help-legend-copy">Your TFS personal access token (PAT) goes here to enable integration with the TFS system.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Display</b></div>
+		<h3 class="cc-help-legend-copy" id="display">Display</h3>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Preferred light theme</div>
@@ -114,47 +108,95 @@
 		<div class="cc-help-legend-label">Navigation</div>
 		<div class="cc-help-legend-copy">What the rail's collapse button (at the left of the app bar) does. <em>Collapse to icons</em> leaves a strip of section icons; hovering or clicking a group there opens its entries beside it. <em>Hide completely</em> removes the rail so the content takes the full width, and the same button brings it back.</div>
 	</div>
-	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Viewing releases</div>
-		<div class="cc-help-legend-copy"><em>Separate</em> puts Release Pipeline, Release Differences and CalcEngine Pipeline under a <b>Releases</b> group in the rail, one page each, each keeping its own scroll position. <em>Combined</em> makes <b>Releases</b> a single entry with all three stacked on one page under one header.</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<h3 class="cc-help-legend-copy" id="releases">Releases</h3>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Viewing Sentinel</div>
-		<div class="cc-help-legend-copy">The same choice for Site Metrics and Site Scope under <b>Sentinel</b>: one page each, or both stacked on one page.</div>
+		<div class="cc-help-legend-label">Pipeline Polling: Check every (seconds)</div>
+		<div class="cc-help-legend-copy">How often a queued build or release is re-checked while you watch it.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Checkout alerts: Turn red after (days)</div>
-		<div class="cc-help-legend-copy">A checked-out CalcEngine counts on the CalcEngine Pipeline rail badge in amber, and turns it red once it has been checked out this many days. Blank uses 3.</div>
+		<div class="cc-help-legend-label">Pipeline Polling: Stop watching after (minutes)</div>
+		<div class="cc-help-legend-copy">How long a build or deployment phase can remain unchanged before the watch warns.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Site Release Check: Check every (minutes)</div>
+		<div class="cc-help-legend-copy">How often the background sweep re-checks which sites are behind PROD, which is what puts the amber dot beside a site in the picker. Defaults to 20 minutes; enter a whole number from 5 to 1,440. One sweep covers every catalogued site, so lowering this is not free.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">What's Happening: Auto dismiss completed after (seconds)</div>
-		<div class="cc-help-legend-copy">How long a build or deployment that finished successfully stays in the Dashboard's <a href="#/reading-dashboard/whats-happening">What's Happening</a> list before fading out. Failures stay until you dismiss them. Blank uses 10.</div>
-	</div>
-	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Work Items > Comment Defaults</b></div>
+		<div class="cc-help-legend-copy">How long a build or deployment that finished successfully stays in the Dashboard's <a href="#/reading-dashboard/whats-happening">What's Happening</a> list before fading out. Failures stay until you dismiss them. 10 by default.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Add Comment</div>
-		<div class="cc-help-legend-copy">Prefills the comment box for <em>Add Comment</em> (the <em>Default Comment Text</em>).</div>
+		<div class="cc-help-legend-label">Always replace existing files when downloading CalcEngines</div>
+		<div class="cc-help-legend-copy">Replace an existing file in Downloads with the same name without asking. Off by default.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Automatically open downloaded CalcEngines after download</div>
+		<div class="cc-help-legend-copy">Open each CalcEngine file after it is downloaded. Off by default.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Show confirmation after downloading CalcEngines</div>
+		<div class="cc-help-legend-copy">Show the saved path with Copy Path, Open Folder and Open CalcEngine after each download. On by default. Not used while CalcEngines open automatically.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Checkout Alerts: My checkouts turn red after (days)</div>
+		<div class="cc-help-legend-copy">Your CalcEngine checkouts always show in What's Happening and count on the CalcEngines rail badge, in amber, turning red once checked out longer than this many days. Blank uses 3.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Checkout Alerts: Show team member checkouts after (days)</div>
+		<div class="cc-help-legend-copy">Someone else's CalcEngine checkout shows in amber once it has been checked out longer than this many days. 3 by default; leave it blank to not show team members' checkouts.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<h3 class="cc-help-legend-copy" id="work-items-comment-defaults">Work Items > Comment Defaults</h3>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Edit Task</div>
+		<div class="cc-help-legend-copy">Prefills the comment box for <em>Edit Task</em>.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Triage</div>
-		<div class="cc-help-legend-copy">Prefills the comment box for <em>Triage</em> (the <em>Default Triage Comment</em>).</div>
+		<div class="cc-help-legend-copy">Prefills the comment box for <em>Triage</em>.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Return Task</div>
-		<div class="cc-help-legend-copy">Prefills the comment box for <em>Return Task</em>, single and batch (the <em>Default Return Task Comment</em>).</div>
+		<div class="cc-help-legend-copy">Prefills the comment box for <em>Return Task</em>, single and batch.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Close Task</div>
-		<div class="cc-help-legend-copy">Prefills the comment box for <em>Close Task</em> (the <em>Default Close Task Comment</em>). A comment does not replace its required State change.</div>
+		<div class="cc-help-legend-copy">Prefills the comment box for <em>Close Task</em>. A comment does not replace its required State change.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Submit comment dialogs with Ctrl+Enter</div>
-		<div class="cc-help-legend-copy">Lets <code>Ctrl+Enter</code> press <em>OK</em> from anywhere in a comment modal, including the batch Return Task modal, or <em>Create</em> in a new work item modal. Off unless you turn it on.</div>
+		<div class="cc-help-legend-label">Use Ctrl+Enter to submit work item changes</div>
+		<div class="cc-help-legend-copy">Lets <code>Ctrl+Enter</code> save from anywhere in the work item edit form, press <em>OK</em> in the batch Return Task modal, or <em>Create</em> in a new work item modal. Off unless you turn it on.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Work Items > Queries</b></div>
+		<h3 class="cc-help-legend-copy" id="work-items-attachments">Work Items > Attachments</h3>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Always replace existing attachments</div>
+		<div class="cc-help-legend-copy">Clicking an attachment in a work item's details saves it to your Downloads folder. On, an existing file of the same name is replaced without asking; off, the details ask whether to replace it, save it somewhere else, or cancel. Default is false.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Automatically open downloaded attachments</div>
+		<div class="cc-help-legend-copy">Opens the attachment in its default app once it is saved. Default is false.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<h3 class="cc-help-legend-copy" id="work-items-history">Work Items > History</h3>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Merge one person's saves within (minutes)</div>
+		<div class="cc-help-legend-copy">On a work item's <a href="#/work-items/work-item-detail">History</a> tab, one person's back-to-back saves show as a single entry, led by "N saves", while each save follows the previous one within this many minutes. <code>0</code> shows every save separately. Default is 30; 0 to 60.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<h3 class="cc-help-legend-copy" id="work-items-tags">Work Items > Tags</h3>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Additional tags</div>
+		<div class="cc-help-legend-copy">Comma-separated tags offered in <em>Edit Task</em>'s Tags list after the site's KAT tags.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<h3 class="cc-help-legend-copy" id="work-items-queries">Work Items > Queries</h3>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Order</div>
@@ -185,10 +227,6 @@
 		</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Show tag counts</div>
-		<div class="cc-help-legend-copy">Shows <code>KAT-</code> prefixed tag totals under the Work Items header and lets those tags filter rows (useful to turn off when the majority of result rows have unique tags).</div>
-	</div>
-	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Hide query when no work items present</div>
 		<div class="cc-help-legend-copy">Leaves the query out of the rail while it has no items; it comes back as soon as the query finds one. The query you have open stays until you open another. On for a new query. A query saved before this option existed stays in the rail until you turn it on.</div>
 	</div>
@@ -197,15 +235,15 @@
 		<div class="cc-help-legend-copy">Keeps this query's items out of the Dashboard's <a href="#/reading-dashboard/whats-happening">What's Happening</a> list. Its rail badge still counts them. Off for a new query.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Tools > Grazer</b></div>
+		<h3 class="cc-help-legend-copy" id="tools-grazer">Tools > Grazer</h3>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Search roots</div>
+		<div class="cc-help-legend-label">Search Roots</div>
 		<div class="cc-help-legend-copy">Named folders Grazer searches. Edit the names and paths for your machine; missing or inaccessible roots are reported without stopping the other roots.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Default file patterns</div>
-		<div class="cc-help-legend-copy">Filename wildcards, separated by semicolons, commas or line breaks, prefilled in Grazer's search form. The form's current patterns can be changed without changing this default.</div>
+		<div class="cc-help-legend-copy">Filename wildcards, separated by semicolons, commas or line breaks, prefilled in Grazer's search form. Custom patterns override this default for the current app session only; blank uses these defaults on the next search.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Excluded folders</div>
@@ -214,10 +252,6 @@
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Excluded directory names and path fragments</div>
 		<div class="cc-help-legend-copy">Directory names match whole folder names; path fragments match anywhere in a path. Both lists are editable. Git metadata is controlled separately by its switch.</div>
-	</div>
-	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Maximum result rows</div>
-		<div class="cc-help-legend-copy">Bounds the results retained and shown; the default is 10,000, and it can be 1 to 100,000. A limit reached during a search is marked incomplete.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Maximum file / ZIP entry size (MB)</div>
@@ -232,15 +266,23 @@
 		<div class="cc-help-legend-copy">Searches matching text entries without extracting or changing the archive. Off by default; entries are read-only.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Confirm before applying replacements</div>
-		<div class="cc-help-legend-copy">Adds a final confirmation after the mandatory preview. On by default; the confirmation can remember an opt-out, and this setting can turn it back on.</div>
-	</div>
-	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Tools > Repository Status</b></div>
+		<div class="cc-help-legend-label">Search each Shared repository once</div>
+		<div class="cc-help-legend-copy">Skips later copies of a repository found under a <code>Shared*</code> folder and counts them as duplicates. On by default.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Repository roots</div>
-		<div class="cc-help-legend-copy">Folders searched for Git repositories, nested ones included. Each root has an optional name (the Show list on the Repository Status page offers <em>{name} Repos</em>, or the folder name when it has none) and a path; add and remove rows with the shared folder picker and the trash button. A missing root is reported without stopping the others. Changing the roots rescans on Save. The order of the roots is the order repositories are listed in on the page: drag a root by its grip, or focus the grip and press <code>Alt+↑</code> / <code>Alt+↓</code>. Reordering alone does not rescan. Defaults: <code>C:\BTR</code>, <code>C:\Windows\System32\drivers\etc</code> and Visual Studio's XML schemas folder.</div>
+		<div class="cc-help-legend-label">Applying file / line replacements</div>
+		<div class="cc-help-legend-copy">Required Confirmations: ask before replacing a file, repository folder or Replace All, and separately before replacing a single Updated line. Both are on by default; each prompt can remember its own opt-out, and these switches turn them back on. The preview and stale-file checks always apply.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Replace read-only files</div>
+		<div class="cc-help-legend-copy">Lets Replace and Undo clear a file's read-only attribute, write it and leave it writable. If the attribute cannot be cleared the file is unchanged. Off by default.</div>
+	</div>
+	<div class="cc-help-legend-row cc-help-legend-subheader">
+		<h3 class="cc-help-legend-copy" id="tools-repository-status">Tools > Repository Status</h3>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Repository Roots</div>
+		<div class="cc-help-legend-copy">Folders searched for Git repositories, nested ones included. Each root has an optional name (the Show list on the Repository Status page offers <em>{name} Repos</em>, or the folder name when it has none) and a path; add and remove rows with the shared folder picker and the trash button. A missing root is reported without stopping the others. Changing the roots rescans on Save, and <strong>Rescan now</strong> under Background Checks rescans the saved roots and patterns at any time, for example to pick up a new clone when <em>Check local status</em> is off. The order of the roots is the order repositories are listed in on the page: drag a root by its grip, or focus the grip and press <code>Alt+↑</code> / <code>Alt+↓</code>. Reordering alone does not rescan. Defaults: <code>C:\BTR</code>, <code>C:\Windows\System32\drivers\etc</code> and Visual Studio's XML schemas folder.</div>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Ignore patterns</div>
@@ -252,32 +294,65 @@
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Fetch upstream remotes / Every (minutes)</div>
-		<div class="cc-help-legend-copy">How often the upstream remote of each checked-out branch is fetched. On, every 30 minutes, by default; 1 to 1,440 minutes. A value you saved before keeps its setting. Fetching never pulls or changes files. With either switch off, <code>F5</code> still rescans and checks status.</div>
+		<div class="cc-help-legend-copy">How often the upstream remote of each checked-out branch is fetched. On, every 30 minutes, by default; 1 to 1,440 minutes. A value you saved before keeps its setting. Fetching never pulls or changes files. With either switch off, <code>F5</code> still checks listed repositories without rescanning roots; <code>Ctrl+F5</code> fetches them. <strong>Rescan now</strong> rediscovers the saved roots.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Confirm Push, Pull, Sync and worktree cleanup</div>
-		<div class="cc-help-legend-copy">Each selected Git action asks before it runs. All are on by default and independent; a prompt's opt-out turns its switch off here, and you can turn it back on. Pull, Push and Sync ask one question naming the repository or how many there are. Commit always opens its review with the message field and changed-file list. A force push has no setting: it always opens its review and always carries its lease. With Confirm worktree cleanup off, cleanup still opens its review whenever anything needs force, a prune is involved or something cannot be removed, and every check (unchanged since the review, and, where force was not confirmed, locked, clean and a reason to go) still applies; see <a href="#/tools/repository-status/worktree-cleanup">Cleaning up worktrees</a>.</div>
+		<div class="cc-help-legend-label">Display remote branches</div>
+		<div class="cc-help-legend-copy">Shows remote branches as child rows when a repository is expanded. Off by default; local branches and linked worktrees remain available.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Confirm Push, Pull, Sync and Worktree Delete</div>
+		<div class="cc-help-legend-copy">Each selected Git action asks before it runs. All are on by default and independent; a prompt's opt-out turns its switch off here, and you can turn it back on. Pull, Push and Sync ask one question naming the repository or how many there are. Commit always opens its review with the message field and changed-file list. A force push has no setting: it always opens its review and always carries its lease. With Confirm Worktree Delete off, deletes that lose no work just run; a delete that discards uncommitted files, abandons an unfinished operation, is on a detached HEAD, overrides a lock or is not proven merged into main still opens its review, and every check (unchanged since the review, and, without force, unlocked, clean and a reason to go) still applies; see <a href="#/tools/repository-status/worktree-cleanup">Deleting worktrees</a>.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Commit message</div>
+		<div class="cc-help-legend-copy">Text the Commit review's message box starts with, for example a summary-line template. Blank, the default, starts it empty. You can edit it in the review before committing.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Connections > Release Pipeline Polling</b></div>
+		<h3 class="cc-help-legend-copy" id="sentinel-balancer">Sentinel · Balancer</h3>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Check every (seconds)</div>
-		<div class="cc-help-legend-copy">How often a queued build or release is re-checked while you watch it.</div>
+		<div class="cc-help-legend-label">Setting Publishing Nodes</div>
+		<div class="cc-help-legend-copy">Sentinel endpoints that hold the server credentials to replace an RBLe API's appsettings files. Each has a unique name and a unique <code>http://</code> or <code>https://</code> endpoint without a user name or password. Drag a node by its grip to reorder. Renaming a node keeps the balancers that use it; removing one clears their <em>Use For Settings Publishing</em>, and the footer says so before you save. Publishing nodes are not contacted on Save.</div>
 	</div>
 	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Stop watching after (minutes)</div>
-		<div class="cc-help-legend-copy">How long that watch runs before giving up.</div>
+		<div class="cc-help-legend-label">RBLe Balancers</div>
+		<div class="cc-help-legend-copy">One per environment, shown on the Dashboard tile and the <a href="#/rble-balancer">RBLe Balancer</a> page whichever site is selected. Add, edit, undo, remove and reorder them like Work Items queries; edits apply when you save. Save signs in to each new or edited balancer's Sentinel endpoint with your KAT Management credentials and reads it, and stops with the reason when the endpoint cannot be reached, denies you, has no balancer configured, or does not report the cluster. When every failure is one Sentinel could not confirm (it could not be reached, denied you, or failed some other way), <strong>Save anyway</strong> under the list saves without that check; the RBLe Balancer page then reports any problem.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Name, Cluster, Deployment Type</div>
+		<div class="cc-help-legend-copy">The name is how the balancer is shown everywhere, and must be unique. Cluster is the balancer cluster to watch (default <em>Primary</em>), matched to the cluster's key or display name and saved in Sentinel's spelling; each endpoint can watch a cluster once. Deployment Type (default <em>Live</em>) says which deployment's settings files Update Settings replaces.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Sentinel Endpoint</div>
+		<div class="cc-help-legend-copy">The Sentinel API for this environment, an absolute <code>http://</code> or <code>https://</code> URL without a user name or password. Balancers that share an endpoint share one read.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Poll Every (seconds)</div>
+		<div class="cc-help-legend-copy">How often the balancer is read while the Dashboard or the RBLe Balancer page is showing. 1 to 60; default 2.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Use For Settings Publishing</div>
+		<div class="cc-help-legend-copy">The publishing node, listed by name, that reads and replaces this balancer's appsettings files. With <em>None</em>, View Settings, Update Settings and Update All Settings are unavailable.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Host Names</div>
+		<div class="cc-help-legend-copy">In the editor's Hosts section. The web servers running the balancer in this environment, comma separated: at least one, at most 25, each a plain host name without dots. Each must be the web server's machine name. The RBLe Balancer page reads the first one until you choose another in its Host picker, and node actions go to every one of them. A web server that answers but is not listed is reported as an unknown host.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Always replace existing files when downloading settings files</div>
+		<div class="cc-help-legend-copy">Under <em>View Settings Download</em>. View Settings saves a node's file to your Downloads folder as <code>{node}.{file name}</code>. On, an existing file of that name is replaced without asking; off, you are asked whether to replace it, save it somewhere else, or cancel. Off by default.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Automatically open settings files after download</div>
+		<div class="cc-help-legend-copy">Opens the saved file in Visual Studio Code when it is installed, otherwise in the app Windows uses for the file. On by default.</div>
+	</div>
+	<div class="cc-help-legend-row">
+		<div class="cc-help-legend-label">Show confirmation after downloading settings files</div>
+		<div class="cc-help-legend-copy">Show the saved path with Copy Path, Open Folder and Open File after each download. On by default. Not used while settings files open automatically.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Connections > Site Release Check</b></div>
-	</div>
-	<div class="cc-help-legend-row">
-		<div class="cc-help-legend-label">Check every (minutes)</div>
-		<div class="cc-help-legend-copy">How often the background sweep re-checks which sites are behind PROD, which is what puts the amber dot beside a site in the picker. Blank uses 20 minutes, and 5 is the lowest it accepts - one sweep covers every catalogued site, so lowering this is not free.</div>
-	</div>
-	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Connections > Automatic Updates</b></div>
+		<h3 class="cc-help-legend-copy" id="connections-automatic-updates">Connections > Automatic Updates</h3>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Release folder</div>
@@ -288,7 +363,7 @@
 		<div class="cc-help-legend-copy">How often that folder is checked; blank uses 8 hours. It is also checked once at startup, and whenever you press <em>Check for updates now</em> beneath it.</div>
 	</div>
 	<div class="cc-help-legend-row cc-help-legend-subheader">
-		<div class="cc-help-legend-copy"><b>Connections > Documentation</b></div>
+		<h3 class="cc-help-legend-copy" id="connections-documentation">Connections > Documentation</h3>
 	</div>
 	<div class="cc-help-legend-row">
 		<div class="cc-help-legend-label">Documentation URL</div>
